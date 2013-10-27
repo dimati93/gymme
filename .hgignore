@@ -1,0 +1,13 @@
+syntax: glob
+*/bin/*
+*/obj/*
+*/Bin/*
+packages/*
+*.suo
+*.Cache
+*.orig
+_ReSharper.*
+~$*.docx
+*.user
+BIN/*
+setup/out/*
