@@ -50,7 +50,7 @@
     <Reference Include="mscorlib.extensions" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Core\CEDataContext.cs" />
+    <Compile Include="Core\DatabaseContext.cs" />
     <Compile Include="Models\Exercise.cs" />
     <Compile Include="Models\Model.cs" />
     <Compile Include="Models\Training.cs" />
@@ -58,6 +58,7 @@
     <Compile Include="Models\Workout.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\RepositoryBase.cs" />
+    <Compile Include="Repository\RepoWorkout.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.$(TargetFrameworkProfile).Overrides.targets" />

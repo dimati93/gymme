@@ -1,15 +1,15 @@
 ﻿<vm:MainViewModel
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:vm="clr-namespace:Gymme.ViewModels"
+    xmlns:vm="clr-namespace:Gymme.ViewModel"
     MainTitle="Gymme"
     UpcommingWorkoutTitle="Upcomming"
     WorkoutsTitle="Workouts">
       
-    <vm:MainViewModel.Items>
-        <vm:ItemViewModel LineOne="Legs" LineTwo="squats, deadlift, hyperextension" LineThree="Maecenas praesent accumsan bibendum dictumst eleifend facilisi faucibus habitant inceptos interdum lobortis nascetur"/>
-        <vm:ItemViewModel LineOne="Arms" LineTwo="dumbbells and barrel lift" LineThree="Pharetra placerat pulvinar sagittis senectus sociosqu suscipit torquent ultrices vehicula volutpat maecenas praesent"/>
-        <vm:ItemViewModel LineOne="Chest" LineTwo="bench press, blocks" LineThree="Accumsan bibendum dictumst eleifend facilisi faucibus habitant inceptos interdum lobortis nascetur pharetra placerat"/>
-    </vm:MainViewModel.Items>
+    <vm:MainViewModel.Workouts>
+        <vm:WorkoutVM Title="Legs" Note="squats, deadlift, hyperextension" />
+        <vm:WorkoutVM Title="Arms" Note="dumbbells and barrel lift" />
+        <vm:WorkoutVM Title="Chest" Note="bench press, blocks" />
+    </vm:MainViewModel.Workouts>
 
 </vm:MainViewModel>

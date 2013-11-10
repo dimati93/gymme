@@ -9,7 +9,7 @@ using Gymme.Data.Core;
 
 namespace Gymme.Data.Repository
 {
-    public class RepositoryBase<T>
+    public class RepositoryBase<T> 
         where T : Model
     {
         private readonly Table<T> _table;
@@ -41,12 +41,26 @@ namespace Gymme.Data.Repository
 
         public virtual void Save(T entity)
         {
+            InsertOnDemand(entity);
+            DatabaseContext.Instance.SubmitChanges();
+        }
+
+        public virtual void Save(IEnumerable<T> entities)
+        {
+            foreach (T entity in entities)
+            {
+                InsertOnDemand(entity);
+            }
+
+            DatabaseContext.Instance.SubmitChanges();
+        }
+
+        private void InsertOnDemand(T entity)
+        {
             if (Exists(entity.Id))
             {
                 Table.InsertOnSubmit(entity);
             }
-
-            DatabaseContext.Instance.SubmitChanges();
         }
 
         public virtual void Delete(T entity)

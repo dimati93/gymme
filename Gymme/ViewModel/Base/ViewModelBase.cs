@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace Gymme.ViewModels.Base
+namespace Gymme.ViewModel.Base
 {
     public class ViewModelBase : INotifyPropertyChanged
     {

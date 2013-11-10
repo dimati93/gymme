@@ -28,8 +28,6 @@ namespace Gymme.Data.Models
 
         #endregion
 
-
-
         [Column]
         public long IdWorkout { get; set; }
 

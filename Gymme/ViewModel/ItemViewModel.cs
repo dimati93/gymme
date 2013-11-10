@@ -1,4 +1,4 @@
-﻿namespace Gymme.ViewModels
+﻿namespace Gymme.ViewModel
 {
     public class ItemViewModel : Base.ViewModelBase
     {

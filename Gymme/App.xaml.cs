@@ -9,7 +9,7 @@ using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using Gymme.Resources;
-using Gymme.ViewModels;
+using Gymme.ViewModel;
 
 namespace Gymme
 {

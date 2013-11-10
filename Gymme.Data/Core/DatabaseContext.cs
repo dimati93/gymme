@@ -7,6 +7,8 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+using Gymme.Data.Models;
+using Gymme.Data.Repository;
 using System.Data.Linq;
 
 namespace Gymme.Data.Core
@@ -32,6 +34,15 @@ namespace Gymme.Data.Core
             if (!DatabaseExists())
             {
                 CreateDatabase();
+                
+#if DEBUG        
+                Workout.InsertAllOnSubmit(new [] { 
+                    new Workout { Title = "Legs", Note = "squats, deadlift, hyperextension" }, 
+                    new Workout { Title = "Arms", Note = "dumbbells and barrel lift" } 
+                });
+
+                SubmitChanges();
+#endif
             }
         }
 
@@ -56,5 +67,21 @@ namespace Gymme.Data.Core
         }
 
         #endregion
+
+        public Table<Workout> Workout
+        {
+            get
+            {
+                return GetTable<Workout>();
+            }
+        }
+
+        public Table<Exercise> Excercise
+        {
+            get
+            {
+                return GetTable<Exercise>();
+            }
+        }
     }
 }

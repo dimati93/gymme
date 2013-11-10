@@ -41,7 +41,7 @@ namespace Gymme.Data.Models
         private EntitySet<Exercise> _exercises = new EntitySet<Exercise>();
 
         [Association(Name = "FK_Workout_Exercise", Storage = "_exercises", OtherKey = "IdWorkout", DeleteRule = "NO ACTION")]
-        public EntitySet<Exercise> Products
+        public EntitySet<Exercise> Exercises
         {
             get
             {

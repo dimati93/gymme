@@ -1,19 +1,21 @@
 ﻿using System.Collections.ObjectModel;
 using Gymme.Resources;
+using Gymme.Data.Repository;
+using Gymme.ViewModel;
 
-namespace Gymme.ViewModels
+namespace Gymme.ViewModel
 {
     public class MainViewModel : Base.ViewModelBase
     {
         public MainViewModel()
         {
-            Items = new ObservableCollection<ItemViewModel>();
+            Workouts = new ObservableCollection<WorkoutVM>();
         }
 
         /// <summary>
         /// A collection for ItemViewModel objects.
         /// </summary>
-        public ObservableCollection<ItemViewModel> Items { get; private set; }
+        public ObservableCollection<WorkoutVM> Workouts { get; private set; }
 
         private string _mainTitle = AppResources.ApplicationTitle;
         private string _upcommingWorkoutTitle = AppResources.Main_UpcomingWorkout;
@@ -72,10 +74,11 @@ namespace Gymme.ViewModels
         /// </summary>
         public void LoadData()
         {
-            // Sample data; replace with real data
-            Items.Add(new ItemViewModel { LineOne = "Legs", LineTwo = "squats, deadlift, hyperextension", LineThree = "Facilisi faucibus habitant inceptos interdum lobortis nascetur pharetra placerat pulvinar sagittis senectus sociosqu" });
-            Items.Add(new ItemViewModel { LineOne = "Arms", LineTwo = "dumbbells and barrel lift", LineThree = "Suscipit torquent ultrices vehicula volutpat maecenas praesent accumsan bibendum dictumst eleifend facilisi faucibus" });
-            Items.Add(new ItemViewModel { LineOne = "Chest", LineTwo = "bench press, blocks", LineThree = "Habitant inceptos interdum lobortis nascetur pharetra placerat pulvinar sagittis senectus sociosqu suscipit torquent" });
+            foreach (var workout in RepoWorkout.Instance.FindAll())
+            {
+                Workouts.Add(new WorkoutVM(workout));
+            }
+
             IsDataLoaded = true;
         }
     }
