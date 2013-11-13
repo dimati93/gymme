@@ -15,18 +15,16 @@ namespace Gymme.Data.Models
     {
         #region Common
 
-        private long _id;
-
         [Column(AutoSync = AutoSync.OnInsert, IsPrimaryKey = true, IsDbGenerated = true)]
         public override long Id
         {
             get
             {
-                return _id;
+                return base.Id;
             }
             set
             {
-                _id = value;
+                base.Id = value;
             }
         }
 

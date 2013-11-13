@@ -129,21 +129,39 @@
     <value>Gymme</value>
   </data>
   <data name="Common_Workouts" xml:space="preserve">
-    <value>Workouts</value>
+    <value>Тренування</value>
   </data>
   <data name="Common_Exercises" xml:space="preserve">
-    <value>Exs</value>
+    <value>Вправи</value>
   </data>
   <data name="Common_Lift" xml:space="preserve">
-    <value>Lift</value>
+    <value>Вага</value>
   </data>
   <data name="Common_Reps" xml:space="preserve">
-    <value>Reps</value>
+    <value>Разів</value>
   </data>
   <data name="Common_Sets" xml:space="preserve">
-    <value>Sets</value>
+    <value>Підходи</value>
   </data>
   <data name="Main_UpcomingWorkout" xml:space="preserve">
-    <value>Upcoming</value>
+    <value>Найближчі</value>
+  </data>
+  <data name="AddEdit_NewWorkout" xml:space="preserve">
+    <value>Нове тренування</value>
+  </data>
+  <data name="MainMenu_AddWorkout" xml:space="preserve">
+    <value>Додати тренування</value>
+  </data>
+  <data name="Main_Menu" xml:space="preserve">
+    <value>Меню</value>
+  </data>
+  <data name="AEWorkout_DetailLabel" xml:space="preserve">
+    <value>Деталі</value>
+  </data>
+  <data name="AEWorkout_NameLabel" xml:space="preserve">
+    <value>Назва:</value>
+  </data>
+  <data name="AEWorkout_NoteLabel" xml:space="preserve">
+    <value>Нотатка:</value>
   </data>
 </root>

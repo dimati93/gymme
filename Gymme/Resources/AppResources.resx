@@ -146,4 +146,22 @@
   <data name="Main_UpcomingWorkout" xml:space="preserve">
     <value>Upcoming</value>
   </data>
+  <data name="AddEdit_NewWorkout" xml:space="preserve">
+    <value>New workout</value>
+  </data>
+  <data name="MainMenu_AddWorkout" xml:space="preserve">
+    <value>Add workout</value>
+  </data>
+  <data name="Main_Menu" xml:space="preserve">
+    <value>Menu</value>
+  </data>
+  <data name="AEWorkout_DetailLabel" xml:space="preserve">
+    <value>Detail</value>
+  </data>
+  <data name="AEWorkout_NameLabel" xml:space="preserve">
+    <value>Name:</value>
+  </data>
+  <data name="AEWorkout_NoteLabel" xml:space="preserve">
+    <value>Note:</value>
+  </data>
 </root>

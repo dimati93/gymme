@@ -17,6 +17,23 @@ namespace Gymme.Data.Models
     /// </summary>
     public abstract class Model
     {
-        public abstract long Id { get; set; }
+        private long _id;
+
+        protected Model()
+        {
+            IsNew = true;
+        }
+
+        public virtual long Id
+        {
+            get { return _id; }
+            set
+            {
+                _id = value;
+                IsNew = false;
+            }
+        }
+
+        public bool IsNew { get; private set; }
     }
 }

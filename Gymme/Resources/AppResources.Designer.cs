@@ -61,6 +61,42 @@ namespace Gymme.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to New workout.
+        /// </summary>
+        public static string AddEdit_NewWorkout {
+            get {
+                return ResourceManager.GetString("AddEdit_NewWorkout", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Detail.
+        /// </summary>
+        public static string AEWorkout_DetailLabel {
+            get {
+                return ResourceManager.GetString("AEWorkout_DetailLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name:.
+        /// </summary>
+        public static string AEWorkout_NameLabel {
+            get {
+                return ResourceManager.GetString("AEWorkout_NameLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Note:.
+        /// </summary>
+        public static string AEWorkout_NoteLabel {
+            get {
+                return ResourceManager.GetString("AEWorkout_NoteLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Gymme.
         /// </summary>
         public static string ApplicationTitle {
@@ -115,11 +151,29 @@ namespace Gymme.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Menu.
+        /// </summary>
+        public static string Main_Menu {
+            get {
+                return ResourceManager.GetString("Main_Menu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Upcoming.
         /// </summary>
         public static string Main_UpcomingWorkout {
             get {
                 return ResourceManager.GetString("Main_UpcomingWorkout", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add workout.
+        /// </summary>
+        public static string MainMenu_AddWorkout {
+            get {
+                return ResourceManager.GetString("MainMenu_AddWorkout", resourceCulture);
             }
         }
         

@@ -1,0 +1,19 @@
+﻿<UserControl x:Class="Gymme.View.AEWorkout"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    d:DesignHeight="480" d:DesignWidth="480">
+
+    <ListBox x:Name="LayoutRoot" Background="{StaticResource PhoneBackgroundBrush}" Style="{StaticResource ListStyle}">
+        <TextBlock Text="{Binding LocalizedResources.AEWorkout_NameLabel, Source={StaticResource LocalizedStrings}}" Style="{StaticResource InputDescriptionStyle}"/>
+        <TextBox Text="{Binding Title, Mode=TwoWay}"  Style="{StaticResource InputStyle}" MaxLength="256"/>
+        <TextBlock Text="{Binding LocalizedResources.AEWorkout_NoteLabel, Source={StaticResource LocalizedStrings}}" Style="{StaticResource InputDescriptionStyle}"/>
+        <TextBox Text="{Binding Note, Mode=TwoWay}" Style="{StaticResource InputStyle}" Height="132" TextWrapping="Wrap" MaxLength="256"/>
+        <Button Content="{Binding LocalizedResources.AEWorkout_DetailLabel, Source={StaticResource LocalizedStrings}}"  Width="Auto" HorizontalAlignment="Left" Padding="20,3,20,5"/>
+    </ListBox>
+</UserControl>

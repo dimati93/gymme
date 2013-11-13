@@ -37,16 +37,16 @@
             CurrentUICulture of the app at run time.
          -->
 
-         <!--Panorama control-->
-        <controls:Panorama Title="{Binding MainTitle}">
+        <!--Panorama control-->
+        <controls:Panorama Title="{Binding LocalizedResources.ApplicationTitle, Source={StaticResource LocalizedStrings}}">
             <controls:Panorama.Background>
                 <ImageBrush ImageSource="/Gymme;component/Assets/PanoramaBackground.png"/>
             </controls:Panorama.Background>
 
             <!--Panorama item one-->
-            <controls:PanoramaItem Header="{Binding UpcommingWorkoutTitle}">
+            <controls:PanoramaItem Header="{Binding LocalizedResources.Main_UpcomingWorkout, Source={StaticResource LocalizedStrings}}">
                 <!--Single line list with text wrapping-->
-                <ListBox Margin="0,0,-22,0" ItemsSource="{Binding Items}">
+                <ListBox Margin="0,0,-22,0">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Margin="0,-6,0,12">
@@ -58,15 +58,15 @@
             </controls:PanoramaItem>
 
             <!--Panorama item two-->
-            <controls:PanoramaItem Header="{Binding WorkoutsTitle}">
+            <controls:PanoramaItem Header="{Binding LocalizedResources.Common_Workouts, Source={StaticResource LocalizedStrings}}">
                 <!--Double line list with image placeholder and text wrapping using a floating header that scrolls with the content-->
-                <ListBox Margin="0,-38,-22,2" ItemsSource="{Binding Workouts}">
+                <ListBox ItemsSource="{Binding Workouts}" Style="{StaticResource ListStyle}">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
-                            <StackPanel Orientation="Horizontal" Margin="12,2,0,4" Height="105" Width="432">
+                            <StackPanel Orientation="Horizontal" Margin="12,2,0,4" Height="105">
                                 <!--Replace rectangle with image-->
-                                <Border BorderThickness="1" Width="99" Height="99" BorderBrush="#FFFFC700" Background="#FFFFC700"/>
-                                <StackPanel Width="311" Margin="8,-7,0,0">
+                                <Border BorderThickness="1" Width="17" Height="99" BorderBrush="#FFFFC700" Background="#FFFFC700"/>
+                                <StackPanel Margin="0,-7,0,0">
                                     <TextBlock Text="{Binding Title}" TextWrapping="Wrap" Margin="10,0" Style="{StaticResource PhoneTextExtraLargeStyle}" FontSize="{StaticResource PhoneFontSizeLarge}" />
                                     <TextBlock Text="{Binding Note}" TextWrapping="Wrap" Margin="10,-2,10,0" Style="{StaticResource PhoneTextSubtleStyle}" />
                                 </StackPanel>
@@ -77,34 +77,30 @@
             </controls:PanoramaItem>
 
             <!--Panorama item three-->
-            <controls:PanoramaItem Header="third item" Orientation="Horizontal">
+            <controls:PanoramaItem Header="{Binding LocalizedResources.Main_Menu, Source={StaticResource LocalizedStrings}}" Orientation="Horizontal">
                 <!--Double wide Panorama with large image placeholders-->
                 <Grid>
                     <StackPanel Margin="0,4,16,0" Orientation="Vertical" VerticalAlignment="Top">
                         <StackPanel HorizontalAlignment="Left" Orientation="Horizontal">
-                            <Border Background="#FFFFC700" Height="173" Width="173" Margin="12,0,0,0"/>
-                            <Border Background="#FFFFC700" Height="173" Width="173" Margin="12,0,0,0"/>
-                            <Border Background="#FFFFC700" Height="173" Width="173" Margin="12,0,0,0"/>
-                            <Border Background="#FFFFC700" Height="173" Width="173" Margin="12,0,0,0"/>
+                            <Button Style="{StaticResource MainPageCommandButtonStyle}"
+                                    Command="{Binding AddWorkoutCommand}">
+                                <TextBlock Text="{Binding LocalizedResources.MainMenu_AddWorkout, Source={StaticResource LocalizedStrings}}"
+                                           Style="{StaticResource MainPageCommandCaptionStyle}"/>
+                            </Button>
+                            
+                            <Border Style="{StaticResource MainPageCommandButtonBorderStyle}"/>
+                            <Border Style="{StaticResource MainPageCommandButtonBorderStyle}"/>
+                            <Border Style="{StaticResource MainPageCommandButtonBorderStyle}"/>
                         </StackPanel>
                         <StackPanel HorizontalAlignment="Left" Orientation="Horizontal" Margin="0,12,0,0">
-                            <Border Background="#FFFFC700" Height="173" Width="173" Margin="12,0,0,0"/>
-                            <Border Background="#FFFFC700" Height="173" Width="173" Margin="12,0,0,0"/>
-                            <Border Background="#FFFFC700" Height="173" Width="173" Margin="12,0,0,0"/>
-                            <Border Background="#FFFFC700" Height="173" Width="173" Margin="12,0,0,0"/>
+                            <Border Style="{StaticResource MainPageCommandButtonBorderStyle}"/>
+                            <Border Style="{StaticResource MainPageCommandButtonBorderStyle}"/>
+                            <Border Style="{StaticResource MainPageCommandButtonBorderStyle}"/>
+                            <Border Style="{StaticResource MainPageCommandButtonBorderStyle}"/>
                         </StackPanel>
                     </StackPanel>
                 </Grid>
             </controls:PanoramaItem>
         </controls:Panorama>
-
-        <!--Uncomment to see an alignment grid to help ensure your controls are
-            aligned on common boundaries.  The image has a top margin of -32px to
-            account for the System Tray. Set this to 0 (or remove the margin altogether)
-            if the System Tray is hidden.
-
-            Before shipping remove this XAML and the image itself.-->
-        <!--<Image Source="/Assets/AlignmentGrid.png" VerticalAlignment="Top" Height="800" Width="480" Margin="0" Grid.Row="0" Grid.RowSpan="2" IsHitTestVisible="False" />-->
-
     </Grid>
 </phone:PhoneApplicationPage>

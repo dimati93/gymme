@@ -8,7 +8,12 @@
 
     <!--Application Resources-->
     <Application.Resources>
-        <sys:Double x:Key="PanoramaItemHeaderFontSize">66</sys:Double>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Assets\Styles\Common.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            
+            <sys:Double x:Key="PanoramaItemHeaderFontSize">66</sys:Double>
 
         <Style x:Key="PanoramaItemHeaderTextStyle" TargetType="TextBlock">
             <Setter Property="FontFamily" Value="{StaticResource PhoneFontFamilySemiLight}"/>
@@ -17,6 +22,7 @@
         </Style>
         
         <local:LocalizedStrings xmlns:local="clr-namespace:Gymme" x:Key="LocalizedStrings"/>
+        </ResourceDictionary>
     </Application.Resources>
 
     <Application.ApplicationLifetimeObjects>

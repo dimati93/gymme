@@ -57,7 +57,7 @@ namespace Gymme.Data.Repository
 
         private void InsertOnDemand(T entity)
         {
-            if (Exists(entity.Id))
+            if (entity.IsNew)
             {
                 Table.InsertOnSubmit(entity);
             }

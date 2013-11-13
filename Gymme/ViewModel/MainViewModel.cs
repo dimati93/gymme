@@ -2,6 +2,9 @@
 using Gymme.Resources;
 using Gymme.Data.Repository;
 using Gymme.ViewModel;
+using System.Windows.Input;
+using System.Windows.Navigation;
+using System;
 
 namespace Gymme.ViewModel
 {
@@ -21,45 +24,11 @@ namespace Gymme.ViewModel
         private string _upcommingWorkoutTitle = AppResources.Main_UpcomingWorkout;
         private string _workoutsTitle = AppResources.Common_Workouts;
 
-        /// <summary>
-        /// Main title property
-        /// </summary>
-        public string MainTitle
+        public ICommand AddWorkoutCommand
         {
             get
             {
-                return _mainTitle;
-            }
-            set
-            {
-                _mainTitle = value;
-                NotifyPropertyChanged("MainTitle");
-            }
-        }
-
-        public string UpcommingWorkoutTitle
-        {
-            get
-            {
-                return _upcommingWorkoutTitle;
-            }
-            set
-            {
-                _upcommingWorkoutTitle = value;
-                NotifyPropertyChanged("UpcommingWorkoutTitle");
-            }
-        }
-
-        public string WorkoutsTitle
-        {
-            get
-            {
-                return _workoutsTitle;
-            }
-            set
-            {
-                _workoutsTitle = value;
-                NotifyPropertyChanged("WorkoutsTitle");
+                return GetOrCreateCommand("AddWorkoutCommand", NavigationManager.GotoAddWorkout);
             }
         }
 
@@ -68,12 +37,14 @@ namespace Gymme.ViewModel
             get;
             private set;
         }
-
+                     
         /// <summary>
         /// Creates and adds a few ItemViewModel objects into the Items collection.
         /// </summary>
         public void LoadData()
         {
+            Workouts.Clear();
+
             foreach (var workout in RepoWorkout.Instance.FindAll())
             {
                 Workouts.Add(new WorkoutVM(workout));
