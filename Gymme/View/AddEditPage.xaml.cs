@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Navigation;
+
 using Microsoft.Phone.Controls;
-using Microsoft.Phone.Shell;
+
 using Gymme.ViewModel.AddEdit;
 
 namespace Gymme.View
@@ -48,6 +44,7 @@ namespace Gymme.View
 
         private void SaveButton_Click(object sender, EventArgs e)
         {
+            ((IAEView)_viewModel.Control).UpdateDataSources();
             _viewModel.Commit();
             NavigationManager.GoBack();
         }

@@ -11,9 +11,9 @@
 
     <ListBox x:Name="LayoutRoot" Background="{StaticResource PhoneBackgroundBrush}" Style="{StaticResource ListStyle}">
         <TextBlock Text="{Binding LocalizedResources.AEWorkout_NameLabel, Source={StaticResource LocalizedStrings}}" Style="{StaticResource InputDescriptionStyle}"/>
-        <TextBox Text="{Binding Title, Mode=TwoWay}"  Style="{StaticResource InputStyle}" MaxLength="256"/>
+        <TextBox x:Name="tbName" Text="{Binding Title, Mode=TwoWay, UpdateSourceTrigger=Explicit}"  Style="{StaticResource InputStyle}" MaxLength="256"/>
         <TextBlock Text="{Binding LocalizedResources.AEWorkout_NoteLabel, Source={StaticResource LocalizedStrings}}" Style="{StaticResource InputDescriptionStyle}"/>
-        <TextBox Text="{Binding Note, Mode=TwoWay}" Style="{StaticResource InputStyle}" Height="132" TextWrapping="Wrap" MaxLength="256"/>
+        <TextBox x:Name="tbNote" Text="{Binding Note, Mode=TwoWay, UpdateSourceTrigger=Explicit}" Style="{StaticResource InputStyle}" Height="132" TextWrapping="Wrap" MaxLength="256"/>
         <Button Content="{Binding LocalizedResources.AEWorkout_DetailLabel, Source={StaticResource LocalizedStrings}}"  Width="Auto" HorizontalAlignment="Left" Padding="20,3,20,5"/>
     </ListBox>
 </UserControl>
