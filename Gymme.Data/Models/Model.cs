@@ -7,8 +7,6 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-using System.Data.Linq.Mapping;
-
 namespace Gymme.Data.Models
 {
     /// <summary>
@@ -16,15 +14,10 @@ namespace Gymme.Data.Models
     /// </summary>
     public abstract class Model
     {
-        private long _id;
-
         protected Model()
         {
             IsNew = true;
         }
-
-        [Column(Name="Id")]
-        public abstract long Id { get; set; }
         
         public bool IsNew { get; protected set; }
     }

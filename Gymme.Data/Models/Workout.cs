@@ -17,8 +17,8 @@ namespace Gymme.Data.Models
 
         private long _id;
 
-        [Column(Name="Id", AutoSync = AutoSync.OnInsert, IsPrimaryKey = true, IsDbGenerated = true)]
-        public override long Id
+        [Column(AutoSync = AutoSync.OnInsert, IsPrimaryKey = true, IsDbGenerated = true)]
+        public long Id
         {
             get
             {

@@ -9,7 +9,7 @@ using Gymme.Data.Core;
 
 namespace Gymme.Data.Repository
 {
-    public class RepositoryBase<T> 
+    public abstract class RepositoryBase<T> 
         where T : Model
     {
         private readonly Table<T> _table;
@@ -26,19 +26,13 @@ namespace Gymme.Data.Repository
 
         public virtual IEnumerable<T> FindAll()
         {
-            return Table;
+            return Table.Select(x => x);
         }
 
-        public virtual T FindById(long id)
-        {
-            return Table.SingleOrDefault(x => x.Id == id);
-        }
+        public abstract T FindById(long id);
 
-        public bool Exists(long id)
-        {
-            return Table.Any(x => x.Id == id);
-        }
-
+        public abstract bool Exists(long id);
+        
         public virtual void Save(T entity)
         {
             InsertOnDemand(entity);

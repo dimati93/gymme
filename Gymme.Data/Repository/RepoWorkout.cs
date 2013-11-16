@@ -1,4 +1,5 @@
-﻿using Gymme.Data.Models;
+﻿using System.Linq;
+using Gymme.Data.Models;
 
 namespace Gymme.Data.Repository
 {
@@ -10,6 +11,16 @@ namespace Gymme.Data.Repository
 
         private RepoWorkout()
         {
+        }
+
+        public override Workout FindById(long id)
+        {
+            return Table.SingleOrDefault(x => x.Id == id);
+        }
+
+        public override bool Exists(long id)
+        {
+            return Table.Any(x => x.Id == id);
         }
     }
 }
