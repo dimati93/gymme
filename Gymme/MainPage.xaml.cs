@@ -1,12 +1,8 @@
-﻿using System;
-using System.Net;
-using System.Collections.Generic;
-using System.Linq;
-using System.Windows;
-using System.Windows.Controls;
+﻿using System.Windows.Controls;
 using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
-using Microsoft.Phone.Shell;
+
+using GestureEventArgs = System.Windows.Input.GestureEventArgs;
 
 namespace Gymme
 {
@@ -27,6 +23,14 @@ namespace Gymme
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             App.ViewModel.LoadData();
+        }
+
+        private void Workout_Hold(object sender, GestureEventArgs e)
+        {
+            Grid dataTemplateGrid = (Grid)sender;
+
+            ContextMenu context = ContextMenuService.GetContextMenu(dataTemplateGrid);
+            context.IsOpen = true;
         }
     }
 }

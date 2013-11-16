@@ -55,10 +55,12 @@
       <HintPath>..\packages\WPtoolkit.4.2012.10.30\lib\sl4-windowsphone71\Microsoft.Phone.Controls.Toolkit.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Phone.Interop" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Windows" />
     <Reference Include="system" />
     <Reference Include="System.Core" />
     <Reference Include="System.Net" />
+    <Reference Include="System.Windows.Interactivity" />
     <Reference Include="System.Xml" />
     <Reference Include="mscorlib.extensions" />
   </ItemGroup>
@@ -80,9 +82,10 @@
     <Compile Include="ViewModel\AddEdit\AddEditVM.cs" />
     <Compile Include="ViewModel\AddEdit\AddEditWorkoutVM.cs" />
     <Compile Include="ViewModel\Base\Command.cs" />
-    <Compile Include="ViewModel\Base\ViewModelBase.cs" />
+    <Compile Include="ViewModel\Base\ViewModel.cs" />
     <Compile Include="ViewModel\ItemViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
+    <Compile Include="ViewModel\WorkoutPageVM.cs" />
     <Compile Include="ViewModel\WorkoutVM.cs" />
     <Compile Include="View\AEWorkout.xaml.cs">
       <DependentUpon>AEWorkout.xaml</DependentUpon>

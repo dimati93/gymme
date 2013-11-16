@@ -2,7 +2,7 @@
 
 namespace Gymme.ViewModel.AddEdit
 {
-    public abstract class AddEditVM : Base.ViewModelBase
+    public abstract class AddEditVM : Base.ViewModel
     {
         public UserControl Control { get; set; }
 

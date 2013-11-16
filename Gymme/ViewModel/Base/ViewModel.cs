@@ -4,7 +4,7 @@ using System.ComponentModel;
 
 namespace Gymme.ViewModel.Base
 {
-    public class ViewModelBase : INotifyPropertyChanged
+    public abstract class ViewModel : INotifyPropertyChanged
     {
         private readonly Dictionary<string, Command> _commandHolder = new Dictionary<string, Command>();
 

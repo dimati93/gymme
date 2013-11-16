@@ -10,20 +10,21 @@ namespace Gymme.Data.Models
     public class TrainingExercise : Model
     {
         #region Common
+        private long _id;
 
-        [Column(AutoSync = AutoSync.OnInsert, IsPrimaryKey = true, IsDbGenerated = true)]
+        [Column(Name = "Id", AutoSync = AutoSync.OnInsert, IsPrimaryKey = true, IsDbGenerated = true)]
         public override long Id
         {
             get
             {
-                return base.Id;
+                return _id;
             }
             set
             {
-                base.Id = value;
+                _id = value;
+                IsNew = false;
             }
         }
-
         #endregion
     }
 }

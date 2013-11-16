@@ -5,7 +5,7 @@ using Gymme.Data.Repository;
 
 namespace Gymme.ViewModel
 {
-    public class WorkoutVM : Base.ViewModelBase
+    public class WorkoutVM : Base.ViewModel
     {
         private Workout _workout;
         private readonly MainViewModel _mainVM;
@@ -24,45 +24,31 @@ namespace Gymme.ViewModel
         {
             _workout = workout;
             _mainVM = mainVM;
-            RollBack();
         }
 
         public string Title 
         {
             get
             {
-                return _title;
+                return _workout.Title;
             }
-
-            set
-            {
-                if (_title != value)
-                {
-                    _title = value;
-                    NotifyPropertyChanged("Title");
-                }
-            }
-
         }
 
         public string Note
         {
             get
             {
-                return _note;
+                return _workout.Note;
             }
-
-            set
-            {
-                if (_note != value)
-                {
-                    _note = value;
-                    NotifyPropertyChanged("Note");
-                }
-            }
-
         }
 
+        public ICommand GotoPageViewCommand
+        {
+            get
+            {
+                return GetOrCreateCommand("GotoPageViewCommand", GotoPageView);
+            }
+        }
 
         public ICommand EditCommand
         {
@@ -78,6 +64,11 @@ namespace Gymme.ViewModel
             {
                 return GetOrCreateCommand("DeleteCommand", DeleteWorkout);
             }
+        }
+
+        private void GotoPageView()
+        {
+            NavigationManager.GotoWorkoutPage(_workout.Id);
         }
 
         private void EditWorkout()
@@ -96,11 +87,5 @@ namespace Gymme.ViewModel
                 _mainVM.LoadData();
             }
         }
-
-        private void RollBack()
-        {
-            Title = _workout.Title;
-            Note = _workout.Note;
-        }        
     }
 }

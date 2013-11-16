@@ -6,7 +6,7 @@ using Gymme.Data.Repository;
 
 namespace Gymme.ViewModel
 {
-    public class MainViewModel : Base.ViewModelBase
+    public class MainViewModel : Base.ViewModel
     {
         public MainViewModel()
         {

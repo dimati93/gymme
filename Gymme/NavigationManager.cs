@@ -8,6 +8,8 @@ namespace Gymme
     {
         private const string AddEditPagePath = "/View/AddEditPage.xaml";
 
+        private const string WorkoutPagePath = "/View/WorkoutPage.xaml";
+
         private static NavigationService NavigationService;
 
         public static void GotoAddWorkout()
@@ -18,6 +20,11 @@ namespace Gymme
         public static void GotoEditWorkout(long id)
         {
             NavigationService.Navigate(BuildUri(AddEditPagePath, AddEditPage.VariantAddWorkout, id));
+        }
+
+        public static void GotoWorkoutPage(long id)
+        {
+            NavigationService.Navigate(BuildUri(WorkoutPagePath, "none", id));
         }
 
         private static Uri BuildUri(string path, string navtgt, long id)

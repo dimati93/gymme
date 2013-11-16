@@ -7,7 +7,6 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-using System;
 using System.Data.Linq.Mapping;
 
 namespace Gymme.Data.Models
@@ -24,16 +23,9 @@ namespace Gymme.Data.Models
             IsNew = true;
         }
 
-        public virtual long Id
-        {
-            get { return _id; }
-            set
-            {
-                _id = value;
-                IsNew = false;
-            }
-        }
-
-        public bool IsNew { get; private set; }
+        [Column(Name="Id")]
+        public abstract long Id { get; set; }
+        
+        public bool IsNew { get; protected set; }
     }
 }

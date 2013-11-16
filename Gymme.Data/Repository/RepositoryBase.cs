@@ -31,7 +31,7 @@ namespace Gymme.Data.Repository
 
         public virtual T FindById(long id)
         {
-            return Table.Where(x => x.Id == id).SingleOrDefault();
+            return Table.SingleOrDefault(x => x.Id == id);
         }
 
         public bool Exists(long id)

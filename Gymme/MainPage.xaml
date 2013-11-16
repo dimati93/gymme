@@ -1,5 +1,4 @@
 ﻿<phone:PhoneApplicationPage
-    x:Class="Gymme.MainPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
@@ -8,6 +7,8 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:t="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+    x:Class="Gymme.MainPage"
     mc:Ignorable="d"
     d:DataContext="{d:DesignData SampleData/MainViewModelSampleData.xaml}"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
@@ -65,13 +66,20 @@
 
                     <ListBox.ItemTemplate>
                         <DataTemplate>
-                            <Grid Background="#0AFFFFFF">
+                            <Grid Background="#0AFFFFFF" Hold="Workout_Hold">
                                 <t:ContextMenuService.ContextMenu>
                                     <t:ContextMenu IsZoomEnabled="True">
                                         <t:MenuItem Header="{Binding Resources.Command_Edit, Source={StaticResource Localized}}" Command="{Binding EditCommand}"/>
                                         <t:MenuItem Header="{Binding Resources.Command_Delete, Source={StaticResource Localized}}" Command="{Binding DeleteCommand}"/>
                                     </t:ContextMenu>
                                 </t:ContextMenuService.ContextMenu>
+                            	
+                            	<i:Interaction.Triggers>
+                            		<i:EventTrigger EventName="Tap">
+                                        <i:InvokeCommandAction Command="{Binding GotoPageViewCommand}"/>
+                            		</i:EventTrigger>
+                            	</i:Interaction.Triggers>
+                            	
                                 <StackPanel Orientation="Horizontal" Margin="12,2,0,4" Height="105">
                                     <Border BorderThickness="1" Width="17" Height="99" BorderBrush="#FFFFC700" Background="#FFFFC700"/>
                                     <StackPanel Margin="0,-7,0,0">

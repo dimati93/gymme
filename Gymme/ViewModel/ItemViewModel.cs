@@ -1,6 +1,6 @@
 ﻿namespace Gymme.ViewModel
 {
-    public class ItemViewModel : Base.ViewModelBase
+    public class ItemViewModel : Base.ViewModel
     {
         private string _lineOne;
 
