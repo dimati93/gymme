@@ -15,15 +15,29 @@ namespace Gymme
             NavigationService.Navigate(BuildUri(AddEditPagePath, AddEditPage.VariantAddWorkout));
         }
 
-        private static Uri BuildUri(string path, object navtgt = null)
+        public static void GotoEditWorkout(long id)
+        {
+            NavigationService.Navigate(BuildUri(AddEditPagePath, AddEditPage.VariantAddWorkout, id));
+        }
+
+        private static Uri BuildUri(string path, string navtgt, long id)
+        {
+            return new Uri(string.Format("{0}&id={1}", GetBaseUriString(path, navtgt), id), UriKind.Relative);
+        }
+
+        private static Uri BuildUri(string path, string navtgt = null)
+        {
+           return new Uri(GetBaseUriString(path, navtgt), UriKind.Relative);
+        }
+
+        private static string GetBaseUriString(string path, string navtgt)
         {
             string uri = path;
             if (navtgt != null)
             {
                 uri += string.Format("?navtgt={0}", navtgt);
             }
-
-            return new Uri(uri, UriKind.Relative);
+            return uri;
         }
 
         public static void GoBack()

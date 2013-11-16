@@ -27,7 +27,15 @@ namespace Gymme.View
                 NavigationManager.GoBack();
             }
 
-            DataContext = _viewModel = GetDataContext(target);
+            string id;
+            if (!NavigationContext.QueryString.TryGetValue("id", out id))
+            {
+                DataContext = _viewModel = GetDataContext(target);
+            }
+            else
+            {
+                DataContext = _viewModel = GetDataContext(target, long.Parse(id));
+            }
         }
 
         private AddEditVM GetDataContext(string target)
@@ -36,6 +44,18 @@ namespace Gymme.View
             {
                 case VariantAddWorkout: 
                     return new AddEditWorkoutVM { Control = new AEWorkout() };
+                default: 
+                    NavigationManager.GoBack();
+                    return null;
+            }
+        }
+        
+        private AddEditVM GetDataContext(string target, long id)
+        {
+            switch (target)
+            {
+                case VariantAddWorkout: 
+                    return new AddEditWorkoutVM(id) { Control = new AEWorkout() };
                 default: 
                     NavigationManager.GoBack();
                     return null;

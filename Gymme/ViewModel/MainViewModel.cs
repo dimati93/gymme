@@ -1,10 +1,8 @@
 ﻿using System.Collections.ObjectModel;
+using System.Windows.Input;
+
 using Gymme.Resources;
 using Gymme.Data.Repository;
-using Gymme.ViewModel;
-using System.Windows.Input;
-using System.Windows.Navigation;
-using System;
 
 namespace Gymme.ViewModel
 {
@@ -47,7 +45,7 @@ namespace Gymme.ViewModel
 
             foreach (var workout in RepoWorkout.Instance.FindAll())
             {
-                Workouts.Add(new WorkoutVM(workout));
+                Workouts.Add(new WorkoutVM(workout, this));
             }
 
             IsDataLoaded = true;

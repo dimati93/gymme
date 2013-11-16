@@ -106,6 +106,24 @@ namespace Gymme.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to delete.
+        /// </summary>
+        public static string Command_Delete {
+            get {
+                return ResourceManager.GetString("Command_Delete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to edit.
+        /// </summary>
+        public static string Command_Edit {
+            get {
+                return ResourceManager.GetString("Command_Edit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Exs.
         /// </summary>
         public static string Common_Exercises {
@@ -142,11 +160,29 @@ namespace Gymme.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Statistics.
+        /// </summary>
+        public static string Common_Statistics {
+            get {
+                return ResourceManager.GetString("Common_Statistics", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Workouts.
         /// </summary>
         public static string Common_Workouts {
             get {
                 return ResourceManager.GetString("Common_Workouts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Statistics is comming soon.
+        /// </summary>
+        public static string Dummy_Statistics {
+            get {
+                return ResourceManager.GetString("Dummy_Statistics", resourceCulture);
             }
         }
         
@@ -192,6 +228,42 @@ namespace Gymme.Resources {
         public static string ResourceLanguage {
             get {
                 return ResourceManager.GetString("ResourceLanguage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This operation will delete all information about this workout. Do you realy want to delete it?.
+        /// </summary>
+        public static string Workout_DeleteWarning {
+            get {
+                return ResourceManager.GetString("Workout_DeleteWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete workout.
+        /// </summary>
+        public static string Workout_DeleteWarningTitle {
+            get {
+                return ResourceManager.GetString("Workout_DeleteWarningTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to delete workout.
+        /// </summary>
+        public static string WorkoutPage_DeleteWorkout {
+            get {
+                return ResourceManager.GetString("WorkoutPage_DeleteWorkout", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to edit workout.
+        /// </summary>
+        public static string WorkoutPage_EditWorkout {
+            get {
+                return ResourceManager.GetString("WorkoutPage_EditWorkout", resourceCulture);
             }
         }
     }

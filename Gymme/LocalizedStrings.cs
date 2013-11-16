@@ -7,8 +7,8 @@ namespace Gymme
     /// </summary>
     public class LocalizedStrings
     {
-        private static AppResources _localizedResources = new AppResources();
+        private static AppResources _resources = new AppResources();
 
-        public static AppResources LocalizedResources { get { return _localizedResources; } }
+        public static AppResources Resources { get { return _resources; } }
     }
 }

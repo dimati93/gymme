@@ -14,6 +14,12 @@ namespace Gymme.ViewModel.AddEdit
         {
             _item = new Workout();
             PageName = Resources.AppResources.AddEdit_NewWorkout;
+        } 
+        
+        public AddEditWorkoutVM(long id)
+        {
+            _item = RepoWorkout.Instance.FindById(id);
+            PageName = _item.Title;
         }
 
         public string Title

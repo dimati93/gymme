@@ -164,4 +164,28 @@
   <data name="AEWorkout_NoteLabel" xml:space="preserve">
     <value>Note:</value>
   </data>
+  <data name="Command_Delete" xml:space="preserve">
+    <value>delete</value>
+  </data>
+  <data name="Command_Edit" xml:space="preserve">
+    <value>edit</value>
+  </data>
+  <data name="Workout_DeleteWarning" xml:space="preserve">
+    <value>This operation will delete all information about this workout. Do you realy want to delete it?</value>
+  </data>
+  <data name="Workout_DeleteWarningTitle" xml:space="preserve">
+    <value>Delete workout</value>
+  </data>
+  <data name="Common_Statistics" xml:space="preserve">
+    <value>Statistics</value>
+  </data>
+  <data name="Dummy_Statistics" xml:space="preserve">
+    <value>Statistics is comming soon</value>
+  </data>
+  <data name="WorkoutPage_DeleteWorkout" xml:space="preserve">
+    <value>delete workout</value>
+  </data>
+  <data name="WorkoutPage_EditWorkout" xml:space="preserve">
+    <value>edit workout</value>
+  </data>
 </root>

@@ -164,4 +164,28 @@
   <data name="AEWorkout_NoteLabel" xml:space="preserve">
     <value>Нотатка:</value>
   </data>
+  <data name="Command_Delete" xml:space="preserve">
+    <value>видалити</value>
+  </data>
+  <data name="Command_Edit" xml:space="preserve">
+    <value>редагувати</value>
+  </data>
+  <data name="Workout_DeleteWarning" xml:space="preserve">
+    <value>Ця операція видалить усю інформацію за даним тренуванням. Ви дійсно хочете його видалити?</value>
+  </data>
+  <data name="Workout_DeleteWarningTitle" xml:space="preserve">
+    <value>Видалення тренування</value>
+  </data>
+  <data name="Common_Statistics" xml:space="preserve">
+    <value>Статистика</value>
+  </data>
+  <data name="Dummy_Statistics" xml:space="preserve">
+    <value>Статистика очікується у наступній версії</value>
+  </data>
+  <data name="WorkoutPage_DeleteWorkout" xml:space="preserve">
+    <value>видалити тренування</value>
+  </data>
+  <data name="WorkoutPage_EditWorkout" xml:space="preserve">
+    <value>редагувати тренування</value>
+  </data>
 </root>

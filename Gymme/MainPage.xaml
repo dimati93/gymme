@@ -7,6 +7,7 @@
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:t="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
     mc:Ignorable="d"
     d:DataContext="{d:DesignData SampleData/MainViewModelSampleData.xaml}"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
@@ -38,13 +39,13 @@
          -->
 
         <!--Panorama control-->
-        <controls:Panorama Title="{Binding LocalizedResources.ApplicationTitle, Source={StaticResource LocalizedStrings}}">
+        <controls:Panorama Title="{Binding Resources.ApplicationTitle, Source={StaticResource Localized}}">
             <controls:Panorama.Background>
                 <ImageBrush ImageSource="/Gymme;component/Assets/PanoramaBackground.png"/>
             </controls:Panorama.Background>
 
             <!--Panorama item one-->
-            <controls:PanoramaItem Header="{Binding LocalizedResources.Main_UpcomingWorkout, Source={StaticResource LocalizedStrings}}">
+            <controls:PanoramaItem Header="{Binding Resources.Main_UpcomingWorkout, Source={StaticResource Localized}}">
                 <!--Single line list with text wrapping-->
                 <ListBox Margin="0,0,-22,0">
                     <ListBox.ItemTemplate>
@@ -58,36 +59,45 @@
             </controls:PanoramaItem>
 
             <!--Panorama item two-->
-            <controls:PanoramaItem Header="{Binding LocalizedResources.Common_Workouts, Source={StaticResource LocalizedStrings}}">
+            <controls:PanoramaItem Header="{Binding Resources.Common_Workouts, Source={StaticResource Localized}}">
                 <!--Double line list with image placeholder and text wrapping using a floating header that scrolls with the content-->
                 <ListBox ItemsSource="{Binding Workouts}" Style="{StaticResource ListStyle}">
+
                     <ListBox.ItemTemplate>
                         <DataTemplate>
-                            <StackPanel Orientation="Horizontal" Margin="12,2,0,4" Height="105">
-                                <!--Replace rectangle with image-->
-                                <Border BorderThickness="1" Width="17" Height="99" BorderBrush="#FFFFC700" Background="#FFFFC700"/>
-                                <StackPanel Margin="0,-7,0,0">
-                                    <TextBlock Text="{Binding Title}" TextWrapping="Wrap" Margin="10,0" Style="{StaticResource PhoneTextExtraLargeStyle}" FontSize="{StaticResource PhoneFontSizeLarge}" />
-                                    <TextBlock Text="{Binding Note}" TextWrapping="Wrap" Margin="10,-2,10,0" Style="{StaticResource PhoneTextSubtleStyle}" />
+                            <Grid Background="#0AFFFFFF">
+                                <t:ContextMenuService.ContextMenu>
+                                    <t:ContextMenu IsZoomEnabled="True">
+                                        <t:MenuItem Header="{Binding Resources.Command_Edit, Source={StaticResource Localized}}" Command="{Binding EditCommand}"/>
+                                        <t:MenuItem Header="{Binding Resources.Command_Delete, Source={StaticResource Localized}}" Command="{Binding DeleteCommand}"/>
+                                    </t:ContextMenu>
+                                </t:ContextMenuService.ContextMenu>
+                                <StackPanel Orientation="Horizontal" Margin="12,2,0,4" Height="105">
+                                    <Border BorderThickness="1" Width="17" Height="99" BorderBrush="#FFFFC700" Background="#FFFFC700"/>
+                                    <StackPanel Margin="0,-7,0,0">
+                                        <TextBlock Text="{Binding Title}" TextWrapping="Wrap" Margin="10,0" Style="{StaticResource PhoneTextExtraLargeStyle}" FontSize="{StaticResource PhoneFontSizeLarge}"/>
+                                        <TextBlock Text="{Binding Note}" TextWrapping="Wrap" Margin="10,-2,10,0" Style="{StaticResource PhoneTextSubtleStyle}" />
+                                    </StackPanel>
                                 </StackPanel>
-                            </StackPanel>
+                            </Grid>
                         </DataTemplate>
                     </ListBox.ItemTemplate>
                 </ListBox>
             </controls:PanoramaItem>
 
             <!--Panorama item three-->
-            <controls:PanoramaItem Header="{Binding LocalizedResources.Main_Menu, Source={StaticResource LocalizedStrings}}" Orientation="Horizontal">
+            <controls:PanoramaItem Header="{Binding Resources.Main_Menu, Source={StaticResource Localized}}" Orientation="Horizontal">
                 <!--Double wide Panorama with large image placeholders-->
                 <Grid>
                     <StackPanel Margin="0,4,16,0" Orientation="Vertical" VerticalAlignment="Top">
                         <StackPanel HorizontalAlignment="Left" Orientation="Horizontal">
                             <Button Style="{StaticResource MainPageCommandButtonStyle}"
                                     Command="{Binding AddWorkoutCommand}">
-                                <TextBlock Text="{Binding LocalizedResources.MainMenu_AddWorkout, Source={StaticResource LocalizedStrings}}"
+                                <TextBlock Text="{Binding Resources.MainMenu_AddWorkout, Source={StaticResource Localized}}"
                                            Style="{StaticResource MainPageCommandCaptionStyle}"/>
+
                             </Button>
-                            
+
                             <Border Style="{StaticResource MainPageCommandButtonBorderStyle}"/>
                             <Border Style="{StaticResource MainPageCommandButtonBorderStyle}"/>
                             <Border Style="{StaticResource MainPageCommandButtonBorderStyle}"/>

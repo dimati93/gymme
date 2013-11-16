@@ -21,7 +21,7 @@
             <!--<Setter Property="CharacterSpacing" Value="-35"/>-->
         </Style>
         
-        <local:LocalizedStrings xmlns:local="clr-namespace:Gymme" x:Key="LocalizedStrings"/>
+        <local:LocalizedStrings xmlns:local="clr-namespace:Gymme" x:Key="Localized"/>
         </ResourceDictionary>
     </Application.Resources>
 
