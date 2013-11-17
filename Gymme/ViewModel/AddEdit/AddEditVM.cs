@@ -8,6 +8,8 @@ namespace Gymme.ViewModel.AddEdit
 
         public string PageName { get; set; }
 
+        public abstract void Rollback();
+
         public abstract void Commit();
     }
 }

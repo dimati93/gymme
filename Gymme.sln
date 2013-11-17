@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Express 2012 for Windows Phone
+# Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gymme", "Gymme\Gymme.csproj", "{9917AE4D-3392-4B36-A2D6-92AAB931EA4C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gymme.Data", "Gymme.Data\Gymme.Data.csproj", "{15FEC345-013D-43B9-8218-A254CE202323}"

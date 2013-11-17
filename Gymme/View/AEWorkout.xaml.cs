@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
 
 namespace Gymme.View
 {
@@ -16,12 +18,17 @@ namespace Gymme.View
 
         public void UpdateDataSources()
         {
+            UpdateBindingElements(ex => ex.UpdateSource());
+        }
+
+        private void UpdateBindingElements(Action<BindingExpression> beAction)
+        {
             foreach (var bindingElement in _bindingElements)
             {
-                var expression = bindingElement.Key.GetBindingExpression(bindingElement.Value);
+                BindingExpression expression = bindingElement.Key.GetBindingExpression(bindingElement.Value);
                 if (expression != null)
                 {
-                    expression.UpdateSource();
+                    beAction(expression);
                 }
             }
         }

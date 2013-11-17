@@ -20,6 +20,7 @@ namespace Gymme.ViewModel.AddEdit
         {
             _item = RepoWorkout.Instance.FindById(id);
             PageName = _item.Title;
+            Rollback();
         }
 
         public string Title
@@ -57,7 +58,7 @@ namespace Gymme.ViewModel.AddEdit
             }
         }
 
-        private void RollBack()
+        public override sealed void Rollback()
         {
             Title = _item.Title;
             Note = _item.Note;
