@@ -9,6 +9,7 @@
     xmlns:t="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
     xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
     xmlns:ec="clr-namespace:Microsoft.Expression.Interactivity.Core;assembly=Microsoft.Expression.Interactions"
+    xmlns:convertors="clr-namespace:Gymme.View.Convertors"
     x:Class="Gymme.MainPage"
     mc:Ignorable="d"
     d:DataContext="{d:DesignData SampleData/MainViewModelSampleData.xaml}"
@@ -17,33 +18,27 @@
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait"  Orientation="Portrait"
     shell:SystemTray.IsVisible="False">
-
+    <phone:PhoneApplicationPage.Resources>
+        <convertors:BoolToVisibilityConverter x:Key="VisibilityConverter"/>
+        <convertors:ReverceBoolToVisivilityConverter x:Key="ReverceVisibilityConverter"/>
+    </phone:PhoneApplicationPage.Resources>
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot" Background="Transparent">
 	
         <!--Panorama control-->
-        <controls:Panorama Title="{Binding Resources.ApplicationTitle, Source={StaticResource Localized}}" 
+        <controls:Panorama x:Name="MainPanorama"
+                           Title="{Binding Resources.ApplicationTitle, Source={StaticResource Localized}}" 
                            TitleTemplate="{StaticResource MainPanoramaTitleTemplate}">
 
             <!--Panorama item one-->
             <controls:PanoramaItem Header="{Binding Resources.Main_UpcomingWorkout, Source={StaticResource Localized}}" 
                                    HeaderTemplate="{StaticResource MainPanoramaHeaderTemplate}">
                 <Grid>
-                    <TextBlock Text="{Binding Resources.Main_UpcomingDummyText, Source={StaticResource Localized}}" Style="{StaticResource HintTextBlockStyle}">
-                        
-                    	<i:Interaction.Triggers>
-                    		<ec:DataTrigger Binding="{Binding IsUpcomingEmpty}" Value="True">
-                    			<ec:ChangePropertyAction PropertyName="Visibility"/>
-                    		</ec:DataTrigger>
-                    	</i:Interaction.Triggers>
-                    </TextBlock>
+                    <TextBlock Text="{Binding Resources.Main_UpcomingDummyText, Source={StaticResource Localized}}" Style="{StaticResource HintTextBlockStyle}"
+                               Visibility="{Binding IsUpcomingEmpty, Converter={StaticResource VisibilityConverter}}"/>
 
-                    <ListBox Margin="0,0,-22,0">
-                    	<i:Interaction.Triggers>
-                    		<ec:DataTrigger Binding="{Binding IsUpcomingEmpty}" Value="True">
-                    			<ec:ChangePropertyAction PropertyName="Visibility" Value="Collapsed"/>
-                    		</ec:DataTrigger>
-                    	</i:Interaction.Triggers>
+                    <ListBox Margin="0,0,-22,0"
+                             Visibility="{Binding IsUpcomingEmpty, Converter={StaticResource ReverceVisibilityConverter}}">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel Margin="0,-6,0,12">
@@ -59,21 +54,13 @@
             <controls:PanoramaItem Header="{Binding Resources.Common_Workouts, Source={StaticResource Localized}}" HeaderTemplate="{StaticResource MainPanoramaHeaderTemplate}">
                 <!--Double line list with image placeholder and text wrapping using a floating header that scrolls with the content-->
                 <Grid>
-                    <TextBlock Text="{Binding Resources.Main_WorkoutsDummyText, Source={StaticResource Localized}}" Style="{StaticResource HintTextBlockStyle}">
-                    	<i:Interaction.Triggers>
-                    		<ec:DataTrigger Binding="{Binding IsWorkoutsEmpty}" Value="True">
-                    			<ec:ChangePropertyAction PropertyName="Visibility"/>
-                    		</ec:DataTrigger>
-                    	</i:Interaction.Triggers>
-                    </TextBlock>
+                    <TextBlock Text="{Binding Resources.Main_WorkoutsDummyText, Source={StaticResource Localized}}" Style="{StaticResource HintTextBlockStyle}"
+                    	Visibility="{Binding IsWorkoutsEmpty, Converter={StaticResource VisibilityConverter}}"/>
 
-                    <ListBox ItemsSource="{Binding Workouts}" Style="{StaticResource ListStyle}">
-                    	<i:Interaction.Triggers>
-                    		<ec:DataTrigger Binding="{Binding IsWorkoutsEmpty}" Value="True">
-                                <ec:ChangePropertyAction PropertyName="Visibility" Value="Collapsed"/>
-                            </ec:DataTrigger>
-                    	</i:Interaction.Triggers>
-
+                    <ListBox x:Name="WorkoutsList"
+                             ItemsSource="{Binding Workouts}" Style="{StaticResource ListStyle}"
+                             Visibility="{Binding IsWorkoutsEmpty, Converter={StaticResource ReverceVisibilityConverter}}">
+                    	
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <Grid Background="#0AFFFFFF" Hold="Workout_Hold">

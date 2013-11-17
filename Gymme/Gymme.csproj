@@ -94,6 +94,7 @@
     <Compile Include="View\AddEditPage.xaml.cs">
       <DependentUpon>AddEditPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Convertors\BoolToVisibilityConverter.cs" />
     <Compile Include="View\IAEView.cs" />
     <Compile Include="View\WorkoutPage.xaml.cs">
       <DependentUpon>WorkoutPage.xaml</DependentUpon>

@@ -43,7 +43,11 @@ namespace Gymme.View
             switch (target)
             {
                 case VariantAddWorkout: 
-                    return new AddEditWorkoutVM { Control = new AEWorkout() };
+                    return new AddEditWorkoutVM 
+                    { 
+                        Control = new AEWorkout(),
+                        BackTarget = MainPage.TargetWorkoutsList 
+                    };
                 default: 
                     NavigationManager.GoBack();
                     return null;
@@ -55,7 +59,10 @@ namespace Gymme.View
             switch (target)
             {
                 case VariantAddWorkout: 
-                    return new AddEditWorkoutVM(id) { Control = new AEWorkout() };
+                    return new AddEditWorkoutVM(id)
+                    {
+                        Control = new AEWorkout()
+                    };
                 default: 
                     NavigationManager.GoBack();
                     return null;
@@ -66,7 +73,7 @@ namespace Gymme.View
         {
             ((IAEView)_viewModel.Control).UpdateDataSources();
             _viewModel.Commit();
-            NavigationManager.GoBack();
+            NavigationManager.GoBack(_viewModel.BackTarget);
         }
     }
 }
