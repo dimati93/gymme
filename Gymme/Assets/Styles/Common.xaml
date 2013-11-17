@@ -70,4 +70,16 @@
         <Setter Property="HorizontalAlignment" Value="Stretch"/>
         <Setter Property="TextWrapping" Value="Wrap"/>
     </Style>
+    
+    <DataTemplate x:Key="MainPanoramaTitleTemplate">
+        <Grid Margin="0, 40, 0, 0">
+            <TextBlock Text="{Binding}" FontSize="128"/>
+        </Grid>
+    </DataTemplate>
+
+    <DataTemplate x:Key="MainPanoramaHeaderTemplate">
+        <Grid Margin="0, -8, 0, 0">
+            <TextBlock Text="{Binding}" FontSize="56"/>
+        </Grid>
+    </DataTemplate>
 </ResourceDictionary>

@@ -40,13 +40,12 @@
          -->
 
         <!--Panorama control-->
-        <controls:Panorama Title="{Binding Resources.ApplicationTitle, Source={StaticResource Localized}}">
-            <controls:Panorama.Background>
-                <ImageBrush ImageSource="/Gymme;component/Assets/PanoramaBackground.png"/>
-            </controls:Panorama.Background>
-
+        <controls:Panorama Title="{Binding Resources.ApplicationTitle, Source={StaticResource Localized}}" 
+                           TitleTemplate="{StaticResource MainPanoramaTitleTemplate}">
+            
             <!--Panorama item one-->
-            <controls:PanoramaItem Header="{Binding Resources.Main_UpcomingWorkout, Source={StaticResource Localized}}">
+            <controls:PanoramaItem Header="{Binding Resources.Main_UpcomingWorkout, Source={StaticResource Localized}}" 
+                                   HeaderTemplate="{StaticResource MainPanoramaHeaderTemplate}">
                 <!--Single line list with text wrapping-->
                 <ListBox Margin="0,0,-22,0">
                     <ListBox.ItemTemplate>
@@ -60,7 +59,7 @@
             </controls:PanoramaItem>
 
             <!--Panorama item two-->
-            <controls:PanoramaItem Header="{Binding Resources.Common_Workouts, Source={StaticResource Localized}}">
+            <controls:PanoramaItem Header="{Binding Resources.Common_Workouts, Source={StaticResource Localized}}" HeaderTemplate="{StaticResource MainPanoramaHeaderTemplate}">
                 <!--Double line list with image placeholder and text wrapping using a floating header that scrolls with the content-->
                 <ListBox ItemsSource="{Binding Workouts}" Style="{StaticResource ListStyle}">
 
@@ -94,7 +93,7 @@
             </controls:PanoramaItem>
 
             <!--Panorama item three-->
-            <controls:PanoramaItem Header="{Binding Resources.Main_Menu, Source={StaticResource Localized}}" Orientation="Horizontal">
+            <controls:PanoramaItem Header="{Binding Resources.Main_Menu, Source={StaticResource Localized}}" Orientation="Horizontal" HeaderTemplate="{StaticResource MainPanoramaHeaderTemplate}">
                 <!--Double wide Panorama with large image placeholders-->
                 <Grid>
                     <StackPanel Margin="0,4,16,0" Orientation="Vertical" VerticalAlignment="Top">
