@@ -188,4 +188,10 @@
   <data name="WorkoutPage_EditWorkout" xml:space="preserve">
     <value>редагувати тренування</value>
   </data>
+  <data name="Main_UpcomingDummyText" xml:space="preserve">
+    <value>Сьогодні нічого не предебачається</value>
+  </data>
+  <data name="Main_WorkoutsDummyText" xml:space="preserve">
+    <value>Додайте тренування у меню →</value>
+  </data>
 </root>

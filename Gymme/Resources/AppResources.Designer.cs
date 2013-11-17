@@ -196,11 +196,29 @@ namespace Gymme.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No routines for today.
+        /// </summary>
+        public static string Main_UpcomingDummyText {
+            get {
+                return ResourceManager.GetString("Main_UpcomingDummyText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Upcoming.
         /// </summary>
         public static string Main_UpcomingWorkout {
             get {
                 return ResourceManager.GetString("Main_UpcomingWorkout", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add workout in the menu →.
+        /// </summary>
+        public static string Main_WorkoutsDummyText {
+            get {
+                return ResourceManager.GetString("Main_WorkoutsDummyText", resourceCulture);
             }
         }
         

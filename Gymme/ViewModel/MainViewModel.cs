@@ -1,7 +1,5 @@
 ﻿using System.Collections.ObjectModel;
 using System.Windows.Input;
-
-using Gymme.Resources;
 using Gymme.Data.Repository;
 
 namespace Gymme.ViewModel
@@ -18,9 +16,15 @@ namespace Gymme.ViewModel
         /// </summary>
         public ObservableCollection<WorkoutVM> Workouts { get; private set; }
 
-        private string _mainTitle = AppResources.ApplicationTitle;
-        private string _upcommingWorkoutTitle = AppResources.Main_UpcomingWorkout;
-        private string _workoutsTitle = AppResources.Common_Workouts;
+        public bool IsUpcomingEmpty
+        {
+            get { return true; }
+        }
+
+        public bool IsWorkoutsEmpty
+        {
+            get { return Workouts.Count == 0; }
+        }
 
         public ICommand AddWorkoutCommand
         {
@@ -30,11 +34,7 @@ namespace Gymme.ViewModel
             }
         }
 
-        public bool IsDataLoaded
-        {
-            get;
-            private set;
-        }
+        public bool IsDataLoaded { get; private set; }
                      
         /// <summary>
         /// Creates and adds a few ItemViewModel objects into the Items collection.
@@ -48,6 +48,7 @@ namespace Gymme.ViewModel
                 Workouts.Add(new WorkoutVM(workout, this));
             }
 
+            NotifyPropertyChanged("IsWorkoutsEmpty");
             IsDataLoaded = true;
         }
     }
