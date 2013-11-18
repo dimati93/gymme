@@ -178,6 +178,15 @@ namespace Gymme.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Tap &quot;+&quot; to add an excercise.
+        /// </summary>
+        public static string Dummy_Exercises {
+            get {
+                return ResourceManager.GetString("Dummy_Exercises", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Statistics is comming soon.
         /// </summary>
         public static string Dummy_Statistics {

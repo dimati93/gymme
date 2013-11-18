@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+
 using Gymme.Data.Models;
 using Gymme.Data.Repository;
 

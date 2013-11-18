@@ -1,10 +1,13 @@
 ﻿using System;
+using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Navigation;
 using Gymme.Resources;
 using Gymme.ViewModel;
 
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
+using GestureEventArgs = System.Windows.Input.GestureEventArgs;
 
 namespace Gymme.View
 {
@@ -69,6 +72,11 @@ namespace Gymme.View
             {
                 NavigationManager.GoBack();
             }
+        }
+
+        private void Ex_Hold(object sender, GestureEventArgs e)
+        {
+            ContextMenuService.GetContextMenu((DependencyObject)sender).IsOpen = true;
         }
     }
 }

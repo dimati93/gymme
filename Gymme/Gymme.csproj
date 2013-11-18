@@ -16,7 +16,7 @@
     <TargetFrameworkProfile>WindowsPhone71</TargetFrameworkProfile>
     <TargetFrameworkIdentifier>Silverlight</TargetFrameworkIdentifier>
     <SilverlightApplication>true</SilverlightApplication>
-    <SupportedCultures>ru-RU%3buk-UA</SupportedCultures>
+    <SupportedCultures>ru-RU</SupportedCultures>
     <XapOutputs>true</XapOutputs>
     <GenerateSilverlightManifest>true</GenerateSilverlightManifest>
     <XapFilename>Gymme.xap</XapFilename>
@@ -64,6 +64,7 @@
     <Reference Include="System.Windows.Interactivity" />
     <Reference Include="System.Xml" />
     <Reference Include="mscorlib.extensions" />
+    <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.xaml.cs">
@@ -80,6 +81,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>AppResources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Resources\ExerciseData.cs" />
     <Compile Include="ViewModel\AddEdit\AddEditVM.cs" />
     <Compile Include="ViewModel\AddEdit\AddEditWorkoutVM.cs" />
     <Compile Include="ViewModel\Base\Command.cs" />
@@ -116,6 +118,7 @@
     <Content Include="Assets\Tiles\IconicTileMediumLarge.png" />
     <Content Include="Assets\Tiles\IconicTileSmall.png" />
     <Content Include="README_FIRST.txt" />
+    <Resource Include="Resources\ExerciseData.xml" />
     <Content Include="SplashScreenImage.jpg" />
     <Content Include="Toolkit.Content\ApplicationBar.Cancel.png" />
     <Content Include="Toolkit.Content\ApplicationBar.Check.png" />
@@ -134,7 +137,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="SampleData\MainViewModelSampleData.xaml">
+    <Page Include="Resources\SampleData\MainViewModelSampleData.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Include="View\AEWorkout.xaml">
@@ -156,7 +159,6 @@
       <LastGenOutput>AppResources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\AppResources.ru-RU.resx" />
-    <EmbeddedResource Include="Resources\AppResources.uk-UA.resx" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Gymme.Data\Gymme.Data.csproj">

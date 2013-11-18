@@ -1,4 +1,5 @@
-﻿using System.Windows.Controls;
+﻿using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 
@@ -37,10 +38,7 @@ namespace Gymme
 
         private void Workout_Hold(object sender, GestureEventArgs e)
         {
-            Grid dataTemplateGrid = (Grid)sender;
-
-            ContextMenu context = ContextMenuService.GetContextMenu(dataTemplateGrid);
-            context.IsOpen = true;
+            ContextMenuService.GetContextMenu((DependencyObject)sender).IsOpen = true;
         }
     }
 }

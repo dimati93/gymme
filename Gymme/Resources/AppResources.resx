@@ -194,4 +194,7 @@
   <data name="Main_WorkoutsDummyText" xml:space="preserve">
     <value>Add workout in the menu →</value>
   </data>
+  <data name="Dummy_Exercises" xml:space="preserve">
+    <value>Tap "+" to add an excercise</value>
+  </data>
 </root>

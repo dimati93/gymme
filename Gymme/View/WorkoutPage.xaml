@@ -7,6 +7,8 @@
     xmlns:controls="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
     mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="768"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
@@ -17,11 +19,41 @@
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot" Background="Transparent">
         <!--Pivot Control-->
-        <controls:Pivot Title="{Binding Title}">
+        <controls:Pivot Title="{Binding Title}"
+                        HeaderTemplate="{StaticResource MainPanoramaHeaderTemplate}">
             <!--Pivot item one-->
             <controls:PivotItem Header="{Binding Resources.Common_Exercises, Source={StaticResource Localized}}">
                 <Grid>
+                    <TextBlock Text="{Binding Resources.Dummy_Exercises, Source={StaticResource Localized}}"
+                               Style="{StaticResource HintTextBlockStyle}"
+                               Visibility="{Binding IsExercisesEmpty, Converter={StaticResource VisibilityConverter}}"/>
                     
+                    <ListBox Style="{StaticResource ListStyle}"
+                             Visibility="{Binding IsExercisesEmpty, Converter={StaticResource ReverceVisibilityConverter}}">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Grid Background="#0AFFFFFF" Hold="Ex_Hold">
+                                    <toolkit:ContextMenuService.ContextMenu>
+                                        <toolkit:ContextMenu IsZoomEnabled="True">
+                                            <toolkit:MenuItem Header="{Binding Resources.Command_Edit, Source={StaticResource Localized}}" Command="{Binding EditCommand}"/>
+                                            <toolkit:MenuItem Header="{Binding Resources.Command_Delete, Source={StaticResource Localized}}" Command="{Binding DeleteCommand}"/>
+                                        </toolkit:ContextMenu>
+                                    </toolkit:ContextMenuService.ContextMenu>
+
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="Tap">
+                                            <!--<i:InvokeCommandAction Command="{Binding GotoPageViewCommand}"/>-->
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+
+                                    <StackPanel Margin="0,0,0,0">
+                                        <TextBlock Text="{Binding Title}" TextWrapping="Wrap" Margin="10,0" Style="{StaticResource PhoneTextExtraLargeStyle}" FontSize="{StaticResource PhoneFontSizeLarge}"/>
+                                        <TextBlock Text="{Binding Categoty}" TextWrapping="Wrap" Margin="10,-2,10,0" Style="{StaticResource PhoneTextSubtleStyle}" />
+                                    </StackPanel>
+                                </Grid>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
                 </Grid>
             </controls:PivotItem>
 
@@ -29,7 +61,7 @@
             <controls:PivotItem Header="{Binding Resources.Common_Statistics, Source={StaticResource Localized}}">
                 <Grid>
                     <TextBlock Text="{Binding Resources.Dummy_Statistics, Source={StaticResource Localized}}"
-                               FontSize="28" TextWrapping="Wrap"/>
+                               Style="{StaticResource HintTextBlockStyle}"/>
                 </Grid>
             </controls:PivotItem>
         </controls:Pivot>

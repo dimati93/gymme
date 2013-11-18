@@ -194,4 +194,7 @@
   <data name="Main_WorkoutsDummyText" xml:space="preserve">
     <value>Добвавте тренировку в меню →</value>
   </data>
+  <data name="Dummy_Exercises" xml:space="preserve">
+    <value>Коснитесь "+" что бы добавить упражнение</value>
+  </data>
 </root>
