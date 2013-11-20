@@ -68,6 +68,6 @@
     </Grid>
     
     <phone:PhoneApplicationPage.ApplicationBar>
-        <shell:ApplicationBar Mode="Minimized"/>
+        <shell:ApplicationBar/>
     </phone:PhoneApplicationPage.ApplicationBar>
 </phone:PhoneApplicationPage>

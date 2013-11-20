@@ -197,4 +197,13 @@
   <data name="Dummy_Exercises" xml:space="preserve">
     <value>Коснитесь "+" что бы добавить упражнение</value>
   </data>
+  <data name="Command_Add" xml:space="preserve">
+    <value>добавить</value>
+  </data>
+  <data name="ExercisesSelectPage_Title" xml:space="preserve">
+    <value>выберите упражнение</value>
+  </data>
+  <data name="Command_Save" xml:space="preserve">
+    <value>сохранить</value>
+  </data>
 </root>

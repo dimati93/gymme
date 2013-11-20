@@ -85,7 +85,9 @@
     <Compile Include="ViewModel\AddEdit\AddEditVM.cs" />
     <Compile Include="ViewModel\AddEdit\AddEditWorkoutVM.cs" />
     <Compile Include="ViewModel\Base\Command.cs" />
+    <Compile Include="ViewModel\ExercisesSelectVM.cs" />
     <Compile Include="ViewModel\Base\ViewModel.cs" />
+    <Compile Include="ViewModel\ExerciseCategory.cs" />
     <Compile Include="ViewModel\ItemViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\WorkoutPageVM.cs" />
@@ -97,6 +99,9 @@
       <DependentUpon>AddEditPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Convertors\BoolToVisibilityConverter.cs" />
+    <Compile Include="View\ExercisesSelectPage.xaml.cs">
+      <DependentUpon>ExercisesSelectPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\IAEView.cs" />
     <Compile Include="View\WorkoutPage.xaml.cs">
       <DependentUpon>WorkoutPage.xaml</DependentUpon>
@@ -108,6 +113,9 @@
     <None Include="Properties\WMAppManifest.xml" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\AppBar\appbar.add.rest.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets\AppBar\appbar.save.rest.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -137,14 +145,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Resources\SampleData\MainViewModelSampleData.xaml">
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="View\AEWorkout.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\AddEditPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ExercisesSelectPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

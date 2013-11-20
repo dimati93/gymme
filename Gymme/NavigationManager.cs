@@ -7,8 +7,8 @@ namespace Gymme
     public static class NavigationManager
     {
         private const string AddEditPagePath = "/View/AddEditPage.xaml";
-
         private const string WorkoutPagePath = "/View/WorkoutPage.xaml";
+        private const string ExercisesSelectPath = "/View/ExercisesSelectPage.xaml";
 
         private static NavigationService NavigationService;
         private static string _gobackParams;
@@ -29,6 +29,12 @@ namespace Gymme
         {
             InitializeNavigation();
             NavigationService.Navigate(BuildUri(WorkoutPagePath, "none", id));
+        }
+
+        public static void GotoExercisesSelectPage()
+        {
+            InitializeNavigation();
+            NavigationService.Navigate(BuildUri(ExercisesSelectPath, "none"));
         }
 
         public static void GoBack(string parameters = null)

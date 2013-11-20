@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Windows.Navigation;
-
+using Gymme.Resources;
 using Microsoft.Phone.Controls;
 
 using Gymme.ViewModel.AddEdit;
+using Microsoft.Phone.Shell;
 
 namespace Gymme.View
 {
@@ -16,6 +17,7 @@ namespace Gymme.View
         public AddEditPage()
         {
             InitializeComponent();
+            InitializeAppMenu();
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -74,6 +76,18 @@ namespace Gymme.View
             ((IAEView)_viewModel.Control).UpdateDataSources();
             _viewModel.Commit();
             NavigationManager.GoBack(_viewModel.BackTarget);
+        }
+
+        private void InitializeAppMenu()
+        {
+            var saveAction = new ApplicationBarIconButton
+            {
+                IconUri = new Uri("/Assets/AppBar/appbar.save.rest.png", UriKind.Relative),
+                Text = AppResources.Command_Save
+            };
+
+            saveAction.Click += SaveButton_Click;
+            ApplicationBar.Buttons.Add(saveAction);
         }
     }
 }

@@ -4,18 +4,13 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Resources;
 using System.Xml.Linq;
+using Gymme.Data.AuxModels;
+using Gymme.Data.Interfaces;
 
 namespace Gymme.Resources
 {
     public class ExerciseData
     {
-        public class Exercise
-        {
-            public string Name { get; set; }
-
-            public string Category { get; set; }
-        }
-
         private static ExerciseData _instance;
 
         public static ExerciseData Instance
@@ -30,7 +25,7 @@ namespace Gymme.Resources
         {
         }
 
-        public List<Exercise> PersetExercises { get; private set; }
+        public List<IExercise> PersetExercises { get; private set; }
 
         public bool IsDataLoaded { get; private set; }
 
@@ -63,7 +58,7 @@ namespace Gymme.Resources
                             throw new NullReferenceException("Attribute 'Name' not founded");
                         }
 
-                        return new Exercise {Category = categotyName, Name = name.Value};
+                        return (IExercise)new PersetExercise {Category = categotyName, Name = name.Value};
                     });
                 }).ToList();
 

@@ -106,6 +106,15 @@ namespace Gymme.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to add.
+        /// </summary>
+        public static string Command_Add {
+            get {
+                return ResourceManager.GetString("Command_Add", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to delete.
         /// </summary>
         public static string Command_Delete {
@@ -120,6 +129,15 @@ namespace Gymme.Resources {
         public static string Command_Edit {
             get {
                 return ResourceManager.GetString("Command_Edit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to save.
+        /// </summary>
+        public static string Command_Save {
+            get {
+                return ResourceManager.GetString("Command_Save", resourceCulture);
             }
         }
         
@@ -192,6 +210,15 @@ namespace Gymme.Resources {
         public static string Dummy_Statistics {
             get {
                 return ResourceManager.GetString("Dummy_Statistics", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to choose exercise.
+        /// </summary>
+        public static string ExercisesSelectPage_Title {
+            get {
+                return ResourceManager.GetString("ExercisesSelectPage_Title", resourceCulture);
             }
         }
         

@@ -1,9 +1,10 @@
 ﻿using System.Data.Linq.Mapping;
+using Gymme.Data.Interfaces;
 
 namespace Gymme.Data.Models
 {
     [Table]
-    public class Exercise : Model
+    public class Exercise : Model, IExercise
     {
         #region Common
         private long _id;
@@ -23,6 +24,14 @@ namespace Gymme.Data.Models
         }
         #endregion
 
+        public Exercise() {}
+
+        public Exercise(IExercise anotherExercise)
+        {
+            Name = anotherExercise.Name;
+            Category = anotherExercise.Category;
+        }
+
         [Column]
         public long IdWorkout { get; set; }
 
@@ -31,5 +40,8 @@ namespace Gymme.Data.Models
 
         [Column]
         public string Note { get; set; }
+
+        [Column]
+        public string Category { get; set; }
     }
 }

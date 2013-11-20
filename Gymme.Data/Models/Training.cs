@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Data.Linq.Mapping;
-
 namespace Gymme.Data.Models
 {
     [Table]

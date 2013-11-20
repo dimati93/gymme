@@ -79,6 +79,10 @@
             <Setter Property="TextWrapping" Value="Wrap"/>
         </Style>
 
+    <Style TargetType="TextBlock" x:Key="TitleTextBoxStyle">
+        <Setter Property="FontSize" Value="56"/>
+    </Style>
+    
     <DataTemplate x:Key="MainPanoramaTitleTemplate">
         <Grid Margin="0, 40, 0, 0">
             <TextBlock Text="{Binding}" FontSize="128"/>
@@ -87,7 +91,9 @@
 
     <DataTemplate x:Key="MainPanoramaHeaderTemplate">
         <Grid Margin="0, -8, 0, 0">
-            <TextBlock Text="{Binding}" FontSize="56"/>
+            <TextBlock Text="{Binding}" Style="{StaticResource TitleTextBoxStyle}"/>
         </Grid>
     </DataTemplate>
+    
+    
 </ResourceDictionary>

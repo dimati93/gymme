@@ -50,7 +50,9 @@
     <Reference Include="mscorlib.extensions" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AuxModels\PersetExercise.cs" />
     <Compile Include="Core\DatabaseContext.cs" />
+    <Compile Include="Interfaces\IExercise.cs" />
     <Compile Include="Models\Exercise.cs" />
     <Compile Include="Models\Model.cs" />
     <Compile Include="Models\Training.cs" />
