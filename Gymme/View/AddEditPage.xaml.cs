@@ -6,13 +6,12 @@ using Microsoft.Phone.Controls;
 using Gymme.ViewModel.AddEdit;
 using Microsoft.Phone.Shell;
 
+using AEC = Gymme.View.AddEditChooser;
+
 namespace Gymme.View
 {
     public partial class AddEditPage : PhoneApplicationPage
     {
-        public const string VariantWorkout = "workout";
-        public const string VariantExercise = "exercise";
-
         private AddEditVM _viewModel;
 
         public AddEditPage()
@@ -45,11 +44,17 @@ namespace Gymme.View
         {
             switch (target)
             {
-                case VariantWorkout: 
+                case AEC.Variant.AddWorkout: 
                     return new AddEditWorkoutVM 
                     { 
                         Control = new AEWorkout(),
                         BackTarget = MainPage.TargetWorkoutsList 
+                    };
+                case AEC.Variant.AddExercise:
+                    return new AddEditExerciseVM(long.Parse(NavigationContext.QueryString[AEC.Param.WorkoutId]))
+                    {
+                        Control = new AEExercise(),
+                        BackCount = 2
                     };
                 default: 
                     NavigationManager.GoBack();
@@ -61,11 +66,21 @@ namespace Gymme.View
         {
             switch (target)
             {
-                case VariantWorkout: 
+                case AEC.Variant.EditWorkout: 
                     return new AddEditWorkoutVM(id)
-                    {
-                        Control = new AEWorkout()
-                    };
+                        {
+                            Control = new AEWorkout()
+                        };
+                case AEC.Variant.AddExercise:
+                    return new AddEditExerciseVM
+                        (
+                            long.Parse(NavigationContext.QueryString[AEC.Param.WorkoutId]),
+                            Gymme.Resources.ExerciseData.Instance.PersetExercises[(int)id]
+                        )
+                        {
+                            Control = new AEExercise(),
+                            BackCount = 2
+                        };
                 default: 
                     NavigationManager.GoBack();
                     return null;
@@ -76,7 +91,7 @@ namespace Gymme.View
         {
             ((IAEView)_viewModel.Control).UpdateDataSources();
             _viewModel.Commit();
-            NavigationManager.GoBack(_viewModel.BackTarget);
+            NavigationManager.GoBack(_viewModel.BackTarget, _viewModel.BackCount);
         }
 
         private void InitializeAppMenu()

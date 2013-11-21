@@ -1,6 +1,8 @@
-﻿using System.Windows.Navigation;
+﻿using System.Windows;
+using System.Windows.Navigation;
 using Gymme.ViewModel;
 using Microsoft.Phone.Controls;
+using GestureEventArgs = System.Windows.Input.GestureEventArgs;
 
 namespace Gymme.View
 {
@@ -16,12 +18,13 @@ namespace Gymme.View
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            if (_viewModel == null)
-            {
-                _viewModel = new ExercisesSelectVM();
-            }
+            
+            DataContext = _viewModel = new ExercisesSelectVM(long.Parse(NavigationContext.QueryString[AddEditChooser.Param.WorkoutId]));
+        }
 
-            DataContext = _viewModel;
+        private void Exercise_Tap(object sender, GestureEventArgs e)
+        {
+            ((ExerciseSelectItemVM)((FrameworkElement) sender).DataContext).Choose();
         }
     }
 }

@@ -61,6 +61,15 @@ namespace Gymme.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Exercise.
+        /// </summary>
+        public static string AddEdit_Exercise {
+            get {
+                return ResourceManager.GetString("AddEdit_Exercise", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to New workout.
         /// </summary>
         public static string AddEdit_NewWorkout {
@@ -223,7 +232,7 @@ namespace Gymme.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to choose exercise.
+        ///   Looks up a localized string similar to Choose exercise.
         /// </summary>
         public static string ExercisesSelectPage_Title {
             get {

@@ -11,8 +11,8 @@
 
     <ListBox x:Name="LayoutRoot" Background="{StaticResource PhoneBackgroundBrush}" Style="{StaticResource ListStyle}">
         <TextBlock Text="{Binding Resources.AEWorkout_NameLabel, Source={StaticResource Localized}}" Style="{StaticResource InputDescriptionStyle}"/>
-        <TextBox x:Name="tbName" Text="{Binding Title, Mode=TwoWay, UpdateSourceTrigger=Explicit}"  Style="{StaticResource InputStyle}" MaxLength="256"/>
+        <TextBox x:Name="tbName" Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=Explicit}"  Style="{StaticResource InputStyle}" MaxLength="256"/>
         <TextBlock Text="{Binding Resources.AEExercise_CategoryLabel, Source={StaticResource Localized}}" Style="{StaticResource InputDescriptionStyle}"/>
-        <TextBox x:Name="tbCategory" Text="{Binding Category, Mode=TwoWay, UpdateSourceTrigger=Explicit}" Style="{StaticResource InputStyle}" Height="132" TextWrapping="Wrap" MaxLength="256"/>
+        <TextBox x:Name="tbCategory" Text="{Binding Category, Mode=TwoWay, UpdateSourceTrigger=Explicit}" Style="{StaticResource InputStyle}" MaxLength="256"/>
     </ListBox>
 </UserControl>

@@ -85,14 +85,16 @@
     <Compile Include="Resources\ExerciseData.cs" />
     <Compile Include="ViewModel\AddEdit\AddEditVM.cs" />
     <Compile Include="ViewModel\AddEdit\AddEditWorkoutVM.cs" />
+    <Compile Include="ViewModel\AddEdit\AddEditExerciseVM.cs" />
     <Compile Include="ViewModel\Base\Command.cs" />
+    <Compile Include="ViewModel\ExerciseSelectItemVM.cs" />
     <Compile Include="ViewModel\ExercisesSelectVM.cs" />
     <Compile Include="ViewModel\Base\ViewModel.cs" />
     <Compile Include="ViewModel\ExerciseCategory.cs" />
-    <Compile Include="ViewModel\ItemViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\WorkoutPageVM.cs" />
     <Compile Include="ViewModel\WorkoutVM.cs" />
+    <Compile Include="View\AddEditChooser.cs" />
     <Compile Include="View\AEWorkout.xaml.cs">
       <DependentUpon>AEWorkout.xaml</DependentUpon>
     </Compile>

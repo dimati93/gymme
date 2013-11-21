@@ -71,7 +71,7 @@ namespace Gymme.View
 
         private void AddExercise_Click(object sender, EventArgs e)
         {
-            NavigationManager.GotoExercisesSelectPage();
+            NavigationManager.GotoExercisesSelectPage(_viewModel.Item.Id);
         }
 
         private void EditWorkout_Click(object sender, EventArgs e)

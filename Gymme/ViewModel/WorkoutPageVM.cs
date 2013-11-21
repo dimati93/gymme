@@ -16,6 +16,8 @@ namespace Gymme.ViewModel
             Exercises = new ObservableCollection<Exercise>(_workout.Exercises);
         }
 
+        public Workout Item { get { return _workout; }}
+
         public string Title 
         {
             get

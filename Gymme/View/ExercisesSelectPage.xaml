@@ -20,7 +20,7 @@
             </Border>
         </DataTemplate>
         <DataTemplate x:Key="ExerciseTemplate">
-            <StackPanel MinHeight="60">
+            <StackPanel MinHeight="60" Background="#0AFFFFFF" Tap="Exercise_Tap">
                 <TextBlock Text="{Binding Name}" TextWrapping="Wrap" 
                            Margin="10,0" Style="{StaticResource PhoneTextExtraLargeStyle}" 
                            FontSize="{StaticResource PhoneFontSizeLarge}"/>

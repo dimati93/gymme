@@ -2,8 +2,8 @@
 {
     public interface IExercise
     {
-        string Name { get; set; }
+        string Name { get; }
 
-        string Category { get; set; } 
+        string Category { get; } 
     }
 }
