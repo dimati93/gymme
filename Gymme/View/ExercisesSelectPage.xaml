@@ -21,7 +21,7 @@
         </DataTemplate>
         <DataTemplate x:Key="ExerciseTemplate">
             <StackPanel MinHeight="60">
-                <TextBlock Text="{Binding Title}" TextWrapping="Wrap" 
+                <TextBlock Text="{Binding Name}" TextWrapping="Wrap" 
                            Margin="10,0" Style="{StaticResource PhoneTextExtraLargeStyle}" 
                            FontSize="{StaticResource PhoneFontSizeLarge}"/>
                 </StackPanel>

@@ -56,6 +56,7 @@
       <HintPath>..\packages\WPtoolkit.4.2013.08.16\lib\sl4-windowsphone71\Microsoft.Phone.Controls.Toolkit.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Phone.Interop" />
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Windows" />
     <Reference Include="system" />
@@ -99,6 +100,9 @@
       <DependentUpon>AddEditPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Convertors\BoolToVisibilityConverter.cs" />
+    <Compile Include="View\AEExercise.xaml.cs">
+      <DependentUpon>AEExercise.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\ExercisesSelectPage.xaml.cs">
       <DependentUpon>ExercisesSelectPage.xaml</DependentUpon>
     </Compile>
@@ -126,7 +130,9 @@
     <Content Include="Assets\Tiles\IconicTileMediumLarge.png" />
     <Content Include="Assets\Tiles\IconicTileSmall.png" />
     <Content Include="README_FIRST.txt" />
-    <Resource Include="Resources\ExerciseData.xml" />
+    <Resource Include="Resources\ExerciseData.xml">
+      <SubType>Designer</SubType>
+    </Resource>
     <Content Include="SplashScreenImage.jpg" />
     <Content Include="Toolkit.Content\ApplicationBar.Cancel.png" />
     <Content Include="Toolkit.Content\ApplicationBar.Check.png" />
@@ -152,6 +158,10 @@
     <Page Include="View\AddEditPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\AEExercise.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="View\ExercisesSelectPage.xaml">
       <SubType>Designer</SubType>

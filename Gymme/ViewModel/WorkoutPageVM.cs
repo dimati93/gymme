@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.Collections.ObjectModel;
+using System.Windows;
 
 using Gymme.Data.Models;
 using Gymme.Data.Repository;
@@ -7,13 +8,12 @@ namespace Gymme.ViewModel
 {
     public class WorkoutPageVM : Base.ViewModel
     {
-        private Workout _workout;
-
-        private bool _exercisesLoaded;
+        private readonly Workout _workout;
 
         public WorkoutPageVM(long id)
         {
             _workout = RepoWorkout.Instance.FindById(id);
+            Exercises = new ObservableCollection<Exercise>(_workout.Exercises);
         }
 
         public string Title 
@@ -23,6 +23,10 @@ namespace Gymme.ViewModel
                 return _workout.Title;
             }
         }
+
+        public ObservableCollection<Exercise> Exercises { get; set; }
+
+        public bool IsExercisesEmpty { get { return Exercises.Count == 0; } }
 
         public void EditWorkout()
         {
@@ -46,6 +50,7 @@ namespace Gymme.ViewModel
         public void Update()
         {
             NotifyPropertyChanged("Title");
+            NotifyPropertyChanged("");
         }
     }
 }

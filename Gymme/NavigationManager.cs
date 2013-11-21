@@ -1,4 +1,5 @@
-﻿using Gymme.View;
+﻿using System.Linq;
+using Gymme.View;
 using System;
 using System.Windows.Navigation;
 
@@ -12,17 +13,18 @@ namespace Gymme
 
         private static NavigationService NavigationService;
         private static string _gobackParams;
+        private static int _gobackTimes;
 
         public static void GotoAddWorkout()
         {
             InitializeNavigation();
-            NavigationService.Navigate(BuildUri(AddEditPagePath, AddEditPage.VariantAddWorkout));
+            NavigationService.Navigate(BuildUri(AddEditPagePath, AddEditPage.VariantWorkout));
         }
 
         public static void GotoEditWorkout(long id)
         {
             InitializeNavigation();
-            NavigationService.Navigate(BuildUri(AddEditPagePath, AddEditPage.VariantAddWorkout, id));
+            NavigationService.Navigate(BuildUri(AddEditPagePath, AddEditPage.VariantWorkout, id));
         }
 
         public static void GotoWorkoutPage(long id)
@@ -37,8 +39,25 @@ namespace Gymme
             NavigationService.Navigate(BuildUri(ExercisesSelectPath, "none"));
         }
 
+        public static void GotoAddExercisePage(bool scipCurrentPageOnGoBack = false)
+        {
+            InitializeNavigation();
+            if (scipCurrentPageOnGoBack)
+            {
+                _gobackTimes++;
+            }
+
+            NavigationService.Navigate(BuildUri(ExercisesSelectPath, AddEditPage.VariantExercise));
+        }
+
         public static void GoBack(string parameters = null)
         {
+            while (_gobackTimes > 0 && NavigationService.BackStack.Any())
+            {
+                NavigationService.RemoveBackEntry();
+                _gobackTimes--;
+            }
+
             if (NavigationService.CanGoBack) 
             {
                 NavigationService.GoBack();

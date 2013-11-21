@@ -206,4 +206,7 @@
   <data name="Command_Save" xml:space="preserve">
     <value>сохранить</value>
   </data>
+  <data name="AEExercise_CategoryLabel" xml:space="preserve">
+    <value>Категория:</value>
+  </data>
 </root>

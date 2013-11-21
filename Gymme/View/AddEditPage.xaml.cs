@@ -10,7 +10,8 @@ namespace Gymme.View
 {
     public partial class AddEditPage : PhoneApplicationPage
     {
-        public const string VariantAddWorkout = "addworkout";
+        public const string VariantWorkout = "workout";
+        public const string VariantExercise = "exercise";
 
         private AddEditVM _viewModel;
 
@@ -44,7 +45,7 @@ namespace Gymme.View
         {
             switch (target)
             {
-                case VariantAddWorkout: 
+                case VariantWorkout: 
                     return new AddEditWorkoutVM 
                     { 
                         Control = new AEWorkout(),
@@ -60,7 +61,7 @@ namespace Gymme.View
         {
             switch (target)
             {
-                case VariantAddWorkout: 
+                case VariantWorkout: 
                     return new AddEditWorkoutVM(id)
                     {
                         Control = new AEWorkout()

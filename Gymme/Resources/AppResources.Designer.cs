@@ -70,6 +70,15 @@ namespace Gymme.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Category:.
+        /// </summary>
+        public static string AEExercise_CategoryLabel {
+            get {
+                return ResourceManager.GetString("AEExercise_CategoryLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Detail.
         /// </summary>
         public static string AEWorkout_DetailLabel {
