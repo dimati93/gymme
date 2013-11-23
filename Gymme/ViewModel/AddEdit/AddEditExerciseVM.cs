@@ -12,13 +12,15 @@ namespace Gymme.ViewModel.AddEdit
         private string _name = string.Empty;
         private string _category = string.Empty;
 
-        public AddEditExerciseVM(long workoutId)
+        public AddEditExerciseVM(long workoutId) 
+            : base(false)
         {
             _item = new Exercise {IdWorkout = workoutId};
             PageName = Resources.AppResources.AddEdit_Exercise;
         }
 
         public AddEditExerciseVM(long workoutId, PersetExercise exercise)
+            : base(false)
         {
             _item = new Exercise(exercise) { IdWorkout = workoutId };
             PageName = Resources.AppResources.AddEdit_Exercise;
@@ -26,6 +28,7 @@ namespace Gymme.ViewModel.AddEdit
         }
         
         public AddEditExerciseVM(Exercise exercise)
+            : base(true)
         {
             _item = exercise;
             PageName = Resources.AppResources.AddEdit_Exercise;
@@ -77,8 +80,15 @@ namespace Gymme.ViewModel.AddEdit
         {
             _item.Name = Name;
             _item.Category = Category;
-
-            RepoExercise.Instance.Save(_item);
+            if (IsEdit)
+            {
+                RepoExercise.Instance.Save(_item);
+            }
+            else
+            {
+                RepoWorkout.Instance.FindById(_item.IdWorkout).Exercises.Add(_item);
+                Data.Core.DatabaseContext.Instance.SubmitChanges();
+            }
         }
     }
 }

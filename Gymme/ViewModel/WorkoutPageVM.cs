@@ -13,12 +13,13 @@ namespace Gymme.ViewModel
         public WorkoutPageVM(long id)
         {
             _workout = RepoWorkout.Instance.FindById(id);
-            Exercises = new ObservableCollection<Exercise>(_workout.Exercises);
+            Exercises = new ObservableCollection<Exercise>();
+            Update();
         }
 
-        public Workout Item { get { return _workout; }}
+        public Workout Item { get { return _workout; } }
 
-        public string Title 
+        public string Title
         {
             get
             {
@@ -37,7 +38,7 @@ namespace Gymme.ViewModel
 
         public bool DeleteWorkout()
         {
-            MessageBoxResult result = MessageBox.Show(Resources.AppResources.Workout_DeleteWarning, 
+            MessageBoxResult result = MessageBox.Show(Resources.AppResources.Workout_DeleteWarning,
                                                       Resources.AppResources.Workout_DeleteWarningTitle,
                                                       MessageBoxButton.OKCancel);
             if (result == MessageBoxResult.OK)
@@ -52,7 +53,11 @@ namespace Gymme.ViewModel
         public void Update()
         {
             NotifyPropertyChanged("Title");
-            NotifyPropertyChanged("");
+            Exercises.Clear();
+            foreach (Exercise exercise in _workout.Exercises)
+            {
+                Exercises.Add(exercise);
+            }
         }
     }
 }

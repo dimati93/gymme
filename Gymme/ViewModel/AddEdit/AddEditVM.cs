@@ -4,9 +4,12 @@ namespace Gymme.ViewModel.AddEdit
 {
     public abstract class AddEditVM : Base.ViewModel
     {
-        protected AddEditVM()
+        protected readonly bool IsEdit;
+
+        protected AddEditVM(bool isEdit)
         {
             BackCount = 1;
+            IsEdit = isEdit;
         }
 
         public UserControl Control { get; set; }

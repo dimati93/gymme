@@ -28,8 +28,9 @@
                                Style="{StaticResource HintTextBlockStyle}"
                                Visibility="{Binding IsExercisesEmpty, Converter={StaticResource VisibilityConverter}}"/>
                     
-                    <ListBox Style="{StaticResource ListStyle}"
-                             Visibility="{Binding IsExercisesEmpty, Converter={StaticResource ReverceVisibilityConverter}}">
+                    <ListBox Style="{StaticResource ListStyle}" ItemsSource="{Binding Exercises}"
+                             Visibility="{Binding IsExercisesEmpty, 
+                        Converter={StaticResource ReverceVisibilityConverter}}">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <Grid Background="#0AFFFFFF" Hold="Ex_Hold">
@@ -47,8 +48,8 @@
                                     </i:Interaction.Triggers>
 
                                     <StackPanel Margin="0,0,0,0">
-                                        <TextBlock Text="{Binding Title}" TextWrapping="Wrap" Margin="10,0" Style="{StaticResource PhoneTextExtraLargeStyle}" FontSize="{StaticResource PhoneFontSizeLarge}"/>
-                                        <TextBlock Text="{Binding Categoty}" TextWrapping="Wrap" Margin="10,-2,10,0" Style="{StaticResource PhoneTextSubtleStyle}" />
+                                        <TextBlock Text="{Binding Name}" TextWrapping="Wrap" Margin="10,0" Style="{StaticResource PhoneTextExtraLargeStyle}" FontSize="{StaticResource PhoneFontSizeLarge}"/>
+                                        <TextBlock Text="{Binding Category}" TextWrapping="Wrap" Margin="10,-2,10,0" Style="{StaticResource PhoneTextSubtleStyle}" />
                                     </StackPanel>
                                 </Grid>
                             </DataTemplate>
