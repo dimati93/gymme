@@ -43,7 +43,7 @@
 
                                     <i:Interaction.Triggers>
                                         <i:EventTrigger EventName="Tap">
-                                            <!--<i:InvokeCommandAction Command="{Binding GotoPageViewCommand}"/>-->
+                                            <i:InvokeCommandAction Command="{Binding GotoPageViewCommand}"/>
                                         </i:EventTrigger>
                                     </i:Interaction.Triggers>
 
@@ -59,7 +59,7 @@
             </controls:PivotItem>
 
             <!--Pivot item two-->
-            <controls:PivotItem Header="{Binding Resources.Common_Statistics, Source={StaticResource Localized}}">
+            <controls:PivotItem Header="{Binding Resources.Page_Statistics, Source={StaticResource Localized}}">
                 <Grid>
                     <TextBlock Text="{Binding Resources.Dummy_Statistics, Source={StaticResource Localized}}"
                                Style="{StaticResource HintTextBlockStyle}"/>

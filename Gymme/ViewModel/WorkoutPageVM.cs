@@ -13,7 +13,7 @@ namespace Gymme.ViewModel
         public WorkoutPageVM(long id)
         {
             _workout = RepoWorkout.Instance.FindById(id);
-            Exercises = new ObservableCollection<Exercise>();
+            Exercises = new ObservableCollection<ExerciseVM>();
             Update();
         }
 
@@ -27,7 +27,7 @@ namespace Gymme.ViewModel
             }
         }
 
-        public ObservableCollection<Exercise> Exercises { get; set; }
+        public ObservableCollection<ExerciseVM> Exercises { get; set; }
 
         public bool IsExercisesEmpty { get { return Exercises.Count == 0; } }
 
@@ -56,7 +56,7 @@ namespace Gymme.ViewModel
             Exercises.Clear();
             foreach (Exercise exercise in _workout.Exercises)
             {
-                Exercises.Add(exercise);
+                Exercises.Add(new ExerciseVM(exercise, this));
             }
         }
     }

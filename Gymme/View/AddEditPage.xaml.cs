@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Navigation;
+using Gymme.Data.Repository;
 using Gymme.Resources;
 using Microsoft.Phone.Controls;
 
@@ -80,6 +81,14 @@ namespace Gymme.View
                         {
                             Control = new AEExercise(),
                             BackCount = 2
+                        };
+                case AEC.Variant.EditExercise:
+                    return new AddEditExerciseVM
+                        (
+                            RepoExercise.Instance.FindById(id)
+                        )
+                        {
+                            Control = new AEExercise()
                         };
                 default: 
                     NavigationManager.GoBack();

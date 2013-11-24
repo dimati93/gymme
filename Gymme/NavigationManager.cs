@@ -12,6 +12,7 @@ namespace Gymme
     {
         private const string AddEditPagePath = "/View/AddEditPage.xaml";
         private const string WorkoutPagePath = "/View/WorkoutPage.xaml";
+        private const string ExercisePagePath = "/View/ExercisePage.xaml";
         private const string ExercisesSelectPath = "/View/ExercisesSelectPage.xaml";
 
         private static NavigationService NavigationService;
@@ -44,13 +45,25 @@ namespace Gymme
         public static void GotoAddExercisePage(long workoutId)
         {
             InitializeNavigation();
-            NavigationService.Navigate(BuildUri(ExercisesSelectPath, AEC.Variant.AddExercise, Param(AEC.Param.WorkoutId, workoutId)));
+            NavigationService.Navigate(BuildUri(AddEditPagePath, AEC.Variant.AddExercise, Param(AEC.Param.WorkoutId, workoutId)));
         }
 
         public static void GotoAddExercisePage(long workoutId, long id)
         {
             InitializeNavigation();
             NavigationService.Navigate(BuildUri(AddEditPagePath, AEC.Variant.AddExercise, Id(id) + Param(AEC.Param.WorkoutId, workoutId)));
+        }
+
+        public static void GotoEditExercise(long id)
+        {
+            InitializeNavigation();
+            NavigationService.Navigate(BuildUri(AddEditPagePath, AEC.Variant.EditExercise, Id(id)));
+        }
+
+        public static void GotoExercisePage(long id)
+        {
+            InitializeNavigation();
+            NavigationService.Navigate(BuildUri(ExercisePagePath, "none", Id(id)));
         }
 
         public static void GoBack(string parameters = null, int times = 1)

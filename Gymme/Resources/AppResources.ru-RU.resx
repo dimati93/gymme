@@ -176,7 +176,7 @@
   <data name="Workout_DeleteWarningTitle" xml:space="preserve">
     <value>Удаление тренировки</value>
   </data>
-  <data name="Common_Statistics" xml:space="preserve">
+  <data name="Page_Statistics" xml:space="preserve">
     <value>Статистика</value>
   </data>
   <data name="Dummy_Statistics" xml:space="preserve">
@@ -211,5 +211,29 @@
   </data>
   <data name="AddEdit_Exercise" xml:space="preserve">
     <value>Упражнение</value>
+  </data>
+  <data name="ExercisePage_Category" xml:space="preserve">
+    <value>Категория:</value>
+  </data>
+  <data name="ExercisePage_EmptyNoteHint" xml:space="preserve">
+    <value>Заметок нет</value>
+  </data>
+  <data name="ExercisePage_Name" xml:space="preserve">
+    <value>Название:</value>
+  </data>
+  <data name="ExercisePage_Notes" xml:space="preserve">
+    <value>Заметки:</value>
+  </data>
+  <data name="Page_Overview" xml:space="preserve">
+    <value>Cведения</value>
+  </data>
+  <data name="Command_New" xml:space="preserve">
+    <value>создать</value>
+  </data>
+  <data name="Exercise_DeleteWarning" xml:space="preserve">
+    <value>Эта оперция удалит все данные по этому упражнению в данной тренировке. Вы действительно хотите её удалить?</value>
+  </data>
+  <data name="Exercise_DeleteWarningTitle" xml:space="preserve">
+    <value>Удаление упражнения</value>
   </data>
 </root>

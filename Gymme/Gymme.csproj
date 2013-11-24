@@ -87,10 +87,12 @@
     <Compile Include="ViewModel\AddEdit\AddEditWorkoutVM.cs" />
     <Compile Include="ViewModel\AddEdit\AddEditExerciseVM.cs" />
     <Compile Include="ViewModel\Base\Command.cs" />
+    <Compile Include="ViewModel\ExercisePageVM.cs" />
     <Compile Include="ViewModel\ExerciseSelectItemVM.cs" />
     <Compile Include="ViewModel\ExercisesSelectVM.cs" />
     <Compile Include="ViewModel\Base\ViewModel.cs" />
     <Compile Include="ViewModel\ExerciseCategory.cs" />
+    <Compile Include="ViewModel\ExerciseVM.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\WorkoutPageVM.cs" />
     <Compile Include="ViewModel\WorkoutVM.cs" />
@@ -104,6 +106,9 @@
     <Compile Include="View\Convertors\BoolToVisibilityConverter.cs" />
     <Compile Include="View\AEExercise.xaml.cs">
       <DependentUpon>AEExercise.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ExercisePage.xaml.cs">
+      <DependentUpon>ExercisePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\ExercisesSelectPage.xaml.cs">
       <DependentUpon>ExercisesSelectPage.xaml</DependentUpon>
@@ -120,6 +125,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\AppBar\appbar.add.rest.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\AppBar\appbar.delete.rest.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\AppBar\appbar.edit.rest.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\AppBar\appbar.save.rest.png">
@@ -164,6 +175,10 @@
     <Page Include="View\AEExercise.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\ExercisePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\ExercisesSelectPage.xaml">
       <SubType>Designer</SubType>

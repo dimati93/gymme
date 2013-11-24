@@ -151,6 +151,15 @@ namespace Gymme.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to new.
+        /// </summary>
+        public static string Command_New {
+            get {
+                return ResourceManager.GetString("Command_New", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to save.
         /// </summary>
         public static string Command_Save {
@@ -196,15 +205,6 @@ namespace Gymme.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Statistics.
-        /// </summary>
-        public static string Common_Statistics {
-            get {
-                return ResourceManager.GetString("Common_Statistics", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Workouts.
         /// </summary>
         public static string Common_Workouts {
@@ -228,6 +228,60 @@ namespace Gymme.Resources {
         public static string Dummy_Statistics {
             get {
                 return ResourceManager.GetString("Dummy_Statistics", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This operation will delete all information about this exercise in workout. Do you realy want to delete it?.
+        /// </summary>
+        public static string Exercise_DeleteWarning {
+            get {
+                return ResourceManager.GetString("Exercise_DeleteWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete exercise.
+        /// </summary>
+        public static string Exercise_DeleteWarningTitle {
+            get {
+                return ResourceManager.GetString("Exercise_DeleteWarningTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Category:.
+        /// </summary>
+        public static string ExercisePage_Category {
+            get {
+                return ResourceManager.GetString("ExercisePage_Category", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No notes.
+        /// </summary>
+        public static string ExercisePage_EmptyNoteHint {
+            get {
+                return ResourceManager.GetString("ExercisePage_EmptyNoteHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name:.
+        /// </summary>
+        public static string ExercisePage_Name {
+            get {
+                return ResourceManager.GetString("ExercisePage_Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Notes:.
+        /// </summary>
+        public static string ExercisePage_Notes {
+            get {
+                return ResourceManager.GetString("ExercisePage_Notes", resourceCulture);
             }
         }
         
@@ -282,6 +336,24 @@ namespace Gymme.Resources {
         public static string MainMenu_AddWorkout {
             get {
                 return ResourceManager.GetString("MainMenu_AddWorkout", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Overview.
+        /// </summary>
+        public static string Page_Overview {
+            get {
+                return ResourceManager.GetString("Page_Overview", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Statistics.
+        /// </summary>
+        public static string Page_Statistics {
+            get {
+                return ResourceManager.GetString("Page_Statistics", resourceCulture);
             }
         }
         

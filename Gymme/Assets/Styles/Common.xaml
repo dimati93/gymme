@@ -75,9 +75,8 @@
             <Setter Property="FontSize" Value="32"/>
             <Setter Property="Margin" Value="12,0,0,0"/>
             <Setter Property="FontFamily" Value="Segoe WP Light"/>
-            <Setter Property="Visibility" Value="Collapsed" />
             <Setter Property="TextWrapping" Value="Wrap"/>
-        </Style>
+    </Style>
 
     <Style TargetType="TextBlock" x:Key="TitleTextBoxStyle">
         <Setter Property="FontSize" Value="56"/>
@@ -94,6 +93,16 @@
             <TextBlock Text="{Binding}" Style="{StaticResource TitleTextBoxStyle}"/>
         </Grid>
     </DataTemplate>
+
+    <Style x:Key="OverviewCaptionStyle" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="24"/>
+        <Setter Property="Margin" Value="12,0,0,0"/>
+        <Setter Property="FontFamily" Value="Segoe WP Light"/>
+    </Style>
     
-    
+    <Style x:Key="OverviewItemStyle" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="24"/>
+        <Setter Property="Margin" Value="12,0,0,0"/>
+        <Setter Property="TextWrapping" Value="Wrap"/>
+    </Style>
 </ResourceDictionary>

@@ -26,7 +26,6 @@
 
             <convertors:BoolToVisibilityConverter x:Key="VisibilityConverter"/>
             <convertors:ReverceBoolToVisivilityConverter x:Key="ReverceVisibilityConverter"/>
-
         </ResourceDictionary>
     </Application.Resources>
 

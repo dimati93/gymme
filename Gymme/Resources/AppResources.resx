@@ -176,7 +176,7 @@
   <data name="Workout_DeleteWarningTitle" xml:space="preserve">
     <value>Delete workout</value>
   </data>
-  <data name="Common_Statistics" xml:space="preserve">
+  <data name="Page_Statistics" xml:space="preserve">
     <value>Statistics</value>
   </data>
   <data name="Dummy_Statistics" xml:space="preserve">
@@ -211,5 +211,29 @@
   </data>
   <data name="AddEdit_Exercise" xml:space="preserve">
     <value>Exercise</value>
+  </data>
+  <data name="ExercisePage_Category" xml:space="preserve">
+    <value>Category:</value>
+  </data>
+  <data name="ExercisePage_EmptyNoteHint" xml:space="preserve">
+    <value>No notes</value>
+  </data>
+  <data name="ExercisePage_Name" xml:space="preserve">
+    <value>Name:</value>
+  </data>
+  <data name="ExercisePage_Notes" xml:space="preserve">
+    <value>Notes:</value>
+  </data>
+  <data name="Page_Overview" xml:space="preserve">
+    <value>Overview</value>
+  </data>
+  <data name="Command_New" xml:space="preserve">
+    <value>new</value>
+  </data>
+  <data name="Exercise_DeleteWarning" xml:space="preserve">
+    <value>This operation will delete all information about this exercise in workout. Do you realy want to delete it?</value>
+  </data>
+  <data name="Exercise_DeleteWarningTitle" xml:space="preserve">
+    <value>Delete exercise</value>
   </data>
 </root>

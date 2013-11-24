@@ -46,9 +46,13 @@
             <t:LongListSelector Background="Transparent"
                                 ItemsSource="{Binding Items}"
                                 GroupHeaderTemplate="{StaticResource CategoryHeaderTemplate}"
-                                ItemTemplate="{StaticResource ExerciseTemplate}">
+                                ItemTemplate="{StaticResource ExerciseTemplate}" IsBouncy="True">
             </t:LongListSelector>
         </Grid>
     </Grid>
 
+    <phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar IsMenuEnabled="false"/>
+    </phone:PhoneApplicationPage.ApplicationBar>
+    
 </phone:PhoneApplicationPage>
