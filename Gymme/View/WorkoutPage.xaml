@@ -28,8 +28,9 @@
                                Style="{StaticResource HintTextBlockStyle}"
                                Visibility="{Binding IsExercisesEmpty, Converter={StaticResource VisibilityConverter}}"/>
                     
-                    <ListBox Style="{StaticResource ListStyle}"
-                             Visibility="{Binding IsExercisesEmpty, Converter={StaticResource ReverceVisibilityConverter}}">
+                    <ListBox Style="{StaticResource ListStyle}" ItemsSource="{Binding Exercises}"
+                             Visibility="{Binding IsExercisesEmpty, 
+                        Converter={StaticResource ReverceVisibilityConverter}}">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <Grid Background="#0AFFFFFF" Hold="Ex_Hold">
@@ -42,13 +43,13 @@
 
                                     <i:Interaction.Triggers>
                                         <i:EventTrigger EventName="Tap">
-                                            <!--<i:InvokeCommandAction Command="{Binding GotoPageViewCommand}"/>-->
+                                            <i:InvokeCommandAction Command="{Binding GotoPageViewCommand}"/>
                                         </i:EventTrigger>
                                     </i:Interaction.Triggers>
 
                                     <StackPanel Margin="0,0,0,0">
-                                        <TextBlock Text="{Binding Title}" TextWrapping="Wrap" Margin="10,0" Style="{StaticResource PhoneTextExtraLargeStyle}" FontSize="{StaticResource PhoneFontSizeLarge}"/>
-                                        <TextBlock Text="{Binding Categoty}" TextWrapping="Wrap" Margin="10,-2,10,0" Style="{StaticResource PhoneTextSubtleStyle}" />
+                                        <TextBlock Text="{Binding Name}" TextWrapping="Wrap" Margin="10,0" Style="{StaticResource PhoneTextExtraLargeStyle}" FontSize="{StaticResource PhoneFontSizeLarge}"/>
+                                        <TextBlock Text="{Binding Category}" TextWrapping="Wrap" Margin="10,-2,10,0" Style="{StaticResource PhoneTextSubtleStyle}" />
                                     </StackPanel>
                                 </Grid>
                             </DataTemplate>
@@ -58,7 +59,7 @@
             </controls:PivotItem>
 
             <!--Pivot item two-->
-            <controls:PivotItem Header="{Binding Resources.Common_Statistics, Source={StaticResource Localized}}">
+            <controls:PivotItem Header="{Binding Resources.Page_Statistics, Source={StaticResource Localized}}">
                 <Grid>
                     <TextBlock Text="{Binding Resources.Dummy_Statistics, Source={StaticResource Localized}}"
                                Style="{StaticResource HintTextBlockStyle}"/>
@@ -68,6 +69,6 @@
     </Grid>
     
     <phone:PhoneApplicationPage.ApplicationBar>
-        <shell:ApplicationBar Mode="Minimized"/>
+        <shell:ApplicationBar/>
     </phone:PhoneApplicationPage.ApplicationBar>
 </phone:PhoneApplicationPage>

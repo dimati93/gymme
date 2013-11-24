@@ -4,18 +4,13 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Resources;
 using System.Xml.Linq;
+using Gymme.Data.AuxModels;
+using Gymme.Data.Interfaces;
 
 namespace Gymme.Resources
 {
     public class ExerciseData
     {
-        public class Exercise
-        {
-            public string Name { get; set; }
-
-            public string Category { get; set; }
-        }
-
         private static ExerciseData _instance;
 
         public static ExerciseData Instance
@@ -30,20 +25,20 @@ namespace Gymme.Resources
         {
         }
 
-        public List<Exercise> PersetExercises { get; private set; }
+        public List<PersetExercise> PersetExercises { get; private set; }
 
         public bool IsDataLoaded { get; private set; }
 
         public void LoadData()
         {
-            Uri uri = new Uri("/ExerciseData.xml", UriKind.Relative);
+            Uri uri = new Uri("Gymme;component/Resources/ExerciseData.xml", UriKind.Relative);
             StreamResourceInfo info = Application.GetResourceStream(uri);
 
-            XDocument xdata = XDocument.Load(info.Stream);
+            XElement root = XElement.Load(info.Stream);
             
             try
             {
-                IEnumerable<XElement> categories = xdata.Root.Elements(XName.Get("Categoty"));
+                IEnumerable<XElement> categories = root.Elements(XName.Get("Category"));
 
                 PersetExercises = categories.SelectMany(x =>
                 {
@@ -55,17 +50,17 @@ namespace Gymme.Resources
 
                     string categotyName = catName.Value;
 
-                    return x.Elements(XName.Get("Exercise")).Select(x2 =>
+                    return x.Elements(XName.Get("Exercise")).Select(ex =>
                     {
-                        XAttribute name = x.Attribute(XName.Get("Name"));
+                        XAttribute name = ex.Attribute(XName.Get("Name"));
                         if (name == null)
                         {
                             throw new NullReferenceException("Attribute 'Name' not founded");
                         }
 
-                        return new Exercise {Category = categotyName, Name = name.Value};
+                        return new PersetExercise {Category = categotyName, Name = name.Value};
                     });
-                }).ToList();
+                }).Select((x, i) => { x.Index = i; return x;}).ToList();
 
                 IsDataLoaded = true;
             }

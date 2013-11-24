@@ -10,13 +10,15 @@ namespace Gymme.ViewModel.AddEdit
         private string _title = string.Empty;
         private string _note = string.Empty;
 
-        public AddEditWorkoutVM()
+        public AddEditWorkoutVM() 
+            : base(false)
         {
             _item = new Workout();
             PageName = Resources.AppResources.AddEdit_NewWorkout;
         } 
         
         public AddEditWorkoutVM(long id)
+            : base(true)
         {
             _item = RepoWorkout.Instance.FindById(id);
             PageName = _item.Title;

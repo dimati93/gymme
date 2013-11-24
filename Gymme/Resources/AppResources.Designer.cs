@@ -61,11 +61,29 @@ namespace Gymme.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Exercise.
+        /// </summary>
+        public static string AddEdit_Exercise {
+            get {
+                return ResourceManager.GetString("AddEdit_Exercise", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to New workout.
         /// </summary>
         public static string AddEdit_NewWorkout {
             get {
                 return ResourceManager.GetString("AddEdit_NewWorkout", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Category:.
+        /// </summary>
+        public static string AEExercise_CategoryLabel {
+            get {
+                return ResourceManager.GetString("AEExercise_CategoryLabel", resourceCulture);
             }
         }
         
@@ -106,6 +124,15 @@ namespace Gymme.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to add.
+        /// </summary>
+        public static string Command_Add {
+            get {
+                return ResourceManager.GetString("Command_Add", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to delete.
         /// </summary>
         public static string Command_Delete {
@@ -120,6 +147,24 @@ namespace Gymme.Resources {
         public static string Command_Edit {
             get {
                 return ResourceManager.GetString("Command_Edit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to new.
+        /// </summary>
+        public static string Command_New {
+            get {
+                return ResourceManager.GetString("Command_New", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to save.
+        /// </summary>
+        public static string Command_Save {
+            get {
+                return ResourceManager.GetString("Command_Save", resourceCulture);
             }
         }
         
@@ -160,15 +205,6 @@ namespace Gymme.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Statistics.
-        /// </summary>
-        public static string Common_Statistics {
-            get {
-                return ResourceManager.GetString("Common_Statistics", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Workouts.
         /// </summary>
         public static string Common_Workouts {
@@ -192,6 +228,69 @@ namespace Gymme.Resources {
         public static string Dummy_Statistics {
             get {
                 return ResourceManager.GetString("Dummy_Statistics", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This operation will delete all information about this exercise in workout. Do you realy want to delete it?.
+        /// </summary>
+        public static string Exercise_DeleteWarning {
+            get {
+                return ResourceManager.GetString("Exercise_DeleteWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete exercise.
+        /// </summary>
+        public static string Exercise_DeleteWarningTitle {
+            get {
+                return ResourceManager.GetString("Exercise_DeleteWarningTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Category:.
+        /// </summary>
+        public static string ExercisePage_Category {
+            get {
+                return ResourceManager.GetString("ExercisePage_Category", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No notes.
+        /// </summary>
+        public static string ExercisePage_EmptyNoteHint {
+            get {
+                return ResourceManager.GetString("ExercisePage_EmptyNoteHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name:.
+        /// </summary>
+        public static string ExercisePage_Name {
+            get {
+                return ResourceManager.GetString("ExercisePage_Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Notes:.
+        /// </summary>
+        public static string ExercisePage_Notes {
+            get {
+                return ResourceManager.GetString("ExercisePage_Notes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Choose exercise.
+        /// </summary>
+        public static string ExercisesSelectPage_Title {
+            get {
+                return ResourceManager.GetString("ExercisesSelectPage_Title", resourceCulture);
             }
         }
         
@@ -237,6 +336,24 @@ namespace Gymme.Resources {
         public static string MainMenu_AddWorkout {
             get {
                 return ResourceManager.GetString("MainMenu_AddWorkout", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Overview.
+        /// </summary>
+        public static string Page_Overview {
+            get {
+                return ResourceManager.GetString("Page_Overview", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Statistics.
+        /// </summary>
+        public static string Page_Statistics {
+            get {
+                return ResourceManager.GetString("Page_Statistics", resourceCulture);
             }
         }
         

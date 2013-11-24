@@ -7,7 +7,7 @@ namespace Gymme.ViewModel
 {
     public class WorkoutVM : Base.ViewModel
     {
-        private Workout _workout;
+        private readonly Workout _workout;
         private readonly MainViewModel _mainVM;
 
         private string _title;

@@ -1,14 +1,19 @@
-﻿using Gymme.View;
+﻿using System.Globalization;
+using System.Linq;
+using Gymme.View;
 using System;
 using System.Windows.Navigation;
+
+using AEC = Gymme.View.AddEditChooser;
 
 namespace Gymme
 {
     public static class NavigationManager
     {
         private const string AddEditPagePath = "/View/AddEditPage.xaml";
-
         private const string WorkoutPagePath = "/View/WorkoutPage.xaml";
+        private const string ExercisePagePath = "/View/ExercisePage.xaml";
+        private const string ExercisesSelectPath = "/View/ExercisesSelectPage.xaml";
 
         private static NavigationService NavigationService;
         private static string _gobackParams;
@@ -16,23 +21,59 @@ namespace Gymme
         public static void GotoAddWorkout()
         {
             InitializeNavigation();
-            NavigationService.Navigate(BuildUri(AddEditPagePath, AddEditPage.VariantAddWorkout));
+            NavigationService.Navigate(BuildUri(AddEditPagePath, AEC.Variant.AddWorkout));
         }
 
         public static void GotoEditWorkout(long id)
         {
             InitializeNavigation();
-            NavigationService.Navigate(BuildUri(AddEditPagePath, AddEditPage.VariantAddWorkout, id));
+            NavigationService.Navigate(BuildUri(AddEditPagePath, AEC.Variant.EditWorkout, Id(id)));
         }
 
         public static void GotoWorkoutPage(long id)
         {
             InitializeNavigation();
-            NavigationService.Navigate(BuildUri(WorkoutPagePath, "none", id));
+            NavigationService.Navigate(BuildUri(WorkoutPagePath, "none", Id(id)));
         }
 
-        public static void GoBack(string parameters = null)
+        public static void GotoExercisesSelectPage(long workoutId)
         {
+            InitializeNavigation();
+            NavigationService.Navigate(BuildUri(ExercisesSelectPath, "none", Param(AEC.Param.WorkoutId, workoutId)));
+        }
+
+        public static void GotoAddExercisePage(long workoutId)
+        {
+            InitializeNavigation();
+            NavigationService.Navigate(BuildUri(AddEditPagePath, AEC.Variant.AddExercise, Param(AEC.Param.WorkoutId, workoutId)));
+        }
+
+        public static void GotoAddExercisePage(long workoutId, long id)
+        {
+            InitializeNavigation();
+            NavigationService.Navigate(BuildUri(AddEditPagePath, AEC.Variant.AddExercise, Id(id) + Param(AEC.Param.WorkoutId, workoutId)));
+        }
+
+        public static void GotoEditExercise(long id)
+        {
+            InitializeNavigation();
+            NavigationService.Navigate(BuildUri(AddEditPagePath, AEC.Variant.EditExercise, Id(id)));
+        }
+
+        public static void GotoExercisePage(long id)
+        {
+            InitializeNavigation();
+            NavigationService.Navigate(BuildUri(ExercisePagePath, "none", Id(id)));
+        }
+
+        public static void GoBack(string parameters = null, int times = 1)
+        {
+            while (times > 1 && NavigationService.BackStack.Any())
+            {
+                NavigationService.RemoveBackEntry();
+                times--;
+            }
+
             if (NavigationService.CanGoBack) 
             {
                 NavigationService.GoBack();
@@ -63,9 +104,19 @@ namespace Gymme
 
         #region BuildUri
 
-        private static Uri BuildUri(string path, string navtgt, long id)
+        private static string Id(long id)
         {
-            return new Uri(string.Format("{0}&id={1}", GetBaseUriString(path, navtgt), id), UriKind.Relative);
+            return Param("id", id);
+        }
+
+        private static string Param(string paramName, object param)
+        {
+            return string.Format(CultureInfo.InvariantCulture, "&{0}={1}", paramName, param);
+        }
+
+        private static Uri BuildUri(string path, string navtgt, string query)
+        {
+            return new Uri(string.Format("{0}{1}", GetBaseUriString(path, navtgt), query), UriKind.Relative);
         }
 
         private static Uri BuildUri(string path, string navtgt = null)

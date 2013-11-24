@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Navigation;
 using Gymme.Resources;
 using Gymme.ViewModel;
@@ -52,6 +51,15 @@ namespace Gymme.View
 
         private void InitializeAppMenu()
         {
+            var addExercise = new ApplicationBarIconButton
+                {
+                    IconUri = new Uri("/Assets/AppBar/appbar.add.rest.png", UriKind.Relative),
+                    Text = AppResources.Command_Add
+                };
+
+            addExercise.Click += AddExercise_Click;
+            ApplicationBar.Buttons.Add(addExercise);
+
             var editWorkoutMenuItem = new ApplicationBarMenuItem(AppResources.WorkoutPage_EditWorkout);
             editWorkoutMenuItem.Click += EditWorkout_Click;
             ApplicationBar.MenuItems.Add(editWorkoutMenuItem);
@@ -59,6 +67,11 @@ namespace Gymme.View
             var deleteWorkoutMenuItem = new ApplicationBarMenuItem(AppResources.WorkoutPage_DeleteWorkout);
             deleteWorkoutMenuItem.Click += DeleteWorkout_Click;
             ApplicationBar.MenuItems.Add(deleteWorkoutMenuItem);
+        }
+
+        private void AddExercise_Click(object sender, EventArgs e)
+        {
+            NavigationManager.GotoExercisesSelectPage(_viewModel.Item.Id);
         }
 
         private void EditWorkout_Click(object sender, EventArgs e)

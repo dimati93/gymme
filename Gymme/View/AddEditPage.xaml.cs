@@ -1,21 +1,24 @@
 ﻿using System;
 using System.Windows.Navigation;
-
+using Gymme.Data.Repository;
+using Gymme.Resources;
 using Microsoft.Phone.Controls;
 
 using Gymme.ViewModel.AddEdit;
+using Microsoft.Phone.Shell;
+
+using AEC = Gymme.View.AddEditChooser;
 
 namespace Gymme.View
 {
     public partial class AddEditPage : PhoneApplicationPage
     {
-        public const string VariantAddWorkout = "addworkout";
-
         private AddEditVM _viewModel;
 
         public AddEditPage()
         {
             InitializeComponent();
+            InitializeAppMenu();
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -42,11 +45,17 @@ namespace Gymme.View
         {
             switch (target)
             {
-                case VariantAddWorkout: 
+                case AEC.Variant.AddWorkout: 
                     return new AddEditWorkoutVM 
                     { 
                         Control = new AEWorkout(),
                         BackTarget = MainPage.TargetWorkoutsList 
+                    };
+                case AEC.Variant.AddExercise:
+                    return new AddEditExerciseVM(long.Parse(NavigationContext.QueryString[AEC.Param.WorkoutId]))
+                    {
+                        Control = new AEExercise(),
+                        BackCount = 2
                     };
                 default: 
                     NavigationManager.GoBack();
@@ -58,11 +67,29 @@ namespace Gymme.View
         {
             switch (target)
             {
-                case VariantAddWorkout: 
+                case AEC.Variant.EditWorkout: 
                     return new AddEditWorkoutVM(id)
-                    {
-                        Control = new AEWorkout()
-                    };
+                        {
+                            Control = new AEWorkout()
+                        };
+                case AEC.Variant.AddExercise:
+                    return new AddEditExerciseVM
+                        (
+                            long.Parse(NavigationContext.QueryString[AEC.Param.WorkoutId]),
+                            Gymme.Resources.ExerciseData.Instance.PersetExercises[(int)id]
+                        )
+                        {
+                            Control = new AEExercise(),
+                            BackCount = 2
+                        };
+                case AEC.Variant.EditExercise:
+                    return new AddEditExerciseVM
+                        (
+                            RepoExercise.Instance.FindById(id)
+                        )
+                        {
+                            Control = new AEExercise()
+                        };
                 default: 
                     NavigationManager.GoBack();
                     return null;
@@ -73,7 +100,19 @@ namespace Gymme.View
         {
             ((IAEView)_viewModel.Control).UpdateDataSources();
             _viewModel.Commit();
-            NavigationManager.GoBack(_viewModel.BackTarget);
+            NavigationManager.GoBack(_viewModel.BackTarget, _viewModel.BackCount);
+        }
+
+        private void InitializeAppMenu()
+        {
+            var saveAction = new ApplicationBarIconButton
+            {
+                IconUri = new Uri("/Assets/AppBar/appbar.save.rest.png", UriKind.Relative),
+                Text = AppResources.Command_Save
+            };
+
+            saveAction.Click += SaveButton_Click;
+            ApplicationBar.Buttons.Add(saveAction);
         }
     }
 }

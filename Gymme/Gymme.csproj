@@ -56,6 +56,7 @@
       <HintPath>..\packages\WPtoolkit.4.2013.08.16\lib\sl4-windowsphone71\Microsoft.Phone.Controls.Toolkit.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Phone.Interop" />
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Windows" />
     <Reference Include="system" />
@@ -84,12 +85,18 @@
     <Compile Include="Resources\ExerciseData.cs" />
     <Compile Include="ViewModel\AddEdit\AddEditVM.cs" />
     <Compile Include="ViewModel\AddEdit\AddEditWorkoutVM.cs" />
+    <Compile Include="ViewModel\AddEdit\AddEditExerciseVM.cs" />
     <Compile Include="ViewModel\Base\Command.cs" />
+    <Compile Include="ViewModel\ExercisePageVM.cs" />
+    <Compile Include="ViewModel\ExerciseSelectItemVM.cs" />
+    <Compile Include="ViewModel\ExercisesSelectVM.cs" />
     <Compile Include="ViewModel\Base\ViewModel.cs" />
-    <Compile Include="ViewModel\ItemViewModel.cs" />
+    <Compile Include="ViewModel\ExerciseCategory.cs" />
+    <Compile Include="ViewModel\ExerciseVM.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\WorkoutPageVM.cs" />
     <Compile Include="ViewModel\WorkoutVM.cs" />
+    <Compile Include="View\AddEditChooser.cs" />
     <Compile Include="View\AEWorkout.xaml.cs">
       <DependentUpon>AEWorkout.xaml</DependentUpon>
     </Compile>
@@ -97,6 +104,15 @@
       <DependentUpon>AddEditPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Convertors\BoolToVisibilityConverter.cs" />
+    <Compile Include="View\AEExercise.xaml.cs">
+      <DependentUpon>AEExercise.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ExercisePage.xaml.cs">
+      <DependentUpon>ExercisePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ExercisesSelectPage.xaml.cs">
+      <DependentUpon>ExercisesSelectPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\IAEView.cs" />
     <Compile Include="View\WorkoutPage.xaml.cs">
       <DependentUpon>WorkoutPage.xaml</DependentUpon>
@@ -108,6 +124,15 @@
     <None Include="Properties\WMAppManifest.xml" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\AppBar\appbar.add.rest.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\AppBar\appbar.delete.rest.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\AppBar\appbar.edit.rest.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets\AppBar\appbar.save.rest.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -118,7 +143,9 @@
     <Content Include="Assets\Tiles\IconicTileMediumLarge.png" />
     <Content Include="Assets\Tiles\IconicTileSmall.png" />
     <Content Include="README_FIRST.txt" />
-    <Resource Include="Resources\ExerciseData.xml" />
+    <Resource Include="Resources\ExerciseData.xml">
+      <SubType>Designer</SubType>
+    </Resource>
     <Content Include="SplashScreenImage.jpg" />
     <Content Include="Toolkit.Content\ApplicationBar.Cancel.png" />
     <Content Include="Toolkit.Content\ApplicationBar.Check.png" />
@@ -137,14 +164,23 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Resources\SampleData\MainViewModelSampleData.xaml">
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="View\AEWorkout.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\AddEditPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\AEExercise.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\ExercisePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ExercisesSelectPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

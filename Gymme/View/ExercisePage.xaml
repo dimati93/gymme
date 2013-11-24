@@ -1,0 +1,69 @@
+﻿<phone:PhoneApplicationPage 
+    x:Class="Gymme.View.ExercisePage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:controls="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="768"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait"  Orientation="Portrait"
+    shell:SystemTray.IsVisible="True">
+	
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        <!--Pivot Control-->
+        <controls:Pivot Title="{Binding WorkoutTitle}"
+                        HeaderTemplate="{StaticResource MainPanoramaHeaderTemplate}">
+            <!--Pivot item one-->
+            <controls:PivotItem Header="{Binding Resources.Page_Overview, Source={StaticResource Localized}}">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Text="{Binding Resources.ExercisePage_Name, Source={StaticResource Localized}}"
+                               Grid.Row="0" Grid.Column="0"
+                               Style="{StaticResource OverviewCaptionStyle}"/>
+                    <TextBlock Text="{Binding Name}"
+                               Grid.Row="0" Grid.Column="1"
+                               Style="{StaticResource OverviewItemStyle}"/>
+                    <TextBlock Text="{Binding Resources.ExercisePage_Category, Source={StaticResource Localized}}"
+                               Grid.Row="1" Grid.Column="0"
+                               Style="{StaticResource OverviewCaptionStyle}"/>
+                    <TextBlock Text="{Binding Category}"
+                               Grid.Row="1" Grid.Column="1"
+                               Style="{StaticResource OverviewItemStyle}"/>
+                    <TextBlock Text="{Binding Resources.ExercisePage_Notes, Source={StaticResource Localized}}"
+                               Grid.Row="2" Grid.Column="0"
+                               Style="{StaticResource OverviewCaptionStyle}"/>
+                    <TextBlock Text="{Binding Resources.ExercisePage_EmptyNoteHint, Source={StaticResource Localized}}"
+                               Grid.Row="3" Grid.Column="0"  Grid.ColumnSpan="2"
+                               Style="{StaticResource HintTextBlockStyle}"/> 
+                </Grid>
+            </controls:PivotItem>
+
+            <!--Pivot item two-->
+            <controls:PivotItem Header="{Binding Resources.Page_Statistics, Source={StaticResource Localized}}">
+                <Grid>
+                    <TextBlock Text="{Binding Resources.Dummy_Statistics, Source={StaticResource Localized}}"
+                               Style="{StaticResource HintTextBlockStyle}"/>
+                </Grid>
+            </controls:PivotItem>
+        </controls:Pivot>
+    </Grid>
+
+    <phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar/>
+    </phone:PhoneApplicationPage.ApplicationBar>
+    
+</phone:PhoneApplicationPage>
