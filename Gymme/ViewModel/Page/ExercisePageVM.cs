@@ -2,7 +2,7 @@
 using Gymme.Data.Models;
 using Gymme.Data.Repository;
 
-namespace Gymme.ViewModel
+namespace Gymme.ViewModel.Page
 {
     public class ExercisePageVM : Base.ViewModel
     {

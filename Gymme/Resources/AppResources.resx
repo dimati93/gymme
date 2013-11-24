@@ -236,4 +236,16 @@
   <data name="Exercise_DeleteWarningTitle" xml:space="preserve">
     <value>Delete exercise</value>
   </data>
+  <data name="Training_Finish" xml:space="preserve">
+    <value>finish training</value>
+  </data>
+  <data name="Training_Skip" xml:space="preserve">
+    <value>skip</value>
+  </data>
+  <data name="Training_Time" xml:space="preserve">
+    <value>Time:</value>
+  </data>
+  <data name="Command_Start" xml:space="preserve">
+    <value>start</value>
+  </data>
 </root>

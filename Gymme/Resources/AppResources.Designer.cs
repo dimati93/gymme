@@ -169,6 +169,15 @@ namespace Gymme.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to start.
+        /// </summary>
+        public static string Command_Start {
+            get {
+                return ResourceManager.GetString("Command_Start", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Exs.
         /// </summary>
         public static string Common_Exercises {
@@ -372,6 +381,33 @@ namespace Gymme.Resources {
         public static string ResourceLanguage {
             get {
                 return ResourceManager.GetString("ResourceLanguage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to finish training.
+        /// </summary>
+        public static string Training_Finish {
+            get {
+                return ResourceManager.GetString("Training_Finish", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to skip.
+        /// </summary>
+        public static string Training_Skip {
+            get {
+                return ResourceManager.GetString("Training_Skip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Time:.
+        /// </summary>
+        public static string Training_Time {
+            get {
+                return ResourceManager.GetString("Training_Time", resourceCulture);
             }
         }
         

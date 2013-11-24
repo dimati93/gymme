@@ -3,7 +3,7 @@ using System.Linq;
 using Gymme.Data.Interfaces;
 using Gymme.Resources;
 
-namespace Gymme.ViewModel
+namespace Gymme.ViewModel.Page
 {
     public class ExercisesSelectVM : Base.ViewModel
     {

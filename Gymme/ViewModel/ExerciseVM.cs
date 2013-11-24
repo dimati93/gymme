@@ -1,6 +1,7 @@
 ﻿using System.Windows.Input;
 using Gymme.Data.Models;
 using Gymme.Data.Repository;
+using Gymme.ViewModel.Page;
 
 namespace Gymme.ViewModel
 {

@@ -19,7 +19,8 @@
         <controls:Pivot Title="{Binding WorkoutTitle}"
                         HeaderTemplate="{StaticResource MainPanoramaHeaderTemplate}">
             <!--Pivot item one-->
-            <controls:PivotItem Header="{Binding Resources.Page_Overview, Source={StaticResource Localized}}">
+            <controls:PivotItem Header="{Binding Resources.Page_Overview, Source={StaticResource Localized}}"
+                                >
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>

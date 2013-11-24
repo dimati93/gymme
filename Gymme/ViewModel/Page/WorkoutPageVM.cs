@@ -1,10 +1,9 @@
 ﻿using System.Collections.ObjectModel;
 using System.Windows;
-
 using Gymme.Data.Models;
 using Gymme.Data.Repository;
 
-namespace Gymme.ViewModel
+namespace Gymme.ViewModel.Page
 {
     public class WorkoutPageVM : Base.ViewModel
     {
@@ -58,6 +57,8 @@ namespace Gymme.ViewModel
             {
                 Exercises.Add(new ExerciseVM(exercise, this));
             }
+
+            NotifyPropertyChanged("IsExercisesEmpty");
         }
     }
 }

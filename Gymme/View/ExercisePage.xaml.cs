@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Navigation;
 using Gymme.Resources;
-using Gymme.ViewModel;
+using Gymme.ViewModel.Page;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 

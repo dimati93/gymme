@@ -10,6 +10,7 @@ namespace Gymme
     public partial class MainPage : PhoneApplicationPage
     {
         public const string TargetWorkoutsList = "tgt:Workouts";
+        public const string TargetUpcomingList = "tgt:Upcoming";
 
         // Constructor
         public MainPage()
@@ -29,9 +30,14 @@ namespace Gymme
             string target = NavigationManager.GetGoBackParams();
             if (target != null)
             {
-                if (target == TargetWorkoutsList)
+                switch (target)
                 {
-                    MainPanorama.SetValue(Panorama.SelectedItemProperty, MainPanorama.Items[1]);
+                    case TargetWorkoutsList:
+                        MainPanorama.SetValue(Panorama.SelectedItemProperty, MainPanorama.Items[1]);
+                        break;
+                    case TargetUpcomingList:
+                        MainPanorama.SetValue(Panorama.SelectedItemProperty, MainPanorama.Items[0]);
+                        break;
                 }
             }
         }

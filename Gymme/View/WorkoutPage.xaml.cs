@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Windows;
+using System.Windows.Data;
 using System.Windows.Navigation;
 using Gymme.Resources;
-using Gymme.ViewModel;
-
+using Gymme.ViewModel.Page;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using GestureEventArgs = System.Windows.Input.GestureEventArgs;
@@ -13,6 +13,7 @@ namespace Gymme.View
     public partial class WorkoutPage : PhoneApplicationPage
     {
         private WorkoutPageVM _viewModel;
+        private ApplicationBarIconButton _startWorkout;
 
         public WorkoutPage()
         {
@@ -29,6 +30,7 @@ namespace Gymme.View
                 if (_viewModel != null)
                 {
                     _viewModel.Update();
+                    UpdateAppMenu();
                     return;
                 }
             }
@@ -41,7 +43,13 @@ namespace Gymme.View
             else
             {
                 DataContext = _viewModel = GetDataContext(target, long.Parse(id));
+                UpdateAppMenu();
             }
+        }
+
+        private void UpdateAppMenu()
+        {
+            _startWorkout.IsEnabled = !_viewModel.IsExercisesEmpty;
         }
 
         private WorkoutPageVM GetDataContext(string target, long id)
@@ -51,6 +59,15 @@ namespace Gymme.View
 
         private void InitializeAppMenu()
         {
+            _startWorkout = new ApplicationBarIconButton
+                {
+                    IconUri = new Uri("/Assets/AppBar/appbar.transport.play.rest.png", UriKind.Relative),
+                    Text = AppResources.Command_Start
+                };
+
+            _startWorkout.Click += StartWorkout_Click;
+            ApplicationBar.Buttons.Add(_startWorkout);
+
             var addExercise = new ApplicationBarIconButton
                 {
                     IconUri = new Uri("/Assets/AppBar/appbar.add.rest.png", UriKind.Relative),
@@ -67,6 +84,11 @@ namespace Gymme.View
             var deleteWorkoutMenuItem = new ApplicationBarMenuItem(AppResources.WorkoutPage_DeleteWorkout);
             deleteWorkoutMenuItem.Click += DeleteWorkout_Click;
             ApplicationBar.MenuItems.Add(deleteWorkoutMenuItem);
+        }
+
+        private void StartWorkout_Click(object sender, EventArgs e)
+        {
+            NavigationManager.GotoTrainingPage(_viewModel.Item.Id);
         }
 
         private void AddExercise_Click(object sender, EventArgs e)

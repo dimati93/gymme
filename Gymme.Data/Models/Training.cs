@@ -1,7 +1,14 @@
 ﻿using System;
+using System.Data.Linq;
 using System.Data.Linq.Mapping;
 namespace Gymme.Data.Models
 {
+    public enum TrainingStatus : byte
+    {
+        Started = 0,
+        Finished = 0xFF
+    }
+
     [Table]
     public class Training : Model
     {
@@ -23,10 +30,15 @@ namespace Gymme.Data.Models
         }
         #endregion
 
+        public Training()
+        {
+        }
+
         public Training(Workout workout)
         {
             IdWorkout = workout.Id;
             StartTime = DateTime.Now;
+            Status = TrainingStatus.Started;
         }
 
         [Column]
@@ -34,5 +46,35 @@ namespace Gymme.Data.Models
 
         [Column]
         public DateTime StartTime { get; set; }
+
+        [Column]
+        public byte StatusId { get; set; }
+
+        public TrainingStatus Status
+        {
+            get
+            {
+                return (TrainingStatus) StatusId;
+            }
+            set
+            {
+                StatusId = (byte) value;
+            }
+        }
+        private EntitySet<TrainingExercise> _exercises = new EntitySet<TrainingExercise>();
+
+        [Association(Name = "FK_Training_TrExercise", Storage = "_exercises", OtherKey = "IdTraining", DeleteRule = "NO ACTION")]
+        public EntitySet<TrainingExercise> Exercises
+        {
+            get
+            {
+                return _exercises;
+            }
+
+            private set
+            {
+                _exercises.Assign(value);
+            }
+        }
     }
 }

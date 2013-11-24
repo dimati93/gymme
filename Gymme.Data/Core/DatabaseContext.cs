@@ -8,7 +8,6 @@
 // --------------------------------------------------------------------------------------------------------------------
 
 using Gymme.Data.Models;
-using Gymme.Data.Repository;
 using System.Data.Linq;
 
 namespace Gymme.Data.Core
@@ -81,6 +80,22 @@ namespace Gymme.Data.Core
             get
             {
                 return GetTable<Exercise>();
+            }
+        }
+
+        public Table<Training> Training
+        {
+            get
+            {
+                return GetTable<Training>();
+            }
+        }
+
+        public Table<TrainingExercise> TrainingExercise
+        {
+            get
+            {
+                return GetTable<TrainingExercise>();
             }
         }
     }
