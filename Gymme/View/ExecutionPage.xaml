@@ -1,0 +1,103 @@
+﻿<phone:PhoneApplicationPage 
+    x:Class="Gymme.View.ExecutionPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:controls="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+    xmlns:cm="clr-namespace:System.ComponentModel;assembly=System.Windows"
+    xmlns:view="clr-namespace:Gymme.View"
+    mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="768"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait"  Orientation="Portrait"
+    shell:SystemTray.IsVisible="True">
+    <phone:PhoneApplicationPage.Resources>
+        <CollectionViewSource x:Key="ExercisesView" Source="{Binding Exercises}">
+            <CollectionViewSource.SortDescriptions>
+                <cm:SortDescription PropertyName="Order"/>
+            </CollectionViewSource.SortDescriptions>
+        </CollectionViewSource>
+    </phone:PhoneApplicationPage.Resources>
+
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="{Binding Title}" Style="{StaticResource OverviewItemStyle}"/>
+        
+        <StackPanel Orientation="Horizontal" Grid.Row="1">
+            <TextBlock Text="{Binding Resources.Training_Time, Source={StaticResource Localized}}"
+                               Style="{StaticResource OverviewCaptionStyle}"/>
+            <TextBlock Text="{Binding Time}"
+                               Style="{StaticResource OverviewItemStyle}"/>
+        </StackPanel>
+
+        <Grid Row="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            
+            <view:SetControl Grid.Row="0" Grid.ColumnSpan="2" DataContext="{Binding CurrentSet}" Margin="0,0,0,12"/>
+            
+            <Button Grid.Row="1" Grid.Column="0"
+                    VerticalAlignment="Top"
+                    Content="{Binding Resources.ExecutePage_Previous, Source={StaticResource Localized}}"/>
+            <StackPanel Grid.Row="1" Grid.Column="1">
+                <Button Content="{Binding Resources.ExecutePage_Next, Source={StaticResource Localized}}"/>
+                <Button Content="{Binding Resources.ExecutePage_Finish, Source={StaticResource Localized}}" />
+            </StackPanel>
+        </Grid>
+
+        <TextBlock  Grid.Row="3" Text="{Binding Resources.ExecutePage_History, Source={StaticResource Localized}}"
+                               Style="{StaticResource OverviewCaptionStyle}"/>
+
+        <ListBox Grid.Row="4" Margin="0, 10, 0, 0"  Style="{StaticResource ListStyle}" ItemsSource="{Binding HistoryItems}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding StartDate}" Style="{StaticResource OverviewItemStyle}"/>
+                            <ListBox ItemsSource="{Binding Sets}">
+                                <ListBox.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <StackPanel Orientation="Horizontal"/>
+                                    </ItemsPanelTemplate>
+                                </ListBox.ItemsPanel>
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal" Margin="10, 0, 10, 0">
+                                            <TextBlock Text="{Binding Lift}" Style="{StaticResource OverviewCaptionStyle}"/>
+                                            <TextBlock Text="/" Style="{StaticResource OverviewCaptionStyle}"/>
+                                            <TextBlock Text="{Binding Reps}" Style="{StaticResource OverviewCaptionStyle}"/>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                            </ListBox>
+                        </StackPanel>
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+    </Grid>
+
+    <phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar Mode="Minimized"/>
+    </phone:PhoneApplicationPage.ApplicationBar>
+</phone:PhoneApplicationPage>

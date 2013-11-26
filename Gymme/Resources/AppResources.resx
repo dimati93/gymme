@@ -248,4 +248,19 @@
   <data name="Command_Start" xml:space="preserve">
     <value>start</value>
   </data>
+  <data name="ExecutePage_Finish" xml:space="preserve">
+    <value>Finish</value>
+  </data>
+  <data name="ExecutePage_History" xml:space="preserve">
+    <value>History:</value>
+  </data>
+  <data name="ExecutePage_Next" xml:space="preserve">
+    <value>Next</value>
+  </data>
+  <data name="ExecutePage_Previous" xml:space="preserve">
+    <value>Previous</value>
+  </data>
+  <data name="SetControl_Set" xml:space="preserve">
+    <value>Set</value>
+  </data>
 </root>

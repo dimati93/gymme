@@ -241,6 +241,42 @@ namespace Gymme.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Finish.
+        /// </summary>
+        public static string ExecutePage_Finish {
+            get {
+                return ResourceManager.GetString("ExecutePage_Finish", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to History:.
+        /// </summary>
+        public static string ExecutePage_History {
+            get {
+                return ResourceManager.GetString("ExecutePage_History", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Next.
+        /// </summary>
+        public static string ExecutePage_Next {
+            get {
+                return ResourceManager.GetString("ExecutePage_Next", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Previous.
+        /// </summary>
+        public static string ExecutePage_Previous {
+            get {
+                return ResourceManager.GetString("ExecutePage_Previous", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to This operation will delete all information about this exercise in workout. Do you realy want to delete it?.
         /// </summary>
         public static string Exercise_DeleteWarning {
@@ -381,6 +417,15 @@ namespace Gymme.Resources {
         public static string ResourceLanguage {
             get {
                 return ResourceManager.GetString("ResourceLanguage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Set.
+        /// </summary>
+        public static string SetControl_Set {
+            get {
+                return ResourceManager.GetString("SetControl_Set", resourceCulture);
             }
         }
         

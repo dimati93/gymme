@@ -2,6 +2,7 @@
 using System.Windows.Media;
 using Gymme.Data.Models;
 using Gymme.Data.Repository;
+using Gymme.Resources;
 
 namespace Gymme.ViewModel
 {
@@ -74,18 +75,12 @@ namespace Gymme.ViewModel
         {
             switch (status)
             {
-                case TrainingExerciseStatus.Created:
-                    return Color.FromArgb(0xFF, 0xFF, 0xC7, 0x00);
-                case TrainingExerciseStatus.Started:
-                    return Color.FromArgb(0xFF, 0x00, 0xC7, 0xFF);
-                case TrainingExerciseStatus.Skiped:
-                    return Color.FromArgb(0xFF, 0xFF, 0x30, 0x30);
-                case TrainingExerciseStatus.Unfinished:
-                    return Color.FromArgb(0xFF, 0xFF, 0x30, 0x00);
-                case TrainingExerciseStatus.Finished:
-                    return Color.FromArgb(0xFF, 0x00, 0xC7, 0x00);
-                default:
-                    return Colors.LightGray;
+                case TrainingExerciseStatus.Created:    return AccentColors.Default;
+                case TrainingExerciseStatus.Started:    return AccentColors.Started;
+                case TrainingExerciseStatus.Skiped:     return AccentColors.Skiped;
+                case TrainingExerciseStatus.Unfinished: return AccentColors.Missed;
+                case TrainingExerciseStatus.Finished:   return AccentColors.Finished;
+                default:                                return Colors.LightGray;
             }
         }
 

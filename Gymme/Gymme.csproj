@@ -77,6 +77,7 @@
     </Compile>
     <Compile Include="NavigationManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources\AccentColors.cs" />
     <Compile Include="Resources\AppResources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -97,6 +98,8 @@
     <Compile Include="ViewModel\Page\TrainingPageVM.cs" />
     <Compile Include="ViewModel\Page\WorkoutPageVM.cs" />
     <Compile Include="ViewModel\TrainingExerciseVM.cs" />
+    <Compile Include="ViewModel\Upcoming\UpcomingAlgorithmBase.cs" />
+    <Compile Include="ViewModel\Upcoming\UpcomingItem.cs" />
     <Compile Include="ViewModel\WorkoutVM.cs" />
     <Compile Include="View\AddEditChooser.cs" />
     <Compile Include="View\AEWorkout.xaml.cs">
@@ -108,6 +111,12 @@
     <Compile Include="View\Convertors\BoolToVisibilityConverter.cs" />
     <Compile Include="View\AEExercise.xaml.cs">
       <DependentUpon>AEExercise.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ExecutionPage.xaml.cs">
+      <DependentUpon>ExecutionPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\SetControl.xaml.cs">
+      <DependentUpon>SetControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\TrainingPage.xaml.cs">
       <DependentUpon>TrainingPage.xaml</DependentUpon>
@@ -183,6 +192,14 @@
     <Page Include="View\AEExercise.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\ExecutionPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\SetControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\TrainingPage.xaml">
       <Generator>MSBuild:Compile</Generator>
