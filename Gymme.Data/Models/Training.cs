@@ -29,6 +29,8 @@ namespace Gymme.Data.Models
             }
         }
         #endregion
+        
+        private readonly EntitySet<TrainingExercise> _exercises = new EntitySet<TrainingExercise>();
 
         public Training()
         {
@@ -61,7 +63,6 @@ namespace Gymme.Data.Models
                 StatusId = (byte) value;
             }
         }
-        private EntitySet<TrainingExercise> _exercises = new EntitySet<TrainingExercise>();
 
         [Association(Name = "FK_Training_TrExercise", Storage = "_exercises", OtherKey = "IdTraining", DeleteRule = "NO ACTION")]
         public EntitySet<TrainingExercise> Exercises

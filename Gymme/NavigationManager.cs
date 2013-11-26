@@ -14,6 +14,7 @@ namespace Gymme
         private const string WorkoutPagePath = "/View/WorkoutPage.xaml";
         private const string ExercisePagePath = "/View/ExercisePage.xaml";
         private const string TrainingPagePath = "/View/TrainingPage.xaml";
+        private const string ExecutePagePath = "/View/ExecutePage.xaml";
         private const string ExercisesSelectPath = "/View/ExercisesSelectPage.xaml";
 
 
@@ -72,6 +73,12 @@ namespace Gymme
         {
             InitializeNavigation();
             NavigationService.Navigate(BuildUri(TrainingPagePath, TrainingPage.FromWorkoutPage, Id(id)));
+        }
+
+        public static void GotoExecutePage(long id)
+        {
+            InitializeNavigation();
+            NavigationService.Navigate(BuildUri(ExecutePagePath, "none", Id(id)));
         }
 
         public static void GoBack(string parameters = null, int times = 1)

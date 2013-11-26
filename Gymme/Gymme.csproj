@@ -88,6 +88,7 @@
     <Compile Include="ViewModel\AddEdit\AddEditWorkoutVM.cs" />
     <Compile Include="ViewModel\AddEdit\AddEditExerciseVM.cs" />
     <Compile Include="ViewModel\Base\Command.cs" />
+    <Compile Include="ViewModel\Page\ExecutePageVM.cs" />
     <Compile Include="ViewModel\Page\ExercisePageVM.cs" />
     <Compile Include="ViewModel\ExerciseSelectItemVM.cs" />
     <Compile Include="ViewModel\Page\ExercisesSelectVM.cs" />

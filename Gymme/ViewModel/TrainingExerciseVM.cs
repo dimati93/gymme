@@ -1,4 +1,5 @@
-﻿using System.Windows.Input;
+﻿using System;
+using System.Windows.Input;
 using System.Windows.Media;
 using Gymme.Data.Models;
 using Gymme.Data.Repository;
@@ -9,11 +10,13 @@ namespace Gymme.ViewModel
     public class TrainingExerciseVM : Base.ViewModel
     {
         private readonly TrainingExercise _trainingExercise;
+        private readonly Action _updateList;
         private readonly Exercise _exercise;
 
-        public TrainingExerciseVM(TrainingExercise trainingExercise)
+        public TrainingExerciseVM(TrainingExercise trainingExercise, Action updateList)
         {
             _trainingExercise = trainingExercise;
+            _updateList = updateList;
             _exercise = RepoExercise.Instance.FindById(_trainingExercise.IdExecise);
         }
 
@@ -86,12 +89,7 @@ namespace Gymme.ViewModel
 
         private void GotoPageView()
         {
-            _trainingExercise.Status = TrainingExerciseStatus.Started;
-            _trainingExercise.Status = TrainingExerciseStatus.Finished;
-            RepoTrainingExercise.Instance.Save(_trainingExercise);
-
-            Update();
-
+            NavigationManager.GotoExecutePage(_trainingExercise.Id);
         }
 
         private void SkipExercise()
@@ -107,6 +105,7 @@ namespace Gymme.ViewModel
         {
             NotifyPropertyChanged("StatusColor");
             NotifyPropertyChanged("Order");
+            _updateList();
         }
     }
 }

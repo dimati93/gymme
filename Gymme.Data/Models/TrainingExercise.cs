@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data.Linq;
 using System.Data.Linq.Mapping;
 
 namespace Gymme.Data.Models
@@ -18,16 +19,6 @@ namespace Gymme.Data.Models
         #region Common
         private long _id;
 
-        public TrainingExercise()
-        {
-        }
-
-        public TrainingExercise(Exercise exercise)
-        {
-            IdExecise = exercise.Id;
-            Status = TrainingExerciseStatus.Created;
-        }
-
         [Column(AutoSync = AutoSync.OnInsert, IsPrimaryKey = true, IsDbGenerated = true)]
         public long Id
         {
@@ -41,7 +32,20 @@ namespace Gymme.Data.Models
                 IsNew = false;
             }
         }
+
         #endregion
+
+        private readonly EntitySet<Set> _sets = new EntitySet<Set>();
+
+        public TrainingExercise()
+        {
+        }
+
+        public TrainingExercise(Exercise exercise)
+        {
+            IdExecise = exercise.Id;
+            Status = TrainingExerciseStatus.Created;
+        }
 
         [Column]
         public long IdTraining { get; set; }
@@ -77,6 +81,20 @@ namespace Gymme.Data.Models
                         FinishTime = DateTime.Now;
                         break;
                 }
+            }
+        }
+
+        [Association(Name = "FK_Training_TrExercise", Storage = "_sets", OtherKey = "IdTrainingExercise", DeleteRule = "NO ACTION")]
+        public EntitySet<Set> Sets
+        {
+            get
+            {
+                return _sets;
+            }
+
+            private set
+            {
+                _sets.Assign(value);
             }
         }
     }
