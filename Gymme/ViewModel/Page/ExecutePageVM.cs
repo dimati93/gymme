@@ -4,6 +4,7 @@ using System.Windows;
 using System.Windows.Input;
 using Gymme.Data.Models;
 using Gymme.Data.Repository;
+using Gymme.ViewModel.Base;
 
 namespace Gymme.ViewModel.Page
 {
@@ -33,7 +34,7 @@ namespace Gymme.ViewModel.Page
                 
                 if (TrainingExercise.Status == TrainingExerciseStatus.Started)
                 {
-                    NextSet(null);
+                    CurrentSet = _lastSet = NewSet(CurrentSet == null ? 1 : CurrentSet.OrdinalNumber + 1);
                 }
             }
         }
@@ -64,24 +65,24 @@ namespace Gymme.ViewModel.Page
                 _currentSet = value;
                 NotifyPropertyChanged("CurrentSet");
                 NotifyPropertyChanged("NextButtonText");
-                NotifyPropertyChanged("PreviousCommand");
-                NotifyPropertyChanged("NextCommand");
+                PreviousCommand.RaiseCanExecuteChanged();
+                NextCommand.RaiseCanExecuteChanged();
             }
         }
 
-        public ICommand PreviousCommand
+        public Command PreviousCommand
         {
             get
             {
-                return GetOrCreateCommand("PreviousCommand", PreviousSet, o => !IsSkiped && CurrentSet != null && CurrentSet.OrdinalNumber > 1);
+                return GetOrCreateCommand("PreviousCommand", PreviousSet, o => CurrentSet != null && CurrentSet.OrdinalNumber > 1);
             }
         }
 
-        public ICommand NextCommand
+        public Command NextCommand
         {
             get
             {
-                return GetOrCreateCommand("NextCommand", NextSet, o => !IsSkiped && (TrainingExercise.Status != TrainingExerciseStatus.Finished || CurrentSet != _lastSet));
+                return GetOrCreateCommand("NextCommand", NextSet, o => TrainingExercise.Status != TrainingExerciseStatus.Finished || CurrentSet != _lastSet);
             }
         }
 

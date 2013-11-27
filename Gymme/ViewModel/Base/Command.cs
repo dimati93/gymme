@@ -55,5 +55,13 @@ namespace Gymme.ViewModel.Base
         }
 
         #endregion
+
+        public void RaiseCanExecuteChanged()
+        {
+            if (CanExecuteChanged != null)
+            {
+                CanExecuteChanged(this, new EventArgs());
+            }
+        }
     }
 }
