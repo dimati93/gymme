@@ -151,6 +151,15 @@ namespace Gymme.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to finish.
+        /// </summary>
+        public static string Command_Finish {
+            get {
+                return ResourceManager.GetString("Command_Finish", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to new.
         /// </summary>
         public static string Command_New {
@@ -241,7 +250,34 @@ namespace Gymme.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Finish.
+        ///   Looks up a localized string similar to Current exercise progress will be lost. Continue?.
+        /// </summary>
+        public static string Execute_SkipWarning {
+            get {
+                return ResourceManager.GetString("Execute_SkipWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Skip exercise.
+        /// </summary>
+        public static string Execute_SkipWarningTitle {
+            get {
+                return ResourceManager.GetString("Execute_SkipWarningTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Done!.
+        /// </summary>
+        public static string ExecutePage_Done {
+            get {
+                return ResourceManager.GetString("ExecutePage_Done", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to finish.
         /// </summary>
         public static string ExecutePage_Finish {
             get {
@@ -273,6 +309,15 @@ namespace Gymme.Resources {
         public static string ExecutePage_Previous {
             get {
                 return ResourceManager.GetString("ExecutePage_Previous", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Exercise skiped. Use application menu to start..
+        /// </summary>
+        public static string ExecutePage_SkipedHint {
+            get {
+                return ResourceManager.GetString("ExecutePage_SkipedHint", resourceCulture);
             }
         }
         
@@ -426,6 +471,24 @@ namespace Gymme.Resources {
         public static string SetControl_Set {
             get {
                 return ResourceManager.GetString("SetControl_Set", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You will delete current training progress. Continue?.
+        /// </summary>
+        public static string Training_DeleteWarning {
+            get {
+                return ResourceManager.GetString("Training_DeleteWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete training.
+        /// </summary>
+        public static string Training_DeleteWarningTitle {
+            get {
+                return ResourceManager.GetString("Training_DeleteWarningTitle", resourceCulture);
             }
         }
         

@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Data.Linq;
 using System.Data.Linq.Mapping;
+using System.Linq;
+using Gymme.Data.Repository;
+
 namespace Gymme.Data.Models
 {
     public enum TrainingStatus : byte
@@ -30,6 +33,8 @@ namespace Gymme.Data.Models
         }
         #endregion
 
+        private readonly EntitySet<TrainingExercise> _exercises = new EntitySet<TrainingExercise>();
+
         public Training()
         {
         }
@@ -54,16 +59,31 @@ namespace Gymme.Data.Models
         {
             get
             {
-                return (TrainingStatus) StatusId;
+                return (TrainingStatus)StatusId;
             }
             set
             {
-                StatusId = (byte) value;
+                StatusId = (byte)value;
+                switch (value)
+                {
+                    case TrainingStatus.Finished:
+                        foreach (var exercise in Exercises.Where(x => x.Status == TrainingExerciseStatus.Started))
+                        {
+                            exercise.Status = TrainingExerciseStatus.Unfinished;
+                            RepoTrainingExercise.Instance.Save(exercise);
+                        }
+
+                        foreach (var exercise in Exercises.Where(x => x.Status == TrainingExerciseStatus.Created))
+                        {
+                            exercise.Status = TrainingExerciseStatus.Skiped;
+                            RepoTrainingExercise.Instance.Save(exercise);
+                        }
+                        break;
+                }
             }
         }
-        private EntitySet<TrainingExercise> _exercises = new EntitySet<TrainingExercise>();
 
-        [Association(Name = "FK_Training_TrExercise", Storage = "_exercises", OtherKey = "IdTraining", DeleteRule = "NO ACTION")]
+        [Association(Name = "FK_Training_TrExercise", Storage = "_exercises", OtherKey = "IdTraining", DeleteRule = "CASCADE")]
         public EntitySet<TrainingExercise> Exercises
         {
             get

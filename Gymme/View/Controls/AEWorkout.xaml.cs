@@ -4,7 +4,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 
-namespace Gymme.View
+namespace Gymme.View.Controls
 {
     public partial class AEWorkout : UserControl, IAEView
     {

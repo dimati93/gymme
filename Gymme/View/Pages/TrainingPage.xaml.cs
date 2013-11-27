@@ -8,11 +8,12 @@ using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using GestureEventArgs = System.Windows.Input.GestureEventArgs;
 
-namespace Gymme.View
+namespace Gymme.View.Pages
 {
     public partial class TrainingPage : PhoneApplicationPage
     {
         public const string FromWorkoutPage = "fromWorkoutPage";
+        public const string GobBackUpdate = "update";
 
         private TrainingPageVM _viewModel;
 
@@ -25,14 +26,20 @@ namespace Gymme.View
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            string target;
-            if (!NavigationContext.QueryString.TryGetValue("navtgt", out target))
+
+            if (NavigationManager.GoBackParams == GobBackUpdate)
             {
                 if (_viewModel != null)
                 {
                     _viewModel.Update();
                     return;
                 }
+            }
+
+            string target;
+            if (!NavigationContext.QueryString.TryGetValue("navtgt", out target))
+            {
+                NavigationManager.GoBack();
             }
 
             string id;
@@ -52,6 +59,8 @@ namespace Gymme.View
             {
                 case FromWorkoutPage:
                     return new TrainingPageVM(RepoWorkout.Instance.FindById(id));
+                case GobBackUpdate:
+                    return new TrainingPageVM(RepoTraining.Instance.FindById(id));
                 default:
                     throw new InvalidOperationException();
             }
@@ -59,18 +68,31 @@ namespace Gymme.View
 
         private void InitializeAppMenu()
         {
-            //var addExercise = new ApplicationBarIconButton
-            //    {
-            //        IconUri = new Uri("/Assets/AppBar/appbar.add.rest.png", UriKind.Relative),
-            //        Text = AppResources.Command_Add
-            //    };
+            var finishExercise = new ApplicationBarIconButton
+            {
+                IconUri = new Uri("/Assets/AppBar/appbar.check.rest.png", UriKind.Relative),
+                Text = AppResources.Command_Finish
+            };
 
-            //addExercise.Click += AddExercise_Click;
-            //ApplicationBar.Buttons.Add(addExercise);
+            finishExercise.Click += Finish_Click;
+            ApplicationBar.Buttons.Add(finishExercise);
 
-            var finishTrainingMenuItem = new ApplicationBarMenuItem(AppResources.Training_Finish);
-            finishTrainingMenuItem.Click += Finish_Click;
-            ApplicationBar.MenuItems.Add(finishTrainingMenuItem);
+            var skipExercise = new ApplicationBarIconButton
+            {
+                IconUri = new Uri("/Assets/AppBar/appbar.stop.rest.png", UriKind.Relative),
+                Text = AppResources.Command_Delete
+            };
+
+            skipExercise.Click += Delete_Click;
+            ApplicationBar.Buttons.Add(skipExercise);
+        }
+
+        private void Delete_Click(object sender, EventArgs e)
+        {
+            if (_viewModel.Delete())
+            {
+                NavigationManager.GoBack(MainPage.TargetUpcomingList);
+            }
         }
 
         private void Finish_Click(object sender, EventArgs e)

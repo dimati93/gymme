@@ -88,6 +88,7 @@
     <Compile Include="ViewModel\AddEdit\AddEditWorkoutVM.cs" />
     <Compile Include="ViewModel\AddEdit\AddEditExerciseVM.cs" />
     <Compile Include="ViewModel\Base\Command.cs" />
+    <Compile Include="ViewModel\Page\ExecutePageVM.cs" />
     <Compile Include="ViewModel\Page\ExercisePageVM.cs" />
     <Compile Include="ViewModel\ExerciseSelectItemVM.cs" />
     <Compile Include="ViewModel\Page\ExercisesSelectVM.cs" />
@@ -101,34 +102,34 @@
     <Compile Include="ViewModel\Upcoming\UpcomingAlgorithmBase.cs" />
     <Compile Include="ViewModel\Upcoming\UpcomingItem.cs" />
     <Compile Include="ViewModel\WorkoutVM.cs" />
-    <Compile Include="View\AddEditChooser.cs" />
-    <Compile Include="View\AEWorkout.xaml.cs">
+    <Compile Include="View\Controls\AddEditChooser.cs" />
+    <Compile Include="View\Controls\AEWorkout.xaml.cs">
       <DependentUpon>AEWorkout.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\AddEditPage.xaml.cs">
+    <Compile Include="View\Pages\AddEditPage.xaml.cs">
       <DependentUpon>AddEditPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Convertors\BoolToVisibilityConverter.cs" />
-    <Compile Include="View\AEExercise.xaml.cs">
+    <Compile Include="View\Controls\AEExercise.xaml.cs">
       <DependentUpon>AEExercise.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\ExecutionPage.xaml.cs">
+    <Compile Include="View\Pages\ExecutionPage.xaml.cs">
       <DependentUpon>ExecutionPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\SetControl.xaml.cs">
+    <Compile Include="View\Controls\SetControl.xaml.cs">
       <DependentUpon>SetControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\TrainingPage.xaml.cs">
+    <Compile Include="View\Pages\TrainingPage.xaml.cs">
       <DependentUpon>TrainingPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\ExercisePage.xaml.cs">
+    <Compile Include="View\Pages\ExercisePage.xaml.cs">
       <DependentUpon>ExercisePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\ExercisesSelectPage.xaml.cs">
+    <Compile Include="View\Pages\ExercisesSelectPage.xaml.cs">
       <DependentUpon>ExercisesSelectPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\IAEView.cs" />
-    <Compile Include="View\WorkoutPage.xaml.cs">
+    <Compile Include="View\Controls\IAEView.cs" />
+    <Compile Include="View\Pages\WorkoutPage.xaml.cs">
       <DependentUpon>WorkoutPage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
@@ -141,6 +142,9 @@
     <Content Include="Assets\AppBar\appbar.add.rest.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\AppBar\appbar.check.rest.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets\AppBar\appbar.delete.rest.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -148,6 +152,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\AppBar\appbar.save.rest.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\AppBar\appbar.stop.rest.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\AppBar\appbar.transport.play.rest.png">
@@ -181,39 +188,39 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\AEWorkout.xaml">
+    <Page Include="View\Controls\AEWorkout.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\AddEditPage.xaml">
+    <Page Include="View\Pages\AddEditPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\AEExercise.xaml">
+    <Page Include="View\Controls\AEExercise.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="View\ExecutionPage.xaml">
+    <Page Include="View\Pages\ExecutionPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="View\SetControl.xaml">
+    <Page Include="View\Controls\SetControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\TrainingPage.xaml">
+    <Page Include="View\Pages\TrainingPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="View\ExercisePage.xaml">
+    <Page Include="View\Pages\ExercisePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\ExercisesSelectPage.xaml">
+    <Page Include="View\Pages\ExercisesSelectPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\WorkoutPage.xaml">
+    <Page Include="View\Pages\WorkoutPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -231,6 +238,7 @@
       <Name>Gymme.Data</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.$(TargetFrameworkProfile).Overrides.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

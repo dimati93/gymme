@@ -1,6 +1,4 @@
-﻿using System.Windows.Navigation;
-
-namespace Gymme.View
+﻿namespace Gymme.View.Controls
 {
     public static class AddEditChooser
     {

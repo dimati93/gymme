@@ -249,7 +249,7 @@
     <value>start</value>
   </data>
   <data name="ExecutePage_Finish" xml:space="preserve">
-    <value>Finish</value>
+    <value>finish</value>
   </data>
   <data name="ExecutePage_History" xml:space="preserve">
     <value>History:</value>
@@ -262,5 +262,26 @@
   </data>
   <data name="SetControl_Set" xml:space="preserve">
     <value>Set</value>
+  </data>
+  <data name="ExecutePage_Done" xml:space="preserve">
+    <value>Done!</value>
+  </data>
+  <data name="ExecutePage_SkipedHint" xml:space="preserve">
+    <value>Exercise skiped. Use application menu to start.</value>
+  </data>
+  <data name="Command_Finish" xml:space="preserve">
+    <value>finish</value>
+  </data>
+  <data name="Execute_SkipWarning" xml:space="preserve">
+    <value>Current exercise progress will be lost. Continue?</value>
+  </data>
+  <data name="Execute_SkipWarningTitle" xml:space="preserve">
+    <value>Skip exercise</value>
+  </data>
+  <data name="Training_DeleteWarning" xml:space="preserve">
+    <value>You will delete current training progress. Continue?</value>
+  </data>
+  <data name="Training_DeleteWarningTitle" xml:space="preserve">
+    <value>Delete training</value>
   </data>
 </root>

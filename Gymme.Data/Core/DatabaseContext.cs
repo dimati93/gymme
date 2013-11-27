@@ -98,5 +98,13 @@ namespace Gymme.Data.Core
                 return GetTable<TrainingExercise>();
             }
         }
+        
+        public Table<Set> Set
+        {
+            get
+            {
+                return GetTable<Set>();
+            }
+        }
     }
 }

@@ -3,22 +3,23 @@ using System.Linq;
 using Gymme.View;
 using System;
 using System.Windows.Navigation;
-
-using AEC = Gymme.View.AddEditChooser;
+using Gymme.View.Pages;
+using AEC = Gymme.View.Controls.AddEditChooser;
 
 namespace Gymme
 {
     public static class NavigationManager
     {
-        private const string AddEditPagePath = "/View/AddEditPage.xaml";
-        private const string WorkoutPagePath = "/View/WorkoutPage.xaml";
-        private const string ExercisePagePath = "/View/ExercisePage.xaml";
-        private const string TrainingPagePath = "/View/TrainingPage.xaml";
-        private const string ExercisesSelectPath = "/View/ExercisesSelectPage.xaml";
-
+        private const string AddEditPagePath = "/View/Pages/AddEditPage.xaml";
+        private const string WorkoutPagePath = "/View/Pages/WorkoutPage.xaml";
+        private const string ExercisePagePath = "/View/Pages/ExercisePage.xaml";
+        private const string TrainingPagePath = "/View/Pages/TrainingPage.xaml";
+        private const string ExecutionPagePath = "/View/Pages/ExecutionPage.xaml";
+        private const string ExercisesSelectPath = "/View/Pages/ExercisesSelectPage.xaml";
 
         private static NavigationService NavigationService;
-        private static string _gobackParams;
+
+        public static string GoBackParams { get; set; }
 
         public static void GotoAddWorkout()
         {
@@ -74,6 +75,12 @@ namespace Gymme
             NavigationService.Navigate(BuildUri(TrainingPagePath, TrainingPage.FromWorkoutPage, Id(id)));
         }
 
+        public static void GotoExecutePage(long id)
+        {
+            InitializeNavigation();
+            NavigationService.Navigate(BuildUri(ExecutionPagePath, "none", Id(id)));
+        }
+
         public static void GoBack(string parameters = null, int times = 1)
         {
             while (times > 1 && NavigationService.BackStack.Any())
@@ -87,7 +94,7 @@ namespace Gymme
                 NavigationService.GoBack();
             }
 
-            _gobackParams = parameters ?? string.Empty;
+            GoBackParams = parameters ?? string.Empty;
         }
 
         public static void SetNavigationService(NavigationService ns)
@@ -100,14 +107,9 @@ namespace Gymme
             NavigationService = ns;
         }
 
-        public static string GetGoBackParams()
-        {
-            return _gobackParams;
-        }
-
         private static void InitializeNavigation()
         {
-            _gobackParams = null;
+            GoBackParams = null;
         }
 
         #region BuildUri
