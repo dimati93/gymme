@@ -1,4 +1,4 @@
-﻿namespace Gymme.View
+﻿namespace Gymme.View.Controls
 {
     public interface IAEView
     {

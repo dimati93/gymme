@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.Windows;
 using Gymme.Data.Models;
 using Gymme.Data.Repository;
 
@@ -34,7 +35,7 @@ namespace Gymme.ViewModel.Page
         private void Initialize(Training training)
         {
             _training = training;
-            _workout = RepoWorkout.Instance.FindById(_training.IdWorkout);
+            _workout = RepoWorkout.Instance.FindById(Training.IdWorkout);
 
             Exercises = new ObservableCollection<TrainingExerciseVM>();
             Update();
@@ -48,19 +49,41 @@ namespace Gymme.ViewModel.Page
 
         public ObservableCollection<TrainingExerciseVM> Exercises { get; private set; }
 
+        public Training Training
+        {
+            get { return _training; }
+        }
+
         public void Update()
         {
             Exercises.Clear();
-            foreach (var trainingExercise in _training.Exercises)
+            Training.Exercises.Load();
+            foreach (var trainingExercise in Training.Exercises)
             {
-                Exercises.Add(new TrainingExerciseVM(trainingExercise));
+                Exercises.Add(new TrainingExerciseVM(trainingExercise, () => NotifyPropertyChanged("Exercises")));
             }
+
+            NotifyPropertyChanged("Exercises");
         }
 
         public void Finish()
         {
-            _training.Status = TrainingStatus.Finished;
-            RepoTraining.Instance.Save(_training);
+            Training.Status = TrainingStatus.Finished;
+            RepoTraining.Instance.Save(Training);
+        }
+
+        public bool Delete()
+        {
+            MessageBoxResult result = MessageBox.Show(Resources.AppResources.Training_DeleteWarning,
+                                                      Resources.AppResources.Training_DeleteWarningTitle,
+                                                      MessageBoxButton.OKCancel);
+            if (result == MessageBoxResult.OK)
+            {
+                RepoTraining.Instance.Delete(Training);
+                return true;
+            }
+
+            return false;
         }
     }
 }

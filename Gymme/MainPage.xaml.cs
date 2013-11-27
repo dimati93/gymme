@@ -27,7 +27,7 @@ namespace Gymme
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             App.ViewModel.LoadData();
-            string target = NavigationManager.GetGoBackParams();
+            string target = NavigationManager.GoBackParams;
             if (target != null)
             {
                 switch (target)

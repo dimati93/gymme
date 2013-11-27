@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Windows;
-using System.Windows.Data;
 using System.Windows.Navigation;
 using Gymme.Resources;
 using Gymme.ViewModel.Page;
@@ -8,7 +7,7 @@ using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using GestureEventArgs = System.Windows.Input.GestureEventArgs;
 
-namespace Gymme.View
+namespace Gymme.View.Pages
 {
     public partial class WorkoutPage : PhoneApplicationPage
     {

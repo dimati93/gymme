@@ -84,7 +84,7 @@ namespace Gymme.Data.Models
             }
         }
 
-        [Association(Name = "FK_Training_TrExercise", Storage = "_sets", OtherKey = "IdTrainingExercise", DeleteRule = "NO ACTION")]
+        [Association(Name = "FK_Training_TrExercise", Storage = "_sets", OtherKey = "IdTrainingExercise", DeleteRule = "CASCADE")]
         public EntitySet<Set> Sets
         {
             get

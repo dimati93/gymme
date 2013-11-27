@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
 using Gymme.Data.Models;
@@ -47,13 +48,13 @@ namespace Gymme.ViewModel
         {
             get
             {
-                return GetOrCreateCommand("SkipCommand", SkipExercise);
+                return GetOrCreateCommand("SkipCommand", SkipExercisePrompt);
             }
         }
 
-        public byte Order { get { return GetOrder(_trainingExercise.Status); }}
+        public byte Order { get { return GetOrder(_trainingExercise.Status); } }
 
-        public Brush StatusColor { get { return new SolidColorBrush(GetStatusColor(_trainingExercise.Status)); }}
+        public Brush StatusColor { get { return new SolidColorBrush(GetStatusColor(_trainingExercise.Status)); } }
 
         private byte GetOrder(TrainingExerciseStatus status)
         {
@@ -78,12 +79,12 @@ namespace Gymme.ViewModel
         {
             switch (status)
             {
-                case TrainingExerciseStatus.Created:    return AccentColors.Default;
-                case TrainingExerciseStatus.Started:    return AccentColors.Started;
-                case TrainingExerciseStatus.Skiped:     return AccentColors.Skiped;
+                case TrainingExerciseStatus.Created: return AccentColors.Default;
+                case TrainingExerciseStatus.Started: return AccentColors.Started;
+                case TrainingExerciseStatus.Skiped: return AccentColors.Skiped;
                 case TrainingExerciseStatus.Unfinished: return AccentColors.Missed;
-                case TrainingExerciseStatus.Finished:   return AccentColors.Finished;
-                default:                                return Colors.LightGray;
+                case TrainingExerciseStatus.Finished: return AccentColors.Finished;
+                default: return Colors.LightGray;
             }
         }
 
@@ -92,6 +93,23 @@ namespace Gymme.ViewModel
             NavigationManager.GotoExecutePage(_trainingExercise.Id);
         }
 
+        private void SkipExercisePrompt()
+        {
+            if (_trainingExercise.Status == TrainingExerciseStatus.Created)
+            {
+                SkipExercise();
+            }
+            else
+            {
+                MessageBoxResult result = MessageBox.Show(AppResources.Execute_SkipWarning,
+                                                      AppResources.Execute_SkipWarningTitle,
+                                                      MessageBoxButton.OKCancel);
+                if (result == MessageBoxResult.OK)
+                {
+                    SkipExercise();
+                }
+            }
+        }
         private void SkipExercise()
         {
             _trainingExercise.Status = TrainingExerciseStatus.Skiped;

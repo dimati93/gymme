@@ -249,7 +249,7 @@
     <value>начать</value>
   </data>
   <data name="ExecutePage_Finish" xml:space="preserve">
-    <value>Закончить</value>
+    <value>закончить</value>
   </data>
   <data name="ExecutePage_History" xml:space="preserve">
     <value>История:</value>
@@ -262,5 +262,26 @@
   </data>
   <data name="SetControl_Set" xml:space="preserve">
     <value>Подход</value>
+  </data>
+  <data name="ExecutePage_Done" xml:space="preserve">
+    <value>Выполнено!</value>
+  </data>
+  <data name="ExecutePage_SkipedHint" xml:space="preserve">
+    <value>Упражнение пропущено. Используйте меню что бы начать.</value>
+  </data>
+  <data name="Command_Finish" xml:space="preserve">
+    <value>закончить</value>
+  </data>
+  <data name="Execute_SkipWarning" xml:space="preserve">
+    <value>Информация о текущем выполнении упражнения будет утеряна. Продолжить? </value>
+  </data>
+  <data name="Execute_SkipWarningTitle" xml:space="preserve">
+    <value>Пропустить упражнение</value>
+  </data>
+  <data name="Training_DeleteWarning" xml:space="preserve">
+    <value>Вы удалите весь прогресс текущей тренировки. Продолжить?</value>
+  </data>
+  <data name="Training_DeleteWarningTitle" xml:space="preserve">
+    <value>Удаление тренировки</value>
   </data>
 </root>

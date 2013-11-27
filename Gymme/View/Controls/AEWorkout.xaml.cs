@@ -4,13 +4,13 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 
-namespace Gymme.View
+namespace Gymme.View.Controls
 {
-    public partial class AEExercise : UserControl, IAEView
+    public partial class AEWorkout : UserControl, IAEView
     {
         private Dictionary<Control, DependencyProperty> _bindingElements;
 
-        public AEExercise()
+        public AEWorkout()
         {
             InitializeComponent();
             Loaded += (o, e) => RegisterBindingElements();
@@ -38,7 +38,7 @@ namespace Gymme.View
             _bindingElements = new Dictionary<Control, DependencyProperty>
             {
                 {tbName, TextBox.TextProperty},
-                {tbCategory, TextBox.TextProperty}
+                {tbNote, TextBox.TextProperty}
             };
         }
     }

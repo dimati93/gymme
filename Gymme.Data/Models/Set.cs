@@ -3,6 +3,7 @@ using System.Data.Linq.Mapping;
 
 namespace Gymme.Data.Models
 {
+    [Table]
     public class Set : Model
     {
         #region Common
@@ -30,10 +31,13 @@ namespace Gymme.Data.Models
         public float Lift { get; set; }
 
         [Column]
-        public int Reps { get; set; }
+        public float Reps { get; set; }
 
         [Column]
         public DateTime StartTime { get; set; }
+        
+        [Column]
+        public DateTime? EndTime { get; set; }
 
         [Column]
         public int OrdinalNumber { get; set; }

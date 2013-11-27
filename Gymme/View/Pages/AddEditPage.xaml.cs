@@ -2,14 +2,12 @@
 using System.Windows.Navigation;
 using Gymme.Data.Repository;
 using Gymme.Resources;
-using Microsoft.Phone.Controls;
-
+using Gymme.View.Controls;
 using Gymme.ViewModel.AddEdit;
+using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 
-using AEC = Gymme.View.AddEditChooser;
-
-namespace Gymme.View
+namespace Gymme.View.Pages
 {
     public partial class AddEditPage : PhoneApplicationPage
     {
@@ -45,14 +43,14 @@ namespace Gymme.View
         {
             switch (target)
             {
-                case AEC.Variant.AddWorkout: 
+                case AddEditChooser.Variant.AddWorkout: 
                     return new AddEditWorkoutVM 
                     { 
                         Control = new AEWorkout(),
                         BackTarget = MainPage.TargetWorkoutsList 
                     };
-                case AEC.Variant.AddExercise:
-                    return new AddEditExerciseVM(long.Parse(NavigationContext.QueryString[AEC.Param.WorkoutId]))
+                case AddEditChooser.Variant.AddExercise:
+                    return new AddEditExerciseVM(long.Parse(NavigationContext.QueryString[AddEditChooser.Param.WorkoutId]))
                     {
                         Control = new AEExercise(),
                         BackCount = 2
@@ -67,22 +65,22 @@ namespace Gymme.View
         {
             switch (target)
             {
-                case AEC.Variant.EditWorkout: 
+                case AddEditChooser.Variant.EditWorkout: 
                     return new AddEditWorkoutVM(id)
                         {
                             Control = new AEWorkout()
                         };
-                case AEC.Variant.AddExercise:
+                case AddEditChooser.Variant.AddExercise:
                     return new AddEditExerciseVM
                         (
-                            long.Parse(NavigationContext.QueryString[AEC.Param.WorkoutId]),
+                            long.Parse(NavigationContext.QueryString[AddEditChooser.Param.WorkoutId]),
                             Gymme.Resources.ExerciseData.Instance.PersetExercises[(int)id]
                         )
                         {
                             Control = new AEExercise(),
                             BackCount = 2
                         };
-                case AEC.Variant.EditExercise:
+                case AddEditChooser.Variant.EditExercise:
                     return new AddEditExerciseVM
                         (
                             RepoExercise.Instance.FindById(id)

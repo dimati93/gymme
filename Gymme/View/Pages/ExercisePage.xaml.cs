@@ -5,7 +5,7 @@ using Gymme.ViewModel.Page;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 
-namespace Gymme.View
+namespace Gymme.View.Pages
 {
     public partial class ExercisePage : PhoneApplicationPage
     {

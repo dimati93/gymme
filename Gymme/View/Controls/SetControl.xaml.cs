@@ -4,16 +4,14 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 
-namespace Gymme.View
+namespace Gymme.View.Controls
 {
-    public partial class AEWorkout : UserControl, IAEView
+    public partial class SetControl : UserControl
     {
         private Dictionary<Control, DependencyProperty> _bindingElements;
-
-        public AEWorkout()
+        public SetControl()
         {
-            InitializeComponent();
-            Loaded += (o, e) => RegisterBindingElements();
+            InitializeComponent(); Loaded += (o, e) => RegisterBindingElements();
         }
 
         public void UpdateDataSources()
@@ -37,9 +35,14 @@ namespace Gymme.View
         {
             _bindingElements = new Dictionary<Control, DependencyProperty>
             {
-                {tbName, TextBox.TextProperty},
-                {tbNote, TextBox.TextProperty}
+                {tbLift, TextBox.TextProperty},
+                {tbReps, TextBox.TextProperty}
             };
+        }
+        private void InputBox_GotFocus(object sender, RoutedEventArgs e)
+        {
+            TextBox box = (TextBox) sender;
+            box.SelectAll();
         }
     }
 }
