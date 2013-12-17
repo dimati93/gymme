@@ -22,5 +22,10 @@ namespace Gymme.Data.Repository
         {
             return Table.Any(x => x.Id == id);
         }
+
+        public Training FindLastByWorkoutId(long id)
+        {
+            return Table.Where(x => x.IdWorkout == id).OrderByDescending(x => x.StartTime).FirstOrDefault();
+        }
     }
 }

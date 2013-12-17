@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Windows;
 using System.Windows.Threading;
 using Gymme.Data.Models;
@@ -18,13 +21,29 @@ namespace Gymme.ViewModel.Page
         public TrainingPageVM(Workout workout)
             : this()
         {
+            Training lastTraining = RepoTraining.Instance.FindLastByWorkoutId(workout.Id);
             Training training = new Training(workout);
             RepoTraining.Instance.Save(training);
 
-            foreach (var exercise in workout.Exercises)
+            IEnumerable<long> exIds = workout.Exercises.Select(x => x.Id).ToArray();
+
+            if (lastTraining != null)
+            {
+                exIds = lastTraining.Exercises.OrderBy(x => x.Id)
+                            .ThenBy(x => x.FinishTime.HasValue)
+                            .ThenByDescending(x => x.FinishTime)
+                            .Select(x => x.IdExecise)
+                            .Intersect(exIds)
+                            .Union(exIds)
+                            .Distinct()
+                            .ToArray();
+            }
+
+            foreach (var exercise in exIds)
             {
                 training.Exercises.Add(new TrainingExercise(exercise));
             }
+
             Data.Core.DatabaseContext.Instance.SubmitChanges();
 
             Initialize(training);
@@ -47,6 +66,7 @@ namespace Gymme.ViewModel.Page
 
         private void OnTimerTick(object sender, EventArgs args)
         {
+            // ReSharper disable once PossibleLossOfFraction (I need only integer part of the secconds)
             Time = _training != null ? TimeSpan.FromSeconds((DateTime.Now - _training.StartTime).Ticks / TimeSpan.TicksPerSecond) : TimeSpan.Zero;
         }
 

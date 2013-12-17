@@ -41,9 +41,9 @@ namespace Gymme.Data.Models
         {
         }
 
-        public TrainingExercise(Exercise exercise)
+        public TrainingExercise(long exerciseId)
         {
-            IdExecise = exercise.Id;
+            IdExecise = exerciseId;
             Status = TrainingExerciseStatus.Created;
         }
 
