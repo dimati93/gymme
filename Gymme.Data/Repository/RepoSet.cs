@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using Gymme.Data.Models;
 
 namespace Gymme.Data.Repository
@@ -21,6 +22,11 @@ namespace Gymme.Data.Repository
         public override bool Exists(long id)
         {
             return Table.Any(x => x.Id == id);
+        }
+
+        public IEnumerable<Set> FindAllForExecuteId(long id)
+        {
+            return Table.Where(x => x.IdTrainingExercise == id);
         }
     }
 }

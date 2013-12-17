@@ -1,17 +1,22 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Windows;
+using System.Windows.Threading;
 using Gymme.Data.Models;
 using Gymme.Data.Repository;
 
 namespace Gymme.ViewModel.Page
 {
-    public class TrainingPageVM : Base.ViewModel
+    public class TrainingPageVM : Base.ViewModel, IDisposable
     {
+        private readonly DispatcherTimer _timer;
+
         private Training _training;
         private Workout _workout;
+        private TimeSpan _time;
 
         public TrainingPageVM(Workout workout)
+            : this()
         {
             Training training = new Training(workout);
             RepoTraining.Instance.Save(training);
@@ -27,9 +32,22 @@ namespace Gymme.ViewModel.Page
         }
 
         public TrainingPageVM(Training training)
+            : this()
         {
             Initialize(training);
             BackCount = 1;
+        }
+
+        private TrainingPageVM()
+        {
+            _timer = new DispatcherTimer { Interval = TimeSpan.FromSeconds(0.04) };
+            _timer.Tick += OnTimerTick;
+            _timer.Start();
+        }
+
+        private void OnTimerTick(object sender, EventArgs args)
+        {
+            Time = _training != null ? TimeSpan.FromSeconds((DateTime.Now - _training.StartTime).Ticks / TimeSpan.TicksPerSecond) : TimeSpan.Zero;
         }
 
         private void Initialize(Training training)
@@ -45,7 +63,18 @@ namespace Gymme.ViewModel.Page
 
         public string Title { get { return _workout.Title; } }
 
-        public TimeSpan Time { get { return new TimeSpan(0, 10, 29); } }
+        public TimeSpan Time
+        {
+            get { return _time; }
+            set 
+            {
+                if (_time != value)
+                {
+                    _time = value;
+                    NotifyPropertyChanged("Time"); 
+                }
+            }
+        }
 
         public ObservableCollection<TrainingExerciseVM> Exercises { get; private set; }
 
@@ -84,6 +113,11 @@ namespace Gymme.ViewModel.Page
             }
 
             return false;
+        }
+
+        public void Dispose()
+        {
+            _timer.Stop();
         }
     }
 }
