@@ -12,7 +12,9 @@ namespace Gymme.View.Pages
 {
     public partial class TrainingPage : PhoneApplicationPage
     {
-        public const string FromWorkoutPage = "fromWorkoutPage";
+        public const string FromWorkoutStart = "fromWorkoutStart";
+        public const string FromWorkoutContinue = "fromWorkoutContinue";
+        public const string ByTraining = "byTraining";
         public const string GobBackUpdate = "update";
 
         private TrainingPageVM _viewModel;
@@ -57,10 +59,13 @@ namespace Gymme.View.Pages
         {
             switch (target)
             {
-                case FromWorkoutPage:
-                    return new TrainingPageVM(RepoWorkout.Instance.FindById(id));
+                case FromWorkoutStart:
+                    return new TrainingPageVM(RepoWorkout.Instance.FindById(id)) { BackCount = 1 };
+                case ByTraining:
                 case GobBackUpdate:
-                    return new TrainingPageVM(RepoTraining.Instance.FindById(id));
+                    return new TrainingPageVM(RepoTraining.Instance.FindById(id)) { BackCount = 1 };
+                case FromWorkoutContinue:
+                    return new TrainingPageVM(RepoTraining.Instance.FindById(id)) { BackCount = 2 };
                 default:
                     throw new InvalidOperationException();
             }

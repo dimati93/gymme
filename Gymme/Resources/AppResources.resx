@@ -284,4 +284,16 @@
   <data name="Training_DeleteWarningTitle" xml:space="preserve">
     <value>Delete training</value>
   </data>
+  <data name="Training_Started" xml:space="preserve">
+    <value>started</value>
+  </data>
+  <data name="Up_At" xml:space="preserve">
+    <value>at</value>
+  </data>
+  <data name="Up_Today" xml:space="preserve">
+    <value>today</value>
+  </data>
+  <data name="Up_Yday" xml:space="preserve">
+    <value>yesterday</value>
+  </data>
 </root>

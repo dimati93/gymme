@@ -35,9 +35,19 @@
                              Visibility="{Binding IsUpcomingEmpty, Converter={StaticResource ReverceVisibilityConverter}}">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
-                                <StackPanel Margin="0,-6,0,12">
-                                    <TextBlock Text="{Binding LineOne}" TextWrapping="Wrap" Style="{StaticResource PhoneTextExtraLargeStyle}" FontSize="{StaticResource PhoneFontSizeExtraLarge}"/>
-                                </StackPanel>
+                                <Grid Background="#0AFFFFFF" Hold="Workout_Hold">
+                                   <StackPanel Orientation="Horizontal" Margin="12,2,0,4" Height="105">
+                                        <Border BorderThickness="0" Width="17" Height="99">
+                                            <Border.Background>
+                                                <SolidColorBrush Color="{Binding Accent}"/>
+                                            </Border.Background> 
+                                        </Border>
+                                        <StackPanel Margin="0,-7,0,0">
+                                            <TextBlock Text="{Binding Title}" TextWrapping="Wrap" Margin="10,0" Style="{StaticResource PhoneTextExtraLargeStyle}" FontSize="{StaticResource PhoneFontSizeLarge}"/>
+                                            <TextBlock Text="{Binding Description}" TextWrapping="Wrap" Margin="10,-2,10,0" Style="{StaticResource PhoneTextSubtleStyle}" />
+                                        </StackPanel>
+                                    </StackPanel>
+                                </Grid>
                             </DataTemplate>
                         </ListBox.ItemTemplate>
                     </ListBox>

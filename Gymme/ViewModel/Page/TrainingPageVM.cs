@@ -45,16 +45,13 @@ namespace Gymme.ViewModel.Page
             }
 
             Data.Core.DatabaseContext.Instance.SubmitChanges();
-
             Initialize(training);
-            BackCount = 2;
         }
 
         public TrainingPageVM(Training training)
             : this()
         {
             Initialize(training);
-            BackCount = 1;
         }
 
         private TrainingPageVM()

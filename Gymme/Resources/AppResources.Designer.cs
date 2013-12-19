@@ -511,11 +511,47 @@ namespace Gymme.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to started.
+        /// </summary>
+        public static string Training_Started {
+            get {
+                return ResourceManager.GetString("Training_Started", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Time:.
         /// </summary>
         public static string Training_Time {
             get {
                 return ResourceManager.GetString("Training_Time", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to at.
+        /// </summary>
+        public static string Up_At {
+            get {
+                return ResourceManager.GetString("Up_At", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to today.
+        /// </summary>
+        public static string Up_Today {
+            get {
+                return ResourceManager.GetString("Up_Today", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to yesterday.
+        /// </summary>
+        public static string Up_Yday {
+            get {
+                return ResourceManager.GetString("Up_Yday", resourceCulture);
             }
         }
         
