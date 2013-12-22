@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Exercises>
+  <Category Name="Пресс">
+    <Exercise Name="Развёртывание на ролике для пресса"/>
+    <Exercise Name="Подтягивание коленей к груди"/>
+    <Exercise Name="Перекресные скручивания"/>
+    <Exercise Name="Скручивания"/>
+    <Exercise Name="Скручивания на наклонной скамье"/>
+    <Exercise Name="Подъем прямых ног"/>
+    <Exercise Name="Боковые наклоны"/>
+    <Exercise Name="Подъем туловища"/>
+  </Category>
+  <Category Name="Спина">
+    <Exercise Name="Тяга гантель одной рукой"/>
+    <Exercise Name="Upright Row"/>
+    <Exercise Name="Barbell Row"/>
+    <Exercise Name="Тяга Т-штанги"/>
+    <Exercise Name="Подтягивания"/>
+    <Exercise Name="Тяга на горизонтальном блоке к поясу"/>
+    <Exercise Name="Climbers Chin Up"/>
+    <Exercise Name="Тяга Вертикального блока"/>
+    <Exercise Name="Становая тяга"/>
+    <Exercise Name="Тяга штанги в наклоне"/>
+    <Exercise Name="Тяга гантель в наклоне"/>
+    <Exercise Name="Гиперекстензия"/>
+    <Exercise Name="Отжимания"/>
+    <Exercise Name="Пуловер на блоке"/>
+  </Category>
+  <Category Name="Бицепс и предплечья">
+    <Exercise Name="Подъем штанги на бицепс"/>
+    <Exercise Name="Сгибание рук на скамье Скотта"/>
+    <Exercise Name="Подъем гантелей на бицепс"/>
+    <Exercise Name="Сгибания кистей"/>
+    <Exercise Name="Поочередное сгибание рук с гантелями"/>
+    <Exercise Name="Концентрированное сгибание рук"/>
+    <Exercise Name="Сгибание рук с гантелями хватом «молоток»"/>
+    <Exercise Name="Подъем гантелей обратным хватом"/>
+    <Exercise Name="Подъем гантелей сидя"/>
+    <Exercise Name="Сгибания кистей обратным хватом"/>
+  </Category>
+  <Category Name="Грудь">
+    <Exercise Name="Жим лёжа"/>
+    <Exercise Name="Сведения рук на тренажоре"/>
+    <Exercise Name="Кроссовер"/>
+    <Exercise Name="Отжимания узким хватом"/>
+    <Exercise Name="Жим лёжа с опущеной скамьей"/>
+    <Exercise Name="Жим гантелей с опущеной скамьей"/>
+    <Exercise Name="Жим гантелей на скамье"/>
+    <Exercise Name="Пуловер"/>
+    <Exercise Name="Разведение гантелей лёжа"/>
+    <Exercise Name="Жим штанги на наклонной скамье"/>
+    <Exercise Name="Жим гантелей на наклонной скамье"/>
+    <Exercise Name="Жим штанги широким хватом"/>
+  </Category>
+  <Category Name="Ноги">
+    <Exercise Name="Подъем на носках"/>
+    <Exercise Name="Выпады"/>
+    <Exercise Name="Выпады со штаногой"/>
+    <Exercise Name="Выпады с гантелями"/>
+    <Exercise Name="Приседания с гантелями"/>
+    <Exercise Name="Гакк-приседания"/>
+    <Exercise Name="Сгибания ног в тренажоре"/>
+    <Exercise Name="Жим ногами"/>
+    <Exercise Name="Разгибание ног в тренажоре"/>
+    <Exercise Name="Приседания"/>
+  </Category>
+  <Category Name="Плечи">
+    <Exercise Name="Разведения гантелей в наклоне"/>
+    <Exercise Name="Жим сидя из-за головы"/>
+    <Exercise Name="Подъем штанги перед собой"/>
+    <Exercise Name="Жим гантелей лёжа"/>
+    <Exercise Name="Подъем гантелей перед собой"/>
+    <Exercise Name="Армейский жим"/>
+  </Category>
+  <Category Name="Трицепс">
+    <Exercise Name="Разгибания рук на верхнем блоке"/>
+    <Exercise Name="Разгибания рук с гантелью из-за головы"/>
+    <Exercise Name="Разгибания одной руки с гантелью из-за головы"/>
+    <Exercise Name="Отведение гантели назад"/>
+    <Exercise Name="Французкий жим"/>
+    <Exercise Name="Францезки жим сидя"/>
+  </Category>
+</Exercises>

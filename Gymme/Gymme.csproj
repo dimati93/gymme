@@ -178,6 +178,9 @@
     <Resource Include="Resources\ExerciseData.xml">
       <SubType>Designer</SubType>
     </Resource>
+    <Resource Include="Resources\ExerciseData.ru-RU.xml">
+      <SubType>Designer</SubType>
+    </Resource>
     <Content Include="SplashScreenImage.jpg" />
     <Content Include="Toolkit.Content\ApplicationBar.Cancel.png" />
     <Content Include="Toolkit.Content\ApplicationBar.Check.png" />
