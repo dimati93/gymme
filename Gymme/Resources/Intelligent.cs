@@ -1,4 +1,5 @@
 ﻿using System;
+
 using Gymme.Data.Models;
 
 namespace Gymme.Resources

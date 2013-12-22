@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using Gymme.Data.Models;
 
@@ -32,7 +31,12 @@ namespace Gymme.Data.Repository
 
         public IEnumerable<Training> FindUnfinished()
         {
-            return Table.Where(x => x.Status == TrainingStatus.Started);
+            return Table.Where(x => x.StatusId == (int)TrainingStatus.Started);
+        }
+
+        public IEnumerable<Training> FindByWorkoutId(long id)
+        {
+            return Table.Where(x => x.IdWorkout == id);
         }
     }
 }

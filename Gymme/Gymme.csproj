@@ -100,7 +100,11 @@
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\Page\TrainingPageVM.cs" />
     <Compile Include="ViewModel\Page\WorkoutPageVM.cs" />
+    <Compile Include="ViewModel\StringExtention.cs" />
+    <Compile Include="ViewModel\TimeSpanExtention.cs" />
     <Compile Include="ViewModel\TrainingExerciseVM.cs" />
+    <Compile Include="ViewModel\Upcoming\RoutinesTraining.cs" />
+    <Compile Include="ViewModel\Upcoming\RoutineTrainingItem.cs" />
     <Compile Include="ViewModel\Upcoming\UnfinishedTraining.cs" />
     <Compile Include="ViewModel\Upcoming\UnfinishedTrainingItem.cs" />
     <Compile Include="ViewModel\Upcoming\UpcomingAlgorithm.cs" />

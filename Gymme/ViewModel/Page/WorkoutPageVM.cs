@@ -38,8 +38,8 @@ namespace Gymme.ViewModel.Page
 
         public bool DeleteWorkout()
         {
-            MessageBoxResult result = MessageBox.Show(Resources.AppResources.Workout_DeleteWarning,
-                                                      Resources.AppResources.Workout_DeleteWarningTitle,
+            MessageBoxResult result = MessageBox.Show(AppResources.Workout_DeleteWarning,
+                                                      AppResources.Workout_DeleteWarningTitle,
                                                       MessageBoxButton.OKCancel);
             if (result == MessageBoxResult.OK)
             {

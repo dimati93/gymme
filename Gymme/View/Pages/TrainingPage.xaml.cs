@@ -15,6 +15,7 @@ namespace Gymme.View.Pages
         public const string FromWorkoutStart = "fromWorkoutStart";
         public const string FromWorkoutContinue = "fromWorkoutContinue";
         public const string ByTraining = "byTraining";
+        public const string ByWorkout = "byWorkout";
         public const string GobBackUpdate = "update";
 
         private TrainingPageVM _viewModel;
@@ -59,11 +60,13 @@ namespace Gymme.View.Pages
         {
             switch (target)
             {
-                case FromWorkoutStart:
+                case ByWorkout:
                     return new TrainingPageVM(RepoWorkout.Instance.FindById(id)) { BackCount = 1 };
                 case ByTraining:
                 case GobBackUpdate:
                     return new TrainingPageVM(RepoTraining.Instance.FindById(id)) { BackCount = 1 };
+                case FromWorkoutStart:
+                    return new TrainingPageVM(RepoWorkout.Instance.FindById(id)) { BackCount = 2 };
                 case FromWorkoutContinue:
                     return new TrainingPageVM(RepoTraining.Instance.FindById(id)) { BackCount = 2 };
                 default:

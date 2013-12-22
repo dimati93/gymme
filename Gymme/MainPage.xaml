@@ -32,11 +32,18 @@
                                Visibility="{Binding IsUpcomingEmpty, Converter={StaticResource VisibilityConverter}}"/>
 
                     <ListBox Margin="0,0,-22,0"
-                             Visibility="{Binding IsUpcomingEmpty, Converter={StaticResource ReverceVisibilityConverter}}">
+                             Visibility="{Binding IsUpcomingEmpty, Converter={StaticResource ReverceVisibilityConverter}}"
+                             ItemsSource="{Binding UpcomingItems}">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <Grid Background="#0AFFFFFF" Hold="Workout_Hold">
-                                   <StackPanel Orientation="Horizontal" Margin="12,2,0,4" Height="105">
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="Tap">
+                                            <i:InvokeCommandAction Command="{Binding GotoPageViewCommand}"/>
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                                    
+                                    <StackPanel Orientation="Horizontal" Margin="12,2,0,4" Height="105">
                                         <Border BorderThickness="0" Width="17" Height="99">
                                             <Border.Background>
                                                 <SolidColorBrush Color="{Binding Accent}"/>

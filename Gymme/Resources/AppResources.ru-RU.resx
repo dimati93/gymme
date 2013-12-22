@@ -296,4 +296,7 @@
   <data name="Up_Yday" xml:space="preserve">
     <value>вчера</value>
   </data>
+  <data name="Up_Tomorrow" xml:space="preserve">
+    <value>завтра</value>
+  </data>
 </root>

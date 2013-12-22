@@ -1,14 +1,20 @@
 ﻿using System.Collections.ObjectModel;
+using System.Linq;
 using System.Windows.Input;
+
 using Gymme.Data.Repository;
+using Gymme.ViewModel.Upcoming;
 
 namespace Gymme.ViewModel
 {
     public class MainViewModel : Base.ViewModel
     {
+        private readonly static UpcomingAlgorithm[] UpAlgorithms = { new UnfinishedTraining(), new RoutinesTraining() };
+
         public MainViewModel()
         {
             Workouts = new ObservableCollection<WorkoutVM>();
+            UpcomingItems = new ObservableCollection<UpcomingItem>();
         }
 
         /// <summary>
@@ -16,9 +22,11 @@ namespace Gymme.ViewModel
         /// </summary>
         public ObservableCollection<WorkoutVM> Workouts { get; private set; }
 
+        public ObservableCollection<UpcomingItem> UpcomingItems { get; private set; }
+
         public bool IsUpcomingEmpty
         {
-            get { return true; }
+            get { return UpcomingItems.Count == 0; }
         }
 
         public bool IsWorkoutsEmpty
@@ -41,15 +49,32 @@ namespace Gymme.ViewModel
         /// </summary>
         public void LoadData()
         {
-            Workouts.Clear();
+            LoadUpcoming();
+            LoadWorkouts();
+            IsDataLoaded = true;
+        }
 
+        private void LoadWorkouts()
+        {
+            Workouts.Clear();
             foreach (var workout in RepoWorkout.Instance.FindAll())
             {
                 Workouts.Add(new WorkoutVM(workout, this));
             }
 
             NotifyPropertyChanged("IsWorkoutsEmpty");
-            IsDataLoaded = true;
+        }
+
+
+        private void LoadUpcoming()
+        {
+            UpcomingItems.Clear();
+            foreach (var upcomingItem in UpAlgorithms.SelectMany(x => x.GetUpcoming().OrderBy(y => y.Priority)))
+            {
+                UpcomingItems.Add(upcomingItem);
+            }
+
+            NotifyPropertyChanged("IsUpcomingEmpty");
         }
     }
 }

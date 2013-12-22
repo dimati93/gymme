@@ -547,6 +547,15 @@ namespace Gymme.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to tomorrow.
+        /// </summary>
+        public static string Up_Tomorrow {
+            get {
+                return ResourceManager.GetString("Up_Tomorrow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to yesterday.
         /// </summary>
         public static string Up_Yday {
