@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
+using Microsoft.Phone.Controls;
 
 namespace Gymme.View.Controls
 {
@@ -38,7 +39,7 @@ namespace Gymme.View.Controls
             _bindingElements = new Dictionary<Control, DependencyProperty>
             {
                 {tbName, TextBox.TextProperty},
-                {tbCategory, TextBox.TextProperty}
+                {tbCategory, AutoCompleteBox.TextProperty}
             };
         }
     }

@@ -14,6 +14,7 @@
         <TextBox x:Name="tbName" Text="{Binding Title, Mode=TwoWay, UpdateSourceTrigger=Explicit}"  Style="{StaticResource InputStyle}" MaxLength="256"/>
         <TextBlock Text="{Binding Resources.AEWorkout_NoteLabel, Source={StaticResource Localized}}" Style="{StaticResource InputDescriptionStyle}"/>
         <TextBox x:Name="tbNote" Text="{Binding Note, Mode=TwoWay, UpdateSourceTrigger=Explicit}" Style="{StaticResource InputStyle}" Height="132" TextWrapping="Wrap" MaxLength="256"/>
-        <Button Content="{Binding Resources.AEWorkout_DetailLabel, Source={StaticResource Localized}}"  Width="Auto" HorizontalAlignment="Left" Padding="20,3,20,5"/>
+        <Button Visibility="Collapsed"
+            Content="{Binding Resources.AEWorkout_DetailLabel, Source={StaticResource Localized}}"  Width="Auto" HorizontalAlignment="Left" Padding="20,3,20,5"/>
     </ListBox>
 </UserControl>

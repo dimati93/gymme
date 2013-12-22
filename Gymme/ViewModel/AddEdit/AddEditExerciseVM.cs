@@ -1,7 +1,9 @@
-﻿using Gymme.Data.AuxModels;
+﻿using System.Collections.Generic;
+using Gymme.Data.AuxModels;
 using Gymme.Data.Interfaces;
 using Gymme.Data.Models;
 using Gymme.Data.Repository;
+using Gymme.Resources;
 
 namespace Gymme.ViewModel.AddEdit
 {
@@ -67,6 +69,19 @@ namespace Gymme.ViewModel.AddEdit
                     _category = value;
                     NotifyPropertyChanged("Category");
                 }
+            }
+        }
+
+        public List<string> Categories
+        {
+            get
+            {
+                if (!ExerciseData.Instance.IsDataLoaded)
+                {
+                     ExerciseData.Instance.LoadData();
+                }
+
+                return ExerciseData.Instance.PersetCategories;
             }
         }
 

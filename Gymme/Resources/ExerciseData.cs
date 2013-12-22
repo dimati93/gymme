@@ -27,6 +27,7 @@ namespace Gymme.Resources
         }
 
         public List<PersetExercise> PersetExercises { get; private set; }
+        public List<string> PersetCategories { get; private set; }
 
         public bool IsDataLoaded { get; private set; }
 
@@ -65,6 +66,7 @@ namespace Gymme.Resources
                 .Select((x, i) => { x.Index = i; return x; })
                 .ToList();
 
+                PersetCategories = PersetExercises.Select(x => x.Category).Distinct().ToList();
                 IsDataLoaded = true;
             }
             catch (Exception)
