@@ -2,6 +2,7 @@
 using System.Windows;
 using Gymme.Data.Models;
 using Gymme.Data.Repository;
+using Gymme.Resources;
 
 namespace Gymme.ViewModel.Page
 {
@@ -37,8 +38,8 @@ namespace Gymme.ViewModel.Page
 
         public bool DeleteWorkout()
         {
-            MessageBoxResult result = MessageBox.Show(Resources.AppResources.Workout_DeleteWarning,
-                                                      Resources.AppResources.Workout_DeleteWarningTitle,
+            MessageBoxResult result = MessageBox.Show(AppResources.Workout_DeleteWarning,
+                                                      AppResources.Workout_DeleteWarningTitle,
                                                       MessageBoxButton.OKCancel);
             if (result == MessageBoxResult.OK)
             {
@@ -59,6 +60,24 @@ namespace Gymme.ViewModel.Page
             }
 
             NotifyPropertyChanged("IsExercisesEmpty");
+        }
+
+        public void StartWorkout()
+        {
+            Training tr = RepoTraining.Instance.FindLastByWorkoutId(Item.Id);
+            if (tr == null || Intelligent.IsTrainingExperate(tr))
+            {
+                if (tr != null)
+                {
+                    tr.Status = TrainingStatus.Finished;
+                    RepoTraining.Instance.Save(tr);
+                }
+
+                NavigationManager.GotoTrainingPageFromWorkout(Item.Id, true);
+                return;
+            }
+
+            NavigationManager.GotoTrainingPageFromWorkout(tr.Id, false);
         }
     }
 }

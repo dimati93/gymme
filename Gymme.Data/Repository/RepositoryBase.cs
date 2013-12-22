@@ -14,7 +14,7 @@ namespace Gymme.Data.Repository
     {
         private readonly Table<T> _table;
 
-        public RepositoryBase()
+        protected RepositoryBase()
         {
             _table = DatabaseContext.Instance.GetTable<T>();
         }

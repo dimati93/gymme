@@ -80,10 +80,10 @@ namespace Gymme.ViewModel
             switch (status)
             {
                 case TrainingExerciseStatus.Created: return AccentColors.Default;
-                case TrainingExerciseStatus.Started: return AccentColors.Started;
-                case TrainingExerciseStatus.Skiped: return AccentColors.Skiped;
-                case TrainingExerciseStatus.Unfinished: return AccentColors.Missed;
-                case TrainingExerciseStatus.Finished: return AccentColors.Finished;
+                case TrainingExerciseStatus.Started: return AccentColors.Blue;
+                case TrainingExerciseStatus.Skiped: return AccentColors.Red;
+                case TrainingExerciseStatus.Unfinished: return AccentColors.Orange;
+                case TrainingExerciseStatus.Finished: return AccentColors.Green;
                 default: return Colors.LightGray;
             }
         }

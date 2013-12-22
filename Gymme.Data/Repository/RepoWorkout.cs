@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using Gymme.Data.Core;
 using Gymme.Data.Models;
 
 namespace Gymme.Data.Repository
@@ -21,6 +22,12 @@ namespace Gymme.Data.Repository
         public override bool Exists(long id)
         {
             return Table.Any(x => x.Id == id);
+        }
+
+        public override void Delete(Workout entity)
+        {
+            DatabaseContext.Instance.Training.DeleteAllOnSubmit(RepoTraining.Instance.FindByWorkoutId(entity.Id));
+            base.Delete(entity);
         }
     }
 }

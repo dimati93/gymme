@@ -69,10 +69,22 @@ namespace Gymme
             NavigationService.Navigate(BuildUri(ExercisePagePath, "none", Id(id)));
         }
 
-        public static void GotoTrainingPage(long id)
+        public static void GotoTrainingPageByTrainingId(long id)
         {
             InitializeNavigation();
-            NavigationService.Navigate(BuildUri(TrainingPagePath, TrainingPage.FromWorkoutPage, Id(id)));
+            NavigationService.Navigate(BuildUri(TrainingPagePath, TrainingPage.ByTraining, Id(id)));
+        }
+
+        public static void GotoTrainingPageByWorkoutId(long id)
+        {
+            InitializeNavigation();
+            NavigationService.Navigate(BuildUri(TrainingPagePath, TrainingPage.ByWorkout, Id(id)));
+        } 
+
+        public static void GotoTrainingPageFromWorkout(long id, bool startNew)
+        {
+            InitializeNavigation();
+            NavigationService.Navigate(BuildUri(TrainingPagePath, startNew ? TrainingPage.FromWorkoutStart : TrainingPage.FromWorkoutContinue , Id(id)));
         }
 
         public static void GotoExecutePage(long id)

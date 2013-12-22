@@ -40,8 +40,9 @@ namespace Gymme.Data.Models
         public string Note { get; set; }
 
         private EntitySet<Exercise> _exercises = new EntitySet<Exercise>();
+        private EntitySet<Training> _trainings = new EntitySet<Training>();
 
-        [Association(Name = "FK_Workout_Exercise", Storage = "_exercises", OtherKey = "IdWorkout", DeleteRule = "NO ACTION")]
+        [Association(Name = "FK_Workout_Exercise", Storage = "_exercises", OtherKey = "IdWorkout", DeleteRule = "CASCADE")]
         public EntitySet<Exercise> Exercises
         {
             get
@@ -52,6 +53,20 @@ namespace Gymme.Data.Models
             private set
             {
                 _exercises.Assign(value);
+            }
+        }
+
+        [Association(Name = "FK_Workout_Training", Storage = "_trainings", OtherKey = "IdWorkout", DeleteRule = "CASCADE")]
+        public EntitySet<Training> Trainings
+        {
+            get
+            {
+                return _trainings;
+            }
+
+            private set
+            {
+                _trainings.Assign(value);
             }
         }
     }

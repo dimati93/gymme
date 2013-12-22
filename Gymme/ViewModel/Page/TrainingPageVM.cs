@@ -1,10 +1,10 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Threading;
+using Gymme.Data.Core;
 using Gymme.Data.Models;
 using Gymme.Data.Repository;
 
@@ -29,32 +29,31 @@ namespace Gymme.ViewModel.Page
 
             if (lastTraining != null)
             {
-                exIds = lastTraining.Exercises.OrderBy(x => x.Id)
-                            .ThenBy(x => x.FinishTime.HasValue)
-                            .ThenByDescending(x => x.FinishTime)
+                exIds = lastTraining.Exercises.OrderByDescending(x => x.FinishTime.HasValue)
+                            .ThenBy(x => x.FinishTime)
+                            .ThenBy(x => x.Id)
                             .Select(x => x.IdExecise)
                             .Intersect(exIds)
                             .Union(exIds)
                             .Distinct()
                             .ToArray();
             }
-
+            
             foreach (var exercise in exIds)
             {
-                training.Exercises.Add(new TrainingExercise(exercise));
+                var executeEx = new TrainingExercise(exercise) { IdTraining = training.Id };
+                DatabaseContext.Instance.TrainingExercise.InsertOnSubmit(executeEx);
+                training.Exercises.Add(executeEx);
             }
 
-            Data.Core.DatabaseContext.Instance.SubmitChanges();
-
+            DatabaseContext.Instance.SubmitChanges();
             Initialize(training);
-            BackCount = 2;
         }
 
         public TrainingPageVM(Training training)
             : this()
         {
             Initialize(training);
-            BackCount = 1;
         }
 
         private TrainingPageVM()
@@ -66,8 +65,7 @@ namespace Gymme.ViewModel.Page
 
         private void OnTimerTick(object sender, EventArgs args)
         {
-            // ReSharper disable once PossibleLossOfFraction (I need only integer part of the secconds)
-            Time = _training != null ? TimeSpan.FromSeconds((DateTime.Now - _training.StartTime).Ticks / TimeSpan.TicksPerSecond) : TimeSpan.Zero;
+            Time = _training != null ? (DateTime.Now - _training.StartTime).TrimToSeconds() : TimeSpan.Zero;
         }
 
         private void Initialize(Training training)
@@ -111,8 +109,6 @@ namespace Gymme.ViewModel.Page
             {
                 Exercises.Add(new TrainingExerciseVM(trainingExercise, () => NotifyPropertyChanged("Exercises")));
             }
-
-            NotifyPropertyChanged("Exercises");
         }
 
         public void Finish()

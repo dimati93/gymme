@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using Gymme.Data.Models;
 
 namespace Gymme.Data.Repository
@@ -26,6 +27,16 @@ namespace Gymme.Data.Repository
         public Training FindLastByWorkoutId(long id)
         {
             return Table.Where(x => x.IdWorkout == id).OrderByDescending(x => x.StartTime).FirstOrDefault();
+        }
+
+        public IEnumerable<Training> FindUnfinished()
+        {
+            return Table.Where(x => x.StatusId == (int)TrainingStatus.Started);
+        }
+
+        public IEnumerable<Training> FindByWorkoutId(long id)
+        {
+            return Table.Where(x => x.IdWorkout == id);
         }
     }
 }

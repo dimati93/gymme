@@ -84,6 +84,7 @@
       <DependentUpon>AppResources.resx</DependentUpon>
     </Compile>
     <Compile Include="Resources\ExerciseData.cs" />
+    <Compile Include="Resources\Intelligent.cs" />
     <Compile Include="ViewModel\AddEdit\AddEditVM.cs" />
     <Compile Include="ViewModel\AddEdit\AddEditWorkoutVM.cs" />
     <Compile Include="ViewModel\AddEdit\AddEditExerciseVM.cs" />
@@ -99,8 +100,14 @@
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\Page\TrainingPageVM.cs" />
     <Compile Include="ViewModel\Page\WorkoutPageVM.cs" />
+    <Compile Include="ViewModel\StringExtention.cs" />
+    <Compile Include="ViewModel\TimeSpanExtention.cs" />
     <Compile Include="ViewModel\TrainingExerciseVM.cs" />
-    <Compile Include="ViewModel\Upcoming\UpcomingAlgorithmBase.cs" />
+    <Compile Include="ViewModel\Upcoming\RoutinesTraining.cs" />
+    <Compile Include="ViewModel\Upcoming\RoutineTrainingItem.cs" />
+    <Compile Include="ViewModel\Upcoming\UnfinishedTraining.cs" />
+    <Compile Include="ViewModel\Upcoming\UnfinishedTrainingItem.cs" />
+    <Compile Include="ViewModel\Upcoming\UpcomingAlgorithm.cs" />
     <Compile Include="ViewModel\Upcoming\UpcomingItem.cs" />
     <Compile Include="ViewModel\WorkoutVM.cs" />
     <Compile Include="View\Controls\AddEditChooser.cs" />
