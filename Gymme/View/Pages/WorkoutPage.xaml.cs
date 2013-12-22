@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Navigation;
+
 using Gymme.Resources;
 using Gymme.ViewModel.Page;
+
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
+
 using GestureEventArgs = System.Windows.Input.GestureEventArgs;
 
 namespace Gymme.View.Pages
@@ -53,7 +56,7 @@ namespace Gymme.View.Pages
 
         private WorkoutPageVM GetDataContext(string target, long id)
         {
-            return new WorkoutPageVM(id);
+            return new WorkoutPageVM(id) { UpdateAppMenu = UpdateAppMenu };
         }
 
         private void InitializeAppMenu()

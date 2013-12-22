@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using System.Windows;
 using Gymme.Data.Models;
 using Gymme.Data.Repository;
@@ -30,6 +31,7 @@ namespace Gymme.ViewModel.Page
         public ObservableCollection<ExerciseVM> Exercises { get; set; }
 
         public bool IsExercisesEmpty { get { return Exercises.Count == 0; } }
+        public Action UpdateAppMenu { get; set; }
 
         public void EditWorkout()
         {
@@ -60,6 +62,10 @@ namespace Gymme.ViewModel.Page
             }
 
             NotifyPropertyChanged("IsExercisesEmpty");
+            if (UpdateAppMenu != null)
+            {
+                UpdateAppMenu();
+            }
         }
 
         public void StartWorkout()

@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Input;
-using Gymme.Data.Core;
+
 using Gymme.Data.Models;
 using Gymme.Data.Repository;
 
