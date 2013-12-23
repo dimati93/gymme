@@ -71,19 +71,21 @@ namespace Gymme.ViewModel.Page
         public void StartWorkout()
         {
             Training tr = RepoTraining.Instance.FindLastByWorkoutId(Item.Id);
-            if (tr == null || Intelligent.IsTrainingExperate(tr))
+            if (tr != null && tr.Status == TrainingStatus.Started)
             {
-                if (tr != null)
+                if (Intelligent.IsTrainingExperate(tr))
                 {
                     tr.Status = TrainingStatus.Finished;
                     RepoTraining.Instance.Save(tr);
+                    NavigationManager.GotoTrainingPageFromWorkout(Item.Id, true);
+                    return;
                 }
 
-                NavigationManager.GotoTrainingPageFromWorkout(Item.Id, true);
+                NavigationManager.GotoTrainingPageFromWorkout(tr.Id, false);
                 return;
             }
 
-            NavigationManager.GotoTrainingPageFromWorkout(tr.Id, false);
+            NavigationManager.GotoTrainingPageFromWorkout(Item.Id, true);
         }
     }
 }
