@@ -299,4 +299,28 @@
   <data name="Up_Tomorrow" xml:space="preserve">
     <value>tomorrow</value>
   </data>
+  <data name="Guide_Line1" xml:space="preserve">
+    <value>Gymme is the new way to manage you trainings. It's oriented to powerlifting and fitness workouts. Now you haven't to keep your results in mind. Just type in current progress - next time Gymme will show and repeat it for you.</value>
+  </data>
+  <data name="Guide_Line2" xml:space="preserve">
+    <value>Gymme also tracks your activity. After two trainings it will suggest the date of the next, keeping your pace.</value>
+  </data>
+  <data name="Guide_Line3" xml:space="preserve">
+    <value>Hope you enjoy this app!</value>
+  </data>
+  <data name="Help_About" xml:space="preserve">
+    <value>About</value>
+  </data>
+  <data name="Help_Guide" xml:space="preserve">
+    <value>Guide</value>
+  </data>
+  <data name="MainMenu_HelpButton" xml:space="preserve">
+    <value>Help</value>
+  </data>
+  <data name="MainMenu_RatesButton" xml:space="preserve">
+    <value>Rates &amp; Reviews</value>
+  </data>
+  <data name="About_Copyright" xml:space="preserve">
+    <value>Gymme app © Corei4 2013-2014</value>
+  </data>
 </root>

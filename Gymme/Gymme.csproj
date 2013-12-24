@@ -127,6 +127,9 @@
     <Compile Include="View\Controls\SetControl.xaml.cs">
       <DependentUpon>SetControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Pages\HelpPage.xaml.cs">
+      <DependentUpon>HelpPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Pages\TrainingPage.xaml.cs">
       <DependentUpon>TrainingPage.xaml</DependentUpon>
     </Compile>
@@ -216,6 +219,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="View\Controls\SetControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Pages\HelpPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

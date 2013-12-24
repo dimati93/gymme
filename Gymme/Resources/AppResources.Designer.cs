@@ -61,6 +61,15 @@ namespace Gymme.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Gymme app © Corei4 2013-2014.
+        /// </summary>
+        public static string About_Copyright {
+            get {
+                return ResourceManager.GetString("About_Copyright", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Exercise.
         /// </summary>
         public static string AddEdit_Exercise {
@@ -385,6 +394,51 @@ namespace Gymme.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Gymme is the new way to manage you trainings. It&apos;s oriented to powerlifting and fitness workouts. Now you haven&apos;t to keep your results in mind. Just type in current progress - next time Gymme will show and repeat it for you..
+        /// </summary>
+        public static string Guide_Line1 {
+            get {
+                return ResourceManager.GetString("Guide_Line1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Gymme also tracks your activity. After two trainings it will suggest the date of the next, keeping your pace..
+        /// </summary>
+        public static string Guide_Line2 {
+            get {
+                return ResourceManager.GetString("Guide_Line2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hope you enjoy this app!.
+        /// </summary>
+        public static string Guide_Line3 {
+            get {
+                return ResourceManager.GetString("Guide_Line3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to About.
+        /// </summary>
+        public static string Help_About {
+            get {
+                return ResourceManager.GetString("Help_About", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Guide.
+        /// </summary>
+        public static string Help_Guide {
+            get {
+                return ResourceManager.GetString("Help_Guide", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Menu.
         /// </summary>
         public static string Main_Menu {
@@ -426,6 +480,24 @@ namespace Gymme.Resources {
         public static string MainMenu_AddWorkout {
             get {
                 return ResourceManager.GetString("MainMenu_AddWorkout", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Help.
+        /// </summary>
+        public static string MainMenu_HelpButton {
+            get {
+                return ResourceManager.GetString("MainMenu_HelpButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rates &amp; Reviews.
+        /// </summary>
+        public static string MainMenu_RatesButton {
+            get {
+                return ResourceManager.GetString("MainMenu_RatesButton", resourceCulture);
             }
         }
         

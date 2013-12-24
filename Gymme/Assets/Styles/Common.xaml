@@ -31,7 +31,7 @@
         <Setter Property="Background" Value="#FFFFC700"/>
         <Setter Property="Height" Value="173"/>
         <Setter Property="Width" Value="173"/>
-        <Setter Property="Margin" Value="12, 0, 0, 0"/>
+        <Setter Property="Margin" Value="12, 0, 0, 12"/>
         <Setter Property="BorderBrush" Value="{StaticResource PhoneForegroundBrush}"/>
         <Setter Property="FontFamily" Value="{StaticResource PhoneFontFamilySemiBold}"/>
         <Setter Property="FontSize" Value="{StaticResource PhoneFontSizeMediumLarge}"/>

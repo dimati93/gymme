@@ -299,4 +299,25 @@
   <data name="Up_Tomorrow" xml:space="preserve">
     <value>завтра</value>
   </data>
+  <data name="Guide_Line1" xml:space="preserve">
+    <value>Взгляните по новому на процес тренировок с Gymme. Приложение ориентировано на занятия паурлифтингом и фитнесом. Теперь не нужно помнить результаты предыдущих тренировок. Запишите результаты прямо в процессе - и в следующий раз Gymme сам подскажет вам цель.</value>
+  </data>
+  <data name="Guide_Line2" xml:space="preserve">
+    <value>Gymme также следит за вашей активностью. Уже после второй тренировки приложение определит регулярность и будет подсказывать вам о следующих тренировках. Но никаких назойливых оповещений.</value>
+  </data>
+  <data name="Guide_Line3" xml:space="preserve">
+    <value>Надеемся, вам понравится приложение!</value>
+  </data>
+  <data name="Help_About" xml:space="preserve">
+    <value>О программе</value>
+  </data>
+  <data name="Help_Guide" xml:space="preserve">
+    <value>Гид</value>
+  </data>
+  <data name="MainMenu_HelpButton" xml:space="preserve">
+    <value>Помощь</value>
+  </data>
+  <data name="MainMenu_RatesButton" xml:space="preserve">
+    <value>Оценки и отзывы</value>
+  </data>
 </root>

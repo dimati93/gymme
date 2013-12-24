@@ -4,6 +4,7 @@ using System.Windows.Input;
 
 using Gymme.Data.Repository;
 using Gymme.ViewModel.Upcoming;
+using Microsoft.Phone.Tasks;
 
 namespace Gymme.ViewModel
 {
@@ -39,6 +40,22 @@ namespace Gymme.ViewModel
             get
             {
                 return GetOrCreateCommand("AddWorkoutCommand", NavigationManager.GotoAddWorkout);
+            }
+        }
+
+        public ICommand RateCommand
+        {
+            get
+            {
+                return GetOrCreateCommand("RateCommand", () => new MarketplaceReviewTask().Show());
+            }
+        }
+
+        public ICommand HelpCommand
+        {
+            get
+            {
+                return GetOrCreateCommand("HelpCommand", NavigationManager.GotoHelp);
             }
         }
 

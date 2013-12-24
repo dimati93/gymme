@@ -106,24 +106,26 @@
             <controls:PanoramaItem Header="{Binding Resources.Main_Menu, Source={StaticResource Localized}}" Orientation="Horizontal" HeaderTemplate="{StaticResource MainPanoramaHeaderTemplate}">
                 <!--Double wide Panorama with large image placeholders-->
                 <Grid>
-                    <StackPanel Margin="0,4,16,0" Orientation="Vertical" VerticalAlignment="Top">
-                        <StackPanel HorizontalAlignment="Left" Orientation="Horizontal">
+                    <StackPanel Margin="0,4,16,0" Orientation="Horizontal" VerticalAlignment="Top">
+                        <StackPanel HorizontalAlignment="Left" Orientation="Vertical">
                             <Button Style="{StaticResource MainPageCommandButtonStyle}"
                                     Command="{Binding AddWorkoutCommand}">
                                 <TextBlock Text="{Binding Resources.MainMenu_AddWorkout, Source={StaticResource Localized}}"
                                            Style="{StaticResource MainPageCommandCaptionStyle}"/>
-
+                            </Button>
+                            <Button Style="{StaticResource MainPageCommandButtonStyle}"
+                                    Command="{Binding RateCommand}">
+                                <TextBlock Text="{Binding Resources.MainMenu_RatesButton, Source={StaticResource Localized}}"
+                                           Style="{StaticResource MainPageCommandCaptionStyle}"/>
                             </Button>
 
-                            <Border Style="{StaticResource MainPageCommandButtonBorderStyle}"/>
-                            <Border Style="{StaticResource MainPageCommandButtonBorderStyle}"/>
-                            <Border Style="{StaticResource MainPageCommandButtonBorderStyle}"/>
                         </StackPanel>
-                        <StackPanel HorizontalAlignment="Left" Orientation="Horizontal" Margin="0,12,0,0">
-                            <Border Style="{StaticResource MainPageCommandButtonBorderStyle}"/>
-                            <Border Style="{StaticResource MainPageCommandButtonBorderStyle}"/>
-                            <Border Style="{StaticResource MainPageCommandButtonBorderStyle}"/>
-                            <Border Style="{StaticResource MainPageCommandButtonBorderStyle}"/>
+                        <StackPanel HorizontalAlignment="Left" Orientation="Vertical">
+                            <Button Style="{StaticResource MainPageCommandButtonStyle}"
+                                    Command="{Binding HelpCommand}">
+                                <TextBlock Text="{Binding Resources.MainMenu_HelpButton, Source={StaticResource Localized}}"
+                                           Style="{StaticResource MainPageCommandCaptionStyle}"/>
+                            </Button>
                         </StackPanel>
                     </StackPanel>
                 </Grid>
