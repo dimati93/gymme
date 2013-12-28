@@ -331,6 +331,15 @@ namespace Gymme.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to skiped.
+        /// </summary>
+        public static string ExecutePage_SkipedItem {
+            get {
+                return ResourceManager.GetString("ExecutePage_SkipedItem", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to This operation will delete all information about this exercise in workout. Do you realy want to delete it?.
         /// </summary>
         public static string Exercise_DeleteWarning {

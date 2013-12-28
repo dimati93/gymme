@@ -3,6 +3,9 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit">
 
+    <SolidColorBrush x:Key="MainColorBrush" Color="#FFFFC700"/>
+    <SolidColorBrush x:Key="TapBackgroundBrush" Color="#3AFFFFFF"/>
+    
     <Style TargetType="TextBlock" x:Key="InputDescriptionStyle">
         <Setter Property="Margin" Value="15, 0, 15, 0"/>
         <Setter Property="Foreground" Value="{StaticResource PhoneForegroundBrush}"/>
@@ -27,8 +30,9 @@
             </Setter.Value>
         </Setter>
     </Style>
+    
     <Style x:Key="MainPageCommandButtonStyle" TargetType="Button">
-        <Setter Property="Background" Value="#FFFFC700"/>
+        <Setter Property="Background" Value="{StaticResource MainColorBrush}"/>
         <Setter Property="Height" Value="173"/>
         <Setter Property="Width" Value="173"/>
         <Setter Property="Margin" Value="12, 0, 0, 12"/>
@@ -65,7 +69,7 @@
     </Style>
 
     <Style TargetType="Border" x:Key="MainPageCommandButtonBorderStyle">
-        <Setter Property="Background" Value="#FFFFC700"/>
+        <Setter Property="Background" Value="{StaticResource MainColorBrush}"/>
         <Setter Property="Height" Value="173"/>
         <Setter Property="Width" Value="173"/>
         <Setter Property="Margin" Value="12, 0, 0, 0"/>

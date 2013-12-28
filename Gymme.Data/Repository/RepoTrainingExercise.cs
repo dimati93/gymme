@@ -1,6 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using Gymme.Data.Core;
 using Gymme.Data.Models;
+using Gymme.Data.Models.QueryResult;
 
 namespace Gymme.Data.Repository
 {
@@ -24,9 +27,13 @@ namespace Gymme.Data.Repository
             return Table.Any(x => x.Id == id);
         }
 
-        public IEnumerable<TrainingExercise> GetHistoryForId(TrainingExercise exercise, int take)
+        public IEnumerable<TrainingExerciseHistory> GetHistoryForId(TrainingExercise exercise, int takeCount)
         {
-            return Table.Where(x => x.IdExecise == exercise.IdExecise).OrderByDescending(x => x.StartTime).Take(take);
+            return (from te in Instance.Table 
+                   join t in RepoTraining.Instance.Table on te.IdTraining equals t.Id
+                   where te.IdExecise == exercise.IdExecise
+                   orderby t.StartTime descending
+                   select new TrainingExerciseHistory { TrainingExercise = te, StartTime = t.StartTime }).Take(takeCount);
         }
     }
 }

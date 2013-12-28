@@ -55,12 +55,11 @@ namespace Gymme.View.Pages
                         var finishExercise = new ApplicationBarIconButton
                             {
                                 IconUri = new Uri("/Assets/AppBar/appbar.check.rest.png", UriKind.Relative),
-                                Text = AppResources.Command_Finish
+                                Text = AppResources.Command_Finish,
+                                IsEnabled = false
                             };
 
                         _viewModel.UpdadeFinishButtonState = x => finishExercise.IsEnabled = x;
-
-                        finishExercise.IsEnabled = false;
                         finishExercise.Click += FinishExecute_Click;
                         ApplicationBar.Buttons.Add(finishExercise);
 

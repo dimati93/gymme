@@ -80,27 +80,33 @@
                     </ListBox.ItemTemplate>
                 </ListBox>
                 <ListBox Grid.Column="1" Style="{StaticResource ListStyle}" ItemsSource="{Binding}"
-                         ScrollViewer.VerticalScrollBarVisibility="Disabled">
+                         ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                         ScrollViewer.HorizontalScrollBarVisibility="Auto">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
-                            <ListBox ItemsSource="{Binding Sets}" 
-                                     Style="{StaticResource ListStyle}" 
-                                     ScrollViewer.HorizontalScrollBarVisibility="Auto">
-                                <ListBox.ItemsPanel>
-                                    <ItemsPanelTemplate>
-                                        <StackPanel Orientation="Horizontal"/>
-                                    </ItemsPanelTemplate>
-                                </ListBox.ItemsPanel>
-                                <ListBox.ItemTemplate>
-                                    <DataTemplate>
-                                        <StackPanel Orientation="Horizontal" Margin="10, 0, 10, 0">
-                                            <TextBlock Text="{Binding Lift}" Style="{StaticResource OverviewCaptionStyle}" Margin="0"/>
-                                            <TextBlock Text="/" Style="{StaticResource OverviewCaptionStyle}" Margin="0"/>
-                                            <TextBlock Text="{Binding Reps}" Style="{StaticResource OverviewCaptionStyle}" Margin="0"/>
-                                        </StackPanel>
-                                    </DataTemplate>
-                                </ListBox.ItemTemplate>
-                            </ListBox>
+                            <Grid>
+                                <TextBlock Style="{StaticResource OverviewCaptionStyle}"
+                                           Visibility="{Binding IsSkiped, Converter={StaticResource VisibilityConverter}}"
+                                           Text="{Binding Resources.ExecutePage_SkipedItem, Source={StaticResource Localized}}"/>
+                                <ListBox ItemsSource="{Binding Sets}" 
+                                         Style="{StaticResource ListStyle}"
+                                         Visibility="{Binding IsSkiped, Converter={StaticResource ReverceVisibilityConverter}}">
+                                    <ListBox.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <StackPanel Orientation="Horizontal"/>
+                                        </ItemsPanelTemplate>
+                                    </ListBox.ItemsPanel>
+                                    <ListBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <StackPanel Orientation="Horizontal" Margin="10, 0, 10, 0">
+                                                <TextBlock Text="{Binding Lift}" Style="{StaticResource OverviewCaptionStyle}" Margin="0"/>
+                                                <TextBlock Text="/" Style="{StaticResource OverviewCaptionStyle}" Margin="0"/>
+                                                <TextBlock Text="{Binding Reps}" Style="{StaticResource OverviewCaptionStyle}" Margin="0"/>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </ListBox.ItemTemplate>
+                                </ListBox>
+                            </Grid>
                         </DataTemplate>
                     </ListBox.ItemTemplate>
                 </ListBox>

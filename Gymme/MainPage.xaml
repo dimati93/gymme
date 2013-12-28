@@ -31,12 +31,12 @@
                     <TextBlock Text="{Binding Resources.Main_UpcomingDummyText, Source={StaticResource Localized}}" Style="{StaticResource HintTextBlockStyle}"
                                Visibility="{Binding IsUpcomingEmpty, Converter={StaticResource VisibilityConverter}}"/>
 
-                    <ListBox Margin="0,0,-22,0"
+                    <ListBox Style="{StaticResource ListStyle}"
                              Visibility="{Binding IsUpcomingEmpty, Converter={StaticResource ReverceVisibilityConverter}}"
                              ItemsSource="{Binding UpcomingItems}">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
-                                <Grid Background="#0AFFFFFF" Hold="Workout_Hold">
+                                <Grid Background="{StaticResource TapBackgroundBrush}" Hold="Workout_Hold">
                                     <i:Interaction.Triggers>
                                         <i:EventTrigger EventName="Tap">
                                             <i:InvokeCommandAction Command="{Binding GotoPageViewCommand}"/>
@@ -74,7 +74,7 @@
                     	
                         <ListBox.ItemTemplate>
                             <DataTemplate>
-                                <Grid Background="#0AFFFFFF" Hold="Workout_Hold">
+                                <Grid Background="{StaticResource TapBackgroundBrush}" Hold="Workout_Hold">
                                     <t:ContextMenuService.ContextMenu>
                                         <t:ContextMenu IsZoomEnabled="True">
                                             <t:MenuItem Header="{Binding Resources.Command_Edit, Source={StaticResource Localized}}" Command="{Binding EditCommand}"/>

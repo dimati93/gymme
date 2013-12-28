@@ -323,4 +323,7 @@
   <data name="About_Copyright" xml:space="preserve">
     <value>Gymme app © Corei4 2013-2014</value>
   </data>
+  <data name="ExecutePage_SkipedItem" xml:space="preserve">
+    <value>skiped</value>
+  </data>
 </root>

@@ -3,6 +3,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 
 using Gymme.Data.Models;
+using Gymme.Data.Models.QueryResult;
 using Gymme.Data.Repository;
 
 namespace Gymme.ViewModel
@@ -11,11 +12,11 @@ namespace Gymme.ViewModel
     {
         private TrainingExercise _historyItem;
 
-        public ExecuteHistoryItemVM(TrainingExercise historyItem, Training training)
+        public ExecuteHistoryItemVM(TrainingExerciseHistory history)
         {
-            _historyItem = historyItem;
-            StartDate = training.StartTime.Date;
-            Sets = new ObservableCollection<Set>(historyItem.Sets.OrderBy(x => x.OrdinalNumber));
+            _historyItem = history.TrainingExercise;
+            StartDate = history.StartTime.Date;
+            Sets = new ObservableCollection<Set>(_historyItem.Sets.OrderBy(x => x.OrdinalNumber));
         }
 
         public DateTime StartDate { get; set; }
@@ -59,7 +60,7 @@ namespace Gymme.ViewModel
         {
             _historyItem = RepoTrainingExercise.Instance.FindById(_historyItem.Id);
             NotifyPropertyChanged("IsSkiped");
-            NotifyPropertyChanged("Status");    
+            NotifyPropertyChanged("Status");
         }
     }
 }

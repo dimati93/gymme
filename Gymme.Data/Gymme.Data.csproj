@@ -55,6 +55,7 @@
     <Compile Include="Interfaces\IExercise.cs" />
     <Compile Include="Models\Exercise.cs" />
     <Compile Include="Models\Model.cs" />
+    <Compile Include="Models\QueryResult\TrainingExerciseHistory.cs" />
     <Compile Include="Models\Set.cs" />
     <Compile Include="Models\Training.cs" />
     <Compile Include="Models\TrainingExercise.cs" />

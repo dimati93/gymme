@@ -1,16 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-
-using Gymme.Data.Models;
 using System.Data.Linq;
+
 using Gymme.Data.Core;
+using Gymme.Data.Models;
 
 namespace Gymme.Data.Repository
 {
-    public abstract class RepositoryBase<T> 
-        where T : Model
+    public abstract class RepositoryBase<T>  where T : Model
     {
         private readonly Table<T> _table;
 
@@ -19,7 +16,7 @@ namespace Gymme.Data.Repository
             _table = DatabaseContext.Instance.GetTable<T>();
         }
 
-        protected Table<T> Table
+        public Table<T> Table
         {
             get { return _table;}
         }

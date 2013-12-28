@@ -44,7 +44,7 @@
         <ListBox Grid.Row="2" Margin="0, 10, 0, 0"  Style="{StaticResource ListStyle}" ItemsSource="{Binding Source={StaticResource ExercisesView}}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <Grid Background="#0AFFFFFF" Hold="Ex_Hold">
+                    <Grid Background="{StaticResource TapBackgroundBrush}" Hold="Ex_Hold">
                         <toolkit:ContextMenuService.ContextMenu>
                             <toolkit:ContextMenu IsZoomEnabled="True">
                                 <toolkit:MenuItem Header="{Binding Resources.Training_Skip, Source={StaticResource Localized}}" Command="{Binding SkipCommand}"/>
