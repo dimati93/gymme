@@ -329,4 +329,10 @@
   <data name="Command_Continue" xml:space="preserve">
     <value>continue</value>
   </data>
+  <data name="About_Email" xml:space="preserve">
+    <value>app.gymme@i.ua</value>
+  </data>
+  <data name="About_ReportSubject" xml:space="preserve">
+    <value>To Gymme's developer</value>
+  </data>
 </root>

@@ -19,7 +19,7 @@
         <!--Pivot Control-->
         <controls:Pivot Title="{Binding Resources.ApplicationTitle, Source={StaticResource Localized}}"
                         HeaderTemplate="{StaticResource MainPanoramaHeaderTemplate}">
-            <!--Pivot item one-->
+            <!--Pivot item one
             <controls:PivotItem Header="{Binding Resources.Help_Guide, Source={StaticResource Localized}}"
                                 >
                 <Grid>
@@ -42,15 +42,18 @@
                                Grid.Row="2" Grid.Column="0"
                                Style="{StaticResource OverviewCaptionStyle}"/>
                     </Grid>
-            </controls:PivotItem>
+            </controls:PivotItem>-->
 
             <!--Pivot item two-->
             <controls:PivotItem Visibility="Collapsed"
                 Header="{Binding Resources.Help_About, Source={StaticResource Localized}}">
-                <Grid>
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,200">
+                    <Image Source="/Assets/ApplicationIcon.png" Stretch="Uniform" Height="200"/>
                     <TextBlock Text="{Binding Resources.About_Copyright, Source={StaticResource Localized}}"
-                               Style="{StaticResource OverviewItemStyle}"/>
-                </Grid>
+                               Style="{StaticResource OverviewItemStyle}"
+                               />
+                    <HyperlinkButton Content="{Binding Resources.About_Email, Source={StaticResource Localized}}" Tap="Email_To"/>
+                </StackPanel>
             </controls:PivotItem>
         </controls:Pivot>
     </Grid>

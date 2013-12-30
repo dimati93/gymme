@@ -326,4 +326,7 @@
   <data name="Command_Continue" xml:space="preserve">
     <value>продолжить</value>
   </data>
+  <data name="About_ReportSubject" xml:space="preserve">
+    <value>К разработчику "Gymme"</value>
+  </data>
 </root>

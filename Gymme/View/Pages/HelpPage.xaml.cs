@@ -1,15 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Animation;
-using System.Windows.Shapes;
+﻿using Gymme.Resources;
+
 using Microsoft.Phone.Controls;
+using Microsoft.Phone.Tasks;
+using GestureEventArgs = System.Windows.Input.GestureEventArgs;
 
 namespace Gymme.View.Pages
 {
@@ -18,6 +11,16 @@ namespace Gymme.View.Pages
         public HelpPage()
         {
             InitializeComponent();
+        }
+
+        private void Email_To(object sender, GestureEventArgs e)
+        {
+            EmailComposeTask emailTask = new EmailComposeTask
+            {
+                Subject = AppResources.About_ReportSubject,
+                To = AppResources.About_Email
+            };
+            emailTask.Show();
         }
     }
 }

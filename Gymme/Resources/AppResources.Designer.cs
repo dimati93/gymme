@@ -70,6 +70,24 @@ namespace Gymme.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to app.gymme@i.ua.
+        /// </summary>
+        public static string About_Email {
+            get {
+                return ResourceManager.GetString("About_Email", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to To Gymme&apos;s developer.
+        /// </summary>
+        public static string About_ReportSubject {
+            get {
+                return ResourceManager.GetString("About_ReportSubject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Exercise.
         /// </summary>
         public static string AddEdit_Exercise {
