@@ -142,6 +142,15 @@ namespace Gymme.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to continue.
+        /// </summary>
+        public static string Command_Continue {
+            get {
+                return ResourceManager.GetString("Command_Continue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to delete.
         /// </summary>
         public static string Command_Delete {

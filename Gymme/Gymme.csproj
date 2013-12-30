@@ -100,6 +100,7 @@
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\Page\TrainingPageVM.cs" />
     <Compile Include="ViewModel\Page\WorkoutPageVM.cs" />
+    <Compile Include="ViewModel\SetVM.cs" />
     <Compile Include="ViewModel\StringExtention.cs" />
     <Compile Include="ViewModel\TimeSpanExtention.cs" />
     <Compile Include="ViewModel\TrainingExerciseVM.cs" />
@@ -114,10 +115,11 @@
     <Compile Include="View\Controls\AEWorkout.xaml.cs">
       <DependentUpon>AEWorkout.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Helpers\DataContextChangedHelper.cs" />
     <Compile Include="View\Pages\AddEditPage.xaml.cs">
       <DependentUpon>AddEditPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Convertors\BoolToVisibilityConverter.cs" />
+    <Compile Include="View\Helpers\BoolToVisibilityConverter.cs" />
     <Compile Include="View\Controls\AEExercise.xaml.cs">
       <DependentUpon>AEExercise.xaml</DependentUpon>
     </Compile>

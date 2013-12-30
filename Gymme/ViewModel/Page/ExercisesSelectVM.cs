@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Linq;
+
 using Gymme.Data.Interfaces;
 using Gymme.Resources;
 

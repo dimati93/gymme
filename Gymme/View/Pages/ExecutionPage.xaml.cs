@@ -49,7 +49,7 @@ namespace Gymme.View.Pages
 
             if (_viewModel != null)
             {
-                switch (_viewModel.TrainingExercise.Status)
+                switch (_viewModel.Status)
                 {
                     case TrainingExerciseStatus.Started:
                         var finishExercise = new ApplicationBarIconButton
@@ -72,18 +72,31 @@ namespace Gymme.View.Pages
                         skipExercise.Click += SkipExecute_Click;
                         ApplicationBar.Buttons.Add(skipExercise);
                         break;
-                    
+
+                    case TrainingExerciseStatus.Finished:
+                        var continueExercise = new ApplicationBarIconButton
+                        {
+                            IconUri = new Uri("/Assets/AppBar/appbar.transport.play.rest.png", UriKind.Relative),
+                            Text = AppResources.Command_Continue
+                        };
+
+                        continueExercise.Click += StartExecute_Click;
+                        ApplicationBar.Buttons.Add(continueExercise);
+
+                        break;
+
                     case TrainingExerciseStatus.Skiped:
                         var startExercise = new ApplicationBarIconButton
                             {
                                 IconUri = new Uri("/Assets/AppBar/appbar.transport.play.rest.png", UriKind.Relative),
-                                Text = AppResources.Command_Edit
+                                Text = AppResources.Command_Start
                             };
 
                         startExercise.Click += StartExecute_Click;
                         ApplicationBar.Buttons.Add(startExercise);
 
                         break;
+
                 }
             }
         }

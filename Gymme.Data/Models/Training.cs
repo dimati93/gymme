@@ -69,7 +69,7 @@ namespace Gymme.Data.Models
                     case TrainingStatus.Finished:
                         foreach (var exercise in Exercises.Where(x => x.Status == TrainingExerciseStatus.Started))
                         {
-                            exercise.Status = TrainingExerciseStatus.Unfinished;
+                            exercise.Status = exercise.Sets.Count == 0 ? TrainingExerciseStatus.Skiped : TrainingExerciseStatus.Unfinished;
                             RepoTrainingExercise.Instance.Save(exercise);
                         }
 

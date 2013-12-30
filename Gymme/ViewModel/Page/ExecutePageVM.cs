@@ -14,12 +14,148 @@ namespace Gymme.ViewModel.Page
 {
     public class ExecutePageVM : Base.ViewModel, IDisposable
     {
+        #region State selestion
+
+        private class PageState
+        {
+            private readonly ExecutePageVM _page;
+
+            public PageState(ExecutePageVM page)
+            {
+                _page = page;
+            }
+
+            protected ExecutePageVM Page
+            {
+                get { return _page; }
+            }
+
+            public virtual bool IsSkiped { get { return false; } }
+            public virtual string NextButtonText { get { return Resources.AppResources.ExecutePage_Next; } }
+
+            public virtual void Start()
+            {
+            }
+
+            public virtual void Initialize()
+            {
+            }
+
+            public virtual void Skip()
+            {
+            }
+
+            public virtual bool CanDoNext(object obj)
+            {
+                return true;
+            }
+        }
+
+        private class PageStateFactory
+        {
+            private readonly ExecutePageVM _page;
+
+            public PageStateFactory(ExecutePageVM page)
+            {
+                _page = page;
+            }
+
+            public PageState GetState()
+            {
+                switch (_page.Status)
+                {
+                    case TrainingExerciseStatus.Started:
+                        return new StartedState(_page);
+                    case TrainingExerciseStatus.Finished:
+                        return new FinishedState(_page);
+                    case TrainingExerciseStatus.Skiped:
+                        return new SkipedState(_page);
+                }
+
+                return new PageState(_page);
+            }
+        }
+
+        private class StartedState : PageState
+        {
+            public StartedState(ExecutePageVM page) 
+                : base(page)
+            {
+            }
+
+            public override string NextButtonText
+            {
+                get
+                {
+                    return Page.CurrentSet == Page.LastSet
+                        ? Resources.AppResources.ExecutePage_Done
+                        : Resources.AppResources.ExecutePage_Next;
+                }
+            }
+
+            public override void Start()
+            {
+                base.Start();
+                Initialize();
+            }
+
+            public override void Initialize()
+            {
+                base.Initialize();
+                Page.CurrentSet = Page.LastSet = Page.CreateNewSet(Page.CurrentSet == null ? 1 : Page.CurrentSet.OrdinalNumber + 1);
+                Page.StartTimer();
+                Page._currentHistoryItem.UpdateState();
+                Page.NotifyPropertyChanged("IsSkiped");
+            }
+
+            public override void Skip()
+            {
+                base.Skip();
+                foreach (var set in Page._trainingExercise.Sets)
+                {
+                    RepoSet.Instance.Delete(set);
+                }
+
+                Page._trainingExercise.Sets.Clear();
+                Page.CurrentSet = Page.LastSet = null;
+                Page._timer.Stop();
+                Page._timer = null;
+                Page._currentHistoryItem.UpdateState();
+                Page.NotifyPropertyChanged("IsSkiped");
+            }
+        }
+
+        private class FinishedState : PageState
+        {
+            public FinishedState(ExecutePageVM page) 
+                : base(page)
+            {
+            }
+
+            public override bool CanDoNext(object obj)
+            {
+                return Page.CurrentSet != Page.LastSet;
+            }
+        }
+
+        private class SkipedState : PageState
+        {
+            public SkipedState(ExecutePageVM page)
+                : base(page)
+            {
+            }
+
+            public override bool IsSkiped { get { return true; } }
+        }
+
+        #endregion
+
+        private readonly PageStateFactory _stateFactory;
         private readonly Action _updateCurrentSet;
         private readonly TrainingExercise _trainingExercise;
         private TrainingExerciseHistory[] _history;
 
-        private Set _currentSet;
-        private Set _lastSet;
+        private SetVM _currentSet;
 
         private DispatcherTimer _timer;
         private TimeSpan _time;
@@ -27,13 +163,17 @@ namespace Gymme.ViewModel.Page
         private ExecuteHistoryItemVM _currentHistoryItem;
         private bool _finishButtonState;
         private Action<bool> _updadeFinishButtonState;
+        private PageState _state;
 
         public ExecutePageVM(long id, Action updateCurrentSet)
         {
             _updateCurrentSet = updateCurrentSet;
             _trainingExercise = RepoTrainingExercise.Instance.FindById(id);
+            
+            _stateFactory = new PageStateFactory(this);
+            _state = _stateFactory.GetState();
 
-            if (TrainingExercise.Status == TrainingExerciseStatus.Created)
+            if (Status == TrainingExerciseStatus.Created)
             {
                 Start();
                 return;
@@ -41,57 +181,14 @@ namespace Gymme.ViewModel.Page
             
             InitializeHistoryOnDemand();
 
-            if (TrainingExercise.Sets.Count != 0)
+            if (Sets.Count != 0)
             {
-                int lastOrdinal = TrainingExercise.Sets.Max(x => x.OrdinalNumber);
-                CurrentSet = LastSet = TrainingExercise.Sets.SingleOrDefault(x => x.OrdinalNumber == lastOrdinal);
+                int lastOrdinal = Sets.Max(x => x.OrdinalNumber);
+                CurrentSet = LastSet = new SetVM(Sets.SingleOrDefault(x => x.OrdinalNumber == lastOrdinal));
                 FinishButtonState = true;
             }
 
-            if (TrainingExercise.Status == TrainingExerciseStatus.Started)
-            {
-                CurrentSet = LastSet = CreateNewSet(CurrentSet == null ? 1 : CurrentSet.OrdinalNumber + 1);
-                StartTimer();
-            }
-        }
-
-        private void StartTimer()
-        {
-            _timer = new DispatcherTimer { Interval = TimeSpan.FromSeconds(0.04) };
-            _timer.Tick += (o, e) => TimeTick();
-            _timer.Start();
-        }
-
-        private void TimeTick()
-        {
-            // ReSharper disable once PossibleLossOfFraction
-            Time = LastSet != null ? (DateTime.Now - LastSet.StartTime).TrimToSeconds() : TimeSpan.Zero;
-        }
-
-        private void ShowTime()
-        {
-            if (_trainingExercise.Status == TrainingExerciseStatus.Started)
-            {
-                TimeTick();
-                return;
-            }
-
-            Time = CurrentSet != null && CurrentSet.EndTime != null ? (CurrentSet.EndTime.Value - _currentSet.StartTime).TrimToSeconds() : TimeSpan.Zero;
-        }
-
-        private void InitializeHistoryOnDemand()
-        {
-            if (_history == null)
-            {
-                _history = RepoTrainingExercise.Instance.GetHistoryForId(_trainingExercise, 5).ToArray();
-                HistoryItems = new ObservableCollection<ExecuteHistoryItemVM>(_history.Select(x => new ExecuteHistoryItemVM(x)));
-                _currentHistoryItem = HistoryItems.SingleOrDefault(x => x.Item.Id == _trainingExercise.Id);
-            }
-        }
-
-        public string Title
-        {
-            get { return RepoExercise.Instance.FindById(_trainingExercise.IdExecise).Name; }
+            _state.Initialize();
         }
 
         public TimeSpan Time
@@ -107,26 +204,32 @@ namespace Gymme.ViewModel.Page
             }
         }
 
+        public string Title
+        {
+            get { return RepoExercise.Instance.FindById(_trainingExercise.IdExecise).Name; }
+        }
+
+        private IEnumerable<TrainingExerciseHistory> History
+        {
+            get
+            {
+                InitializeHistoryOnDemand();
+                return _history;
+            }
+        }
+
         public ObservableCollection<ExecuteHistoryItemVM> HistoryItems { get; private set; }
 
         public bool IsHistoryEmpty { get { return HistoryItems.Count == 0; } }
 
-        public bool IsSkiped
+        private IList<Set> Sets
         {
-            get { return TrainingExercise.Status == TrainingExerciseStatus.Skiped; }
+            get { return _trainingExercise.Sets; }
         }
 
-        public string NextButtonText
-        {
-            get
-            {
-                return TrainingExercise.Status != TrainingExerciseStatus.Finished && CurrentSet == LastSet
-                    ? Resources.AppResources.ExecutePage_Done
-                    : Resources.AppResources.ExecutePage_Next;
-            }
-        }
+        private SetVM LastSet { get; set; }
 
-        public Set CurrentSet
+        public SetVM CurrentSet
         {
             get
             {
@@ -148,6 +251,11 @@ namespace Gymme.ViewModel.Page
             }
         }
 
+        public bool IsSkiped
+        {
+            get { return _state.IsSkiped; }
+        }
+
         public Command PreviousCommand
         {
             get
@@ -160,13 +268,16 @@ namespace Gymme.ViewModel.Page
         {
             get
             {
-                return GetOrCreateCommand("NextCommand", NextSet, o => TrainingExercise.Status != TrainingExerciseStatus.Finished || CurrentSet != LastSet);
+                return GetOrCreateCommand("NextCommand", NextSet, _state.CanDoNext);
             }
         }
 
-        public TrainingExercise TrainingExercise
+        public string NextButtonText
         {
-            get { return _trainingExercise; }
+            get
+            {
+                return _state.NextButtonText;
+            }
         }
 
         public bool FinishButtonState
@@ -196,46 +307,65 @@ namespace Gymme.ViewModel.Page
             }
         }
 
-        private Set LastSet
+        private void StartTimer()
         {
-            get { return _lastSet; }
-            set
-            {
-                _lastSet = value;
-            }
+            _timer = new DispatcherTimer { Interval = TimeSpan.FromSeconds(0.04) };
+            _timer.Tick += (o, e) => TimeTick();
+            _timer.Start();
         }
 
-        private IEnumerable<TrainingExerciseHistory> History
+        private void TimeTick()
         {
-            get
+            Time = LastSet != null ? (DateTime.Now - LastSet.Model.StartTime).TrimToSeconds() : TimeSpan.Zero;
+        }
+
+        private void ShowTime()
+        {
+            if (_trainingExercise.Status == TrainingExerciseStatus.Started)
             {
-                InitializeHistoryOnDemand();
-                return _history;
+                TimeTick();
+                return;
+            }
+
+            Time = CurrentSet != null && CurrentSet.Model.EndTime != null ? (CurrentSet.Model.EndTime.Value - CurrentSet.Model.StartTime).TrimToSeconds() : TimeSpan.Zero;
+        }
+
+        private void InitializeHistoryOnDemand()
+        {
+            if (_history == null)
+            {
+                _history = RepoTrainingExercise.Instance.GetHistoryForId(_trainingExercise, 5).ToArray();
+                HistoryItems = new ObservableCollection<ExecuteHistoryItemVM>(_history.Select(x => new ExecuteHistoryItemVM(x)));
+                _currentHistoryItem = HistoryItems.SingleOrDefault(x => x.Item.Id == _trainingExercise.Id);
             }
         }
 
         private void SaveCurrent()
         {
-            _updateCurrentSet();
-            RepoSet.Instance.Save(CurrentSet);
-
-            if (!_trainingExercise.Sets.Contains(CurrentSet))
+            if (CurrentSet.IsEdited)
             {
-                CurrentSet.IdTrainingExercise = _trainingExercise.Id;
-                _trainingExercise.Sets.Add(CurrentSet);
-                Data.Core.DatabaseContext.Instance.SubmitChanges();
+                _updateCurrentSet();
+                SaveModel(CurrentSet);
+
+                var set = CurrentSet.Model;
+                if (!_trainingExercise.Sets.Contains(set))
+                {
+                    set.IdTrainingExercise = _trainingExercise.Id;
+                    _trainingExercise.Sets.Add(set);
+                    Data.Core.DatabaseContext.Instance.SubmitChanges();
+                }
             }
+        }
+
+        private void SaveModel(SetVM setVM)
+        {
+            RepoSet.Instance.Save(setVM.Model);
         }
 
         public void FinishExecute()
         {
-            if (CurrentSet != _lastSet)
-            {
-                SaveCurrent();
-            }
-
-            TrainingExercise.Status = TrainingExerciseStatus.Finished;
-            RepoTrainingExercise.Instance.Save(TrainingExercise);
+            SaveCurrent();
+            Status = TrainingExerciseStatus.Finished;
         }
 
         public bool SkipExecute()
@@ -245,19 +375,8 @@ namespace Gymme.ViewModel.Page
                                                       MessageBoxButton.OKCancel);
             if (result == MessageBoxResult.OK)
             {
-                foreach (var set in TrainingExercise.Sets)
-                {
-                    RepoSet.Instance.Delete(set);
-                }
-
-                TrainingExercise.Sets.Clear();
-                CurrentSet = LastSet = null;
-                TrainingExercise.Status = TrainingExerciseStatus.Skiped;
-                RepoTrainingExercise.Instance.Save(TrainingExercise);
-                _timer.Stop();
-                _timer = null;
-                _currentHistoryItem.UpdateState();
-                NotifyPropertyChanged("IsSkiped");
+                _state.Skip();
+                Status = TrainingExerciseStatus.Skiped;
                 return true;
             }
 
@@ -266,12 +385,23 @@ namespace Gymme.ViewModel.Page
 
         public void Start()
         {
-            TrainingExercise.Status = TrainingExerciseStatus.Started;
-            RepoTrainingExercise.Instance.Save(TrainingExercise);
-            NextSet(null);
-            StartTimer();
-            _currentHistoryItem.UpdateState();
-            NotifyPropertyChanged("IsSkiped");
+            Status = TrainingExerciseStatus.Started; 
+            _state.Start();
+        }
+
+        public TrainingExerciseStatus Status
+        {
+            get
+            {
+                return _trainingExercise.Status;
+            }
+            set
+            {
+                _trainingExercise.Status = value;
+                RepoTrainingExercise.Instance.Save(_trainingExercise);
+                _state = _stateFactory.GetState();
+                NotifyPropertyChanged("IsSkiped");
+            }
         }
 
         private void PreviousSet(object o)
@@ -280,10 +410,10 @@ namespace Gymme.ViewModel.Page
             {
                 SaveCurrent();
                 int previousNumber = CurrentSet.OrdinalNumber - 1;
-                Set previousSet = TrainingExercise.Sets.SingleOrDefault(x => x.OrdinalNumber == previousNumber);
+                Set previousSet = Sets.SingleOrDefault(x => x.OrdinalNumber == previousNumber);
                 if (previousSet != null)
                 {
-                    CurrentSet = previousSet;
+                    CurrentSet = new SetVM(previousSet);
                 }
             }
         }
@@ -294,10 +424,10 @@ namespace Gymme.ViewModel.Page
             {
                 SaveCurrent();
                 int nextNumber = CurrentSet.OrdinalNumber + 1;
-                Set nextSet = TrainingExercise.Sets.SingleOrDefault(x => x.OrdinalNumber == nextNumber);
+                Set nextSet = Sets.SingleOrDefault(x => x.OrdinalNumber == nextNumber);
                 if (nextSet != null)
                 {
-                    CurrentSet = nextSet;
+                    CurrentSet = new SetVM(nextSet);
                     return;
                 }
 
@@ -322,13 +452,13 @@ namespace Gymme.ViewModel.Page
 
         private void FinishCurrentSet()
         {
-            CurrentSet.EndTime = DateTime.Now;
-            RepoSet.Instance.Save(CurrentSet);
-            TrainingExercise.Sets.Add(CurrentSet);
+            CurrentSet.Model.EndTime = DateTime.Now;
+            SaveModel(CurrentSet);
+            Sets.Add(CurrentSet.Model);
             Data.Core.DatabaseContext.Instance.SubmitChanges();
         }
 
-        private Set CreateNewSet(int ordinal)
+        private SetVM CreateNewSet(int ordinal)
         {
             Set newSet = new Set { OrdinalNumber = ordinal, StartTime = DateTime.Now };
             Set[] sets = History.Select(x => x.TrainingExercise.Sets.FirstOrDefault(set => set.OrdinalNumber == ordinal)).ToArray();
@@ -339,7 +469,7 @@ namespace Gymme.ViewModel.Page
                 newSet.Reps = prevSet.Reps;
             }
 
-            return newSet;
+            return new SetVM(newSet);
         }
 
         public void Dispose()

@@ -2,6 +2,7 @@
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
+
 using Gymme.Data.Models;
 using Gymme.Data.Repository;
 using Gymme.Resources;
@@ -114,7 +115,6 @@ namespace Gymme.ViewModel
         {
             _trainingExercise.Status = TrainingExerciseStatus.Skiped;
             RepoTrainingExercise.Instance.Save(_trainingExercise);
-
             Update();
         }
 

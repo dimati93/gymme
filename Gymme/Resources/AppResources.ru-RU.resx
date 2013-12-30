@@ -323,4 +323,7 @@
   <data name="ExecutePage_SkipedItem" xml:space="preserve">
     <value>пропущено</value>
   </data>
+  <data name="Command_Continue" xml:space="preserve">
+    <value>продолжить</value>
+  </data>
 </root>

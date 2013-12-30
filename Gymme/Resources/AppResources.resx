@@ -326,4 +326,7 @@
   <data name="ExecutePage_SkipedItem" xml:space="preserve">
     <value>skiped</value>
   </data>
+  <data name="Command_Continue" xml:space="preserve">
+    <value>continue</value>
+  </data>
 </root>

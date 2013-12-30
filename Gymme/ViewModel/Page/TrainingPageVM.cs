@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Threading;
+
 using Gymme.Data.Core;
 using Gymme.Data.Models;
 using Gymme.Data.Repository;

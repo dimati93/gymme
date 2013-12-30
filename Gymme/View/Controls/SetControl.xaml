@@ -26,6 +26,7 @@
             <Setter Property="SelectionForeground" Value="{StaticResource PhoneTextBoxSelectionForegroundBrush}"/>
             <Setter Property="BorderThickness" Value="{StaticResource PhoneBorderThickness}"/>
             <Setter Property="Padding" Value="2"/>
+            <Setter Property="Margin" Value="0"/>
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="TextBox">
@@ -132,23 +133,23 @@
                      x:Name="tbLift"
                      Text="{Binding Lift, Mode=TwoWay, UpdateSourceTrigger=Explicit}"
                      Style="{StaticResource NumberInputBox}" 
-                     GotFocus="InputBox_GotFocus"/>
+                     GotFocus="InputBox_GotFocus" KeyUp="InputBox_TextInput"/>
             <TextBlock Grid.Column="1" Grid.Row="0" Text="/" 
                        Style="{StaticResource TitleTextBoxStyle}" Margin="0,10,0,0"/>
             <TextBox Grid.Column="2" Grid.Row="0" 
                      x:Name="tbReps"
                      Text="{Binding Reps, Mode=TwoWay, UpdateSourceTrigger=Explicit}" 
                      Style="{StaticResource NumberInputBox}"
-                     GotFocus="InputBox_GotFocus"/>
+                     GotFocus="InputBox_GotFocus" KeyUp="InputBox_TextInput"/>
 
             <TextBlock Grid.Column="0" Grid.Row="1" 
                        Text="{Binding Resources.Common_Lift, Source={StaticResource Localized}}" 
                        HorizontalAlignment="Center"
-                       Style="{StaticResource OverviewItemStyle}" Margin="0"/>
+                       Style="{StaticResource OverviewItemStyle}" Margin="0,-5,0,0"/>
             <TextBlock Grid.Column="2" Grid.Row="1" 
                        Text="{Binding Resources.Common_Reps, Source={StaticResource Localized}}"
                        HorizontalAlignment="Center"
-                       Style="{StaticResource OverviewItemStyle}" Margin="0"/>
+                       Style="{StaticResource OverviewItemStyle}" Margin="0,-5,0,0"/>
         </Grid>
     </Grid>
 </UserControl>

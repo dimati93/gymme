@@ -3,15 +3,32 @@ using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
+using System.Windows.Input;
+
+using Gymme.View.Helpers;
 
 namespace Gymme.View.Controls
 {
-    public partial class SetControl : UserControl
+    public partial class SetControl : UserControl , IDataContextChangedHandler<SetControl>
     {
+        public static readonly DependencyProperty IsEditedProperty =
+            DependencyProperty.Register("IsEdited", typeof (bool), typeof (SetControl), new PropertyMetadata(false));
+
+        public bool IsEdited
+        {
+            get { return (bool) GetValue(IsEditedProperty); }
+            set
+            {
+                SetValue(IsEditedProperty, value);
+            }
+        }
+
         private Dictionary<Control, DependencyProperty> _bindingElements;
         public SetControl()
         {
-            InitializeComponent(); Loaded += (o, e) => RegisterBindingElements();
+            InitializeComponent(); 
+            DataContextChangedHelper<SetControl>.Bind(this);
+            Loaded += (o, e) => RegisterBindingElements();
         }
 
         public void UpdateDataSources()
@@ -39,10 +56,25 @@ namespace Gymme.View.Controls
                 {tbReps, TextBox.TextProperty}
             };
         }
+
         private void InputBox_GotFocus(object sender, RoutedEventArgs e)
         {
             TextBox box = (TextBox) sender;
             box.SelectAll();
         }
+
+        private void InputBox_TextInput(object sender, KeyEventArgs keyEventArgs)
+        {
+            if (!IsEdited)
+            {
+                IsEdited = true;
+            }
+        }
+
+        public void DataContextChanged(SetControl sender, DependencyPropertyChangedEventArgs e)
+        {
+            sender.IsEdited = false;
+        }
     }
+
 }
