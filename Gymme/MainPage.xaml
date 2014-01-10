@@ -36,7 +36,7 @@
                              ItemsSource="{Binding UpcomingItems}">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
-                                <Grid Background="{StaticResource TapBackgroundBrush}" Hold="Workout_Hold">
+                                <Grid Background="{StaticResource TapBackgroundBrush}">
                                     <i:Interaction.Triggers>
                                         <i:EventTrigger EventName="Tap">
                                             <i:InvokeCommandAction Command="{Binding GotoPageViewCommand}"/>

@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Deployment xmlns="http://schemas.microsoft.com/windowsphone/2009/deployment" AppPlatformVersion="7.1">
-  <App xmlns="" ProductID="{9917ae4d-3392-4b36-a2d6-92aab931ea4c}" Title="Gymme" RuntimeType="Silverlight" Version="1.0.0.0" Genre="apps.normal" Author="d93" Description="You personal trainer" Publisher="Gymme (Corei4)">
+  <App xmlns="" ProductID="{9917ae4d-3392-4b36-a2d6-92aab931ea4c}" Title="Gymme" RuntimeType="Silverlight" Version="1.1.0.0" Genre="apps.normal" Author="d93" Description="You personal trainer" Publisher="Gymme (Corei4)">
     <IconPath IsRelative="true" IsResource="false">.\Assets\ApplicationIcon.png</IconPath>
     <Capabilities>
       <Capability Name="ID_CAP_IDENTITY_DEVICE" />

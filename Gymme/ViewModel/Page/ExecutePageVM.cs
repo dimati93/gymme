@@ -340,20 +340,27 @@ namespace Gymme.ViewModel.Page
             }
         }
 
+        private void SaveCurrent(bool editedOnly)
+        {
+            if (editedOnly && !CurrentSet.IsEdited)
+            {
+                return;
+            }
+
+            SaveCurrent();
+        }
+
         private void SaveCurrent()
         {
-            if (CurrentSet.IsEdited)
-            {
-                _updateCurrentSet();
-                SaveModel(CurrentSet);
+            _updateCurrentSet();
+            SaveModel(CurrentSet);
 
-                var set = CurrentSet.Model;
-                if (!_trainingExercise.Sets.Contains(set))
-                {
-                    set.IdTrainingExercise = _trainingExercise.Id;
-                    _trainingExercise.Sets.Add(set);
-                    Data.Core.DatabaseContext.Instance.SubmitChanges();
-                }
+            var set = CurrentSet.Model;
+            if (!_trainingExercise.Sets.Contains(set))
+            {
+                set.IdTrainingExercise = _trainingExercise.Id;
+                _trainingExercise.Sets.Add(set);
+                Data.Core.DatabaseContext.Instance.SubmitChanges();
             }
         }
 
@@ -364,7 +371,7 @@ namespace Gymme.ViewModel.Page
 
         public void FinishExecute()
         {
-            SaveCurrent();
+            SaveCurrent(true);
             Status = TrainingExerciseStatus.Finished;
         }
 
@@ -408,7 +415,7 @@ namespace Gymme.ViewModel.Page
         {
             if (CurrentSet != null)
             {
-                SaveCurrent();
+                SaveCurrent(true);
                 int previousNumber = CurrentSet.OrdinalNumber - 1;
                 Set previousSet = Sets.SingleOrDefault(x => x.OrdinalNumber == previousNumber);
                 if (previousSet != null)
@@ -463,12 +470,13 @@ namespace Gymme.ViewModel.Page
             Set newSet = new Set { OrdinalNumber = ordinal, StartTime = DateTime.Now };
             Set[] sets = History.Select(x => x.TrainingExercise.Sets.FirstOrDefault(set => set.OrdinalNumber == ordinal)).ToArray();
             Set prevSet = sets.FirstOrDefault(x => x != null);
+
             if (prevSet != null)
             {
                 newSet.Lift = prevSet.Lift;
-                newSet.Reps = prevSet.Reps;
+                newSet.Reps = prevSet.Reps; 
             }
-
+            
             return new SetVM(newSet);
         }
 
