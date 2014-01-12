@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Windows.Controls.DataVisualization.Charting;
 using System.Windows.Navigation;
 using Gymme.Resources;
 using Gymme.ViewModel.Page;
+
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 

@@ -50,7 +50,7 @@ namespace Gymme.ViewModel
         public void UpdateSets()
         {
             Sets.Clear();
-            foreach (var set in RepoSet.Instance.FindAllForExecuteId(_historyItem.Id))
+            foreach (var set in RepoSet.Instance.FindAllForTraining(_historyItem))
             {
                 Sets.Add(set);
             }

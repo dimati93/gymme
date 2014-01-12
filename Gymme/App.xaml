@@ -12,6 +12,7 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Assets\Styles\Common.xaml"/>
+                <ResourceDictionary Source="Assets\Styles\Chart.xaml"/>
             </ResourceDictionary.MergedDictionaries>
 
             <sys:Double x:Key="PanoramaItemHeaderFontSize">66</sys:Double>

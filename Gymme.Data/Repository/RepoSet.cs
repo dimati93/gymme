@@ -24,9 +24,31 @@ namespace Gymme.Data.Repository
             return Table.Any(x => x.Id == id);
         }
 
-        public IEnumerable<Set> FindAllForExecuteId(long id)
+        public IEnumerable<Set> FindAllForTraining(TrainingExercise trainingExercise)
         {
-            return Table.Where(x => x.IdTrainingExercise == id);
+            return Table.Where(x => x.IdTrainingExercise == trainingExercise.Id);
+        }
+
+        public float FindMax(TrainingExercise trainingExercise)
+        {
+            var sets = FindAllForTraining(trainingExercise).ToArray();
+            if (!sets.Any())
+            {
+                return 0;
+            }
+
+            return sets.Max(x => x.Lift);
+        }
+
+        public float FindAvg(TrainingExercise trainingExercise)
+        {
+            var sets = FindAllForTraining(trainingExercise).ToArray();
+            if (!sets.Any())
+            {
+                return 0;
+            }
+
+            return sets.Average(x => x.Lift);
         }
     }
 }

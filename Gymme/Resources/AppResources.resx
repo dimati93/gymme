@@ -335,4 +335,10 @@
   <data name="About_ReportSubject" xml:space="preserve">
     <value>To Gymme's developer</value>
   </data>
+  <data name="ExercisePage_Chart_AvarageWeight" xml:space="preserve">
+    <value>avg. weight</value>
+  </data>
+  <data name="ExercisePage_Chart_MaxWeight" xml:space="preserve">
+    <value>max weight</value>
+  </data>
 </root>

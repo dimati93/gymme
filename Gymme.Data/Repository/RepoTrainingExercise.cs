@@ -27,11 +27,21 @@ namespace Gymme.Data.Repository
             return Table.Any(x => x.Id == id);
         }
 
-        public IEnumerable<TrainingExerciseHistory> GetHistoryForId(TrainingExercise exercise, int takeCount)
+        public IEnumerable<TrainingExerciseHistory> GetHistory(TrainingExercise exercise, int takeCount)
+        {
+            return GetHistoryForId(exercise.IdExecise, takeCount);
+        }
+
+        public IEnumerable<TrainingExerciseHistory> GetHistory(Exercise exercise, int takeCount)
+        {
+            return GetHistoryForId(exercise.Id, takeCount);
+        }
+
+        private IEnumerable<TrainingExerciseHistory> GetHistoryForId(long exerciseId, int takeCount)
         {
             return (from te in Instance.Table 
                    join t in RepoTraining.Instance.Table on te.IdTraining equals t.Id
-                   where te.IdExecise == exercise.IdExecise
+                   where te.IdExecise == exerciseId
                    orderby t.StartTime descending
                    select new TrainingExerciseHistory { TrainingExercise = te, StartTime = t.StartTime }).Take(takeCount);
         }

@@ -1,6 +1,7 @@
 ﻿using System.Windows;
 using Gymme.Data.Models;
 using Gymme.Data.Repository;
+using Gymme.ViewModel.Statistics;
 
 namespace Gymme.ViewModel.Page
 {
@@ -8,6 +9,9 @@ namespace Gymme.ViewModel.Page
     {
         private readonly Exercise _exercise;
         private readonly Workout _workout;
+        private ExerciseStatistics _exerciseStatistics;
+        private int _selectedPageIndex;
+
         public ExercisePageVM(long id)
         {
             _exercise = RepoExercise.Instance.FindById(id);
@@ -37,6 +41,27 @@ namespace Gymme.ViewModel.Page
             get
             {
                 return _exercise.Category;
+            }
+        }
+
+        public ExerciseStatistics Statistics
+        {
+            get
+            {
+                return _exerciseStatistics ?? (_exerciseStatistics = new ExerciseStatistics(_exercise));
+            }
+        }
+
+        public int SelectedPageIndex
+        {
+            get { return _selectedPageIndex; }
+            set
+            {
+                _selectedPageIndex = value;
+                if (_selectedPageIndex == 1 && !Statistics.IsLoaded)
+                {
+                    Statistics.LoadStatistics();
+                }
             }
         }
 

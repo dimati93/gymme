@@ -6,21 +6,25 @@
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
     xmlns:controls="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ct="clr-namespace:System.Windows.Controls.DataVisualization.Charting;assembly=System.Windows.Controls.DataVisualization.Toolkit"
     mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="768"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait"  Orientation="Portrait"
     shell:SystemTray.IsVisible="True">
+    <shell:SystemTray.ProgressIndicator>
+        <shell:ProgressIndicator IsVisible="{Binding Statistics.IsLoading}" IsIndeterminate="True"></shell:ProgressIndicator>
+    </shell:SystemTray.ProgressIndicator>
 	
     <Grid x:Name="LayoutRoot" Background="Transparent">
         <!--Pivot Control-->
         <controls:Pivot Title="{Binding WorkoutTitle}"
-                        HeaderTemplate="{StaticResource MainPanoramaHeaderTemplate}">
+                        HeaderTemplate="{StaticResource MainPanoramaHeaderTemplate}"
+                        SelectedIndex="{Binding SelectedPageIndex, Mode=TwoWay}">
             <!--Pivot item one-->
-            <controls:PivotItem Header="{Binding Resources.Page_Overview, Source={StaticResource Localized}}"
-                                >
+            <controls:PivotItem Header="{Binding Resources.Page_Overview, Source={StaticResource Localized}}">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
@@ -55,9 +59,30 @@
 
             <!--Pivot item two-->
             <controls:PivotItem Header="{Binding Resources.Page_Statistics, Source={StaticResource Localized}}">
-                <Grid>
-                    <TextBlock Text="{Binding Resources.Dummy_Statistics, Source={StaticResource Localized}}"
-                               Style="{StaticResource HintTextBlockStyle}"/>
+                <Grid x:Name="StatPage">
+                    <ct:Chart DataContext="{Binding Statistics}" 
+                                           Style="{StaticResource PhoneChartStyle}">                        
+                        <ct:Chart.Axes>
+                            <ct:LinearAxis Minimum="0" Orientation="Y" Location="Left"/>
+                            <ct:DateTimeAxis Orientation="X" Location="Bottom">
+                                <ct:DateTimeAxis.AxisLabelStyle>
+                                    <Style TargetType="ct:DateTimeAxisLabel">
+                                        <Setter Property="StringFormat" Value="{}{0:dd MMM}"/>
+                                    </Style>
+                                </ct:DateTimeAxis.AxisLabelStyle>
+                            </ct:DateTimeAxis>
+                        </ct:Chart.Axes>
+						<ct:Chart.Series>
+                            <ct:LineSeries Title="{Binding Resources.ExercisePage_Chart_AvarageWeight, Source={StaticResource Localized}}"
+                                                ItemsSource="{Binding AverageWeight}"
+                                                IndependentValueBinding="{Binding Date}"
+                                                DependentValueBinding="{Binding Weight}"/>
+                            <ct:LineSeries Title="{Binding Resources.ExercisePage_Chart_MaxWeight, Source={StaticResource Localized}}"
+                                           ItemsSource="{Binding MaxWeight}"
+                                           IndependentValueBinding="{Binding Date}"
+                                           DependentValueBinding="{Binding Weight}"/>
+                        </ct:Chart.Series>
+                    </ct:Chart>
                 </Grid>
             </controls:PivotItem>
         </controls:Pivot>

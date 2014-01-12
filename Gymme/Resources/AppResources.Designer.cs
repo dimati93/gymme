@@ -394,6 +394,24 @@ namespace Gymme.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to avg. weight.
+        /// </summary>
+        public static string ExercisePage_Chart_AvarageWeight {
+            get {
+                return ResourceManager.GetString("ExercisePage_Chart_AvarageWeight", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to max weight.
+        /// </summary>
+        public static string ExercisePage_Chart_MaxWeight {
+            get {
+                return ResourceManager.GetString("ExercisePage_Chart_MaxWeight", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No notes.
         /// </summary>
         public static string ExercisePage_EmptyNoteHint {

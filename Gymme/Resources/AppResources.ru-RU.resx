@@ -329,4 +329,10 @@
   <data name="About_ReportSubject" xml:space="preserve">
     <value>К разработчику "Gymme"</value>
   </data>
+  <data name="ExercisePage_Chart_AvarageWeight" xml:space="preserve">
+    <value>сред. вес</value>
+  </data>
+  <data name="ExercisePage_Chart_MaxWeight" xml:space="preserve">
+    <value>макс. вес</value>
+  </data>
 </root>

@@ -334,7 +334,7 @@ namespace Gymme.ViewModel.Page
         {
             if (_history == null)
             {
-                _history = RepoTrainingExercise.Instance.GetHistoryForId(_trainingExercise, 5).ToArray();
+                _history = RepoTrainingExercise.Instance.GetHistory(_trainingExercise, 5).ToArray();
                 HistoryItems = new ObservableCollection<ExecuteHistoryItemVM>(_history.Select(x => new ExecuteHistoryItemVM(x)));
                 _currentHistoryItem = HistoryItems.SingleOrDefault(x => x.Item.Id == _trainingExercise.Id);
             }
