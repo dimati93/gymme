@@ -8,12 +8,44 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:ct="clr-namespace:System.Windows.Controls.DataVisualization.Charting;assembly=System.Windows.Controls.DataVisualization.Toolkit"
+    xmlns:visualizationToolkit="clr-namespace:System.Windows.Controls.DataVisualization;assembly=System.Windows.Controls.DataVisualization.Toolkit"
     mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="768"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait"  Orientation="Portrait"
     shell:SystemTray.IsVisible="True">
+    <phone:PhoneApplicationPage.Resources>
+        <visualizationToolkit:ResourceDictionaryCollection x:Key="ChartPalette">
+                    <!-- Orange -->
+                    <ResourceDictionary>
+                        <SolidColorBrush x:Key="Background" Color="#FFFF3000"/>
+                        <Style x:Key="DataPointStyle" TargetType="Control">
+                            <Setter Property="Background" Value="{StaticResource Background}" />
+                        </Style>
+                        <Style x:Key="DataShapeStyle" TargetType="Shape">
+                            <Setter Property="Stroke" Value="{StaticResource Background}" />
+                            <Setter Property="StrokeThickness" Value="2" />
+                            <Setter Property="StrokeMiterLimit" Value="1" />
+                            <Setter Property="Fill" Value="{StaticResource Background}" />
+                        </Style>
+                    </ResourceDictionary>
+                    <!-- Red -->
+                    <ResourceDictionary>
+                        <SolidColorBrush x:Key="Background" Color="#FFFFC700"/>
+                        <Style x:Key="DataPointStyle" TargetType="Control">
+                            <Setter Property="Background" Value="{StaticResource Background}" />
+                        </Style>
+                        <Style x:Key="DataShapeStyle" TargetType="Shape">
+                            <Setter Property="Stroke" Value="{StaticResource Background}" />
+                            <Setter Property="StrokeThickness" Value="2" />
+                            <Setter Property="StrokeMiterLimit" Value="1" />
+                            <Setter Property="Fill" Value="{StaticResource Background}" />
+                        </Style>
+                    </ResourceDictionary>
+                </visualizationToolkit:ResourceDictionaryCollection>
+    </phone:PhoneApplicationPage.Resources>
+    
     <shell:SystemTray.ProgressIndicator>
         <shell:ProgressIndicator IsVisible="{Binding Statistics.IsLoading}" IsIndeterminate="True"></shell:ProgressIndicator>
     </shell:SystemTray.ProgressIndicator>
@@ -61,7 +93,8 @@
             <controls:PivotItem Header="{Binding Resources.Page_Statistics, Source={StaticResource Localized}}">
                 <Grid x:Name="StatPage">
                     <ct:Chart DataContext="{Binding Statistics}" 
-                                           Style="{StaticResource PhoneChartStyle}">                        
+                              Style="{StaticResource PhoneChartStyle}"
+                              Palette="{StaticResource ChartPalette}">                        
                         <ct:Chart.Axes>
                             <ct:LinearAxis Minimum="0" Orientation="Y" Location="Left"/>
                             <ct:DateTimeAxis Orientation="X" Location="Bottom">
@@ -72,15 +105,18 @@
                                 </ct:DateTimeAxis.AxisLabelStyle>
                             </ct:DateTimeAxis>
                         </ct:Chart.Axes>
+                        
 						<ct:Chart.Series>
                             <ct:LineSeries Title="{Binding Resources.ExercisePage_Chart_AvarageWeight, Source={StaticResource Localized}}"
-                                                ItemsSource="{Binding AverageWeight}"
-                                                IndependentValueBinding="{Binding Date}"
-                                                DependentValueBinding="{Binding Weight}"/>
+                                           ItemsSource="{Binding AverageWeight}"
+                                           IndependentValueBinding="{Binding Date}"
+                                           DependentValueBinding="{Binding Weight}"
+                                           Background="{StaticResource MainColorBrush}"/>
                             <ct:LineSeries Title="{Binding Resources.ExercisePage_Chart_MaxWeight, Source={StaticResource Localized}}"
                                            ItemsSource="{Binding MaxWeight}"
                                            IndependentValueBinding="{Binding Date}"
-                                           DependentValueBinding="{Binding Weight}"/>
+                                           DependentValueBinding="{Binding Weight}"
+                                           Background="{StaticResource MainLightColorBrush}"/>
                         </ct:Chart.Series>
                     </ct:Chart>
                 </Grid>

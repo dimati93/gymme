@@ -48,7 +48,7 @@ namespace Gymme.Data.Repository
                 return 0;
             }
 
-            return sets.Average(x => x.Lift);
+            return sets.Sum(x => x.Lift * x.Reps) / sets.Sum(x => x.Reps);
         }
     }
 }

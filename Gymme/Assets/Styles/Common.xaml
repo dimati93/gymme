@@ -4,7 +4,8 @@
     xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit">
 
     <SolidColorBrush x:Key="MainColorBrush" Color="#FFFFC700"/>
-    <SolidColorBrush x:Key="TapBackgroundBrush" Color="#0AFFFFFF"/>
+    <SolidColorBrush x:Key="MainLightColorBrush" Color="#7FFFC700"/>
+    <SolidColorBrush x:Key="TapBackgroundBrush" Color="#05FFFFFF"/>
     
     <Style TargetType="TextBlock" x:Key="InputDescriptionStyle">
         <Setter Property="Margin" Value="15, 0, 15, 0"/>
