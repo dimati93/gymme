@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using Gymme.Data.Repository;
 
 namespace Gymme.ViewModel.Statistics
@@ -7,6 +8,8 @@ namespace Gymme.ViewModel.Statistics
     {
         private bool _isLoaded;
         private bool _isLoading;
+        private bool _showNoData;
+        private bool _showPlot;
 
         public bool IsLoaded
         {
@@ -34,14 +37,44 @@ namespace Gymme.ViewModel.Statistics
             }
         }
 
-        public void LoadStatistics()
+        public bool ShowNoData
+        {
+            get
+            {
+                return _showNoData;
+            }
+            set
+            {
+                _showNoData = value;
+                NotifyPropertyChanged("ShowNoData");
+            }
+        }
+
+        public bool ShowPlot
+        {
+            get
+            {
+                return _showPlot;
+            }
+            set
+            {
+                _showPlot = value;
+                NotifyPropertyChanged("ShowPlot");
+            }
+        }
+
+        public async void LoadStatistics()
         {
             IsLoading = true;
-            ProcedeLoad();
+            await TaskEx.Run((Action)ProcedeLoad);
 
             IsLoading = false;
+            ShowPlot = CheckData();
+            ShowNoData = !ShowPlot;
             IsLoaded = true;
         }
+
+        protected abstract bool CheckData();
 
         protected abstract void ProcedeLoad();
     }

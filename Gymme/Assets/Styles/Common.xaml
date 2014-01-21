@@ -116,4 +116,11 @@
         <Setter Property="Margin" Value="12,0,0,0"/>
         <Setter Property="TextWrapping" Value="Wrap"/>
     </Style>
+
+    <Style x:Key="PageCenteredTextBlock" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="24"/>
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="TextAlignment" Value="Center"/>
+    </Style>
 </ResourceDictionary>

@@ -338,4 +338,7 @@
   <data name="WorkoutPage_Chart_TimeSpent" xml:space="preserve">
     <value>затраченое время</value>
   </data>
+  <data name="Page_Statistics_Loading" xml:space="preserve">
+    <value>загрузка...</value>
+  </data>
 </root>

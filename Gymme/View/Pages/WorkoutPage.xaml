@@ -85,15 +85,24 @@
 
             <!--Pivot item two-->
             <controls:PivotItem Header="{Binding Resources.Page_Statistics, Source={StaticResource Localized}}">
-                <Grid>
-                    <!--<TextBlock Text="{Binding Resources.Dummy_Statistics, Source={StaticResource Localized}}"
-                               Style="{StaticResource HintTextBlockStyle}"/>-->
+                <Grid DataContext="{Binding Statistics}">
+                    
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*"/>
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
-                    <ct:Chart DataContext="{Binding Statistics}" 
+                    
+                    <TextBlock Grid.Row="0"
+                               Style="{StaticResource PageCenteredTextBlock}" 
+                               Visibility="{Binding IsLoading, Converter={StaticResource VisibilityConverter}}"
+                               Text="{Binding Resources.Page_Statistics_Loading, Source={StaticResource Localized}}"/>
+                    <TextBlock Grid.Row="0"
+                               Style="{StaticResource PageCenteredTextBlock}" 
+                               Visibility="{Binding ShowNoData, Converter={StaticResource VisibilityConverter}}"
+                               Text="{Binding Resources.Page_Statistics_NoData, Source={StaticResource Localized}}"/>
+                    <ct:Chart Grid.Row="0"
                               Style="{StaticResource PhoneChartStyle}"
+                              Visibility="{Binding ShowPlot, Converter={StaticResource VisibilityConverter}}"
                               Palette="{StaticResource ChartPalette}">
                         <ct:Chart.Axes>
                             <ct:DateTimeAxis Minimum="{Binding DateZero}"  Orientation="Y" Location="Left">

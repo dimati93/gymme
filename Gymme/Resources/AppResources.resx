@@ -344,4 +344,10 @@
   <data name="WorkoutPage_Chart_TimeSpent" xml:space="preserve">
     <value>time spent</value>
   </data>
+  <data name="Page_Statistics_Loading" xml:space="preserve">
+    <value>loading...</value>
+  </data>
+  <data name="Page_Statistics_NoData" xml:space="preserve">
+    <value>no data to plot</value>
+  </data>
 </root>

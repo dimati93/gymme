@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
+
 using Gymme.Data.Models;
 using Gymme.Data.Repository;
 
@@ -43,10 +43,15 @@ namespace Gymme.ViewModel.Statistics
             }
         }
 
-        protected async override void ProcedeLoad()
+        protected override bool CheckData()
+        {
+            return SpentTime.Count != 0;
+        }
+
+        protected override void ProcedeLoad()
         {
             var trainings = RepoTraining.Instance.GetHistory(_workout, 10).OrderBy(x => x.StartTime);
-            SpentTime = await TaskEx.Run(() => GetSpentStat(trainings));
+            SpentTime = GetSpentStat(trainings);
         }
 
         private List<TimeStatPoint> GetSpentStat(IEnumerable<Training> trainings)

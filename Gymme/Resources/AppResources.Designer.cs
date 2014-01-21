@@ -574,6 +574,24 @@ namespace Gymme.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to loading....
+        /// </summary>
+        public static string Page_Statistics_Loading {
+            get {
+                return ResourceManager.GetString("Page_Statistics_Loading", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to no data to plot.
+        /// </summary>
+        public static string Page_Statistics_NoData {
+            get {
+                return ResourceManager.GetString("Page_Statistics_NoData", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to LeftToRight.
         /// </summary>
         public static string ResourceFlowDirection {

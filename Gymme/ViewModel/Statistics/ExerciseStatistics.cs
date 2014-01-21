@@ -53,11 +53,16 @@ namespace Gymme.ViewModel.Statistics
             }
         }
 
-        protected async override void ProcedeLoad()
+        protected override bool CheckData()
         {
-            var trainings = RepoTrainingExercise.Instance.GetHistory(_exercise, 10);
-            MaxWeight = await TaskEx.Run(() => GetMaxStat(trainings));
-            AverageWeight = await TaskEx.Run((() => GetAvarageStat(trainings)));
+            return AverageWeight.Count != 0 || MaxWeight.Count != 0;
+        }
+
+        protected override void ProcedeLoad()
+        {
+            var trainings = RepoTrainingExercise.Instance.GetHistory(_exercise, 10).ToArray();
+            MaxWeight = GetMaxStat(trainings);
+            AverageWeight = GetAvarageStat(trainings);
         }
 
         private List<WeightStatPoint> GetMaxStat(IEnumerable<TrainingExerciseHistory> trainings)
