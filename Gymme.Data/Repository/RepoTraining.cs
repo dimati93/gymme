@@ -2,6 +2,7 @@
 using System.Linq;
 
 using Gymme.Data.Models;
+using Gymme.Data.Models.QueryResult;
 
 namespace Gymme.Data.Repository
 {
@@ -38,6 +39,11 @@ namespace Gymme.Data.Repository
         public IEnumerable<Training> FindByWorkoutId(long id)
         {
             return Table.Where(x => x.IdWorkout == id);
+        }
+
+        public IEnumerable<Training> GetHistory(Workout workout, int take)
+        {
+            return Table.Where(x => x.IdWorkout == workout.Id).OrderByDescending(x => x.StartTime).Take(take);
         }
     }
 }

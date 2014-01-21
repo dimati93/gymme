@@ -7,6 +7,8 @@
     xmlns:controls="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ct="clr-namespace:System.Windows.Controls.DataVisualization.Charting;assembly=System.Windows.Controls.DataVisualization.Toolkit"
+    xmlns:dataVis="clr-namespace:System.Windows.Controls.DataVisualization;assembly=System.Windows.Controls.DataVisualization.Toolkit"
     xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
     xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
     mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="768"
@@ -15,12 +17,34 @@
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait"  Orientation="Portrait"
     shell:SystemTray.IsVisible="True">
+    
+    <phone:PhoneApplicationPage.Resources>
+        <dataVis:ResourceDictionaryCollection x:Key="ChartPalette">
+            <!-- Orange -->
+            <ResourceDictionary>
+                <SolidColorBrush x:Key="Background" Color="#FF00C7FF"/>
+                <Style x:Key="DataPointStyle" TargetType="Control">
+                    <Setter Property="Background" Value="{StaticResource Background}" />
+                </Style>
+                <Style x:Key="DataShapeStyle" TargetType="Shape">
+                    <Setter Property="Stroke" Value="{StaticResource Background}" />
+                    <Setter Property="StrokeThickness" Value="2" />
+                    <Setter Property="StrokeMiterLimit" Value="1" />
+                    <Setter Property="Fill" Value="{StaticResource Background}" />
+                </Style>
+            </ResourceDictionary>
+        </dataVis:ResourceDictionaryCollection>
+    </phone:PhoneApplicationPage.Resources>
 
-    <!--LayoutRoot is the root grid where all page content is placed-->
+    <shell:SystemTray.ProgressIndicator>
+        <shell:ProgressIndicator IsVisible="{Binding Statistics.IsLoading}" IsIndeterminate="True"/>
+    </shell:SystemTray.ProgressIndicator>
+
     <Grid x:Name="LayoutRoot" Background="Transparent">
         <!--Pivot Control-->
         <controls:Pivot Title="{Binding Title}"
-                        HeaderTemplate="{StaticResource MainPanoramaHeaderTemplate}">
+                        HeaderTemplate="{StaticResource MainPanoramaHeaderTemplate}"
+                        SelectedIndex="{Binding SelectedPageIndex, Mode=TwoWay}">
             <!--Pivot item one-->
             <controls:PivotItem Header="{Binding Resources.Common_Exercises, Source={StaticResource Localized}}">
                 <Grid>
@@ -62,8 +86,39 @@
             <!--Pivot item two-->
             <controls:PivotItem Header="{Binding Resources.Page_Statistics, Source={StaticResource Localized}}">
                 <Grid>
-                    <TextBlock Text="{Binding Resources.Dummy_Statistics, Source={StaticResource Localized}}"
-                               Style="{StaticResource HintTextBlockStyle}"/>
+                    <!--<TextBlock Text="{Binding Resources.Dummy_Statistics, Source={StaticResource Localized}}"
+                               Style="{StaticResource HintTextBlockStyle}"/>-->
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <ct:Chart DataContext="{Binding Statistics}" 
+                              Style="{StaticResource PhoneChartStyle}"
+                              Palette="{StaticResource ChartPalette}">
+                        <ct:Chart.Axes>
+                            <ct:DateTimeAxis Minimum="{Binding DateZero}"  Orientation="Y" Location="Left">
+                                <ct:DateTimeAxis.AxisLabelStyle>
+                                    <Style TargetType="ct:DateTimeAxisLabel">
+                                        <Setter Property="StringFormat" Value="{}{0:H\:mm}"/>
+                                    </Style>
+                                </ct:DateTimeAxis.AxisLabelStyle>
+                            </ct:DateTimeAxis>
+                            <ct:CategoryAxis Orientation="X" Location="Bottom">
+                                <ct:CategoryAxis.AxisLabelStyle>
+                                    <Style TargetType="ct:AxisLabel">
+                                        <Setter Property="StringFormat" Value="{}{0:dd MMM}"/>
+                                    </Style>
+                                </ct:CategoryAxis.AxisLabelStyle>
+                            </ct:CategoryAxis>
+                        </ct:Chart.Axes>
+
+                        <ct:Chart.Series>
+                            <ct:LineSeries Title="{Binding Resources.WorkoutPage_Chart_TimeSpent, Source={StaticResource Localized}}"
+                                           ItemsSource="{Binding SpentTime}"
+                                           IndependentValueBinding="{Binding Date}"
+                                           DependentValueBinding="{Binding Span}"/>
+                        </ct:Chart.Series>
+                    </ct:Chart>
                 </Grid>
             </controls:PivotItem>
         </controls:Pivot>

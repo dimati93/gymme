@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using System.Windows;
 using System.Windows.Navigation;
 using Gymme.Resources;
@@ -24,13 +25,16 @@ namespace Gymme.View.Pages
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            
             DataContext = _viewModel = new ExercisesSelectVM(long.Parse(NavigationContext.QueryString[AddEditChooser.Param.WorkoutId]));
+            LoadContent();
         }
 
-        private void Exercise_Tap(object sender, GestureEventArgs e)
+        private void LoadContent()
         {
-            ((ExerciseSelectItemVM)((FrameworkElement) sender).DataContext).Choose();
+            ContentPanel.Children.Clear();
+            var selector = ExerciseSelector.Create(_viewModel.WorkoutId);
+            ContentPanel.Children.Add(selector);
+            Dispatcher.BeginInvoke(() => selector.ScrollTo(ExerciseSelector.LastChoosen));
         }
 
         private void InitializeAppMenu()

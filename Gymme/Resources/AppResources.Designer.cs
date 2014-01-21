@@ -709,6 +709,15 @@ namespace Gymme.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to time spent.
+        /// </summary>
+        public static string WorkoutPage_Chart_TimeSpent {
+            get {
+                return ResourceManager.GetString("WorkoutPage_Chart_TimeSpent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to delete workout.
         /// </summary>
         public static string WorkoutPage_DeleteWorkout {

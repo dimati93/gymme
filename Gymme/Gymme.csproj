@@ -117,6 +117,7 @@
     <Compile Include="ViewModel\Page\ExecutePageVM.cs" />
     <Compile Include="ViewModel\Page\ExercisePageVM.cs" />
     <Compile Include="ViewModel\ExerciseSelectItemVM.cs" />
+    <Compile Include="ViewModel\ExerciseSelectorControlVM.cs" />
     <Compile Include="ViewModel\Page\ExercisesSelectVM.cs" />
     <Compile Include="ViewModel\Base\ViewModel.cs" />
     <Compile Include="ViewModel\ExerciseCategory.cs" />
@@ -124,6 +125,9 @@
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\Page\TrainingPageVM.cs" />
     <Compile Include="ViewModel\Page\WorkoutPageVM.cs" />
+    <Compile Include="ViewModel\Statistics\Statistics.cs" />
+    <Compile Include="ViewModel\Statistics\TimeStatPoint.cs" />
+    <Compile Include="ViewModel\Statistics\WorkoutStatistics.cs" />
     <Compile Include="ViewModel\SetVM.cs" />
     <Compile Include="ViewModel\Statistics\ExerciseStatistics.cs" />
     <Compile Include="ViewModel\Statistics\WeightStatPoint.cs" />
@@ -140,6 +144,9 @@
     <Compile Include="View\Controls\AddEditChooser.cs" />
     <Compile Include="View\Controls\AEWorkout.xaml.cs">
       <DependentUpon>AEWorkout.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Controls\ExerciseSelector.xaml.cs">
+      <DependentUpon>ExerciseSelector.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Helpers\DataContextChangedHelper.cs" />
     <Compile Include="View\Pages\AddEditPage.xaml.cs">
@@ -236,6 +243,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Controls\AEWorkout.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Controls\ExerciseSelector.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

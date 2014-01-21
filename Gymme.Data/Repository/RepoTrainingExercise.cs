@@ -45,5 +45,14 @@ namespace Gymme.Data.Repository
                    orderby t.StartTime descending
                    select new TrainingExerciseHistory { TrainingExercise = te, StartTime = t.StartTime }).Take(takeCount);
         }
+
+        public DateTime FindFinalTime(Training training)
+        {
+            return
+                Table.Where(x => x.IdTraining == training.Id)
+                    .OrderByDescending(x => x.FinishTime)
+                    .Select(x => x.FinishTime)
+                    .FirstOrDefault() ?? training.StartTime;
+        }
     }
 }

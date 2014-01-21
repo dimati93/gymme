@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -10,7 +9,7 @@ using Gymme.Data.Repository;
 
 namespace Gymme.ViewModel.Statistics
 {
-    public class ExerciseStatistics : Base.ViewModel
+    public class ExerciseStatistics : Statistics
     {
         private static List<WeightStatPoint> GenerateDebugMaxData()
         {
@@ -26,34 +25,12 @@ namespace Gymme.ViewModel.Statistics
         }
 
         private readonly Exercise _exercise;
-        private bool _isLoaded;
         private List<WeightStatPoint> _averageWeight;
         private List<WeightStatPoint> _maxWeight;
-        private bool _isLoading;
-
+        
         public ExerciseStatistics(Exercise exercise)
         {
             _exercise = exercise;
-        }
-
-        public bool IsLoaded
-        {
-            get { return _isLoaded; }
-            set
-            {
-                _isLoaded = value;
-                NotifyPropertyChanged("IsLoaded");
-            }
-        }
-
-        public bool IsLoading
-        {
-            get { return _isLoading; }
-            set
-            {
-                _isLoading = value;
-                NotifyPropertyChanged("IsLoading");
-            }
         }
 
         public List<WeightStatPoint> AverageWeight
@@ -76,17 +53,11 @@ namespace Gymme.ViewModel.Statistics
             }
         }
 
-        public async void LoadStatistics()
+        protected async override void ProcedeLoad()
         {
-            IsLoading = true;
             var trainings = RepoTrainingExercise.Instance.GetHistory(_exercise, 10);
-
             MaxWeight = await TaskEx.Run(() => GetMaxStat(trainings));
-
             AverageWeight = await TaskEx.Run((() => GetAvarageStat(trainings)));
-            
-            IsLoading = false;
-            IsLoaded = true;
         }
 
         private List<WeightStatPoint> GetMaxStat(IEnumerable<TrainingExerciseHistory> trainings)

@@ -1,15 +1,20 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Windows;
+
 using Gymme.Data.Models;
 using Gymme.Data.Repository;
 using Gymme.Resources;
+
+using Gymme.ViewModel.Statistics;
 
 namespace Gymme.ViewModel.Page
 {
     public class WorkoutPageVM : Base.ViewModel
     {
         private readonly Workout _workout;
+        private WorkoutStatistics _workoutStatistics;
+        private int _selectedPageIndex;
 
         public WorkoutPageVM(long id)
         {
@@ -32,6 +37,27 @@ namespace Gymme.ViewModel.Page
 
         public bool IsExercisesEmpty { get { return Exercises.Count == 0; } }
         public Action UpdateAppMenu { get; set; }
+
+        public WorkoutStatistics Statistics
+        {
+            get
+            {
+                return _workoutStatistics ?? (_workoutStatistics = new WorkoutStatistics(_workout));
+            }
+        }
+
+        public int SelectedPageIndex
+        {
+            get { return _selectedPageIndex; }
+            set
+            {
+                _selectedPageIndex = value;
+                if (_selectedPageIndex == 1 && !Statistics.IsLoaded)
+                {
+                    Statistics.LoadStatistics();
+                }
+            }
+        }
 
         public void EditWorkout()
         {

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Windows.Controls.DataVisualization.Charting;
 using System.Windows.Navigation;
 using Gymme.Resources;
 using Gymme.ViewModel.Page;

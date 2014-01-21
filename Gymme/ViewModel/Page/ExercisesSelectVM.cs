@@ -1,36 +1,31 @@
-﻿using System.Collections.ObjectModel;
-using System.Linq;
-
-using Gymme.Data.Interfaces;
-using Gymme.Resources;
+﻿using Gymme.Data.Models;
+using Gymme.Data.Repository;
 
 namespace Gymme.ViewModel.Page
 {
     public class ExercisesSelectVM : Base.ViewModel
     {
-        private readonly long _workoutId;
+        private readonly Workout _workout;
 
         public ExercisesSelectVM(long workoutId)
         {
-            _workoutId = workoutId;
-            LoadExercises();
+            _workout = RepoWorkout.Instance.FindById(workoutId);
         }
 
-        public ObservableCollection<ExerciseCategory> Items { get; private set; }
+        public string Title
+        {
+            get
+            {
+                return _workout.Title;
+            }
+        }
 
         public long WorkoutId
         {
-            get { return _workoutId; }
-        }
-
-        private void LoadExercises()
-        {
-            if (!ExerciseData.Instance.IsDataLoaded)
+            get
             {
-                ExerciseData.Instance.LoadData();
+                return _workout.Id;
             }
-
-            Items = new ObservableCollection<ExerciseCategory>(ExerciseData.Instance.PersetExercises.Select(x => (IExercise)new ExerciseSelectItemVM(x, WorkoutId)).GroupBy(x => x.Category).Select(x => new ExerciseCategory(x)));
         }
     }
 }

@@ -335,4 +335,7 @@
   <data name="ExercisePage_Chart_MaxWeight" xml:space="preserve">
     <value>макс. вес</value>
   </data>
+  <data name="WorkoutPage_Chart_TimeSpent" xml:space="preserve">
+    <value>затраченое время</value>
+  </data>
 </root>

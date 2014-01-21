@@ -8,7 +8,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:ct="clr-namespace:System.Windows.Controls.DataVisualization.Charting;assembly=System.Windows.Controls.DataVisualization.Toolkit"
-    xmlns:visualizationToolkit="clr-namespace:System.Windows.Controls.DataVisualization;assembly=System.Windows.Controls.DataVisualization.Toolkit"
+    xmlns:dataVis="clr-namespace:System.Windows.Controls.DataVisualization;assembly=System.Windows.Controls.DataVisualization.Toolkit"
     mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="768"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
@@ -16,7 +16,7 @@
     SupportedOrientations="Portrait"  Orientation="Portrait"
     shell:SystemTray.IsVisible="True">
     <phone:PhoneApplicationPage.Resources>
-        <visualizationToolkit:ResourceDictionaryCollection x:Key="ChartPalette">
+        <dataVis:ResourceDictionaryCollection x:Key="ChartPalette">
                     <!-- Orange -->
                     <ResourceDictionary>
                         <SolidColorBrush x:Key="Background" Color="#FFFF3000"/>
@@ -43,11 +43,11 @@
                             <Setter Property="Fill" Value="{StaticResource Background}" />
                         </Style>
                     </ResourceDictionary>
-                </visualizationToolkit:ResourceDictionaryCollection>
+                </dataVis:ResourceDictionaryCollection>
     </phone:PhoneApplicationPage.Resources>
     
     <shell:SystemTray.ProgressIndicator>
-        <shell:ProgressIndicator IsVisible="{Binding Statistics.IsLoading}" IsIndeterminate="True"></shell:ProgressIndicator>
+        <shell:ProgressIndicator IsVisible="{Binding Statistics.IsLoading}" IsIndeterminate="True"/>
     </shell:SystemTray.ProgressIndicator>
 	
     <Grid x:Name="LayoutRoot" Background="Transparent">
