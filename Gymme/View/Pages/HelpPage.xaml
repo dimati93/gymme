@@ -6,19 +6,38 @@
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
     xmlns:controls="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:r="clr-namespace:Gymme.Resources"
     mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="768"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait"  Orientation="Portrait"
     shell:SystemTray.IsVisible="True">
+    <phone:PhoneApplicationPage.Resources>
+        <r:ThemeResourceDictionary>
+            <r:ThemeResourceDictionary.LightResources>
+                <ResourceDictionary>
+                    <BitmapImage x:Key="EmailIcon" UriSource="../../Assets/Icons/email.png"/>
+                    <BitmapImage x:Key="FacebookIcon" UriSource="../../Assets/Icons/fb.png"/>
+                    <BitmapImage x:Key="VkIcon" UriSource="../../Assets/Icons/vk.png"/>
+                </ResourceDictionary>
+            </r:ThemeResourceDictionary.LightResources>
+            <r:ThemeResourceDictionary.DarkResources>
+                <ResourceDictionary>
+                    <BitmapImage x:Key="EmailIcon" UriSource="../../Assets/Icons/email_w.png"/>
+                    <BitmapImage x:Key="FacebookIcon" UriSource="../../Assets/Icons/fb_w.png"/>
+                    <BitmapImage x:Key="VkIcon" UriSource="../../Assets/Icons/vk_w.png"/>
+                </ResourceDictionary>
+            </r:ThemeResourceDictionary.DarkResources>
+        </r:ThemeResourceDictionary>
+    </phone:PhoneApplicationPage.Resources>
 
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot" Background="Transparent">
         <!--Pivot Control-->
         <controls:Pivot Title="{Binding Resources.ApplicationTitle, Source={StaticResource Localized}}"
-                        HeaderTemplate="{StaticResource MainPanoramaHeaderTemplate}">
+                        HeaderTemplate="{StaticResource MainPivotHeaderTemplate}">
             <!--Pivot item one
             <controls:PivotItem Header="{Binding Resources.Help_Guide, Source={StaticResource Localized}}"
                                 >
@@ -47,12 +66,46 @@
             <!--Pivot item two-->
             <controls:PivotItem Visibility="Collapsed"
                 Header="{Binding Resources.Help_About, Source={StaticResource Localized}}">
-                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,200">
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,100">
                     <Image Source="/Assets/ApplicationIcon.png" Stretch="Uniform" Height="200"/>
                     <TextBlock Text="{Binding Resources.About_Copyright, Source={StaticResource Localized}}"
-                               Style="{StaticResource OverviewItemStyle}"
-                               />
-                    <HyperlinkButton Content="{Binding Resources.About_Email, Source={StaticResource Localized}}" Tap="Email_To"/>
+                               Style="{StaticResource OverviewItemStyle}"/>
+                    <TextBlock x:Name="VersionBlock" Text="\version stub\"
+                               TextAlignment="Center"
+                               Style="{StaticResource OverviewItemStyle}"/>
+                    <Grid HorizontalAlignment="Center" Margin="0, 20, 0, 0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="12"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="12"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="12"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Image Grid.Column="0" Grid.Row="0"
+                               Style="{StaticResource IconStyle}"
+                               Source="{StaticResource EmailIcon}"/>
+                        <HyperlinkButton Grid.Column="2" Grid.Row="0" 
+                                         Content="{Binding Resources.About_Email, Source={StaticResource Localized}}" 
+                                         Style="{StaticResource AboutLinkStyle}"
+                                         Tap="Email_To"/>
+                        <Image Grid.Column="0" Grid.Row="2"
+                               Style="{StaticResource IconStyle}"
+                               Source="{StaticResource FacebookIcon}"/>
+                        <HyperlinkButton Grid.Column="2" Grid.Row="2" 
+                                         Content="{Binding Resources.About_Facebook, Source={StaticResource Localized}}" 
+                                         Tap="Goto_Facebook"/>
+                        <Image Grid.Column="0" Grid.Row="4"
+                               Style="{StaticResource IconStyle}"
+                               Source="{StaticResource VkIcon}"/>
+                        <HyperlinkButton Grid.Column="2" Grid.Row="4" 
+                                         Content="{Binding Resources.About_Vk, Source={StaticResource Localized}}" 
+                                         Tap="Goto_Vk"/>
+                    </Grid>
                 </StackPanel>
             </controls:PivotItem>
         </controls:Pivot>

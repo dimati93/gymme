@@ -61,7 +61,7 @@ namespace Gymme.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Gymme app © Corei4 2013-2014.
+        ///   Looks up a localized string similar to Gymme app by D93 (2013-2014).
         /// </summary>
         public static string About_Copyright {
             get {
@@ -79,11 +79,38 @@ namespace Gymme.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to fb.com/app.gymme.
+        /// </summary>
+        public static string About_Facebook {
+            get {
+                return ResourceManager.GetString("About_Facebook", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to To Gymme&apos;s developer.
         /// </summary>
         public static string About_ReportSubject {
             get {
                 return ResourceManager.GetString("About_ReportSubject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to version.
+        /// </summary>
+        public static string About_Version {
+            get {
+                return ResourceManager.GetString("About_Version", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to vk.com/app.gymme.
+        /// </summary>
+        public static string About_Vk {
+            get {
+                return ResourceManager.GetString("About_Vk", resourceCulture);
             }
         }
         

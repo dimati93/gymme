@@ -341,4 +341,7 @@
   <data name="Page_Statistics_Loading" xml:space="preserve">
     <value>загрузка...</value>
   </data>
+  <data name="About_Version" xml:space="preserve">
+    <value>версия</value>
+  </data>
 </root>

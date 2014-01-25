@@ -105,6 +105,12 @@
         </Grid>
     </DataTemplate>
 
+    <DataTemplate x:Key="MainPivotHeaderTemplate">
+        <Grid>
+            <TextBlock Text="{Binding}" Style="{StaticResource TitleTextBoxStyle}"/>
+        </Grid>
+    </DataTemplate>
+
     <Style x:Key="OverviewCaptionStyle" TargetType="TextBlock">
         <Setter Property="FontSize" Value="24"/>
         <Setter Property="Margin" Value="12,0,0,0"/>
@@ -122,5 +128,15 @@
         <Setter Property="HorizontalAlignment" Value="Stretch"/>
         <Setter Property="VerticalAlignment" Value="Center"/>
         <Setter Property="TextAlignment" Value="Center"/>
+    </Style>
+
+    <Style x:Key="IconStyle" TargetType="Image">
+        <Setter Property="Height" Value="48"/>
+        <Setter Property="Width" Value="48"/>
+    </Style>
+
+    <Style x:Key="AboutLinkStyle" TargetType="HyperlinkButton">
+        <Setter Property="HorizontalAlignment" Value="Left"/>
+        <Setter Property="TextBlock.TextAlignment" Value="Left"/>
     </Style>
 </ResourceDictionary>

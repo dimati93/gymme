@@ -43,7 +43,7 @@
     <Grid x:Name="LayoutRoot" Background="Transparent">
         <!--Pivot Control-->
         <controls:Pivot Title="{Binding Title}"
-                        HeaderTemplate="{StaticResource MainPanoramaHeaderTemplate}"
+                        HeaderTemplate="{StaticResource MainPivotHeaderTemplate}"
                         SelectedIndex="{Binding SelectedPageIndex, Mode=TwoWay}">
             <!--Pivot item one-->
             <controls:PivotItem Header="{Binding Resources.Common_Exercises, Source={StaticResource Localized}}">
