@@ -467,14 +467,15 @@ namespace Gymme.ViewModel.Page
 
         private SetVM CreateNewSet(int ordinal)
         {
-            Set newSet = new Set { OrdinalNumber = ordinal, StartTime = DateTime.Now };
+            Set previousSet = _trainingExercise.Sets.FirstOrDefault(x => x.OrdinalNumber == ordinal - 1);
+            Set newSet = new Set { OrdinalNumber = ordinal, StartTime = (previousSet != null ? previousSet.EndTime : _trainingExercise.StartTime) ?? DateTime.Now };
             Set[] sets = History.Select(x => x.TrainingExercise.Sets.FirstOrDefault(set => set.OrdinalNumber == ordinal)).ToArray();
-            Set prevSet = sets.FirstOrDefault(x => x != null);
+            Set historySet = sets.FirstOrDefault(x => x != null);
 
-            if (prevSet != null)
+            if (historySet != null)
             {
-                newSet.Lift = prevSet.Lift;
-                newSet.Reps = prevSet.Reps; 
+                newSet.Lift = historySet.Lift;
+                newSet.Reps = historySet.Reps; 
             }
             
             return new SetVM(newSet);
