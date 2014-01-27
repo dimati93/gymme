@@ -26,6 +26,8 @@ namespace Gymme.View.Pages
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
+            FlurryWP8SDK.Api.LogPageView();
+
             string target;
             if (!NavigationContext.QueryString.TryGetValue("navtgt", out target))
             {

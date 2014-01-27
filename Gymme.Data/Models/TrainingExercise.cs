@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data.Linq;
 using System.Data.Linq.Mapping;
+using System.Linq;
 
 namespace Gymme.Data.Models
 {
@@ -78,7 +79,7 @@ namespace Gymme.Data.Models
                         break;
                     case TrainingExerciseStatus.Unfinished:
                     case TrainingExerciseStatus.Finished:
-                        FinishTime = DateTime.Now;
+                        FinishTime = Sets.Select(x => x.EndTime).LastOrDefault() ?? DateTime.Now;
                         break;
                 }
             }

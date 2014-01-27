@@ -25,6 +25,8 @@ namespace Gymme.View.Pages
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
+            FlurryWP8SDK.Api.LogPageView();
+
             DataContext = _viewModel = new ExercisesSelectVM(long.Parse(NavigationContext.QueryString[AddEditChooser.Param.WorkoutId]));
             LoadContent();
         }

@@ -16,6 +16,12 @@ namespace Gymme.View.Pages
             VersionBlock.Text = string.Format("{0} {1}", AppResources.About_Version, GetAppVersion());
         }
 
+        protected override void OnNavigatedTo(System.Windows.Navigation.NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+            FlurryWP8SDK.Api.LogPageView();
+        }
+
         private Version GetAppVersion()
         {
             var nameHelper = new AssemblyName(Assembly.GetExecutingAssembly().FullName);
@@ -30,16 +36,19 @@ namespace Gymme.View.Pages
                 To = AppResources.About_Email
             };
             emailTask.Show();
+            FlurryWP8SDK.Api.LogEvent("Send email");
         }
 
         private void Goto_Facebook(object sender, GestureEventArgs e)
         {
             LaunchBrouser(AppResources.About_Facebook);
+            FlurryWP8SDK.Api.LogEvent("View Facebook");
         }
 
         private void Goto_Vk(object sender, GestureEventArgs e)
         {
             LaunchBrouser(AppResources.About_Vk);
+            FlurryWP8SDK.Api.LogEvent("View Vk");
         }
 
         private void LaunchBrouser(string link)

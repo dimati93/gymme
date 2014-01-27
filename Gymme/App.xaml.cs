@@ -16,6 +16,7 @@ namespace Gymme
     public partial class App : Application
     {
         private static MainViewModel viewModel = null;
+        private static string flurryKey = "ZH89T3GBGT3Q35BPXT27";
 
         /// <summary>
         /// A static ViewModel used by the views to bind against.
@@ -82,6 +83,7 @@ namespace Gymme
         // This code will not execute when the application is reactivated
         private void Application_Launching(object sender, LaunchingEventArgs e)
         {
+            FlurryWP8SDK.Api.StartSession(flurryKey);
         }
 
         // Code to execute when the application is activated (brought to foreground)
@@ -89,10 +91,12 @@ namespace Gymme
         private void Application_Activated(object sender, ActivatedEventArgs e)
         {
             // Ensure that application state is restored appropriately
-            if (!App.ViewModel.IsDataLoaded)
+            if (!ViewModel.IsDataLoaded)
             {
-                App.ViewModel.LoadData();
+                ViewModel.LoadData();
             }
+
+            FlurryWP8SDK.Api.StartSession(flurryKey);
         }
 
         // Code to execute when the application is deactivated (sent to background)
@@ -126,6 +130,8 @@ namespace Gymme
                 // An unhandled exception has occurred; break into the debugger
                 Debugger.Break();
             }
+
+            FlurryWP8SDK.Api.LogError("Unhandled exception", e.ExceptionObject);
         }
 
         #region Phone application initialization
