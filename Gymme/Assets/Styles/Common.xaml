@@ -1,7 +1,7 @@
 ﻿<ResourceDictionary
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit">
+    xmlns:telerikInput="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls.Input">
 
     <SolidColorBrush x:Key="MainColorBrush" Color="#FFFFC700"/>
     <SolidColorBrush x:Key="MainLightColorBrush" Color="#7FFFC700"/>
@@ -17,8 +17,10 @@
         <Setter Property="MaxLength" Value="256"/>
     </Style>
 
-    <Style TargetType="toolkit:AutoCompleteBox" x:Key="AutoInputStyle">
-        <Setter Property="Height" Value="72"/>
+    <Style TargetType="telerikInput:RadAutoCompleteBox" x:Key="AutoInputStyle">
+        <Setter Property="Height" Value="80"/>
+        <Setter Property="Margin" Value="0, -8, 0, 0"/>
+        <Setter Property="MaxLength" Value="256"/>
     </Style>
 
     <Style TargetType="ListBox" x:Key="ListStyle">

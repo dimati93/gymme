@@ -9,6 +9,7 @@
 
 using Gymme.Data.Models;
 using System.Data.Linq;
+using Microsoft.Phone.Data.Linq;
 
 namespace Gymme.Data.Core
 {
@@ -21,7 +22,7 @@ namespace Gymme.Data.Core
         /// The connection string.
         /// </summary>
         private const string ConnectionString = "isostore:/gymmydb.sdf";
-
+        
         #region Constructors
 
         /// <summary>
@@ -42,6 +43,11 @@ namespace Gymme.Data.Core
 
                 SubmitChanges();
 #endif
+                DatabaseInitialiser.SetLatestVersion(this);
+            }
+            else
+            {
+                DatabaseInitialiser.UpdateDatabase(this);
             }
         }
 

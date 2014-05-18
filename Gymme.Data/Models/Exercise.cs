@@ -43,5 +43,8 @@ namespace Gymme.Data.Models
 
         [Column]
         public string Category { get; set; }
+
+        [Column]
+        public bool WithoutWeight { get; set; }
     }
 }

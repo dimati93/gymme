@@ -159,10 +159,10 @@
     <value>Detail</value>
   </data>
   <data name="AEWorkout_NameLabel" xml:space="preserve">
-    <value>Name:</value>
+    <value>Name</value>
   </data>
   <data name="AEWorkout_NoteLabel" xml:space="preserve">
-    <value>Note:</value>
+    <value>Note</value>
   </data>
   <data name="Command_Delete" xml:space="preserve">
     <value>delete</value>
@@ -207,22 +207,22 @@
     <value>save</value>
   </data>
   <data name="AEExercise_CategoryLabel" xml:space="preserve">
-    <value>Category:</value>
+    <value>Category</value>
   </data>
   <data name="AddEdit_Exercise" xml:space="preserve">
     <value>Exercise</value>
   </data>
   <data name="ExercisePage_Category" xml:space="preserve">
-    <value>Category:</value>
+    <value>Category</value>
   </data>
   <data name="ExercisePage_EmptyNoteHint" xml:space="preserve">
     <value>No notes</value>
   </data>
   <data name="ExercisePage_Name" xml:space="preserve">
-    <value>Name:</value>
+    <value>Name</value>
   </data>
   <data name="ExercisePage_Notes" xml:space="preserve">
-    <value>Notes:</value>
+    <value>Notes</value>
   </data>
   <data name="Page_Overview" xml:space="preserve">
     <value>Overview</value>
@@ -252,7 +252,7 @@
     <value>finish</value>
   </data>
   <data name="ExecutePage_History" xml:space="preserve">
-    <value>History:</value>
+    <value>History</value>
   </data>
   <data name="ExecutePage_Next" xml:space="preserve">
     <value>Next</value>
@@ -358,5 +358,14 @@
   </data>
   <data name="About_Vk" xml:space="preserve">
     <value>vk.com/app.gymme</value>
+  </data>
+  <data name="AEExercise_WeightModeLabel" xml:space="preserve">
+    <value>Weight mode</value>
+  </data>
+  <data name="AEExercise_WithoutWeight" xml:space="preserve">
+    <value>Without weight</value>
+  </data>
+  <data name="AEExercise_WithWeight" xml:space="preserve">
+    <value>With weight</value>
   </data>
 </root>
