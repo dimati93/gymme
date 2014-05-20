@@ -117,7 +117,7 @@ namespace Gymme.ViewModel.AddEdit
         {
             Name = _item.Name;
             Category = _item.Category;
-            _withoutWeight = _item.WithoutWeight;
+            _withoutWeight = _item.WithoutWeight == true;
         }
 
         public override void Commit()

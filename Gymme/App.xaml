@@ -25,6 +25,7 @@
             <local:LocalizedStrings xmlns:local="clr-namespace:Gymme" x:Key="Localized"/>
 
             <convertors:BoolToVisibilityConverter x:Key="VisibilityConverter"/>
+            <convertors:BoolToOpacityConverter x:Key="OpacityConverter"/>
             <convertors:ReverceBoolToVisivilityConverter x:Key="ReverceVisibilityConverter"/>
         </ResourceDictionary>
     </Application.Resources>

@@ -62,56 +62,9 @@
                     Visibility="{Binding IsHistoryEmpty, Converter={StaticResource VisibilityConverter}}"
                                Style="{StaticResource OverviewCaptionStyle}"/>
 
-        <ListBox Grid.Row="4" Margin="0, 10, 0, 0" Style="{StaticResource ListStyle}" 
-                 Visibility="{Binding IsHistoryEmpty, Converter={StaticResource ReverceVisibilityConverter}}"
-                 >
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <ListBox Style="{StaticResource ListStyle}" ItemsSource="{Binding HistoryItems}" 
-                         ScrollViewer.VerticalScrollBarVisibility="Disabled">
-                    <ListBox.ItemTemplate>
-                        <DataTemplate>
-                            <TextBlock Text="{Binding StartDate, StringFormat='{}{0:dd/MM}'}" Style="{StaticResource OverviewItemStyle}" Margin="0"/>
-                        </DataTemplate>
-                    </ListBox.ItemTemplate>
-                </ListBox>
-                <ListBox Grid.Column="1" Style="{StaticResource ListStyle}" ItemsSource="{Binding HistoryItems}"
-                         ScrollViewer.VerticalScrollBarVisibility="Disabled"
-                         ScrollViewer.HorizontalScrollBarVisibility="Auto">
-                    <ListBox.ItemTemplate>
-                        <DataTemplate>
-                            <Grid>
-                                <TextBlock Style="{StaticResource OverviewCaptionStyle}"
-                                           Visibility="{Binding IsSkiped, Converter={StaticResource VisibilityConverter}}"
-                                           Text="{Binding Resources.ExecutePage_SkipedItem, Source={StaticResource Localized}}"/>
-                                <ListBox ItemsSource="{Binding Sets}" 
-                                         Style="{StaticResource ListStyle}"
-                                         Visibility="{Binding IsSkiped, Converter={StaticResource ReverceVisibilityConverter}}"
-                                         ScrollViewer.VerticalScrollBarVisibility="Disabled">
-                                    <ListBox.ItemsPanel>
-                                        <ItemsPanelTemplate>
-                                            <StackPanel Orientation="Horizontal"/>
-                                        </ItemsPanelTemplate>
-                                    </ListBox.ItemsPanel>
-                                    <ListBox.ItemTemplate>
-                                        <DataTemplate>
-                                            <StackPanel Orientation="Horizontal" Margin="10, 0, 10, 0">
-                                                <TextBlock Text="{Binding Lift}" Style="{StaticResource OverviewCaptionStyle}" Margin="0"/>
-                                                <TextBlock Text="/" Style="{StaticResource OverviewCaptionStyle}" Margin="0"/>
-                                                <TextBlock Text="{Binding Reps}" Style="{StaticResource OverviewCaptionStyle}" Margin="0"/>
-                                            </StackPanel>
-                                        </DataTemplate>
-                                    </ListBox.ItemTemplate>
-                                </ListBox>
-                            </Grid>
-                        </DataTemplate>
-                    </ListBox.ItemTemplate>
-                </ListBox>
-            </Grid>
-        </ListBox>
+        <controls:HistoryControl Grid.Row="4" Margin="0, 10, 0, 0"
+                                 DataContext="{Binding HistoryItems}"
+                                 Visibility="{Binding IsHistoryEmpty, Converter={StaticResource ReverceVisibilityConverter}}"/>
     </Grid>
 
     <phone:PhoneApplicationPage.ApplicationBar>

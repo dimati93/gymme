@@ -69,6 +69,8 @@ namespace Gymme.View.Controls
             {
                 IsEdited = true;
             }
+
+            UpdateDataSources();
         }
 
         public void DataContextChanged(SetControl sender, DependencyPropertyChangedEventArgs e)

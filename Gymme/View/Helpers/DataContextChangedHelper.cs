@@ -4,7 +4,7 @@ using System.Windows.Data;
 
 namespace Gymme.View.Helpers
 {
-    public interface IDataContextChangedHandler<T> where T : FrameworkElement
+    public interface IDataContextChangedHandler<in T> where T : FrameworkElement
     {
         void DataContextChanged(T sender, DependencyPropertyChangedEventArgs e);
     }

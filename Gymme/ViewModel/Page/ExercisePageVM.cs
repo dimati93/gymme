@@ -49,7 +49,7 @@ namespace Gymme.ViewModel.Page
         {
             get
             {
-                return  _exercise.WithoutWeight ? AppResources.AEExercise_WithoutWeight : AppResources.AEExercise_WithWeight;
+                return  _exercise.WithoutWeight == true ? AppResources.AEExercise_WithoutWeight : AppResources.AEExercise_WithWeight;
             }
         }
 

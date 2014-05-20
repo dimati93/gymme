@@ -127,6 +127,7 @@ namespace Gymme
         {
             if (Debugger.IsAttached)
             {
+                Debugger.Log(5, "Unhandled", e.ExceptionObject.Message + '\n' + e.ExceptionObject.StackTrace);
                 // An unhandled exception has occurred; break into the debugger
                 Debugger.Break();
             }

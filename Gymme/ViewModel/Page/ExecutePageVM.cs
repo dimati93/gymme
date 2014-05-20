@@ -151,7 +151,6 @@ namespace Gymme.ViewModel.Page
         #endregion
 
         private readonly PageStateFactory _stateFactory;
-        private readonly Action _updateCurrentSet;
         private readonly TrainingExercise _trainingExercise;
         private TrainingExerciseHistory[] _history;
 
@@ -165,9 +164,8 @@ namespace Gymme.ViewModel.Page
         private Action<bool> _updadeFinishButtonState;
         private PageState _state;
 
-        public ExecutePageVM(long id, Action updateCurrentSet)
+        public ExecutePageVM(long id)
         {
-            _updateCurrentSet = updateCurrentSet;
             _trainingExercise = RepoTrainingExercise.Instance.FindById(id);
             
             _stateFactory = new PageStateFactory(this);
@@ -352,8 +350,7 @@ namespace Gymme.ViewModel.Page
 
         private void SaveCurrent()
         {
-            _updateCurrentSet();
-            SaveModel(CurrentSet);
+            CurrentSet.Save();
 
             var set = CurrentSet.Model;
             if (!_trainingExercise.Sets.Contains(set))
@@ -362,11 +359,6 @@ namespace Gymme.ViewModel.Page
                 _trainingExercise.Sets.Add(set);
                 Data.Core.DatabaseContext.Instance.SubmitChanges();
             }
-        }
-
-        private void SaveModel(SetVM setVM)
-        {
-            RepoSet.Instance.Save(setVM.Model);
         }
 
         public void FinishExecute()
@@ -460,7 +452,7 @@ namespace Gymme.ViewModel.Page
         private void FinishCurrentSet()
         {
             CurrentSet.Model.EndTime = DateTime.Now;
-            SaveModel(CurrentSet);
+            CurrentSet.Save();
             Sets.Add(CurrentSet.Model);
             Data.Core.DatabaseContext.Instance.SubmitChanges();
         }

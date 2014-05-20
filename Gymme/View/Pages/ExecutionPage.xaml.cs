@@ -125,7 +125,7 @@ namespace Gymme.View.Pages
 
         private ExecutePageVM GetDataContext(string target, long id)
         {
-            return new ExecutePageVM(id, ctrlSets.UpdateDataSources);
+            return new ExecutePageVM(id);
         }
     }
 }
