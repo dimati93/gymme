@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Windows;
 
 using Gymme.Data.Models;
@@ -36,6 +37,7 @@ namespace Gymme.ViewModel.Page
         public ObservableCollection<ExerciseVM> Exercises { get; set; }
 
         public bool IsExercisesEmpty { get { return Exercises.Count == 0; } }
+
         public Action UpdateAppMenu { get; set; }
 
         public WorkoutStatistics Statistics
@@ -82,7 +84,7 @@ namespace Gymme.ViewModel.Page
         {
             NotifyPropertyChanged("Title");
             Exercises.Clear();
-            foreach (Exercise exercise in _workout.Exercises)
+            foreach (Exercise exercise in _workout.Exercises.OrderBy(x => x.Order))
             {
                 Exercises.Add(new ExerciseVM(exercise, this));
             }
@@ -112,6 +114,31 @@ namespace Gymme.ViewModel.Page
             }
 
             NavigationManager.GotoTrainingPageFromWorkout(Item.Id, true);
+        }
+
+        public void ApplyReorder(ExerciseVM exercise)
+        {
+            if (Exercises.Count < 2)
+                return;
+
+            int i = Exercises.IndexOf(exercise);
+            if (i == 0)
+            {
+                exercise.Order = Exercises[1].Order - 1;
+            }
+            else
+            {
+                if (i == Exercises.Count - 1)
+                {
+                    exercise.Order = Exercises[i - 1].Order + 1;
+                }
+                else
+                {
+                    exercise.Order = (Exercises[i - 1].Order + Exercises[i + 1].Order) / 2;
+                }
+            }
+
+            exercise.Save();
         }
     }
 }

@@ -44,7 +44,10 @@ namespace Gymme
 
         private void Workout_Hold(object sender, GestureEventArgs e)
         {
-            RadContextMenu.GetContextMenu((DependencyObject)sender).IsOpen = true;
+            var item = (FrameworkElement)sender;
+            RadContextMenu menu = RadContextMenu.GetContextMenu(item);
+            menu.DataContext = item.DataContext;
+            menu.IsOpen = true;
         }
     }
 }

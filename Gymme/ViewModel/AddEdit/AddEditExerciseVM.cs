@@ -125,15 +125,13 @@ namespace Gymme.ViewModel.AddEdit
             _item.Name = Name;
             _item.Category = Category;
             _item.WithoutWeight = _withoutWeight;
-            if (IsEdit)
-            {
-                RepoExercise.Instance.Save(_item);
-            }
-            else
+            if (!IsEdit)
             {
                 RepoWorkout.Instance.FindById(_item.IdWorkout).Exercises.Add(_item);
                 DatabaseContext.Instance.SubmitChanges();
             }
+
+            RepoExercise.Instance.Save(_item);
         }
     }
 }

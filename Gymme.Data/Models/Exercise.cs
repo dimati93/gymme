@@ -46,5 +46,8 @@ namespace Gymme.Data.Models
 
         [Column]
         public bool? WithoutWeight { get; set; }
+
+        [Column]
+        public double? Order { get; set; }
     }
 }

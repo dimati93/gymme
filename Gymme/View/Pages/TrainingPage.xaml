@@ -19,6 +19,7 @@
         <CollectionViewSource x:Key="ExercisesView" Source="{Binding Exercises}">
             <CollectionViewSource.SortDescriptions>
                 <cm:SortDescription PropertyName="Order"/>
+                <cm:SortDescription PropertyName="SecondOrder"/>
             </CollectionViewSource.SortDescriptions>
         </CollectionViewSource>
     </phone:PhoneApplicationPage.Resources>

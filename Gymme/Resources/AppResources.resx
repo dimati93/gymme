@@ -368,4 +368,7 @@
   <data name="AEExercise_WithWeight" xml:space="preserve">
     <value>With weight</value>
   </data>
+  <data name="Command_Reorder" xml:space="preserve">
+    <value>reorder</value>
+  </data>
 </root>

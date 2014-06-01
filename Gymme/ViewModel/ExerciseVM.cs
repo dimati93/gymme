@@ -66,6 +66,12 @@ namespace Gymme.ViewModel
             }
         }
 
+        public double Order
+        {
+            get { return _exercise.Order.HasValue ? _exercise.Order.Value : _exercise.Id; }
+            set { _exercise.Order = value; }
+        }
+
         private void GotoPageView()
         {
             NavigationManager.GotoExercisePage(_exercise.Id);
@@ -82,6 +88,11 @@ namespace Gymme.ViewModel
             Data.Core.DatabaseContext.Instance.SubmitChanges();
             RepoExercise.Instance.Delete(_exercise);
             _wpageVM.Update();
-        } 
+        }
+
+        public void Save()
+        {
+            RepoExercise.Instance.Save(_exercise);
+        }
     }
 }

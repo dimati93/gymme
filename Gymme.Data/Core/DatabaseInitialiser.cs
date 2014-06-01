@@ -23,6 +23,7 @@ namespace Gymme.Data.Core
                 if (dbUpdater.DatabaseSchemaVersion < 1)
                 {
                     dbUpdater.AddColumn<Exercise>("WithoutWeight");
+                    dbUpdater.AddColumn<Exercise>("Order");
                 }
 
                 dbUpdater.DatabaseSchemaVersion = DATA_VERSION;

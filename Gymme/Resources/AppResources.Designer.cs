@@ -259,6 +259,15 @@ namespace Gymme.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to reorder.
+        /// </summary>
+        public static string Command_Reorder {
+            get {
+                return ResourceManager.GetString("Command_Reorder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to save.
         /// </summary>
         public static string Command_Save {

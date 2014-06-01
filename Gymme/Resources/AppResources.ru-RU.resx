@@ -347,4 +347,7 @@
   <data name="AEExercise_WithoutWeight" xml:space="preserve">
     <value>Без веса</value>
   </data>
+  <data name="Command_Reorder" xml:space="preserve">
+    <value>изменить порядок</value>
+  </data>
 </root>

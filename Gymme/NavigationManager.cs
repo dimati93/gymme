@@ -1,7 +1,9 @@
-﻿using System.Globalization;
+﻿using System.Diagnostics;
+using System.Globalization;
 using System.Linq;
 
 using System;
+using System.Windows;
 using System.Windows.Navigation;
 
 using Gymme.View.Pages;
@@ -11,14 +13,6 @@ namespace Gymme
 {
     public static class NavigationManager
     {
-        private const string AddEditPagePath = "/View/Pages/AddEditPage.xaml";
-        private const string WorkoutPagePath = "/View/Pages/WorkoutPage.xaml";
-        private const string ExercisePagePath = "/View/Pages/ExercisePage.xaml";
-        private const string TrainingPagePath = "/View/Pages/TrainingPage.xaml";
-        private const string ExecutionPagePath = "/View/Pages/ExecutionPage.xaml";
-        private const string ExercisesSelectPath = "/View/Pages/ExercisesSelectPage.xaml";
-        private const string HelpPagePath = "/View/Pages/HelpPage.xaml";
-
         private static NavigationService NavigationService;
 
         public static string GoBackParams { get; set; }
@@ -26,79 +20,79 @@ namespace Gymme
         public static void GotoAddWorkout()
         {
             InitializeNavigation();
-            Navigate(AddEditPagePath, AEC.Variant.AddWorkout);
+            Navigate("/AddEdit", AEC.Variant.AddWorkout);
         }
 
         public static void GotoEditWorkout(long id)
         {
             InitializeNavigation();
-            Navigate(AddEditPagePath, AEC.Variant.EditWorkout, Id(id));
+            Navigate("/AddEdit", AEC.Variant.EditWorkout, Id(id));
         }
 
         public static void GotoWorkoutPage(long id)
         {
             InitializeNavigation();
-            Navigate(WorkoutPagePath, "none", Id(id));
+            Navigate("/Workout", "none", Id(id));
         }
 
         public static void GotoExercisesSelectPage(long workoutId)
         {
             InitializeNavigation();
-            Navigate(ExercisesSelectPath, "none", Param(AEC.Param.WorkoutId, workoutId));
+            Navigate("/ExercisesSelect", "none", Param(AEC.Param.WorkoutId, workoutId));
         }
 
         public static void GotoAddExercisePage(long workoutId)
         {
             InitializeNavigation();
-            Navigate(AddEditPagePath, AEC.Variant.AddExercise, Param(AEC.Param.WorkoutId, workoutId));
+            Navigate("/AddEdit", AEC.Variant.AddExercise, Param(AEC.Param.WorkoutId, workoutId));
         }
 
         public static void GotoAddExercisePage(long workoutId, long id)
         {
             InitializeNavigation();
-            Navigate(AddEditPagePath, AEC.Variant.AddExercise, Id(id) + Param(AEC.Param.WorkoutId, workoutId));
+            Navigate("/AddEdit", AEC.Variant.AddExercise, Id(id) + Param(AEC.Param.WorkoutId, workoutId));
         }
 
         public static void GotoEditExercise(long id)
         {
             InitializeNavigation();
-            Navigate(AddEditPagePath, AEC.Variant.EditExercise, Id(id));
+            Navigate("/AddEdit", AEC.Variant.EditExercise, Id(id));
         }
 
         public static void GotoExercisePage(long id)
         {
             InitializeNavigation();
-            Navigate(ExercisePagePath, "none", Id(id));
+            Navigate("/Exercise", "none", Id(id));
         }
 
         public static void GotoTrainingPageByTrainingId(long id)
         {
             InitializeNavigation();
-            Navigate(TrainingPagePath, TrainingPage.ByTraining, Id(id));
+            Navigate("/Training", TrainingPage.ByTraining, Id(id));
         }
 
         public static void GotoTrainingPageByWorkoutId(long id)
         {
             InitializeNavigation();
-            Navigate(TrainingPagePath, TrainingPage.ByWorkout, Id(id));
+            Navigate("/Training", TrainingPage.ByWorkout, Id(id));
         } 
 
         public static void GotoTrainingPageFromWorkout(long id, bool startNew)
         {
             InitializeNavigation();
-            Navigate(TrainingPagePath, startNew ? TrainingPage.FromWorkoutStart : TrainingPage.FromWorkoutContinue , Id(id));
+            Navigate("/Training", startNew ? TrainingPage.FromWorkoutStart : TrainingPage.FromWorkoutContinue, Id(id));
         }
 
         public static void GotoExecutePage(long id)
         {
             InitializeNavigation();
-            Navigate(ExecutionPagePath, "none", Id(id));
+            Navigate("/Execution", "none", Id(id));
         }
 
         public static void GotoHelp()
         {
             InitializeNavigation();
-            Navigate(HelpPagePath);
+            Navigate("/Help");
         }
 
         public static void GoBack(string parameters = null, int times = 1)
@@ -141,7 +135,17 @@ namespace Gymme
 
         private static void Navigate(string path, string navtgt = null)
         {
-            NavigationService.Navigate(BuildUri(path, navtgt));
+            try
+            {
+                NavigationService.Navigate(BuildUri(path, navtgt));
+            }
+            catch (Exception e)
+            {
+#if DEBUG
+                MessageBox.Show("Navigatition failed: " + path);
+                Debug.WriteLine(e);
+#endif
+            }
         }
 
         private static string Id(long id)

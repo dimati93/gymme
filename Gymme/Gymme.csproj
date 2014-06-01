@@ -134,6 +134,7 @@
     <Compile Include="View\Controls\HistoryControl.xaml.cs">
       <DependentUpon>HistoryControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Helpers\ParentOfTypeExtention.cs" />
     <Compile Include="View\Pages\AddEditPage.xaml.cs">
       <DependentUpon>AddEditPage.xaml</DependentUpon>
     </Compile>

@@ -33,15 +33,18 @@
                                Style="{StaticResource HintTextBlockStyle}"
                                Visibility="{Binding IsExercisesEmpty, Converter={StaticResource VisibilityConverter}}"/>
 
-                    <ListBox Style="{StaticResource ListStyle}" ItemsSource="{Binding Exercises}"
-                             Visibility="{Binding IsExercisesEmpty, 
-                        Converter={StaticResource ReverceVisibilityConverter}}">
-                        <ListBox.ItemTemplate>
+                    <tp:RadDataBoundListBox ItemsSource="{Binding Exercises}"
+                                            Visibility="{Binding IsExercisesEmpty, 
+                                            Converter={StaticResource ReverceVisibilityConverter}}"
+                                            x:Name="exList"
+                                            ItemReorderStateChanged="ExList_OnItemReorderStateChanged">
+                        <tp:RadDataBoundListBox.ItemTemplate>
                             <DataTemplate>
                                 <Grid Margin="0,8" Background="{StaticResource TapBackgroundBrush}" 
                                       Hold="Ex_Hold">
                                     <tp:RadContextMenu.ContextMenu>
                                         <tp:RadContextMenu IsZoomEnabled="True">
+                                            <tp:RadContextMenuItem Content="{Binding Resources.Command_Reorder, Source={StaticResource Localized}}" Tap="ContextMenu_Reorder"/>
                                             <tp:RadContextMenuItem Content="{Binding Resources.Command_Edit, Source={StaticResource Localized}}" Command="{Binding EditCommand}"/>
                                             <tp:RadContextMenuItem Content="{Binding Resources.Command_Delete, Source={StaticResource Localized}}" Command="{Binding DeleteCommand}"/>
                                         </tp:RadContextMenu>
@@ -59,8 +62,8 @@
                                     </StackPanel>
                                 </Grid>
                             </DataTemplate>
-                        </ListBox.ItemTemplate>
-                    </ListBox>
+                        </tp:RadDataBoundListBox.ItemTemplate>
+                    </tp:RadDataBoundListBox>
                 </Grid>
             </controls:PivotItem>
 

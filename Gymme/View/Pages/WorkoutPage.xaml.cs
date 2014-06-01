@@ -3,6 +3,8 @@ using System.Windows;
 using System.Windows.Navigation;
 
 using Gymme.Resources;
+using Gymme.View.Helpers;
+using Gymme.ViewModel;
 using Gymme.ViewModel.Page;
 
 using Microsoft.Phone.Controls;
@@ -16,6 +18,7 @@ namespace Gymme.View.Pages
     {
         private WorkoutPageVM _viewModel;
         private ApplicationBarIconButton _startWorkout;
+        private RadDataBoundListBoxItem _reorderItem;
 
         public WorkoutPage()
         {
@@ -115,7 +118,27 @@ namespace Gymme.View.Pages
 
         private void Ex_Hold(object sender, GestureEventArgs e)
         {
-            RadContextMenu.GetContextMenu((DependencyObject)sender).IsOpen = true;
+            var item = (FrameworkElement) sender;
+            _reorderItem = item.ParentOfType<RadDataBoundListBoxItem>();
+            RadContextMenu menu = RadContextMenu.GetContextMenu(item);
+            menu.DataContext = item.DataContext;
+            menu.IsOpen = true;
+        }
+
+        private void ContextMenu_Reorder(object sender, GestureEventArgs e)
+        {
+            if (_reorderItem != null)
+            {
+                exList.ActivateItemReorderForItem(_reorderItem);
+            }
+        }
+
+        private void ExList_OnItemReorderStateChanged(object sender, ItemReorderStateChangedEventArgs e)
+        {
+            if (e.IsReorderActive == false)
+            {
+                _viewModel.ApplyReorder((ExerciseVM)_reorderItem.DataContext);
+            }
         }
     }
 }
