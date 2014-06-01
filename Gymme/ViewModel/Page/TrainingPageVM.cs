@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
@@ -22,27 +21,12 @@ namespace Gymme.ViewModel.Page
         public TrainingPageVM(Workout workout)
             : this()
         {
-            Training lastTraining = RepoTraining.Instance.FindLastByWorkoutId(workout.Id);
-            Training training = new Training(workout);
+            var training = new Training(workout);
             RepoTraining.Instance.Save(training);
 
-            IEnumerable<long> exIds = workout.Exercises.Select(x => x.Id).ToArray();
-
-            if (lastTraining != null)
+            foreach (var exercise in workout.Exercises.OrderBy(x => x.Order))
             {
-                exIds = lastTraining.Exercises.OrderByDescending(x => x.FinishTime.HasValue)
-                            .ThenBy(x => x.FinishTime)
-                            .ThenBy(x => x.Id)
-                            .Select(x => x.IdExecise)
-                            .Intersect(exIds)
-                            .Union(exIds)
-                            .Distinct()
-                            .ToArray();
-            }
-            
-            foreach (var exercise in exIds)
-            {
-                var executeEx = new TrainingExercise(exercise) { IdTraining = training.Id };
+                var executeEx = new TrainingExercise(exercise.Id) { IdTraining = training.Id };
                 DatabaseContext.Instance.TrainingExercise.InsertOnSubmit(executeEx);
                 training.Exercises.Add(executeEx);
             }

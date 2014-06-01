@@ -1,4 +1,5 @@
 ﻿using Gymme.Data.Models;
+using Gymme.Data.Repository;
 
 namespace Gymme.ViewModel
 {
@@ -10,8 +11,10 @@ namespace Gymme.ViewModel
         public SetVM(Set model)
         {
             _model = model;
+            Lift = _model.Lift;
+            Reps = _model.Reps;
         }
-
+        
         public Set Model
         {
             get { return _model; }
@@ -25,29 +28,9 @@ namespace Gymme.ViewModel
             }
         }
 
-        public float Lift
-        {
-            get
-            {
-                return _model.Lift;
-            }
-            set
-            {
-                _model.Lift = value;
-            }
-        }
+        public float Lift { get; set; }
 
-        public float Reps
-        {
-            get
-            {
-                return _model.Reps;
-            }
-            set
-            {
-                _model.Reps = value;
-            }
-        }
+        public float Reps { get; set; }
 
         public bool IsEdited
         {
@@ -59,6 +42,16 @@ namespace Gymme.ViewModel
             {
                 _isEdited = value;
                 NotifyPropertyChanged("IsEdited");
+            }
+        }
+
+        public void Save()
+        {
+            if (IsEdited)
+            {
+                _model.Lift = Lift;
+                _model.Reps = Reps;
+                RepoSet.Instance.Save(_model);
             }
         }
     }

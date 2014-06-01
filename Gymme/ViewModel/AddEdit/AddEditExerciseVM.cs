@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Gymme.Data.AuxModels;
+using Gymme.Data.Core;
 using Gymme.Data.Interfaces;
 using Gymme.Data.Models;
 using Gymme.Data.Repository;
@@ -13,27 +14,28 @@ namespace Gymme.ViewModel.AddEdit
 
         private string _name = string.Empty;
         private string _category = string.Empty;
+        private bool _withoutWeight;
 
-        public AddEditExerciseVM(long workoutId) 
+        public AddEditExerciseVM(long workoutId)
             : base(false)
         {
-            _item = new Exercise {IdWorkout = workoutId};
-            PageName = Resources.AppResources.AddEdit_Exercise;
+            _item = new Exercise { IdWorkout = workoutId };
+            PageName = AppResources.AddEdit_Exercise;
         }
 
         public AddEditExerciseVM(long workoutId, PersetExercise exercise)
             : base(false)
         {
             _item = new Exercise(exercise) { IdWorkout = workoutId };
-            PageName = Resources.AppResources.AddEdit_Exercise;
+            PageName = AppResources.AddEdit_Exercise;
             Rollback();
         }
-        
+
         public AddEditExerciseVM(Exercise exercise)
             : base(true)
         {
             _item = exercise;
-            PageName = Resources.AppResources.AddEdit_Exercise;
+            PageName = AppResources.AddEdit_Exercise;
             Rollback();
         }
 
@@ -52,7 +54,6 @@ namespace Gymme.ViewModel.AddEdit
                     NotifyPropertyChanged("Name");
                 }
             }
-
         }
 
         public string Category
@@ -78,10 +79,37 @@ namespace Gymme.ViewModel.AddEdit
             {
                 if (!ExerciseData.Instance.IsDataLoaded)
                 {
-                     ExerciseData.Instance.LoadData();
+                    ExerciseData.Instance.LoadData();
                 }
 
                 return ExerciseData.Instance.PersetCategories;
+            }
+        }
+
+        public string WithoutWeight
+        {
+            get
+            {
+                return _withoutWeight ? AppResources.AEExercise_WithoutWeight : AppResources.AEExercise_WithWeight;
+            }
+
+            set
+            {
+                var newValue = value == AppResources.AEExercise_WithoutWeight;
+                if (_withoutWeight != newValue)
+                {
+                    _withoutWeight = newValue;
+                    NotifyPropertyChanged("WithoutWeight");
+                    NotifyPropertyChanged("WeightModeText");
+                }
+            }
+        }
+
+        public string[] WeightModes
+        {
+            get
+            {
+                return new[] { AppResources.AEExercise_WithWeight, AppResources.AEExercise_WithoutWeight };
             }
         }
 
@@ -89,21 +117,21 @@ namespace Gymme.ViewModel.AddEdit
         {
             Name = _item.Name;
             Category = _item.Category;
+            _withoutWeight = _item.WithoutWeight == true;
         }
 
         public override void Commit()
         {
             _item.Name = Name;
             _item.Category = Category;
-            if (IsEdit)
-            {
-                RepoExercise.Instance.Save(_item);
-            }
-            else
+            _item.WithoutWeight = _withoutWeight;
+            if (!IsEdit)
             {
                 RepoWorkout.Instance.FindById(_item.IdWorkout).Exercises.Add(_item);
-                Data.Core.DatabaseContext.Instance.SubmitChanges();
+                DatabaseContext.Instance.SubmitChanges();
             }
+
+            RepoExercise.Instance.Save(_item);
         }
     }
 }

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 using Gymme.Data.Models;
 using Gymme.Data.Models.QueryResult;
@@ -51,11 +50,6 @@ namespace Gymme.ViewModel.Statistics
                 _maxWeight = value;
                 NotifyPropertyChanged("MaxWeight");
             }
-        }
-
-        protected override bool CheckData()
-        {
-            return AverageWeight.Count != 0 || MaxWeight.Count != 0;
         }
 
         protected override void ProcedeLoad()

@@ -3,7 +3,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    xmlns:telerikInput="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls.Input"
     mc:Ignorable="d"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
@@ -12,9 +12,12 @@
 
     <ListBox x:Name="LayoutRoot" Background="{StaticResource PhoneBackgroundBrush}" Style="{StaticResource ListStyle}">
         <TextBlock Text="{Binding Resources.AEWorkout_NameLabel, Source={StaticResource Localized}}" Style="{StaticResource InputDescriptionStyle}"/>
-        <TextBox x:Name="tbName" Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=Explicit}"  Style="{StaticResource InputStyle}"/>
+        <TextBox Text="{Binding Name, Mode=TwoWay}"  Style="{StaticResource InputStyle}"/>
         <TextBlock Text="{Binding Resources.AEExercise_CategoryLabel, Source={StaticResource Localized}}" Style="{StaticResource InputDescriptionStyle}"/>
-        <toolkit:AutoCompleteBox x:Name="tbCategory" Text="{Binding Category, Mode=TwoWay, UpdateSourceTrigger=Explicit}" TextBoxStyle="{StaticResource InputStyle}" 
-                                 FilterMode="Contains" ItemsSource="{Binding Categories}"/>
+        <telerikInput:RadAutoCompleteBox Text="{Binding Category, Mode=TwoWay}" Style="{StaticResource AutoInputStyle}" 
+                                         SuggestionsSource="{Binding Categories}"/>
+        <TextBlock Text="{Binding Resources.AEExercise_WeightModeLabel, Source={StaticResource Localized}}" Style="{StaticResource InputDescriptionStyle}"/>
+        <telerikInput:RadListPicker ItemsSource="{Binding WeightModes}" SelectedItem="{Binding WithoutWeight, Mode=TwoWay}"/>
+    
     </ListBox>
 </UserControl>

@@ -1,5 +1,4 @@
-﻿using System.Windows.Input;
-using Gymme.Data.AuxModels;
+﻿using Gymme.Data.AuxModels;
 using Gymme.Data.Interfaces;
 
 namespace Gymme.ViewModel

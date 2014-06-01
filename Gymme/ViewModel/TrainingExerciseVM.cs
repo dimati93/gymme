@@ -37,6 +37,13 @@ namespace Gymme.ViewModel
                 return _exercise.Category;
             }
         }
+
+        public double SecondOrder
+        {
+            get { return _exercise.Order.HasValue ? _exercise.Order.Value : _exercise.Id; }
+            set { _exercise.Order = value; }
+        }
+
         public ICommand GotoPageViewCommand
         {
             get
@@ -57,7 +64,7 @@ namespace Gymme.ViewModel
 
         public Brush StatusColor { get { return new SolidColorBrush(GetStatusColor(_trainingExercise.Status)); } }
 
-        private byte GetOrder(TrainingExerciseStatus status)
+        private static byte GetOrder(TrainingExerciseStatus status)
         {
             switch (status)
             {

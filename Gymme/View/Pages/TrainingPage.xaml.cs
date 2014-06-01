@@ -6,6 +6,7 @@ using Gymme.Resources;
 using Gymme.ViewModel.Page;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
+using Telerik.Windows.Controls;
 using GestureEventArgs = System.Windows.Input.GestureEventArgs;
 
 namespace Gymme.View.Pages
@@ -112,7 +113,10 @@ namespace Gymme.View.Pages
 
         private void Ex_Hold(object sender, GestureEventArgs e)
         {
-            ContextMenuService.GetContextMenu((DependencyObject)sender).IsOpen = true;
+            var item = (FrameworkElement)sender;
+            RadContextMenu menu = RadContextMenu.GetContextMenu(item);
+            menu.DataContext = item.DataContext;
+            menu.IsOpen = true;
         }
     }
 }

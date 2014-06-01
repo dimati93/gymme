@@ -1,13 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Diagnostics;
-using System.Resources;
 using System.Windows;
 using System.Windows.Markup;
 using System.Windows.Navigation;
+
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
+
 using Gymme.Resources;
 using Gymme.ViewModel;
 
@@ -57,11 +56,14 @@ namespace Gymme
             // Language display initialization
             InitializeLanguage();
 
+            // Initilize URI mapper
+            InitializeRoutes();
+
             // Show graphics profiling information while debugging.
             if (Debugger.IsAttached)
             {
                 // Display the current frame rate counters.
-                Application.Current.Host.Settings.EnableFrameRateCounter = true;
+                Current.Host.Settings.EnableFrameRateCounter = true;
 
                 // Show the areas of the app that are being redrawn in each frame.
                 //Application.Current.Host.Settings.EnableRedrawRegions = true;
@@ -76,7 +78,14 @@ namespace Gymme
                 // and consume battery power when the user is not using the phone.
                 PhoneApplicationService.Current.UserIdleDetectionMode = IdleDetectionMode.Disabled;
             }
+        }
 
+        /// <summary>
+        /// Initialize short URI names for pages
+        /// </summary>
+        private void InitializeRoutes()
+        {
+            RootFrame.UriMapper = Resources["UriMapper"] as UriMapper;
         }
 
         // Code to execute when the application is launching (eg, from Start)
@@ -127,6 +136,7 @@ namespace Gymme
         {
             if (Debugger.IsAttached)
             {
+                Debugger.Log(5, "Unhandled", e.ExceptionObject.Message + '\n' + e.ExceptionObject.StackTrace);
                 // An unhandled exception has occurred; break into the debugger
                 Debugger.Break();
             }

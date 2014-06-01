@@ -2,7 +2,7 @@
 using System.Windows.Controls;
 using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
-
+using Telerik.Windows.Controls;
 using GestureEventArgs = System.Windows.Input.GestureEventArgs;
 
 namespace Gymme
@@ -44,7 +44,10 @@ namespace Gymme
 
         private void Workout_Hold(object sender, GestureEventArgs e)
         {
-            ContextMenuService.GetContextMenu((DependencyObject)sender).IsOpen = true;
+            var item = (FrameworkElement)sender;
+            RadContextMenu menu = RadContextMenu.GetContextMenu(item);
+            menu.DataContext = item.DataContext;
+            menu.IsOpen = true;
         }
     }
 }

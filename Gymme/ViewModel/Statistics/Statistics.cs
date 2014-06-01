@@ -37,19 +37,6 @@ namespace Gymme.ViewModel.Statistics
             }
         }
 
-        public bool ShowNoData
-        {
-            get
-            {
-                return _showNoData;
-            }
-            set
-            {
-                _showNoData = value;
-                NotifyPropertyChanged("ShowNoData");
-            }
-        }
-
         public bool ShowPlot
         {
             get
@@ -69,12 +56,9 @@ namespace Gymme.ViewModel.Statistics
             await TaskEx.Run((Action)ProcedeLoad);
 
             IsLoading = false;
-            ShowPlot = CheckData();
-            ShowNoData = !ShowPlot;
+            ShowPlot = true;
             IsLoaded = true;
         }
-
-        protected abstract bool CheckData();
 
         protected abstract void ProcedeLoad();
     }

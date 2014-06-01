@@ -15,7 +15,7 @@ namespace Gymme.ViewModel
             LoadExercises();
         }
 
-        public ObservableCollection<ExerciseCategory> Items { get; private set; }
+        public ObservableCollection<IExercise> Items { get; private set; }
 
         public long WorkoutId
         {
@@ -29,7 +29,7 @@ namespace Gymme.ViewModel
                 ExerciseData.Instance.LoadData();
             }
 
-            Items = new ObservableCollection<ExerciseCategory>(ExerciseData.Instance.PersetExercises.Select(x => (IExercise)new ExerciseSelectItemVM(x, WorkoutId)).GroupBy(x => x.Category).Select(x => new ExerciseCategory(x)));
+            Items = new ObservableCollection<IExercise>(ExerciseData.Instance.PersetExercises.Select(x => (IExercise)new ExerciseSelectItemVM(x, WorkoutId)));
         }
     }
 }

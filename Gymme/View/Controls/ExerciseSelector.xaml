@@ -1,29 +1,33 @@
-﻿<t:LongListSelector x:Class="Gymme.View.Controls.ExerciseSelector"
+﻿<td:RadJumpList x:Class="Gymme.View.Controls.ExerciseSelector"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:t="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    xmlns:td="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls.Data"
+    xmlns:data="clr-namespace:Telerik.Windows.Data;assembly=Telerik.Windows.Data"
     mc:Ignorable="d"
-    Background="Transparent" IsBouncy="True"
-    VirtualizingStackPanel.VirtualizationMode="Standard"
+    Background="Transparent"
+    VirtualizingStackPanel.VirtualizationMode="Recycling"
     ItemsSource="{Binding Items}"
     d:DesignHeight="480" d:DesignWidth="480">
-    <t:LongListSelector.GroupHeaderTemplate>
+    <td:RadJumpList.GroupDescriptors>
+        <data:PropertyGroupDescriptor PropertyName="Category" SortMode="Ascending" />
+    </td:RadJumpList.GroupDescriptors>
+    <td:RadJumpList.GroupHeaderTemplate>
         <DataTemplate>
             <Border Background="{StaticResource MainColorBrush}" Padding="{StaticResource PhoneTouchTargetOverhang}">
                 <TextBlock Text="{Binding Key}" Style="{StaticResource PhoneTextLargeStyle}"/>
             </Border>
         </DataTemplate>
-    </t:LongListSelector.GroupHeaderTemplate>
-    <t:LongListSelector.GroupItemTemplate>
+    </td:RadJumpList.GroupHeaderTemplate>
+    <td:RadJumpList.GroupPickerItemTemplate>
         <DataTemplate>
             <Border Margin="0,10" Background="{StaticResource MainColorBrush}" Padding="{StaticResource PhoneTouchTargetOverhang}">
                 <TextBlock Text="{Binding Key}" Style="{StaticResource PhoneTextLargeStyle}"/>
             </Border>
         </DataTemplate>
-    </t:LongListSelector.GroupItemTemplate>
-    <t:LongListSelector.ItemTemplate>
+    </td:RadJumpList.GroupPickerItemTemplate>
+    <td:RadJumpList.ItemTemplate>
         <DataTemplate>
             <StackPanel Margin="0,8" Background="{StaticResource TapBackgroundBrush}" 
                         Tap="Exercise_Tap">
@@ -32,10 +36,10 @@
                            FontSize="{StaticResource PhoneFontSizeLarge}"/>
             </StackPanel>
         </DataTemplate>
-    </t:LongListSelector.ItemTemplate>
-    <t:LongListSelector.GroupItemsPanel>
+    </td:RadJumpList.ItemTemplate>
+    <td:RadJumpList.GroupPickerItemsPanel>
         <ItemsPanelTemplate>
             <StackPanel VerticalAlignment="Center"/>
         </ItemsPanelTemplate>
-    </t:LongListSelector.GroupItemsPanel>
-</t:LongListSelector>
+    </td:RadJumpList.GroupPickerItemsPanel>
+</td:RadJumpList>

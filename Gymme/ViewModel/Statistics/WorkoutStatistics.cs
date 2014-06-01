@@ -43,11 +43,6 @@ namespace Gymme.ViewModel.Statistics
             }
         }
 
-        protected override bool CheckData()
-        {
-            return SpentTime.Count != 0;
-        }
-
         protected override void ProcedeLoad()
         {
             var trainings = RepoTraining.Instance.GetHistory(_workout, 10).OrderBy(x => x.StartTime);

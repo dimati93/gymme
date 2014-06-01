@@ -1,0 +1,62 @@
+﻿<UserControl x:Class="Gymme.View.Controls.HistoryControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    d:DesignHeight="480" d:DesignWidth="480">
+    
+    <Grid x:Name="LayoutRoot">
+        <ListBox Style="{StaticResource ListStyle}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <ListBox Style="{StaticResource ListStyle}" ItemsSource="{Binding}" 
+                         ScrollViewer.VerticalScrollBarVisibility="Disabled">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding StartDate, StringFormat='{}{0:dd/MM}'}" Style="{StaticResource OverviewItemStyle}" Margin="0"/>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+                <ListBox Grid.Column="1" Style="{StaticResource ListStyle}" ItemsSource="{Binding}"
+                         ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                         ScrollViewer.HorizontalScrollBarVisibility="Auto">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <TextBlock Style="{StaticResource OverviewCaptionStyle}"
+                                           Opacity="{Binding IsSkiped, Converter={StaticResource OpacityConverter}}"
+                                           Text="{Binding Resources.ExecutePage_SkipedItem, Source={StaticResource Localized}}"/>
+                                <ListBox ItemsSource="{Binding Sets}" 
+                                         Style="{StaticResource ListStyle}"
+                                         Visibility="{Binding IsSkiped, Converter={StaticResource ReverceVisibilityConverter}}"
+                                         ScrollViewer.VerticalScrollBarVisibility="Disabled">
+                                    <ListBox.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <StackPanel Orientation="Horizontal"/>
+                                        </ItemsPanelTemplate>
+                                    </ListBox.ItemsPanel>
+                                    <ListBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <StackPanel Orientation="Horizontal" Margin="10, 0, 10, 0">
+                                                <TextBlock Text="{Binding Lift}" Style="{StaticResource OverviewCaptionStyle}" Margin="0"/>
+                                                <TextBlock Text="/" Style="{StaticResource OverviewCaptionStyle}" Margin="0"/>
+                                                <TextBlock Text="{Binding Reps}" Style="{StaticResource OverviewCaptionStyle}" Margin="0"/>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </ListBox.ItemTemplate>
+                                </ListBox>
+                            </Grid>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </Grid>
+        </ListBox>
+    </Grid>
+</UserControl>

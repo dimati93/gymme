@@ -1,6 +1,7 @@
 ﻿using System.Windows;
 using Gymme.Data.Models;
 using Gymme.Data.Repository;
+using Gymme.Resources;
 using Gymme.ViewModel.Statistics;
 
 namespace Gymme.ViewModel.Page
@@ -41,6 +42,14 @@ namespace Gymme.ViewModel.Page
             get
             {
                 return _exercise.Category;
+            }
+        }
+
+        public string WeightMode
+        {
+            get
+            {
+                return  _exercise.WithoutWeight == true ? AppResources.AEExercise_WithoutWeight : AppResources.AEExercise_WithWeight;
             }
         }
 
