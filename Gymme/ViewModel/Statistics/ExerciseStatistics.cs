@@ -52,11 +52,6 @@ namespace Gymme.ViewModel.Statistics
             }
         }
 
-        protected override bool CheckData()
-        {
-            return AverageWeight.Count != 0 || MaxWeight.Count != 0;
-        }
-
         protected override void ProcedeLoad()
         {
             var trainings = RepoTrainingExercise.Instance.GetHistory(_exercise, 10).ToArray();

@@ -7,49 +7,18 @@
     xmlns:controls="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:ct="clr-namespace:System.Windows.Controls.DataVisualization.Charting;assembly=System.Windows.Controls.DataVisualization.Toolkit"
-    xmlns:dataVis="clr-namespace:System.Windows.Controls.DataVisualization;assembly=System.Windows.Controls.DataVisualization.Toolkit"
+    xmlns:tc="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls.Chart"
     mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="768"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait"  Orientation="Portrait"
     shell:SystemTray.IsVisible="True">
-    <phone:PhoneApplicationPage.Resources>
-        <dataVis:ResourceDictionaryCollection x:Key="ChartPalette">
-                    <!-- Orange -->
-                    <ResourceDictionary>
-                        <SolidColorBrush x:Key="Background" Color="#FFFF3000"/>
-                        <Style x:Key="DataPointStyle" TargetType="Control">
-                            <Setter Property="Background" Value="{StaticResource Background}" />
-                        </Style>
-                        <Style x:Key="DataShapeStyle" TargetType="Shape">
-                            <Setter Property="Stroke" Value="{StaticResource Background}" />
-                            <Setter Property="StrokeThickness" Value="2" />
-                            <Setter Property="StrokeMiterLimit" Value="1" />
-                            <Setter Property="Fill" Value="{StaticResource Background}" />
-                        </Style>
-                    </ResourceDictionary>
-                    <!-- Red -->
-                    <ResourceDictionary>
-                        <SolidColorBrush x:Key="Background" Color="#FFFFC700"/>
-                        <Style x:Key="DataPointStyle" TargetType="Control">
-                            <Setter Property="Background" Value="{StaticResource Background}" />
-                        </Style>
-                        <Style x:Key="DataShapeStyle" TargetType="Shape">
-                            <Setter Property="Stroke" Value="{StaticResource Background}" />
-                            <Setter Property="StrokeThickness" Value="2" />
-                            <Setter Property="StrokeMiterLimit" Value="1" />
-                            <Setter Property="Fill" Value="{StaticResource Background}" />
-                        </Style>
-                    </ResourceDictionary>
-                </dataVis:ResourceDictionaryCollection>
-    </phone:PhoneApplicationPage.Resources>
     
     <shell:SystemTray.ProgressIndicator>
         <shell:ProgressIndicator IsVisible="{Binding Statistics.IsLoading}" IsIndeterminate="True"/>
     </shell:SystemTray.ProgressIndicator>
-	
+
     <Grid x:Name="LayoutRoot" Background="Transparent">
         <!--Pivot Control-->
         <controls:Pivot Title="{Binding WorkoutTitle}"
@@ -89,46 +58,49 @@
                                Style="{StaticResource OverviewCaptionStyle}"/>
                     <TextBlock Text="{Binding Resources.ExercisePage_EmptyNoteHint, Source={StaticResource Localized}}"
                                Grid.Row="4" Grid.Column="0"  Grid.ColumnSpan="2"
-                               Style="{StaticResource HintTextBlockStyle}"/> 
+                               Style="{StaticResource HintTextBlockStyle}"/>
                 </Grid>
             </controls:PivotItem>
 
             <!--Pivot item two-->
             <controls:PivotItem Header="{Binding Resources.Page_Statistics, Source={StaticResource Localized}}">
                 <Grid x:Name="StatPage" DataContext="{Binding Statistics}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
                     <TextBlock Style="{StaticResource PageCenteredTextBlock}" 
                                Visibility="{Binding IsLoading, Converter={StaticResource VisibilityConverter}}"
                                Text="{Binding Resources.Page_Statistics_Loading, Source={StaticResource Localized}}"/>
-                    <TextBlock Style="{StaticResource PageCenteredTextBlock}" 
-                               Visibility="{Binding ShowNoData, Converter={StaticResource VisibilityConverter}}"
-                               Text="{Binding Resources.Page_Statistics_NoData, Source={StaticResource Localized}}"/>
-                    <ct:Chart Style="{StaticResource PhoneChartStyle}"
-                              Visibility="{Binding ShowPlot, Converter={StaticResource VisibilityConverter}}"
-                              Palette="{StaticResource ChartPalette}">                        
-                        <ct:Chart.Axes>
-                            <ct:LinearAxis Minimum="0" Orientation="Y" Location="Left"/>
-                            <ct:DateTimeAxis Orientation="X" Location="Bottom">
-                                <ct:DateTimeAxis.AxisLabelStyle>
-                                    <Style TargetType="ct:DateTimeAxisLabel">
-                                        <Setter Property="StringFormat" Value="{}{0:dd MMM}"/>
+                    <tc:RadCartesianChart Grid.Row="0"
+                                          Visibility="{Binding ShowPlot, Converter={StaticResource VisibilityConverter}}"
+                                          EmptyContent="{Binding Resources.Page_Statistics_NoData, Source={StaticResource Localized}}">
+                        <tc:RadCartesianChart.VerticalAxis>
+                            <tc:LinearAxis Minimum="0"/>
+                        </tc:RadCartesianChart.VerticalAxis>
+                        <tc:RadCartesianChart.HorizontalAxis>
+                            <tc:DateTimeCategoricalAxis LabelFormat="dd MMM" LabelFitMode="Rotate" LabelRotationAngle="-40">
+                                <tc:DateTimeCategoricalAxis.LabelStyle>
+                                    <Style TargetType="FrameworkElement">
+                                        <Setter Property="Margin" Value="-5, 0"/>
                                     </Style>
-                                </ct:DateTimeAxis.AxisLabelStyle>
-                            </ct:DateTimeAxis>
-                        </ct:Chart.Axes>
-                        
-						<ct:Chart.Series>
-                            <ct:LineSeries Title="{Binding Resources.ExercisePage_Chart_AvarageWeight, Source={StaticResource Localized}}"
+                                </tc:DateTimeCategoricalAxis.LabelStyle>
+                            </tc:DateTimeCategoricalAxis>
+                        </tc:RadCartesianChart.HorizontalAxis>
+                        <tc:RadCartesianChart.Series>
+                            <tc:LineSeries Stroke="#FFFF3000"
                                            ItemsSource="{Binding AverageWeight}"
-                                           IndependentValueBinding="{Binding Date}"
-                                           DependentValueBinding="{Binding Weight}"
-                                           Background="{StaticResource MainColorBrush}"/>
-                            <ct:LineSeries Title="{Binding Resources.ExercisePage_Chart_MaxWeight, Source={StaticResource Localized}}"
+                                           CategoryBinding="Date"
+                                           ValueBinding="Weight"/>
+                            <tc:LineSeries Stroke="#FFFFC700"
                                            ItemsSource="{Binding MaxWeight}"
-                                           IndependentValueBinding="{Binding Date}"
-                                           DependentValueBinding="{Binding Weight}"
-                                           Background="{StaticResource MainLightColorBrush}"/>
-                        </ct:Chart.Series>
-                    </ct:Chart>
+                                           CategoryBinding="Date"
+                                           ValueBinding="Weight"/>
+                        </tc:RadCartesianChart.Series>
+                    </tc:RadCartesianChart>
+                    <TextBlock Grid.Row="1" Text="{Binding Resources.ExercisePage_Chart_AvarageWeight, Source={StaticResource Localized}}"/>
+                    <TextBlock Grid.Row="2" Text="{Binding Resources.ExercisePage_Chart_MaxWeight, Source={StaticResource Localized}}"/>
                 </Grid>
             </controls:PivotItem>
         </controls:Pivot>
@@ -137,5 +109,5 @@
     <phone:PhoneApplicationPage.ApplicationBar>
         <shell:ApplicationBar/>
     </phone:PhoneApplicationPage.ApplicationBar>
-    
+
 </phone:PhoneApplicationPage>

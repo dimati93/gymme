@@ -5,11 +5,9 @@ using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Input;
 
-using Gymme.View.Helpers;
-
 namespace Gymme.View.Controls
 {
-    public partial class SetControl : UserControl , IDataContextChangedHandler<SetControl>
+    public partial class SetControl : UserControl
     {
         public static readonly DependencyProperty IsEditedProperty =
             DependencyProperty.Register("IsEdited", typeof (bool), typeof (SetControl), new PropertyMetadata(false));
@@ -27,7 +25,6 @@ namespace Gymme.View.Controls
         public SetControl()
         {
             InitializeComponent(); 
-            DataContextChangedHelper<SetControl>.Bind(this);
             Loaded += (o, e) => RegisterBindingElements();
         }
 
@@ -71,11 +68,6 @@ namespace Gymme.View.Controls
             }
 
             UpdateDataSources();
-        }
-
-        public void DataContextChanged(SetControl sender, DependencyPropertyChangedEventArgs e)
-        {
-            sender.IsEdited = false;
         }
     }
 

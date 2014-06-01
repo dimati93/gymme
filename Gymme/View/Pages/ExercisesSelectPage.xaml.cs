@@ -1,14 +1,10 @@
 ﻿using System;
-using System.Threading;
-using System.Windows;
 using System.Windows.Navigation;
 using Gymme.Resources;
 using Gymme.View.Controls;
-using Gymme.ViewModel;
 using Gymme.ViewModel.Page;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
-using GestureEventArgs = System.Windows.Input.GestureEventArgs;
 
 namespace Gymme.View.Pages
 {
@@ -36,7 +32,10 @@ namespace Gymme.View.Pages
             ContentPanel.Children.Clear();
             var selector = ExerciseSelector.Create(_viewModel.WorkoutId);
             ContentPanel.Children.Add(selector);
-            Dispatcher.BeginInvoke(() => selector.ScrollTo(ExerciseSelector.LastChoosen));
+            if (ExerciseSelector.LastChoosen != null)
+            {
+                Dispatcher.BeginInvoke(() => selector.BringIntoView(ExerciseSelector.LastChoosen));
+            }
         }
 
         private void InitializeAppMenu()

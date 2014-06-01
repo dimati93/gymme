@@ -1,19 +1,12 @@
-﻿using System.Windows;
-using System.Windows.Controls;
-using Gymme.View.Helpers;
+﻿using System.Windows.Controls;
 
 namespace Gymme.View.Controls
 {
-    public partial class HistoryControl : UserControl, IDataContextChangedHandler<HistoryControl>
+    public partial class HistoryControl : UserControl
     {
         public HistoryControl()
         {
             InitializeComponent();
-            DataContextChangedHelper<HistoryControl>.Bind(this);
-        }
-
-        public void DataContextChanged(HistoryControl sender, DependencyPropertyChangedEventArgs e)
-        {
         }
     }
 }

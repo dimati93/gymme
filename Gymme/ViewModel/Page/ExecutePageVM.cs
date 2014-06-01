@@ -236,6 +236,11 @@ namespace Gymme.ViewModel.Page
             set
             {
                 _currentSet = value;
+                if (_currentSet != null)
+                {
+                    _currentSet.IsEdited = false;
+                }
+
                 NotifyPropertyChanged("CurrentSet");
                 NotifyPropertyChanged("NextButtonText");
                 ShowTime();
@@ -243,7 +248,7 @@ namespace Gymme.ViewModel.Page
                 {
                     _currentHistoryItem.UpdateSets();
                 }
-
+                
                 PreviousCommand.RaiseCanExecuteChanged();
                 NextCommand.RaiseCanExecuteChanged();
             }

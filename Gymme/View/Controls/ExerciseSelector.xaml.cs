@@ -1,13 +1,14 @@
-﻿using System.Windows;
+﻿using System.Data.Linq;
+using System.Windows;
 
 using Gymme.ViewModel;
 
-using Microsoft.Phone.Controls;
+using Telerik.Windows.Controls;
 using GestureEventArgs = System.Windows.Input.GestureEventArgs;
 
 namespace Gymme.View.Controls
 {
-    public partial class ExerciseSelector : LongListSelector
+    public partial class ExerciseSelector : RadJumpList
     {
         private static ExerciseSelector _lastCreated;
         private static ExerciseSelectItemVM _lastChoosen;

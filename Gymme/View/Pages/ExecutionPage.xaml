@@ -14,7 +14,6 @@
     SupportedOrientations="Portrait"  Orientation="Portrait"
     shell:SystemTray.IsVisible="True">
 
-    <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot" Background="Transparent">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -46,10 +45,9 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <controls:SetControl x:Name="ctrlSets" Grid.Row="0" Grid.ColumnSpan="2" Grid.Column="0"
+            <controls:SetControl Grid.Row="0" Grid.ColumnSpan="2" Grid.Column="0"
                                  DataContext="{Binding CurrentSet}"
                                  IsEdited="{Binding IsEdited, Mode=TwoWay}"/>
-            
             <Button Grid.Row="1" Grid.Column="0"
                     Content="{Binding Resources.ExecutePage_Previous, Source={StaticResource Localized}}"
                     Command="{Binding PreviousCommand}"/>
@@ -66,7 +64,6 @@
                                  DataContext="{Binding HistoryItems}"
                                  Visibility="{Binding IsHistoryEmpty, Converter={StaticResource ReverceVisibilityConverter}}"/>
     </Grid>
-
     <phone:PhoneApplicationPage.ApplicationBar>
         <shell:ApplicationBar IsMenuEnabled="False"/>
     </phone:PhoneApplicationPage.ApplicationBar>
