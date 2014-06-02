@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
+using System.Windows.Data;
 using System.Windows.Threading;
 
 using Gymme.Data.Models;
 using Gymme.Data.Models.QueryResult;
 using Gymme.Data.Repository;
+using Gymme.View.Controls;
 using Gymme.ViewModel.Base;
 
 namespace Gymme.ViewModel.Page
@@ -78,7 +80,7 @@ namespace Gymme.ViewModel.Page
 
         private class StartedState : PageState
         {
-            public StartedState(ExecutePageVM page) 
+            public StartedState(ExecutePageVM page)
                 : base(page)
             {
             }
@@ -127,7 +129,7 @@ namespace Gymme.ViewModel.Page
 
         private class FinishedState : PageState
         {
-            public FinishedState(ExecutePageVM page) 
+            public FinishedState(ExecutePageVM page)
                 : base(page)
             {
             }
@@ -150,8 +152,14 @@ namespace Gymme.ViewModel.Page
 
         #endregion
 
+        private static DataTemplate _setHistoryDataTemplate;
+        private static DataTemplate _resultHistoryDataTemplate;
+
         private readonly PageStateFactory _stateFactory;
+
         private readonly TrainingExercise _trainingExercise;
+        private readonly Exercise _exercise;
+
         private TrainingExerciseHistory[] _history;
 
         private SetVM _currentSet;
@@ -164,10 +172,13 @@ namespace Gymme.ViewModel.Page
         private Action<bool> _updadeFinishButtonState;
         private PageState _state;
 
+        private ExecuteInputControl _inputControl;
+
         public ExecutePageVM(long id)
         {
             _trainingExercise = RepoTrainingExercise.Instance.FindById(id);
-            
+            _exercise = RepoExercise.Instance.FindById(_trainingExercise.IdExecise);
+
             _stateFactory = new PageStateFactory(this);
             _state = _stateFactory.GetState();
 
@@ -176,7 +187,7 @@ namespace Gymme.ViewModel.Page
                 Start();
                 return;
             }
-            
+
             InitializeHistoryOnDemand();
 
             if (Sets.Count != 0)
@@ -204,7 +215,32 @@ namespace Gymme.ViewModel.Page
 
         public string Title
         {
-            get { return RepoExercise.Instance.FindById(_trainingExercise.IdExecise).Name; }
+            get { return _exercise.Name; }
+        }
+
+        public ExecuteInputControl InputControl
+        {
+            get
+            {
+                if (_inputControl == null)
+                {
+                    _inputControl = _exercise.WithoutWeight == true
+                        ? (ExecuteInputControl)new ResultControl()
+                        : new SetControl();
+                    _inputControl.SetBinding(FrameworkElement.DataContextProperty, new Binding("CurrentSet"));
+                    _inputControl.SetBinding(ExecuteInputControl.IsEditedProperty, new Binding("IsEdited") { Mode = BindingMode.TwoWay });
+                }
+
+                return _inputControl;
+            }
+        }
+
+        public DataTemplate HistoryItemTemplate
+        {
+            get
+            {
+                return _exercise.WithoutWeight == true ? _resultHistoryDataTemplate : _setHistoryDataTemplate;
+            }
         }
 
         private IEnumerable<TrainingExerciseHistory> History
@@ -248,7 +284,7 @@ namespace Gymme.ViewModel.Page
                 {
                     _currentHistoryItem.UpdateSets();
                 }
-                
+
                 PreviousCommand.RaiseCanExecuteChanged();
                 NextCommand.RaiseCanExecuteChanged();
             }
@@ -394,7 +430,7 @@ namespace Gymme.ViewModel.Page
 
         public void Start()
         {
-            Status = TrainingExerciseStatus.Started; 
+            Status = TrainingExerciseStatus.Started;
             _state.Start();
         }
 
@@ -477,15 +513,28 @@ namespace Gymme.ViewModel.Page
             if (historySet != null)
             {
                 newSet.Lift = historySet.Lift;
-                newSet.Reps = historySet.Reps; 
+                newSet.Reps = historySet.Reps;
             }
-            
+
             return new SetVM(newSet);
         }
 
         public void Dispose()
         {
             _timer.Stop();
+        }
+
+        public static void InitializeResources(object setTemplate, object resultTemplate)
+        {
+            if (_setHistoryDataTemplate == null)
+            {
+                _setHistoryDataTemplate = setTemplate as DataTemplate;
+            }
+
+            if (_resultHistoryDataTemplate == null)
+            {
+                _resultHistoryDataTemplate = resultTemplate as DataTemplate;
+            }
         }
     }
 }

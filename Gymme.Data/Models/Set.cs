@@ -35,7 +35,7 @@ namespace Gymme.Data.Models
 
         [Column]
         public DateTime StartTime { get; set; }
-        
+
         [Column]
         public DateTime? EndTime { get; set; }
 

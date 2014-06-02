@@ -7,7 +7,8 @@
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
-    d:DesignHeight="480" d:DesignWidth="480">
+    d:DesignHeight="480" d:DesignWidth="480"
+    x:Name="controlSelf">
     
     <Grid x:Name="LayoutRoot">
         <ListBox Style="{StaticResource ListStyle}">
@@ -16,7 +17,7 @@
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <ListBox Style="{StaticResource ListStyle}" ItemsSource="{Binding}" 
+                <ListBox Style="{StaticResource ListStyle}" ItemsSource="{Binding ItemsSource, ElementName=controlSelf}" 
                          ScrollViewer.VerticalScrollBarVisibility="Disabled">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
@@ -24,7 +25,7 @@
                         </DataTemplate>
                     </ListBox.ItemTemplate>
                 </ListBox>
-                <ListBox Grid.Column="1" Style="{StaticResource ListStyle}" ItemsSource="{Binding}"
+                <ListBox Grid.Column="1" Style="{StaticResource ListStyle}" ItemsSource="{Binding ItemsSource, ElementName=controlSelf}"
                          ScrollViewer.VerticalScrollBarVisibility="Disabled"
                          ScrollViewer.HorizontalScrollBarVisibility="Auto">
                     <ListBox.ItemTemplate>
@@ -33,24 +34,16 @@
                                 <TextBlock Style="{StaticResource OverviewCaptionStyle}"
                                            Opacity="{Binding IsSkiped, Converter={StaticResource OpacityConverter}}"
                                            Text="{Binding Resources.ExecutePage_SkipedItem, Source={StaticResource Localized}}"/>
-                                <ListBox ItemsSource="{Binding Sets}" 
+                                <ListBox ItemTemplate="{Binding ItemTemplate, ElementName=controlSelf, Mode=OneWay}"
                                          Style="{StaticResource ListStyle}"
                                          Visibility="{Binding IsSkiped, Converter={StaticResource ReverceVisibilityConverter}}"
-                                         ScrollViewer.VerticalScrollBarVisibility="Disabled">
+                                         ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                                         ItemsSource="{Binding Sets}">
                                     <ListBox.ItemsPanel>
                                         <ItemsPanelTemplate>
                                             <StackPanel Orientation="Horizontal"/>
                                         </ItemsPanelTemplate>
                                     </ListBox.ItemsPanel>
-                                    <ListBox.ItemTemplate>
-                                        <DataTemplate>
-                                            <StackPanel Orientation="Horizontal" Margin="10, 0, 10, 0">
-                                                <TextBlock Text="{Binding Lift}" Style="{StaticResource OverviewCaptionStyle}" Margin="0"/>
-                                                <TextBlock Text="/" Style="{StaticResource OverviewCaptionStyle}" Margin="0"/>
-                                                <TextBlock Text="{Binding Reps}" Style="{StaticResource OverviewCaptionStyle}" Margin="0"/>
-                                            </StackPanel>
-                                        </DataTemplate>
-                                    </ListBox.ItemTemplate>
                                 </ListBox>
                             </Grid>
                         </DataTemplate>

@@ -1,4 +1,4 @@
-﻿<controls:ExecuteInputControl x:Class="Gymme.View.Controls.SetControl"
+﻿<controls:ExecuteInputControl x:Class="Gymme.View.Controls.ResultControl"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -21,35 +21,19 @@
             <TextBlock Margin="15,0,0,0" Text="{Binding OrdinalNumber}" Style="{StaticResource TitleTextBoxStyle}"/>
         </StackPanel>
         <Grid Grid.Row="1">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-
-            <TextBox Grid.Column="0" Grid.Row="0" 
-                     x:Name="tbLift"
-                     Text="{Binding Lift, Mode=TwoWay, UpdateSourceTrigger=Explicit}"
-                     Style="{StaticResource NumberInputBox}" 
-                     GotFocus="InputBox_GotFocus" KeyUp="InputBox_TextInput"/>
-            <TextBlock Grid.Column="1" Grid.Row="0" Text="/" 
-                       Style="{StaticResource TitleTextBoxStyle}" Margin="0,10,0,0"/>
-            <TextBox Grid.Column="2" Grid.Row="0" 
-                     x:Name="tbReps"
+            
+            <TextBox Grid.Row="0" Margin="25, 0"
+                     x:Name="tbResult"
                      Text="{Binding Reps, Mode=TwoWay, UpdateSourceTrigger=Explicit}" 
                      Style="{StaticResource NumberInputBox}"
                      GotFocus="InputBox_GotFocus" KeyUp="InputBox_TextInput"/>
-
-            <TextBlock Grid.Column="0" Grid.Row="1" 
-                       Text="{Binding Resources.Common_Lift, Source={StaticResource Localized}}" 
-                       HorizontalAlignment="Center"
-                       Style="{StaticResource OverviewItemStyle}" Margin="0,-5,0,0"/>
-            <TextBlock Grid.Column="2" Grid.Row="1" 
-                       Text="{Binding Resources.Common_Reps, Source={StaticResource Localized}}"
+           
+            <TextBlock Grid.Row="1" 
+                       Text="{Binding Resources.Common_Result, Source={StaticResource Localized}}"
                        HorizontalAlignment="Center"
                        Style="{StaticResource OverviewItemStyle}" Margin="0,-5,0,0"/>
         </Grid>

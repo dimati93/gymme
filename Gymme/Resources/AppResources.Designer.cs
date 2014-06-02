@@ -313,6 +313,15 @@ namespace Gymme.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Result.
+        /// </summary>
+        public static string Common_Result {
+            get {
+                return ResourceManager.GetString("Common_Result", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Sets.
         /// </summary>
         public static string Common_Sets {

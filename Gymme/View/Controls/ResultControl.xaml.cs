@@ -5,16 +5,16 @@ using System.Windows.Input;
 
 namespace Gymme.View.Controls
 {
-    public partial class SetControl : ExecuteInputControl
+    public partial class ResultControl : ExecuteInputControl
     {
-        public SetControl()
+        public ResultControl()
         {
-            InitializeComponent(); 
+            InitializeComponent();
         }
 
         private void InputBox_GotFocus(object sender, RoutedEventArgs e)
         {
-            TextBox box = (TextBox) sender;
+            TextBox box = (TextBox)sender;
             box.SelectAll();
         }
 
@@ -32,8 +32,7 @@ namespace Gymme.View.Controls
         {
             return new Dictionary<Control, DependencyProperty>
             {
-                {tbLift, TextBox.TextProperty},
-                {tbReps, TextBox.TextProperty}
+                {tbResult, TextBox.TextProperty}
             };
         }
     }

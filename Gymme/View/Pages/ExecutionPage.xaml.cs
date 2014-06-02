@@ -125,6 +125,7 @@ namespace Gymme.View.Pages
 
         private ExecutePageVM GetDataContext(string target, long id)
         {
+            ExecutePageVM.InitializeResources(Resources["SetHistoryTemplate"], Resources["ResultHistoryTemplate"]);
             return new ExecutePageVM(id);
         }
     }

@@ -128,6 +128,10 @@
     <Compile Include="View\Controls\AEWorkout.xaml.cs">
       <DependentUpon>AEWorkout.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Controls\ExecuteInputControl.cs" />
+    <Compile Include="View\Controls\ResultControl.xaml.cs">
+      <DependentUpon>ResultControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Controls\ExerciseSelector.xaml.cs">
       <DependentUpon>ExerciseSelector.xaml</DependentUpon>
     </Compile>
@@ -234,6 +238,10 @@
     <Page Include="View\Controls\AEWorkout.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Controls\ResultControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="View\Controls\ExerciseSelector.xaml">
       <SubType>Designer</SubType>

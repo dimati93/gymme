@@ -350,4 +350,13 @@
   <data name="Command_Reorder" xml:space="preserve">
     <value>изменить порядок</value>
   </data>
+  <data name="AEExercise_WeightModeLabel" xml:space="preserve">
+    <value>Режим нагрузки</value>
+  </data>
+  <data name="AEExercise_WithWeight" xml:space="preserve">
+    <value>С весом</value>
+  </data>
+  <data name="Common_Result" xml:space="preserve">
+    <value>Результат</value>
+  </data>
 </root>
