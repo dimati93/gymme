@@ -45,7 +45,7 @@ namespace Gymme.ViewModel.Page
             {
             }
 
-            public virtual bool CanDoNext(object obj)
+            public virtual bool CanDoNext()
             {
                 return true;
             }
@@ -132,7 +132,7 @@ namespace Gymme.ViewModel.Page
             {
             }
 
-            public override bool CanDoNext(object obj)
+            public override bool CanDoNext()
             {
                 return Page.CurrentSet != Page.LastSet;
             }
@@ -271,8 +271,13 @@ namespace Gymme.ViewModel.Page
         {
             get
             {
-                return GetOrCreateCommand("NextCommand", NextSet, _state.CanDoNext);
+                return GetOrCreateCommand("NextCommand", NextSet, CanDoNext);
             }
+        }
+
+        private bool CanDoNext(object obj)
+        {
+            return _state.CanDoNext();
         }
 
         public string NextButtonText
