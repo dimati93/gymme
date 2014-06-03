@@ -52,13 +52,18 @@ namespace Gymme.Resources
 
                     return x.Elements(XName.Get("Exercise")).Select(ex =>
                     {
-                        XAttribute name = ex.Attribute(XName.Get("Name"));
-                        if (name == null)
+                        XAttribute nameAttribute = ex.Attribute(XName.Get("Name"));
+                        if (nameAttribute == null)
                         {
                             throw new NullReferenceException("Attribute 'Name' not founded");
                         }
 
-                        return new PersetExercise { Category = categotyName, Name = name.Value };
+                        XAttribute withoutWeightAttribute = ex.Attribute(XName.Get("WithoutWeight"));
+
+                        // ReSharper disable once SimplifyConditionalTernaryExpression
+                        bool withoutWeight = withoutWeightAttribute != null ? Convert.ToBoolean(withoutWeightAttribute.Value) : false;
+
+                        return new PersetExercise { Category = categotyName, Name = nameAttribute.Value, WithoutWeight = withoutWeight };
                     });
                 })
                 .OrderBy(x => x.Category)

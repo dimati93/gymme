@@ -1,15 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Exercises>
   <Category Name="Abdominal">
-    <Exercise Name="Ab Rollout"/>
-    <Exercise Name="Bent Knee Hip Raise"/>
-    <Exercise Name="Cross Body Crunches"/>
-    <Exercise Name="Crunches"/>
-    <Exercise Name="Decline Crunches"/>
-    <Exercise Name="Leg Raises"/>
-    <Exercise Name="Side Bend"/>
-    <Exercise Name="Side Plank"/>
-    <Exercise Name="Sit-up"/>
+    <Exercise Name="Ab Rollout" WithoutWeight="True"/>
+    <Exercise Name="Bent Knee Hip Raise" WithoutWeight="True"/>
+    <Exercise Name="Cross Body Crunches" WithoutWeight="True"/>
+    <Exercise Name="Crunches" WithoutWeight="True"/>
+    <Exercise Name="Decline Crunches" WithoutWeight="True"/>
+    <Exercise Name="Leg Raises" WithoutWeight="True"/>
+    <Exercise Name="Side Bend" WithoutWeight="True"/>
+    <Exercise Name="Side Plank" WithoutWeight="True"/>
+    <Exercise Name="Sit-up" WithoutWeight="True"/>
   </Category>
   <Category Name="Back">
     <Exercise Name="One-Arm Dumbbell Row"/>
@@ -40,6 +40,15 @@
     <Exercise Name="Seated Biceps Curl"/>
     <Exercise Name="Standing Biceps Curl"/>
     <Exercise Name="Reverse Wrist Curl"/>
+  </Category>
+  <Category Name="Cardio">
+    <Exercise Name="Cycling" WithoutWeight="True"/>
+    <Exercise Name="Jogging" WithoutWeight="True"/>
+    <Exercise Name="Running" WithoutWeight="True"/>
+    <Exercise Name="Walking" WithoutWeight="True"/>
+    <Exercise Name="Spinning" WithoutWeight="True"/>
+    <Exercise Name="Stepper" WithoutWeight="True"/>
+    <Exercise Name="Treadmill" WithoutWeight="True"/>
   </Category>
   <Category Name="Chest">
     <Exercise Name="Bench Press"/>

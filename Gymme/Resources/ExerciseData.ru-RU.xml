@@ -1,19 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Exercises>
   <Category Name="Пресс">
-    <Exercise Name="Развёртывание на ролике для пресса"/>
-    <Exercise Name="Подтягивание коленей к груди"/>
-    <Exercise Name="Перекресные скручивания"/>
-    <Exercise Name="Скручивания"/>
-    <Exercise Name="Скручивания на наклонной скамье"/>
-    <Exercise Name="Подъем прямых ног"/>
-    <Exercise Name="Боковые наклоны"/>
-    <Exercise Name="Подъем туловища"/>
+    <Exercise Name="Развёртывание на ролике для пресса" WithoutWeight="True"/>
+    <Exercise Name="Подтягивание коленей к груди" WithoutWeight="True"/>
+    <Exercise Name="Перекресные скручивания" WithoutWeight="True"/>
+    <Exercise Name="Скручивания" WithoutWeight="True"/>
+    <Exercise Name="Скручивания на наклонной скамье" WithoutWeight="True"/>
+    <Exercise Name="Подъем прямых ног" WithoutWeight="True"/>
+    <Exercise Name="Боковые наклоны" WithoutWeight="True"/>
+    <Exercise Name="Подъем туловища" WithoutWeight="True"/>
   </Category>
   <Category Name="Спина">
     <Exercise Name="Тяга гантель одной рукой"/>
-    <Exercise Name="Upright Row"/>
-    <Exercise Name="Barbell Row"/>
     <Exercise Name="Тяга Т-штанги"/>
     <Exercise Name="Подтягивания"/>
     <Exercise Name="Тяга на горизонтальном блоке к поясу"/>
@@ -36,6 +34,14 @@
     <Exercise Name="Подъем гантелей обратным хватом"/>
     <Exercise Name="Подъем гантелей сидя"/>
     <Exercise Name="Сгибания кистей обратным хватом"/>
+  </Category>
+  <Category Name="Кардио">
+    <Exercise Name="Велопробег" WithoutWeight="True"/>
+    <Exercise Name="Бег" WithoutWeight="True"/>
+    <Exercise Name="Ходьба" WithoutWeight="True"/>
+    <Exercise Name="Велотренажер" WithoutWeight="True"/>
+    <Exercise Name="Степпер" WithoutWeight="True"/>
+    <Exercise Name="Беговая дорожка" WithoutWeight="True"/>
   </Category>
   <Category Name="Грудь">
     <Exercise Name="Жим лёжа"/>

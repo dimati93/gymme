@@ -30,6 +30,7 @@ namespace Gymme.Data.Models
         {
             Name = anotherExercise.Name;
             Category = anotherExercise.Category;
+            WithoutWeight = anotherExercise.WithoutWeight;
         }
 
         [Column]

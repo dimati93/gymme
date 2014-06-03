@@ -4,6 +4,8 @@
     {
         string Name { get; }
 
-        string Category { get; } 
+        string Category { get; }
+
+        bool? WithoutWeight { get; }
     }
 }

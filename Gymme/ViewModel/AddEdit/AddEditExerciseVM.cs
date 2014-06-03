@@ -1,14 +1,13 @@
 ﻿using System.Collections.Generic;
 using Gymme.Data.AuxModels;
 using Gymme.Data.Core;
-using Gymme.Data.Interfaces;
 using Gymme.Data.Models;
 using Gymme.Data.Repository;
 using Gymme.Resources;
 
 namespace Gymme.ViewModel.AddEdit
 {
-    public class AddEditExerciseVM : AddEditVM, IExercise
+    public class AddEditExerciseVM : AddEditVM
     {
         private readonly Exercise _item;
 

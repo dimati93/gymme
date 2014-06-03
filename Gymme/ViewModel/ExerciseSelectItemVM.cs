@@ -1,9 +1,8 @@
 ﻿using Gymme.Data.AuxModels;
-using Gymme.Data.Interfaces;
 
 namespace Gymme.ViewModel
 {
-    public class ExerciseSelectItemVM : Base.ViewModel, IExercise
+    public class ExerciseSelectItemVM : Base.ViewModel
     {
         private readonly PersetExercise _exercise;
         private readonly long _workoutId;
