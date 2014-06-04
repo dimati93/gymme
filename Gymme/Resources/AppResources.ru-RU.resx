@@ -359,4 +359,16 @@
   <data name="Common_Result" xml:space="preserve">
     <value>Результат</value>
   </data>
+  <data name="ExercisePage_Chart_RepsPerSet" xml:space="preserve">
+    <value>повторений на подход</value>
+  </data>
+  <data name="ExercisePage_Chart_ResultPerSet" xml:space="preserve">
+    <value>результат за подход</value>
+  </data>
+  <data name="ExercisePage_Chart_TotalReps" xml:space="preserve">
+    <value>всего повторений</value>
+  </data>
+  <data name="ExercisePage_Chart_TotalResult" xml:space="preserve">
+    <value>общий результат</value>
+  </data>
 </root>

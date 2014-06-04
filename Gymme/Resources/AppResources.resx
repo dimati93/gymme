@@ -374,4 +374,16 @@
   <data name="Common_Result" xml:space="preserve">
     <value>Result</value>
   </data>
+  <data name="ExercisePage_Chart_RepsPerSet" xml:space="preserve">
+    <value>reps per set</value>
+  </data>
+  <data name="ExercisePage_Chart_ResultPerSet" xml:space="preserve">
+    <value>result per set</value>
+  </data>
+  <data name="ExercisePage_Chart_TotalReps" xml:space="preserve">
+    <value>total reps</value>
+  </data>
+  <data name="ExercisePage_Chart_TotalResult" xml:space="preserve">
+    <value>total result</value>
+  </data>
 </root>

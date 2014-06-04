@@ -10,7 +10,9 @@ namespace Gymme.ViewModel.Page
     {
         private readonly Exercise _exercise;
         private readonly Workout _workout;
-        private ExerciseStatistics _exerciseStatistics;
+
+        private ExerciseStatistics _statistics;
+
         private int _selectedPageIndex;
 
         public ExercisePageVM(long id)
@@ -49,7 +51,7 @@ namespace Gymme.ViewModel.Page
         {
             get
             {
-                return  _exercise.WithoutWeight == true ? AppResources.AEExercise_WithoutWeight : AppResources.AEExercise_WithWeight;
+                return _exercise.WithoutWeight == true ? AppResources.AEExercise_WithoutWeight : AppResources.AEExercise_WithWeight;
             }
         }
 
@@ -57,7 +59,12 @@ namespace Gymme.ViewModel.Page
         {
             get
             {
-                return _exerciseStatistics ?? (_exerciseStatistics = new ExerciseStatistics(_exercise));
+                return _statistics;
+            }
+            set
+            {
+                _statistics = value;
+                NotifyPropertyChanged("Statistics");
             }
         }
 
@@ -67,10 +74,28 @@ namespace Gymme.ViewModel.Page
             set
             {
                 _selectedPageIndex = value;
-                if (_selectedPageIndex == 1 && !Statistics.IsLoaded)
+                if (_selectedPageIndex == 1)
                 {
-                    Statistics.LoadStatistics();
+                    if (Statistics == null)
+                    {
+                        Statistics = ShowWeightStatistics
+                                         ? new ExerciseWeightStatistics(_exercise)
+                                         : new ExerciseStatistics(_exercise);
+                    }
+
+                    if (!Statistics.IsLoaded)
+                    {
+                        Statistics.LoadStatistics();
+                    }
                 }
+            }
+        }
+
+        public bool ShowWeightStatistics
+        {
+            get
+            {
+                return _exercise.WithoutWeight != true;
             }
         }
 
@@ -81,8 +106,8 @@ namespace Gymme.ViewModel.Page
 
         public bool DeleteExercise()
         {
-            MessageBoxResult result = MessageBox.Show(Resources.AppResources.Exercise_DeleteWarning,
-                                                      Resources.AppResources.Exercise_DeleteWarningTitle,
+            MessageBoxResult result = MessageBox.Show(AppResources.Exercise_DeleteWarning,
+                                                      AppResources.Exercise_DeleteWarningTitle,
                                                       MessageBoxButton.OKCancel);
             if (result == MessageBoxResult.OK)
             {

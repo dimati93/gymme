@@ -484,6 +484,42 @@ namespace Gymme.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to reps per set.
+        /// </summary>
+        public static string ExercisePage_Chart_RepsPerSet {
+            get {
+                return ResourceManager.GetString("ExercisePage_Chart_RepsPerSet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to result per set.
+        /// </summary>
+        public static string ExercisePage_Chart_ResultPerSet {
+            get {
+                return ResourceManager.GetString("ExercisePage_Chart_ResultPerSet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to total reps.
+        /// </summary>
+        public static string ExercisePage_Chart_TotalReps {
+            get {
+                return ResourceManager.GetString("ExercisePage_Chart_TotalReps", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to total result.
+        /// </summary>
+        public static string ExercisePage_Chart_TotalResult {
+            get {
+                return ResourceManager.GetString("ExercisePage_Chart_TotalResult", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No notes.
         /// </summary>
         public static string ExercisePage_EmptyNoteHint {

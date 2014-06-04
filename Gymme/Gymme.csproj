@@ -108,12 +108,13 @@
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\Page\TrainingPageVM.cs" />
     <Compile Include="ViewModel\Page\WorkoutPageVM.cs" />
+    <Compile Include="ViewModel\Statistics\ExerciseStatistics.cs" />
     <Compile Include="ViewModel\Statistics\Statistics.cs" />
     <Compile Include="ViewModel\Statistics\TimeStatPoint.cs" />
     <Compile Include="ViewModel\Statistics\WorkoutStatistics.cs" />
     <Compile Include="ViewModel\SetVM.cs" />
-    <Compile Include="ViewModel\Statistics\ExerciseStatistics.cs" />
-    <Compile Include="ViewModel\Statistics\WeightStatPoint.cs" />
+    <Compile Include="ViewModel\Statistics\ExerciseWeightStatistics.cs" />
+    <Compile Include="ViewModel\Statistics\FloatStatPoint.cs" />
     <Compile Include="ViewModel\StringExtention.cs" />
     <Compile Include="ViewModel\TimeSpanExtention.cs" />
     <Compile Include="ViewModel\TrainingExerciseVM.cs" />

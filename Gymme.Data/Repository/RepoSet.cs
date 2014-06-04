@@ -29,7 +29,7 @@ namespace Gymme.Data.Repository
             return Table.Where(x => x.IdTrainingExercise == trainingExercise.Id);
         }
 
-        public float FindMax(TrainingExercise trainingExercise)
+        public float FindMaxWeight(TrainingExercise trainingExercise)
         {
             var sets = FindAllForTraining(trainingExercise).ToArray();
             if (!sets.Any())
@@ -40,7 +40,7 @@ namespace Gymme.Data.Repository
             return sets.Max(x => x.Lift);
         }
 
-        public float FindAvg(TrainingExercise trainingExercise)
+        public float FindAvgWeight(TrainingExercise trainingExercise)
         {
             var sets = FindAllForTraining(trainingExercise).ToArray();
             if (!sets.Any())
@@ -49,6 +49,28 @@ namespace Gymme.Data.Repository
             }
 
             return sets.Sum(x => x.Lift * x.Reps) / sets.Sum(x => x.Reps);
+        }
+
+        public float FindRepsPerSet(TrainingExercise trainingExercise)
+        {
+            var sets = FindAllForTraining(trainingExercise).ToArray();
+            if (!sets.Any())
+            {
+                return 0;
+            }
+
+            return sets.Sum(x => x.Reps) / sets.Length;
+        }
+
+        public float FindTotalReps(TrainingExercise trainingExercise)
+        {
+            var sets = FindAllForTraining(trainingExercise).ToArray();
+            if (!sets.Any())
+            {
+                return 0;
+            }
+
+            return sets.Sum(x => x.Reps);
         }
     }
 }
