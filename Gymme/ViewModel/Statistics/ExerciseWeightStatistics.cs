@@ -4,6 +4,7 @@ using System.Linq;
 
 using Gymme.Data.Models;
 using Gymme.Data.Models.QueryResult;
+using Gymme.Data.Repository;
 using Gymme.Resources;
 
 namespace Gymme.ViewModel.Statistics

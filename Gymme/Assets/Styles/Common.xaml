@@ -106,16 +106,16 @@
     </Style>
 
     <Style TargetType="TextBlock" x:Key="HintTextBlockStyle">
-            <Setter Property="FontSize" Value="32"/>
-            <Setter Property="Margin" Value="12,0,0,0"/>
-            <Setter Property="FontFamily" Value="Segoe WP Light"/>
-            <Setter Property="TextWrapping" Value="Wrap"/>
+        <Setter Property="FontSize" Value="32"/>
+        <Setter Property="Margin" Value="12,0,0,0"/>
+        <Setter Property="FontFamily" Value="Segoe WP Light"/>
+        <Setter Property="TextWrapping" Value="Wrap"/>
     </Style>
 
     <Style TargetType="TextBlock" x:Key="TitleTextBoxStyle">
         <Setter Property="FontSize" Value="56"/>
     </Style>
-    
+
     <DataTemplate x:Key="MainPanoramaTitleTemplate">
         <Grid Margin="0, 40, 0, 0">
             <TextBlock Text="{Binding}" FontSize="128"/>
@@ -139,7 +139,7 @@
         <Setter Property="Margin" Value="12,0,0,0"/>
         <Setter Property="FontFamily" Value="Segoe WP Light"/>
     </Style>
-    
+
     <Style x:Key="OverviewItemStyle" TargetType="TextBlock">
         <Setter Property="FontSize" Value="24"/>
         <Setter Property="Margin" Value="12,0,0,0"/>
@@ -151,6 +151,7 @@
         <Setter Property="HorizontalAlignment" Value="Stretch"/>
         <Setter Property="VerticalAlignment" Value="Center"/>
         <Setter Property="TextAlignment" Value="Center"/>
+        <Setter Property="Foreground" Value="{StaticResource PhoneForegroundBrush}"/>
     </Style>
 
     <Style x:Key="IconStyle" TargetType="Image">
@@ -166,7 +167,7 @@
     <ControlTemplate x:Key="PhoneDisabledTextBoxTemplate" TargetType="TextBox">
         <ContentControl x:Name="ContentElement" BorderThickness="0" HorizontalContentAlignment="Stretch" Margin="{StaticResource PhoneTextBoxInnerMargin}" Padding="{TemplateBinding Padding}" VerticalContentAlignment="Stretch"/>
     </ControlTemplate>
-    
+
     <Style x:Key="NumberInputBox" TargetType="TextBox">
         <Setter Property="TextAlignment" Value="Center"/>
         <Setter Property="InputScope" Value="Number"/>
@@ -259,5 +260,22 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+    </Style>
+
+    <Style x:Key="LegendTextBlock" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="{StaticResource PhoneFontSizeMedium}"/>
+        <Setter Property="Foreground" Value="{StaticResource PhoneForegroundBrush}"/>
+    </Style>
+
+    <Style x:Key="LegendRectangle" TargetType="Rectangle">
+        <Setter Property="Margin" Value="20, 10"/>
+        <Setter Property="Height" Value="20"/>
+        <Setter Property="Width" Value="20"/>
+    </Style>
+
+    <Style x:Key="LegendGrid" TargetType="Grid">
+        <Setter Property="Margin" Value="0, 10"/>
+        <Setter Property="Background" Value="{StaticResource PhoneChromeBrush}"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
     </Style>
 </ResourceDictionary>

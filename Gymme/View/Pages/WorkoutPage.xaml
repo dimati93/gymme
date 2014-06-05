@@ -33,7 +33,7 @@
                                Style="{StaticResource HintTextBlockStyle}"
                                Visibility="{Binding IsExercisesEmpty, Converter={StaticResource VisibilityConverter}}"/>
 
-                    <tp:RadDataBoundListBox ItemsSource="{Binding Exercises}"
+                    <tp:RadDataBoundListBox Grid.Row="0" ItemsSource="{Binding Exercises}"
                                             Visibility="{Binding IsExercisesEmpty, 
                                             Converter={StaticResource ReverceVisibilityConverter}}"
                                             x:Name="exList"
@@ -58,7 +58,7 @@
 
                                     <StackPanel>
                                         <TextBlock Text="{Binding Name}" TextWrapping="Wrap" Margin="10,-2,10,0" Style="{StaticResource PhoneTextExtraLargeStyle}" FontSize="{StaticResource PhoneFontSizeLarge}"/>
-                                        <TextBlock Text="{Binding Category}" TextWrapping="Wrap" Margin="10,-2,10,0"/>
+                                        <TextBlock Text="{Binding Category}" TextWrapping="Wrap" Margin="10,-2,10,0" Foreground="{StaticResource PhoneForegroundBrush}"/>
                                     </StackPanel>
                                 </Grid>
                             </DataTemplate>
@@ -97,14 +97,23 @@
                         </tc:RadCartesianChart.HorizontalAxis>
 
                         <tc:RadCartesianChart.Series>
-                            <tc:LineSeries Stroke="#FF00C7FF"
+                            <tc:LineSeries Stroke="#FF004FDD"
                                            ItemsSource="{Binding SpentTime}"
                                            ValueBinding="Date"
                                            CategoryBinding="Span"/>
                         </tc:RadCartesianChart.Series>
                     </tc:RadCartesianChart>
-                    <TextBlock Grid.Row="1"
-                               Text="{Binding Resources.WorkoutPage_Chart_TimeSpent, Source={StaticResource Localized}}"/>
+
+                    <Grid Grid.Row="1" Style="{StaticResource LegendGrid}">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Rectangle Grid.Column="0" Style="{StaticResource LegendRectangle}" Fill="#FF004FDD"/>
+                        <TextBlock Grid.Column="1" Margin="0, 2, 20, 0" Style="{StaticResource LegendTextBlock}"
+                                       Text="{Binding Resources.WorkoutPage_Chart_TimeSpent, Source={StaticResource Localized}}"/>
+                    </Grid>
                 </Grid>
             </controls:PivotItem>
         </controls:Pivot>

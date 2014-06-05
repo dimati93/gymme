@@ -64,18 +64,17 @@
 
             <!--Pivot item two-->
             <controls:PivotItem Header="{Binding Resources.Page_Statistics, Source={StaticResource Localized}}">
-                <ListBox Style="{StaticResource ListStyle}">
+                <ListBox Style="{StaticResource ListStyle}" >
                     <Grid x:Name="WeightStat" Visibility="{Binding ShowWeightStatistics, Converter={StaticResource VisibilityConverter}}">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="450"/>
-                            <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="36"/>
                         </Grid.RowDefinitions>
                         <TextBlock Style="{StaticResource PageCenteredTextBlock}" DataContext="{Binding Statistics}"
                                Visibility="{Binding IsLoading, Converter={StaticResource VisibilityConverter}}"
                                Text="{Binding Resources.Page_Statistics_Loading, Source={StaticResource Localized}}"/>
-                        <tc:RadCartesianChart Grid.Row="0" DataContext="{Binding Statistics}"
+                        <tc:RadCartesianChart Grid.Row="0" DataContext="{Binding Statistics}" Foreground="{StaticResource PhoneForegroundBrush}"
                                           Visibility="{Binding ShowPlot, Converter={StaticResource VisibilityConverter}}"
                                           EmptyContent="{Binding Resources.Page_Statistics_NoData, Source={StaticResource Localized}}">
                             <tc:RadCartesianChart.VerticalAxis>
@@ -101,8 +100,23 @@
                                            ValueBinding="Value"/>
                             </tc:RadCartesianChart.Series>
                         </tc:RadCartesianChart>
-                        <TextBlock Grid.Row="1" Text="{Binding Resources.ExercisePage_Chart_AvarageWeight, Source={StaticResource Localized}}"/>
-                        <TextBlock Grid.Row="2" Text="{Binding Resources.ExercisePage_Chart_MaxWeight, Source={StaticResource Localized}}"/>
+
+                        <Grid Grid.Row="1" Style="{StaticResource LegendGrid}">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Rectangle Grid.Column="0" Style="{StaticResource LegendRectangle}" Fill="#FFFF3000"/>
+                            <TextBlock Grid.Column="1" Margin="0, 2, 10, 0" Style="{StaticResource LegendTextBlock}"
+                                       Text="{Binding Resources.ExercisePage_Chart_AvarageWeight, Source={StaticResource Localized}}"/>
+
+                            <Rectangle Grid.Column="2" Style="{StaticResource LegendRectangle}" Fill="#FFFFC700"/>
+                            <TextBlock Grid.Column="3" Margin="0, 2, 20, 0" Style="{StaticResource LegendTextBlock}"
+                                       Text="{Binding Resources.ExercisePage_Chart_MaxWeight, Source={StaticResource Localized}}"/>
+                        </Grid>
                     </Grid>
 
                     <Grid x:Name="TotalRepsStat" DataContext="{Binding Statistics}">
@@ -114,7 +128,7 @@
                         <TextBlock Style="{StaticResource PageCenteredTextBlock}" 
                                Visibility="{Binding IsLoading, Converter={StaticResource VisibilityConverter}}"
                                Text="{Binding Resources.Page_Statistics_Loading, Source={StaticResource Localized}}"/>
-                        <tc:RadCartesianChart Grid.Row="0"  
+                        <tc:RadCartesianChart Grid.Row="0"  Foreground="{StaticResource PhoneForegroundBrush}"
                                           Visibility="{Binding ShowPlot, Converter={StaticResource VisibilityConverter}}"
                                           EmptyContent="{Binding Resources.Page_Statistics_NoData, Source={StaticResource Localized}}">
                             <tc:RadCartesianChart.VerticalAxis>
@@ -136,7 +150,17 @@
                                            ValueBinding="Value"/>
                             </tc:RadCartesianChart.Series>
                         </tc:RadCartesianChart>
-                        <TextBlock Grid.Row="1" Text="{Binding TotalResultText}"/>
+
+                        <Grid Grid.Row="1" Style="{StaticResource LegendGrid}">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Rectangle Grid.Column="0" Style="{StaticResource LegendRectangle}" Fill="#FF00C700"/>
+                            <TextBlock Grid.Column="1" Margin="0, 2, 20, 0" Style="{StaticResource LegendTextBlock}"
+                                       Text="{Binding TotalResultText}"/>
+                        </Grid>
                     </Grid>
 
                     <Grid x:Name="RepsPerSetStat" DataContext="{Binding Statistics}">
@@ -147,7 +171,7 @@
                         <TextBlock Style="{StaticResource PageCenteredTextBlock}" 
                                Visibility="{Binding IsLoading, Converter={StaticResource VisibilityConverter}}"
                                Text="{Binding Resources.Page_Statistics_Loading, Source={StaticResource Localized}}"/>
-                        <tc:RadCartesianChart Grid.Row="0"
+                        <tc:RadCartesianChart Grid.Row="0" Foreground="{StaticResource PhoneForegroundBrush}"
                                           Visibility="{Binding ShowPlot, Converter={StaticResource VisibilityConverter}}"
                                           EmptyContent="{Binding Resources.Page_Statistics_NoData, Source={StaticResource Localized}}">
                             <tc:RadCartesianChart.VerticalAxis>
@@ -169,7 +193,17 @@
                                            ValueBinding="Value"/>
                             </tc:RadCartesianChart.Series>
                         </tc:RadCartesianChart>
-                        <TextBlock Grid.Row="1" Text="{Binding PerSetResultText}"/>
+
+                        <Grid Grid.Row="1" Style="{StaticResource LegendGrid}">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Rectangle Grid.Column="0" Style="{StaticResource LegendRectangle}" Fill="#FF00C7FF"/>
+                            <TextBlock Grid.Column="1" Margin="0, 2, 20, 0" Style="{StaticResource LegendTextBlock}"
+                                       Text="{Binding PerSetResultText}"/>
+                        </Grid>
                     </Grid>
                 </ListBox>
             </controls:PivotItem>
