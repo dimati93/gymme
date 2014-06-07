@@ -1,4 +1,6 @@
-﻿using Gymme.Data.AuxModels;
+﻿using System.Windows.Input;
+
+using Gymme.Data.AuxModels;
 
 namespace Gymme.ViewModel
 {
@@ -17,9 +19,22 @@ namespace Gymme.ViewModel
 
         public string Category { get { return _exercise.Category; } }
 
+        public ICommand GotoPageViewCommand
+        {
+            get
+            {
+                return GetOrCreateCommand("GotoPageViewCommand", Choose);
+            }
+        }
+
         public void Choose()
         {
             NavigationManager.GotoAddExercisePage(_workoutId, _exercise.Index);
+        }
+
+        public override string ToString()
+        {
+            return Name;
         }
     }
 }

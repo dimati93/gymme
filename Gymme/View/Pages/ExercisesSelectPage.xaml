@@ -31,7 +31,7 @@
     </Grid>
 
     <phone:PhoneApplicationPage.ApplicationBar>
-        <shell:ApplicationBar IsMenuEnabled="false"/>
+        <shell:ApplicationBar IsMenuEnabled="False"/>
     </phone:PhoneApplicationPage.ApplicationBar>
     
 </phone:PhoneApplicationPage>

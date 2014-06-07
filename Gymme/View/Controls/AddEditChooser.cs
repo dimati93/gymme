@@ -13,6 +13,7 @@
         public static class Param
         {
             public const string WorkoutId = "workoutId";
+            public const string BackCount = "backCount";
         }
     }
 }

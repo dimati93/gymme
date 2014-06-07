@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Windows.Navigation;
 using Gymme.Resources;
 using Gymme.View.Controls;
@@ -12,10 +13,13 @@ namespace Gymme.View.Pages
     {
         private ExercisesSelectVM _viewModel;
 
+        private ExerciseSelector _selector;
+        private ExerciseSearch _search;
+
         public ExercisesSelectPage()
         {
             InitializeComponent();
-            InitializeAppMenu();
+            InitializeAppMenu(true);
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -27,19 +31,48 @@ namespace Gymme.View.Pages
             LoadContent();
         }
 
+        protected override void OnBackKeyPress(CancelEventArgs e)
+        {
+            if (_search != null)
+            {
+                LayoutRoot.Children.Remove(_search);
+                _search = null;
+
+                _selector.IsEnabled = true;
+
+                ApplicationBar.Buttons.Clear();
+                InitializeAppMenu(true);
+                e.Cancel = true;
+            }
+
+            base.OnBackKeyPress(e);
+        }
+
         private void LoadContent()
         {
             ContentPanel.Children.Clear();
-            var selector = ExerciseSelector.Create(_viewModel.WorkoutId);
-            ContentPanel.Children.Add(selector);
+            _selector = ExerciseSelector.Create(_viewModel.WorkoutId);
+            ContentPanel.Children.Add(_selector);
             if (ExerciseSelector.LastChoosen != null)
             {
-                Dispatcher.BeginInvoke(() => selector.BringIntoView(ExerciseSelector.LastChoosen));
+                Dispatcher.BeginInvoke(() => _selector.BringIntoView(ExerciseSelector.LastChoosen));
             }
         }
 
-        private void InitializeAppMenu()
+        private void InitializeAppMenu(bool searchEnabled)
         {
+            if (searchEnabled)
+            {
+                var searchExercise = new ApplicationBarIconButton
+                {
+                    IconUri = new Uri("/Assets/AppBar/appbar.feature.search.rest.png", UriKind.Relative),
+                    Text = AppResources.Command_Search
+                };
+
+                searchExercise.Click += SearchExercise_Click;
+                ApplicationBar.Buttons.Add(searchExercise);
+            }
+
             var newExercise = new ApplicationBarIconButton
             {
                 IconUri = new Uri("/Assets/AppBar/appbar.edit.rest.png", UriKind.Relative),
@@ -50,6 +83,16 @@ namespace Gymme.View.Pages
             ApplicationBar.Buttons.Add(newExercise);
         }
 
+        private void SearchExercise_Click(object sender, EventArgs e)
+        {
+            _search = new ExerciseSearch(_selector.ViewModel);
+            LayoutRoot.Children.Add(_search);
+
+            _selector.IsEnabled = false;
+
+            ApplicationBar.Buttons.Clear();
+            InitializeAppMenu(false);
+        }
 
         private void NewExercise_Click(object sender, EventArgs e)
         {

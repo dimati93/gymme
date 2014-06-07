@@ -97,10 +97,11 @@
     <Compile Include="ViewModel\AddEdit\AddEditExerciseVM.cs" />
     <Compile Include="ViewModel\Base\Command.cs" />
     <Compile Include="ViewModel\ExecuteHistoryItemVM.cs" />
+    <Compile Include="ViewModel\ExerciseSearchVM.cs" />
     <Compile Include="ViewModel\Page\ExecutePageVM.cs" />
     <Compile Include="ViewModel\Page\ExercisePageVM.cs" />
     <Compile Include="ViewModel\ExerciseSelectItemVM.cs" />
-    <Compile Include="ViewModel\ExerciseSelectorControlVM.cs" />
+    <Compile Include="ViewModel\ExerciseSelectorVM.cs" />
     <Compile Include="ViewModel\Page\ExercisesSelectVM.cs" />
     <Compile Include="ViewModel\Base\ViewModel.cs" />
     <Compile Include="ViewModel\ExerciseCategory.cs" />
@@ -128,6 +129,9 @@
     <Compile Include="View\Controls\AddEditChooser.cs" />
     <Compile Include="View\Controls\AEWorkout.xaml.cs">
       <DependentUpon>AEWorkout.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Controls\ExerciseSearch.xaml.cs">
+      <DependentUpon>ExerciseSearch.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Controls\ExecuteInputControl.cs" />
     <Compile Include="View\Controls\ResultControl.xaml.cs">
@@ -190,6 +194,9 @@
     <Content Include="Assets\AppBar\appbar.edit.rest.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\AppBar\appbar.feature.search.rest.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets\AppBar\appbar.save.rest.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -239,6 +246,10 @@
     <Page Include="View\Controls\AEWorkout.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Controls\ExerciseSearch.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="View\Controls\ResultControl.xaml">
       <Generator>MSBuild:Compile</Generator>

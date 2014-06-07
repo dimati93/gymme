@@ -13,7 +13,7 @@ namespace Gymme
 {
     public static class NavigationManager
     {
-        private static NavigationService NavigationService;
+        private static NavigationService _navigationService;
 
         public static string GoBackParams { get; set; }
 
@@ -40,7 +40,7 @@ namespace Gymme
             InitializeNavigation();
             Navigate("/ExercisesSelect", "none", Param(AEC.Param.WorkoutId, workoutId));
         }
-
+        
         public static void GotoAddExercisePage(long workoutId)
         {
             InitializeNavigation();
@@ -97,15 +97,15 @@ namespace Gymme
 
         public static void GoBack(string parameters = null, int times = 1)
         {
-            while (times > 1 && NavigationService.BackStack.Any())
+            while (times > 1 && _navigationService.BackStack.Any())
             {
-                NavigationService.RemoveBackEntry();
+                _navigationService.RemoveBackEntry();
                 times--;
             }
 
-            if (NavigationService.CanGoBack) 
+            if (_navigationService.CanGoBack) 
             {
-                NavigationService.GoBack();
+                _navigationService.GoBack();
             }
 
             GoBackParams = parameters ?? string.Empty;
@@ -118,7 +118,7 @@ namespace Gymme
                 throw new InvalidOperationException("NavigationService cannot be null");
             }
 
-            NavigationService = ns;
+            _navigationService = ns;
         }
 
         private static void InitializeNavigation()
@@ -128,16 +128,16 @@ namespace Gymme
 
         #region BuildUri
 
-        private static void Navigate(string path, string navtgt, string query)
+        private static void Navigate(string path, string navtgt, params string[] query)
         {
-            NavigationService.Navigate(BuildUri(path, navtgt, query));
+            _navigationService.Navigate(BuildUri(path, navtgt, string.Join("", query)));
         }
 
         private static void Navigate(string path, string navtgt = null)
         {
             try
             {
-                NavigationService.Navigate(BuildUri(path, navtgt));
+                _navigationService.Navigate(BuildUri(path, navtgt));
             }
             catch (Exception e)
             {

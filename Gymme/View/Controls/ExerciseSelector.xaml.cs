@@ -13,9 +13,9 @@ namespace Gymme.View.Controls
         private static ExerciseSelector _lastCreated;
         private static ExerciseSelectItemVM _lastChoosen;
 
-        private readonly ExerciseSelectorControlVM _viewModel;
+        private readonly ExerciseSelectorVM _viewModel;
         
-        private ExerciseSelector(ExerciseSelectorControlVM viewModel)
+        private ExerciseSelector(ExerciseSelectorVM viewModel)
         {
             InitializeComponent();
             DataContext = _viewModel = viewModel;
@@ -26,6 +26,14 @@ namespace Gymme.View.Controls
             get { return _lastChoosen; }
         }
 
+        public ExerciseSelectorVM ViewModel
+        {
+            get
+            {
+                return _viewModel;
+            }
+        }
+
         private void Exercise_Tap(object sender, GestureEventArgs gestureEventArgs)
         {
             _lastChoosen = ((ExerciseSelectItemVM) ((FrameworkElement) sender).DataContext);
@@ -34,13 +42,13 @@ namespace Gymme.View.Controls
 
         public static ExerciseSelector Create(long workoutId)
         {
-            if (_lastCreated == null || workoutId != _lastCreated._viewModel.WorkoutId)
+            if (_lastCreated == null || workoutId != _lastCreated.ViewModel.WorkoutId)
             {
-                _lastCreated = new ExerciseSelector(new ExerciseSelectorControlVM(workoutId));
+                _lastCreated = new ExerciseSelector(new ExerciseSelectorVM(workoutId));
                 return _lastCreated;
             }
 
-            _lastCreated = new ExerciseSelector(_lastCreated._viewModel);
+            _lastCreated = new ExerciseSelector(_lastCreated.ViewModel);
             return _lastCreated;
         }
     }

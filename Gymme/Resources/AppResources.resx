@@ -386,4 +386,10 @@
   <data name="ExercisePage_Chart_TotalResult" xml:space="preserve">
     <value>total result</value>
   </data>
+  <data name="Command_Search" xml:space="preserve">
+    <value>search</value>
+  </data>
+  <data name="ExerciseSearch_EmptySuggestion" xml:space="preserve">
+    <value>No suggestions. Add exercise from the menu ↓</value>
+  </data>
 </root>

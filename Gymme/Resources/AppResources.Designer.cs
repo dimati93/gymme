@@ -277,6 +277,15 @@ namespace Gymme.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to search.
+        /// </summary>
+        public static string Command_Search {
+            get {
+                return ResourceManager.GetString("Command_Search", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to start.
         /// </summary>
         public static string Command_Start {
@@ -543,6 +552,15 @@ namespace Gymme.Resources {
         public static string ExercisePage_Notes {
             get {
                 return ResourceManager.GetString("ExercisePage_Notes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No suggestions. Add exercise from the menu ↓.
+        /// </summary>
+        public static string ExerciseSearch_EmptySuggestion {
+            get {
+                return ResourceManager.GetString("ExerciseSearch_EmptySuggestion", resourceCulture);
             }
         }
         

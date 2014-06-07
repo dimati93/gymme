@@ -371,4 +371,10 @@
   <data name="ExercisePage_Chart_TotalResult" xml:space="preserve">
     <value>общий результат</value>
   </data>
+  <data name="Command_Search" xml:space="preserve">
+    <value>поиск</value>
+  </data>
+  <data name="ExerciseSearch_EmptySuggestion" xml:space="preserve">
+    <value>Совпадений не найдено. Добавте упражнение используя меню ↓</value>
+  </data>
 </root>

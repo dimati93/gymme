@@ -1,15 +1,15 @@
 ﻿using System.Collections.ObjectModel;
 using System.Linq;
-using Gymme.Data.Interfaces;
+
 using Gymme.Resources;
 
 namespace Gymme.ViewModel
 {
-    public class ExerciseSelectorControlVM : Base.ViewModel
+    public class ExerciseSelectorVM : Base.ViewModel
     {
         private readonly long _workoutId;
 
-        public ExerciseSelectorControlVM(long workoutId)
+        public ExerciseSelectorVM(long workoutId)
         {
             _workoutId = workoutId;
             LoadExercises();
