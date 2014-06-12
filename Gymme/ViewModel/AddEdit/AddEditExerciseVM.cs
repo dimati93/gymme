@@ -1,6 +1,9 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
+
 using Gymme.Data.AuxModels;
 using Gymme.Data.Core;
+using Gymme.Data.Interfaces;
 using Gymme.Data.Models;
 using Gymme.Data.Repository;
 using Gymme.Resources;
@@ -22,7 +25,7 @@ namespace Gymme.ViewModel.AddEdit
             PageName = AppResources.AddEdit_Exercise;
         }
 
-        public AddEditExerciseVM(long workoutId, PersetExercise exercise)
+        public AddEditExerciseVM(long workoutId, IExercise exercise)
             : base(false)
         {
             _item = new Exercise(exercise) { IdWorkout = workoutId };
@@ -129,6 +132,8 @@ namespace Gymme.ViewModel.AddEdit
                 RepoWorkout.Instance.FindById(_item.IdWorkout).Exercises.Add(_item);
                 DatabaseContext.Instance.SubmitChanges();
             }
+
+            ExerciseData.Instance.RenewPerset(_item);
 
             RepoExercise.Instance.Save(_item);
         }

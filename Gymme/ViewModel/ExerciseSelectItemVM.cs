@@ -1,15 +1,16 @@
 ﻿using System.Windows.Input;
 
-using Gymme.Data.AuxModels;
+using Gymme.Data.Interfaces;
+using Gymme.Resources;
 
 namespace Gymme.ViewModel
 {
     public class ExerciseSelectItemVM : Base.ViewModel
     {
-        private readonly PersetExercise _exercise;
+        private readonly IExercise _exercise;
         private readonly long _workoutId;
 
-        public ExerciseSelectItemVM(PersetExercise exercise, long workoutId)
+        public ExerciseSelectItemVM(IExercise exercise, long workoutId)
         {
             _exercise = exercise;
             _workoutId = workoutId;
@@ -29,7 +30,10 @@ namespace Gymme.ViewModel
 
         public void Choose()
         {
-            NavigationManager.GotoAddExercisePage(_workoutId, _exercise.Index);
+            int index = ExerciseData.Instance.PersetExercises.IndexOf(_exercise);
+            if (index < 0) return;
+
+            NavigationManager.GotoAddExercisePage(_workoutId, index);
         }
 
         public override string ToString()

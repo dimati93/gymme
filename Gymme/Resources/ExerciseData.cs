@@ -7,6 +7,9 @@ using System.Windows.Resources;
 using System.Xml.Linq;
 
 using Gymme.Data.AuxModels;
+using Gymme.Data.Interfaces;
+using Gymme.Data.Models;
+using Gymme.Data.Repository;
 
 namespace Gymme.Resources
 {
@@ -26,7 +29,8 @@ namespace Gymme.Resources
         {
         }
 
-        public List<PersetExercise> PersetExercises { get; private set; }
+        public List<IExercise> PersetExercises { get; private set; }
+
         public List<string> PersetCategories { get; private set; }
 
         public bool IsDataLoaded { get; private set; }
@@ -63,21 +67,31 @@ namespace Gymme.Resources
                         // ReSharper disable once SimplifyConditionalTernaryExpression
                         bool withoutWeight = withoutWeightAttribute != null ? Convert.ToBoolean(withoutWeightAttribute.Value) : false;
 
-                        return new PersetExercise { Category = categotyName, Name = nameAttribute.Value, WithoutWeight = withoutWeight };
+                        return (IExercise) new PersetExercise { Category = categotyName, Name = nameAttribute.Value, WithoutWeight = withoutWeight };
                     });
                 })
+                .Union(RepoExercise.Instance.FindAll().Cast<IExercise>(), new ExercisePersetComparer())
                 .OrderBy(x => x.Category)
                 .ThenBy(x => x.Name)
-                .Select((x, i) => { x.Index = i; return x; })
                 .ToList();
-
-                PersetCategories = PersetExercises.Select(x => x.Category).Distinct().ToList();
-                IsDataLoaded = true;
             }
             catch (Exception)
             {
                 MessageBox.Show("Error in xml file parse.");
+                IsDataLoaded = false;
+                return;
             }
+
+            PersetCategories = PersetExercises.Select(x => x.Category).Distinct().ToList();
+            IsDataLoaded = false;
+        }
+
+        public void RenewPerset(Exercise item)
+        {
+            PersetExercises = PersetExercises.Union(new IExercise[] { item }, new ExercisePersetComparer())
+                .OrderBy(x => x.Category)
+                .ThenBy(x => x.Name)
+                .ToList();
         }
 
         private StreamResourceInfo GetLocalizedResourceStream()
@@ -104,6 +118,19 @@ namespace Gymme.Resources
         private Uri GetLocalizedResourceUri(string locationAbr)
         {
             return new Uri(string.Format("Gymme;component/Resources/ExerciseData.{0}.xml", locationAbr), UriKind.Relative);
+        }
+    }
+
+    public class ExercisePersetComparer : IEqualityComparer<IExercise>
+    {
+        public bool Equals(IExercise x, IExercise y)
+        {
+            return StringComparer.InvariantCultureIgnoreCase.Equals(x.Name, y.Name);
+        }
+
+        public int GetHashCode(IExercise obj)
+        {
+            return StringComparer.InvariantCultureIgnoreCase.GetHashCode(obj.Name);
         }
     }
 }

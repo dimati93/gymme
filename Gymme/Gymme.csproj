@@ -127,6 +127,7 @@
     <Compile Include="ViewModel\Upcoming\UpcomingItem.cs" />
     <Compile Include="ViewModel\WorkoutVM.cs" />
     <Compile Include="View\Controls\AddEditChooser.cs" />
+    <Compile Include="View\Controls\AdvancedBindingUC.cs" />
     <Compile Include="View\Controls\AEWorkout.xaml.cs">
       <DependentUpon>AEWorkout.xaml</DependentUpon>
     </Compile>

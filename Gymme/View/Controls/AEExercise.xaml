@@ -1,9 +1,10 @@
-﻿<UserControl x:Class="Gymme.View.Controls.AEExercise"
+﻿<controls:AdvancedBindingUC x:Class="Gymme.View.Controls.AEExercise"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:telerikInput="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls.Input"
+    xmlns:controls="clr-namespace:Gymme.View.Controls"
     mc:Ignorable="d"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
@@ -12,12 +13,12 @@
 
     <ListBox x:Name="LayoutRoot" Background="{StaticResource PhoneBackgroundBrush}" Style="{StaticResource ListStyle}">
         <TextBlock Text="{Binding Resources.AEWorkout_NameLabel, Source={StaticResource Localized}}" Style="{StaticResource InputDescriptionStyle}"/>
-        <TextBox Text="{Binding Name, Mode=TwoWay}"  Style="{StaticResource InputStyle}"/>
+        <TextBox x:Name="tbName" Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=Explicit}"  Style="{StaticResource InputStyle}" KeyUp="InputBox_TextInput"/>
         <TextBlock Text="{Binding Resources.AEExercise_CategoryLabel, Source={StaticResource Localized}}" Style="{StaticResource InputDescriptionStyle}"/>
-        <telerikInput:RadAutoCompleteBox Text="{Binding Category, Mode=TwoWay}" Style="{StaticResource AutoInputStyle}" 
-                                         SuggestionsSource="{Binding Categories}"/>
+        <telerikInput:RadAutoCompleteBox x:Name="acCategory" Text="{Binding Category, Mode=TwoWay, UpdateSourceTrigger=Explicit}" Style="{StaticResource AutoInputStyle}" 
+                                         SuggestionsSource="{Binding Categories}" KeyUp="InputBox_TextInput"/>
         <TextBlock Text="{Binding Resources.AEExercise_WeightModeLabel, Source={StaticResource Localized}}" Style="{StaticResource InputDescriptionStyle}"/>
         <telerikInput:RadListPicker ItemsSource="{Binding WeightModes}" SelectedItem="{Binding WithoutWeight, Mode=TwoWay}"/>
     
     </ListBox>
-</UserControl>
+</controls:AdvancedBindingUC>

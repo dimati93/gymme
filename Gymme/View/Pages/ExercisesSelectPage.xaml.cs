@@ -51,12 +51,8 @@ namespace Gymme.View.Pages
         private void LoadContent()
         {
             ContentPanel.Children.Clear();
-            _selector = ExerciseSelector.Create(_viewModel.WorkoutId);
+            _selector = new ExerciseSelector(_viewModel.WorkoutId);
             ContentPanel.Children.Add(_selector);
-            if (ExerciseSelector.LastChoosen != null)
-            {
-                Dispatcher.BeginInvoke(() => _selector.BringIntoView(ExerciseSelector.LastChoosen));
-            }
         }
 
         private void InitializeAppMenu(bool searchEnabled)

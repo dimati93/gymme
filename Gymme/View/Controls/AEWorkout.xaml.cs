@@ -1,45 +1,30 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
+using System.Windows.Input;
 
 namespace Gymme.View.Controls
 {
-    public partial class AEWorkout : UserControl, IAEView
+    public partial class AEWorkout : AdvancedBindingUC, IAEView
     {
-        private Dictionary<Control, DependencyProperty> _bindingElements;
 
         public AEWorkout()
         {
             InitializeComponent();
-            Loaded += (o, e) => RegisterBindingElements();
         }
 
-        public void UpdateDataSources()
+        protected override Dictionary<Control, DependencyProperty> GetBindingElements()
         {
-            UpdateBindingElements(ex => ex.UpdateSource());
-        }
-
-        private void UpdateBindingElements(Action<BindingExpression> beAction)
-        {
-            foreach (var bindingElement in _bindingElements)
-            {
-                BindingExpression expression = bindingElement.Key.GetBindingExpression(bindingElement.Value);
-                if (expression != null)
+            return new Dictionary<Control, DependencyProperty>
                 {
-                    beAction(expression);
-                }
-            }
+                    {tbName, TextBox.TextProperty},
+                    {tbNote, TextBox.TextProperty}
+                };
         }
 
-        private void RegisterBindingElements()
+        private void InputBox_TextInput(object sender, KeyEventArgs keyEventArgs)
         {
-            _bindingElements = new Dictionary<Control, DependencyProperty>
-            {
-                {tbName, TextBox.TextProperty},
-                {tbNote, TextBox.TextProperty}
-            };
+            UpdateDataSources();
         }
     }
 }

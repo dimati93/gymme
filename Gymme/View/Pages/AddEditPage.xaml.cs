@@ -76,7 +76,7 @@ namespace Gymme.View.Pages
                     return new AddEditExerciseVM
                         (
                             long.Parse(NavigationContext.QueryString[AddEditChooser.Param.WorkoutId]),
-                            Gymme.Resources.ExerciseData.Instance.PersetExercises[(int)id]
+                            ExerciseData.Instance.PersetExercises[(int)id]
                         )
                         {
                             Control = new AEExercise(),
