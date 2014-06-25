@@ -1,5 +1,5 @@
 ﻿// Type: Gymme.ViewModel.Statistics.ExerciseStatistics
-// Assembly: Gymme, Version=1.1.48.0, Culture=neutral, PublicKeyToken=null
+// Assembly: Gymme, Version=1.2.63.0, Culture=neutral, PublicKeyToken=null
 // MVID: 75B8BCB2-4771-4894-99E2-0BE3700EFFF3
 // Assembly location: W:\Gymme\Gymme\Bin\Debug\Gymme.dll
 
