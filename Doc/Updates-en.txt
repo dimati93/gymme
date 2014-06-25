@@ -1,0 +1,7 @@
+1.2.63.0
+- exercises without weight load
+- search by first letters
+- exercise reordering
+- own categories and exercises appear in exercise selector
+- new statistics page
+- annoying bugs fixed and a few tiny enhancements
