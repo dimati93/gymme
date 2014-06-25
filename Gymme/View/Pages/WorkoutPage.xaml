@@ -84,7 +84,7 @@
                               Visibility="{Binding ShowPlot, Converter={StaticResource VisibilityConverter}}"
                               EmptyContent="{Binding Resources.Page_Statistics_NoData, Source={StaticResource Localized}}">
                         <tc:RadCartesianChart.VerticalAxis>
-                            <tc:DateTimeContinuousAxis Minimum="{Binding DateZero}" LabelFormat="H:mm" MaximumTicks="12"/>
+                            <tc:LinearAxis Minimum="0"/>
                         </tc:RadCartesianChart.VerticalAxis>
                         <tc:RadCartesianChart.HorizontalAxis>
                             <tc:DateTimeCategoricalAxis LabelFormat="dd MMM" LabelFitMode="Rotate" LabelRotationAngle="-40">
@@ -99,8 +99,8 @@
                         <tc:RadCartesianChart.Series>
                             <tc:LineSeries Stroke="#FF004FDD"
                                            ItemsSource="{Binding SpentTime}"
-                                           ValueBinding="Date"
-                                           CategoryBinding="Span"/>
+                                           ValueBinding="Span"
+                                           CategoryBinding="Date"/>
                         </tc:RadCartesianChart.Series>
                     </tc:RadCartesianChart>
 

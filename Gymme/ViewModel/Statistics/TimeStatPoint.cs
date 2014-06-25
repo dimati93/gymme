@@ -12,10 +12,10 @@ namespace Gymme.ViewModel.Statistics
         public TimeStatPoint(DateTime start, TimeSpan span)
         {
             Date = start;
-            Span = WorkoutStatistics.DateZero + span;
+            Span = span.TotalMinutes;
         }
 
-        public DateTime Span { get; private set; }
+        public double Span { get; private set; }
 
         public DateTime Date { get; private set; }
     }

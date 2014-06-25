@@ -20,6 +20,8 @@ namespace Gymme.ViewModel.Statistics
         private readonly Workout _workout;
         private List<TimeStatPoint> _spentTime;
 
+        private DateTime _dateMax;
+
         public WorkoutStatistics(Workout workout)
         {
             _workout = workout;

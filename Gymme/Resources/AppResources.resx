@@ -171,16 +171,13 @@
     <value>edit</value>
   </data>
   <data name="Workout_DeleteWarning" xml:space="preserve">
-    <value>This operation will delete all information about this workout. Do you realy want to delete it?</value>
+    <value>You're going to delete all information about this workout. Do you realy want it?</value>
   </data>
   <data name="Workout_DeleteWarningTitle" xml:space="preserve">
     <value>Delete workout</value>
   </data>
   <data name="Page_Statistics" xml:space="preserve">
     <value>Statistics</value>
-  </data>
-  <data name="Dummy_Statistics" xml:space="preserve">
-    <value>Statistics is comming soon</value>
   </data>
   <data name="WorkoutPage_DeleteWorkout" xml:space="preserve">
     <value>delete workout</value>
@@ -231,7 +228,7 @@
     <value>new</value>
   </data>
   <data name="Exercise_DeleteWarning" xml:space="preserve">
-    <value>This operation will delete all information about this exercise in workout. Do you realy want to delete it?</value>
+    <value>You're going to delete all information about this exercise completely. Do you realy want it?</value>
   </data>
   <data name="Exercise_DeleteWarningTitle" xml:space="preserve">
     <value>Delete exercise</value>
@@ -267,19 +264,19 @@
     <value>Done!</value>
   </data>
   <data name="ExecutePage_SkipedHint" xml:space="preserve">
-    <value>Exercise skiped. Use application menu to start.</value>
+    <value>Exercise was skipped. Use application menu to start over.</value>
   </data>
   <data name="Command_Finish" xml:space="preserve">
     <value>finish</value>
   </data>
   <data name="Execute_SkipWarning" xml:space="preserve">
-    <value>Current exercise progress will be lost. Continue?</value>
+    <value>Current progress in exercise will be lost. Continue?</value>
   </data>
   <data name="Execute_SkipWarningTitle" xml:space="preserve">
     <value>Skip exercise</value>
   </data>
   <data name="Training_DeleteWarning" xml:space="preserve">
-    <value>You will delete current training progress. Continue?</value>
+    <value>You're going to delete current training progress. Proceed?</value>
   </data>
   <data name="Training_DeleteWarningTitle" xml:space="preserve">
     <value>Delete training</value>
@@ -324,7 +321,7 @@
     <value>Gymme app by D93 (2013-2014)</value>
   </data>
   <data name="ExecutePage_SkipedItem" xml:space="preserve">
-    <value>skiped</value>
+    <value>skipped</value>
   </data>
   <data name="Command_Continue" xml:space="preserve">
     <value>continue</value>
@@ -342,7 +339,7 @@
     <value>max weight</value>
   </data>
   <data name="WorkoutPage_Chart_TimeSpent" xml:space="preserve">
-    <value>time spent</value>
+    <value>time spent (minutes)</value>
   </data>
   <data name="Page_Statistics_Loading" xml:space="preserve">
     <value>loading...</value>

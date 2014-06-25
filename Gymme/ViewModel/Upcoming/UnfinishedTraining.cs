@@ -19,7 +19,11 @@ namespace Gymme.ViewModel.Upcoming
                     continue;
                 }
 
-                yield return new UnfinishedTrainingItem(training);
+                var workout = RepoWorkout.Instance.FindById(training.IdWorkout);
+                if (workout != null)
+                {
+                    yield return new UnfinishedTrainingItem(training, workout);
+                }
             }
         }
     }

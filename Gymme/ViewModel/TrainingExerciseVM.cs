@@ -15,11 +15,11 @@ namespace Gymme.ViewModel
         private readonly Action _updateList;
         private readonly Exercise _exercise;
 
-        public TrainingExerciseVM(TrainingExercise trainingExercise, Action updateList)
+        public TrainingExerciseVM(TrainingExercise trainingExercise, Exercise exercise, Action updateList)
         {
             _trainingExercise = trainingExercise;
             _updateList = updateList;
-            _exercise = RepoExercise.Instance.FindById(_trainingExercise.IdExecise);
+            _exercise = exercise;
         }
 
         public string Name

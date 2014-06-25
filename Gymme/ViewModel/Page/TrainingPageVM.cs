@@ -92,7 +92,11 @@ namespace Gymme.ViewModel.Page
             Training.Exercises.Load();
             foreach (var trainingExercise in Training.Exercises)
             {
-                Exercises.Add(new TrainingExerciseVM(trainingExercise, () => NotifyPropertyChanged("Exercises")));
+                var exercise = RepoExercise.Instance.FindById(trainingExercise.IdExecise);
+                if (exercise != null)
+                {
+                    Exercises.Add(new TrainingExerciseVM(trainingExercise, exercise, () => NotifyPropertyChanged("Exercises")));
+                }
             }
         }
 

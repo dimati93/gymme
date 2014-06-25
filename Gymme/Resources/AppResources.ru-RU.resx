@@ -171,7 +171,7 @@
     <value>редактировать</value>
   </data>
   <data name="Workout_DeleteWarning" xml:space="preserve">
-    <value>Эта оперция удалит все данные по этой тренировке. Вы действительно хотите её удалить?</value>
+    <value>Вы собираетесь удалить все данные по этой тренировке. Вы действительно этого хотите?</value>
   </data>
   <data name="Workout_DeleteWarningTitle" xml:space="preserve">
     <value>Удаление тренировки</value>
@@ -225,13 +225,13 @@
     <value>Заметки</value>
   </data>
   <data name="Page_Overview" xml:space="preserve">
-    <value>Cведения</value>
+    <value>Сведения</value>
   </data>
   <data name="Command_New" xml:space="preserve">
     <value>создать</value>
   </data>
   <data name="Exercise_DeleteWarning" xml:space="preserve">
-    <value>Эта оперция удалит все данные по этому упражнению в данной тренировке. Вы действительно хотите её удалить?</value>
+    <value>Вы собираетесьт удалить все данные по этому упражнению в тренировке. Вы действительно этого хотите?</value>
   </data>
   <data name="Exercise_DeleteWarningTitle" xml:space="preserve">
     <value>Удаление упражнения</value>
@@ -279,7 +279,7 @@
     <value>Пропустить упражнение</value>
   </data>
   <data name="Training_DeleteWarning" xml:space="preserve">
-    <value>Вы удалите весь прогресс текущей тренировки. Продолжить?</value>
+    <value>Вы потеряете весь прогресс текущей тренировки. Продолжить?</value>
   </data>
   <data name="Training_DeleteWarningTitle" xml:space="preserve">
     <value>Удаление тренировки</value>
@@ -336,7 +336,7 @@
     <value>макс. вес</value>
   </data>
   <data name="WorkoutPage_Chart_TimeSpent" xml:space="preserve">
-    <value>затраченое время</value>
+    <value>затраченое время (минут)</value>
   </data>
   <data name="Page_Statistics_Loading" xml:space="preserve">
     <value>загрузка...</value>

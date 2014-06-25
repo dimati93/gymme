@@ -1,5 +1,4 @@
 ﻿using Gymme.Data.Models;
-using Gymme.Data.Repository;
 using Gymme.Resources;
 
 namespace Gymme.ViewModel.Upcoming
@@ -8,11 +7,11 @@ namespace Gymme.ViewModel.Upcoming
     {
         private readonly Training _training;
 
-        public UnfinishedTrainingItem(Training training)
+        public UnfinishedTrainingItem(Training training, Workout workout)
         {
             _training = training;
             Accent = AccentColors.Blue;
-            Title = RepoWorkout.Instance.FindById(_training.IdWorkout).Title;
+            Title = workout.Title;
             Description = string.Format("{0} {1}", AppResources.Training_Started, GetTimeDescription(_training.StartTime)).UppercaseFirst();
             Priority = 2;
         }

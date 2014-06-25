@@ -358,16 +358,7 @@ namespace Gymme.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Statistics is comming soon.
-        /// </summary>
-        public static string Dummy_Statistics {
-            get {
-                return ResourceManager.GetString("Dummy_Statistics", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Current exercise progress will be lost. Continue?.
+        ///   Looks up a localized string similar to Current progress in exercise will be lost. Continue?.
         /// </summary>
         public static string Execute_SkipWarning {
             get {
@@ -430,7 +421,7 @@ namespace Gymme.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Exercise skiped. Use application menu to start..
+        ///   Looks up a localized string similar to Exercise was skipped. Use application menu to start over..
         /// </summary>
         public static string ExecutePage_SkipedHint {
             get {
@@ -439,7 +430,7 @@ namespace Gymme.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to skiped.
+        ///   Looks up a localized string similar to skipped.
         /// </summary>
         public static string ExecutePage_SkipedItem {
             get {
@@ -448,7 +439,7 @@ namespace Gymme.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to This operation will delete all information about this exercise in workout. Do you realy want to delete it?.
+        ///   Looks up a localized string similar to You&apos;re going to delete all information about this exercise completely. Do you realy want it?.
         /// </summary>
         public static string Exercise_DeleteWarning {
             get {
@@ -745,7 +736,7 @@ namespace Gymme.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to You will delete current training progress. Continue?.
+        ///   Looks up a localized string similar to You&apos;re going to delete current training progress. Proceed?.
         /// </summary>
         public static string Training_DeleteWarning {
             get {
@@ -835,7 +826,7 @@ namespace Gymme.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to This operation will delete all information about this workout. Do you realy want to delete it?.
+        ///   Looks up a localized string similar to You&apos;re going to delete all information about this workout. Do you realy want it?.
         /// </summary>
         public static string Workout_DeleteWarning {
             get {
@@ -853,7 +844,7 @@ namespace Gymme.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to time spent.
+        ///   Looks up a localized string similar to time spent (minutes).
         /// </summary>
         public static string WorkoutPage_Chart_TimeSpent {
             get {
